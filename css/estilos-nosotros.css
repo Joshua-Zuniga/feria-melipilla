@@ -81,19 +81,19 @@ body {
     text-decoration: none;
 }
 
-.nav__menu {
+.nav__toggle {
     margin-left: auto;
     cursor: pointer;
     display: none;
 }
 
-.nav__img {
+.nav__icon {
     display: block;
     width: 30px;
 }
 
 
-.nav__close {
+.nav__toggle--close {
     display: var(--show, none);
 }
 
@@ -499,7 +499,7 @@ body {
 /* Media queries */
 
 @media (max-width:800px){
-    .nav__menu{
+    .nav__toggle{
         display: block;
     }
 
@@ -526,7 +526,7 @@ body {
         pointer-events: unset;
     }
 
-    .nav__close{
+    .nav__toggle--close{
         position: absolute;
         top: 30px;
         right: 30px;

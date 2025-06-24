@@ -31,7 +31,7 @@
                 </a>
             </div>
 
-            <ul class="nav__link nav__link--menu">
+            <ul id="main-menu" class="nav__link nav__link--menu">
                 <li class="nav__items">
                     <a href="index.html" class="nav__links">Inicio</a>
                 </li>
@@ -51,12 +51,14 @@
                     <a href="Localizanos.html" class="nav__links">Localizanos</a>
                 </li>
 
-                <img loading="lazy" src="./images/close.svg" class="nav__close">
+                <button class="nav__toggle nav__toggle--close" aria-label="Cerrar menú">
+                <span class="nav__icon nav__icon--close"></span>
+            </button>
             </ul>
 
-            <div class="nav__menu">
-                <img loading="lazy" src="./images/menu.svg" class="nav__img">
-            </div>
+            <button class="nav__toggle" aria-label="Abrir menú" aria-controls="main-menu" aria-expanded="false">
+                <span class="nav__icon nav__icon--open"></span>
+            </button>
         </nav>
 
         <section class="hero__container container">
