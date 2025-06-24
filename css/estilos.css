@@ -3,6 +3,7 @@
     --color-title: #001A49;
 }
 
+
 #scrollUp {
     bottom: 20px;
     right: 20px;
@@ -520,4 +521,29 @@ body {
         width: 100%;
         */
     }
+}
+
+/* Mobile menu animation */
+.nav__link--menu {
+    transform: translateX(100%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav__link--show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.nav__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.nav__overlay--active {
+    opacity: 1;
+    pointer-events: auto;
 }
