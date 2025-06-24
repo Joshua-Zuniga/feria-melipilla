@@ -154,7 +154,7 @@ body {
     margin: 0 auto;
     gap: 1em;
     overflow: hidden;
-    grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 
@@ -162,13 +162,14 @@ body {
     display: grid;
     gap: 1em;
     justify-items: center;
-    width: 260px;
+    width: 100%;
+    max-width: 300px;
     overflow: hidden;
     margin: 0 auto;
 }
 
 .about__icon {
-    width: 120px;
+    width: 150px;
 }
 
 /* Knowledge */
@@ -189,7 +190,7 @@ body {
 }
 
 .knowledge__picture{
-    max-width: 500px;
+    max-width: 600px;
 }
 
 .knowledge__paragraph{
@@ -540,6 +541,7 @@ body {
 
     .about__main{
         gap: 2em;
+        grid-template-columns: 1fr;
     }
 
     .about__icons:last-of-type{
