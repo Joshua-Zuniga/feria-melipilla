@@ -13,8 +13,13 @@
     background-size: cover;
   }
 
+
 body {
     font-family: 'Poppins', sans-serif;
+}
+
+body.nav-open {
+    overflow: hidden;
 }
 
 .container {

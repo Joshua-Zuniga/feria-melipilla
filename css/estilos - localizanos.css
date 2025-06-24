@@ -16,6 +16,10 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+body.nav-open {
+    overflow: hidden;
+}
+
 .container {
     width: 90%;
     max-width: 1200px;
