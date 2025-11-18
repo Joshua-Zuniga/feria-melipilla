@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juan Carlos Perez Armijo - Socio Feria Agrícola Melipilla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="images/favicon.webp" type="image/x-icon">
+  <meta name="theme-color" content="#166534">
+
+  <!-- Tailwind CSS con tema personalizado -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#166534',
+            secondary: '#65a30d',
+            accent: '#f97316',
+            dark: '#020617'
+          },
+          fontFamily: {
+            sans: ['Poppins','system-ui','sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Iconos -->
+  <script src="https://kit.fontawesome.com/c38e3367c6.js" crossorigin="anonymous"></script>
+
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({ duration: 800, once: true, offset: 80 });
+  });
+</script>
+
+<header class="bg-primary text-white">
+  <div class="border-b border-emerald-700/80">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      <a href="../index.html" class="flex items-center gap-3">
+        <img src="../images/logotipo.svg" alt="Feria Agrícola Melipilla" class="h-16 md:h-20">
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="../index.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Inicio</a>
+        <a href="../Nosotros.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Nosotros</a>
+        <a href="../Directiva.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Directiva</a>
+        <a href="../Socios.html" class="text-sm font-medium text-white hover:text-white transition-colors">Socios</a>
+        <a href="../Galeria.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Galería</a>
+        <a href="../Localizanos.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Localizanos</a>
+      </nav>
+      <button id="mobileMenuButton" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/30 hover:bg-white/10 transition" aria-label="Abrir menú">
+        <i class="fa-solid fa-bars text-lg"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menú móvil slide-in -->
+  <div id="mobileBackdrop" class="fixed inset-0 bg-black/40 hidden md:hidden"></div>
+  <aside id="mobileMenu" class="fixed inset-y-0 left-0 w-64 bg-primary/95 border-r border-emerald-600/60 transform -translate-x-full transition-transform duration-200 md:hidden z-50">
+    <div class="px-4 py-4 flex items-center justify-between border-b border-emerald-700">
+      <span class="font-semibold">Menú</span>
+      <button id="mobileMenuClose" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10" aria-label="Cerrar menú">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+    <nav class="px-3 py-4 space-y-1">
+      <a href="../index.html" class="block py-2 px-4 text-base hover:bg-white/10 rounded-lg">Inicio</a>
+      <a href="../Nosotros.html" class="block py-2 px-4 text-base hover:bg-white/10 rounded-lg">Nosotros</a>
+      <a href="../Directiva.html" class="block py-2 px-4 text-base hover:bg-white/10 rounded-lg">Directiva</a>
+      <a href="../Socios.html" class="block py-2 px-4 text-base bg-white/10 rounded-lg">Socios</a>
+      <a href="../Galeria.html" class="block py-2 px-4 text-base hover:bg-white/10 rounded-lg">Galería</a>
+      <a href="../Localizanos.html" class="block py-2 px-4 text-base hover:bg-white/10 rounded-lg">Localízanos</a>
+    </nav>
+  </aside>
+
+
+  <div class="max-w-6xl mx-auto px-4 py-10 md:py-14 flex items-center justify-between gap-6">
+    <div class="space-y-3 md:space-y-4" data-aos="fade-right">
+      <p class="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-emerald-200">
+        Feria Agrícola Melipilla
+      </p>
+      <h1 class="text-3xl md:text-4xl font-bold">Socios</h1>
+      <p class="text-sm md:text-base text-emerald-100 max-w-xl">
+        Nuestros socios son el corazón de la feria y de la comunidad.
+      </p>
+    </div>
+  </div>
+
+</header>
+
+<main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
+
+<section data-aos="fade-up">
+  <a href="../Socios.html" class="inline-flex items-center gap-2 text-primary text-sm font-semibold hover:underline mb-6">
+    <i class="fa-solid fa-arrow-left text-xs"></i>
+    Volver a Socios
+  </a>
+
+  <div class="bg-white shadow-md rounded-2xl p-8 flex flex-col md:flex-row items-center gap-8">
+    <div class="flex-shrink-0">
+      <!-- Imagen genérica, cámbiala luego por la foto real -->
+      <div class="w-40 h-40 rounded-full bg-primary/10 flex items-center justify-center shadow-md">
+        <span class="text-4xl md:text-5xl font-bold text-primary">J</span>
+      </div>
+    </div>
+    <div class="space-y-4 md:space-y-5">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-bold text-primary">Juan Carlos Perez Armijo</h1>
+        <p class="text-sm md:text-base text-secondary font-semibold">Socio/a de la Asociación</p>
+      </div>
+      <p class="text-sm md:text-base text-slate-700">
+        Esta es una ficha de ejemplo para el socio. Puedes reemplazar este texto por una breve descripción
+        del puesto, los productos que ofrece o la historia dentro de la feria.
+      </p>
+
+      <div class="space-y-2">
+        <p class="text-xs text-slate-500">Contactos y redes sociales (ejemplo, reemplazar por datos reales):</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1877F2] text-white text-xs md:text-sm hover:opacity-90">
+            <i class="fa-brands fa-facebook-f text-sm"></i>
+            <span>Facebook</span>
+          </a>
+          <a href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white text-xs md:text-sm hover:opacity-90">
+            <i class="fa-brands fa-instagram text-sm"></i>
+            <span>Instagram</span>
+          </a>
+          <a href="#" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#25D366] text-white text-xs md:text-sm hover:opacity-90">
+            <i class="fa-brands fa-whatsapp text-sm"></i>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+      <p class="text-xs text-slate-400 pt-2">
+        *Contenido de ejemplo. Puedes reemplazar estos datos por la información real de cada socio.
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="relative mt-20 text-slate-100">
+
+  <!-- Fondo decorativo con textura -->
+  <div class="absolute inset-0 bg-gradient-to-br from-primary to-emerald-900 opacity-95"></div>
+
+  <!-- Patrón tipo hojas -->
+  <div class="absolute inset-0 opacity-10"
+       style="background-image: url('data:image/svg+xml,%3Csvg width=\'120\' height=\'120\' viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M60 10 C40 40 40 80 60 110 C80 80 80 40 60 10 Z\' fill=\'%23ffffff\'/%3E%3C/svg%3E'); background-size: 180px;">
+  </div>
+
+  <!-- Contenido -->
+  <div class="relative max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-3">
+
+    <!-- Columna 1 -->
+    <div class="space-y-5">
+      <img src="../images/logotipo.svg" alt="" class="h-20 drop-shadow-lg brightness-110">
+      <p class="text-sm text-emerald-100 leading-relaxed max-w-sm">
+        Somos la Asociación Gremial Feria Agrícola Melipilla, dedicada al fortalecimiento,
+        organización y representación de nuestros feriantes y su comunidad.
+      </p>
+    </div>
+
+    <!-- Columna 2 -->
+    <div class="space-y-5">
+      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-200">Enlaces rápidos</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="../Nosotros.html" class="hover:text-white hover:underline">Nosotros</a></li>
+        <li><a href="../Directiva.html" class="hover:text-white hover:underline">Directiva</a></li>
+        <li><a href="../Socios.html" class="hover:text-white hover:underline">Socios</a></li>
+        <li><a href="../Galeria.html" class="hover:text-white hover:underline">Galería</a></li>
+        <li><a href="../Localizanos.html" class="hover:text-white hover:underline">Localízanos</a></li>
+      </ul>
+    </div>
+
+    <!-- Columna 3 -->
+    <div class="space-y-5">
+      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-200">Síguenos</h4>
+
+      <div class="flex gap-5">
+        <a href="https://www.facebook.com/asoc.feria.agricola.melipilla" target="_blank"
+           class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
+          <i class="fa-brands fa-facebook-f text-xl"></i>
+        </a>
+
+        <a href="https://www.instagram.com/asoc.feria.agricola.melipilla" target="_blank"
+           class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
+          <i class="fa-brands fa-instagram text-xl"></i>
+        </a>
+      </div>
+
+      <div class="pt-3">
+        <p class="text-sm text-emerald-100">Correo de contacto:</p>
+        <a href="mailto:a.g.feria.agricola.m@gmail.com"
+           class="text-lime-200 hover:text-white underline text-sm">
+          a.g.feria.agricola.m@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+
+      <!-- Línea inferior -->
+ <div class="relative border-t border-emerald-700/60 bg-emerald-950/60 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4 text-center text-xs text-emerald-300/80">
+      © 2025 Asociación Gremial Feria Agrícola Melipilla — Todos los derechos reservados.
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // Menú móvil slide-in
+  const mobileBtn = document.getElementById('mobileMenuButton');
+  const mobileClose = document.getElementById('mobileMenuClose');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileBackdrop = document.getElementById('mobileBackdrop');
+
+  function openMenu() {
+    mobileMenu.classList.remove('-translate-x-full');
+    mobileBackdrop.classList.remove('hidden');
+  }
+  function closeMenu() {
+    mobileMenu.classList.add('-translate-x-full');
+    mobileBackdrop.classList.add('hidden');
+  }
+
+  if (mobileBtn) mobileBtn.addEventListener('click', openMenu);
+  if (mobileClose) mobileClose.addEventListener('click', closeMenu);
+  if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMenu);
+</script>
+
+</body>
+</html>
