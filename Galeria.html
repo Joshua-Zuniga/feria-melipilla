@@ -4,14 +4,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio - Feria Agrícola Melipilla</title>
+  <title>Galería - Feria Agrícola Melipilla</title>
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <link rel="shortcut icon" href="images/favicon.webp" type="image/x-icon">
   <meta name="theme-color" content="#166534">
+
+  <!-- LightGallery (carrusel) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -26,7 +33,7 @@
             dark: '#020617'
           },
           fontFamily: {
-            sans: ['Poppins', 'system-ui', 'sans-serif']
+            sans: ['Poppins','system-ui','sans-serif'],
           }
         }
       }
@@ -39,10 +46,6 @@
 
   <!-- Iconos -->
   <script src="https://kit.fontawesome.com/c38e3367c6.js" crossorigin="anonymous"></script>
-
-  <!-- Swiper -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 </head>
 
@@ -58,24 +61,24 @@
 <header class="bg-primary text-white">
   <div class="border-b border-emerald-700/80">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      
+
       <a href="index.html" class="flex items-center gap-3">
-        <img src="images/logotipo.svg" alt="Feria Agrícola Melipilla" class="h-16 md:h-20">
+        <img src="images/logotipo.svg" class="h-16 md:h-20" alt="Logo">
       </a>
 
       <nav class="hidden md:flex items-center gap-6">
-        <a href="index.html" class="text-sm text-white hover:text-white">Inicio</a>
+        <a href="index.html" class="text-sm text-white/80 hover:text-white">Inicio</a>
         <a href="Nosotros.html" class="text-sm text-white/80 hover:text-white">Nosotros</a>
         <a href="Directiva.html" class="text-sm text-white/80 hover:text-white">Directiva</a>
         <a href="Socios.html" class="text-sm text-white/80 hover:text-white">Socios</a>
-        <a href="Galeria.html" class="text-sm text-white/80 hover:text-white">Galería</a>
+        <a href="Galeria.html" class="text-sm text-white hover:text-white">Galería</a>
         <a href="Localizanos.html" class="text-sm text-white/80 hover:text-white">Localízanos</a>
       </nav>
 
+      <!-- Botón móvil -->
       <button id="mobileMenuButton" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white/10">
         <i class="fa-solid fa-bars text-lg"></i>
       </button>
-
     </div>
   </div>
 
@@ -92,100 +95,79 @@
     </div>
 
     <nav class="px-3 py-4 space-y-1">
-      <a href="index.html" class="block py-2 px-4 bg-white/10 rounded-lg">Inicio</a>
+      <a href="index.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Inicio</a>
       <a href="Nosotros.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Nosotros</a>
       <a href="Directiva.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Directiva</a>
       <a href="Socios.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Socios</a>
-      <a href="Galeria.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Galería</a>
+      <a href="Galeria.html" class="block py-2 px-4 bg-white/10 rounded-lg">Galería</a>
       <a href="Localizanos.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Localízanos</a>
     </nav>
 
   </aside>
 
-  <!-- HERO -->
-  <div class="max-w-6xl mx-auto px-4 py-10 md:py-16 flex flex-col md:flex-row items-center gap-10">
-
-    <div class="flex-1 space-y-6" data-aos="fade-right">
-      <p class="text-sm font-semibold tracking-[0.2em] uppercase text-emerald-200">Asociación Gremial</p>
-
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">Feria Agrícola Melipilla</h1>
-
-      <p class="text-sm md:text-base text-emerald-100 max-w-xl">
-        Somos la principal Asociación de la Feria Libre de Melipilla, comprometida con el desarrollo,
-        la organización y la representación de nuestros feriantes.
-      </p>
-
-      <div class="flex flex-wrap gap-4">
-        <a href="Nosotros.html" class="px-5 py-2.5 rounded-full bg-white text-primary font-semibold shadow hover:bg-emerald-50">
-          Conocer más
-        </a>
-        <a href="Localizanos.html" class="px-5 py-2.5 rounded-full border border-white/50 text-white font-semibold hover:bg-white/10">
-          ¿Dónde estamos?
-        </a>
-      </div>
+  <!-- Hero -->
+  <div class="max-w-6xl mx-auto px-4 py-10 md:py-14">
+    <div data-aos="fade-right" class="space-y-3">
+      <p class="text-xs tracking-[0.25em] uppercase text-emerald-200 font-semibold">Feria Agrícola Melipilla</p>
+      <h1 class="text-3xl md:text-4xl font-bold">Galería</h1>
+      <p class="text-sm md:text-base text-emerald-100 max-w-xl">Explora los mejores momentos y actividades.</p>
     </div>
-
-    <div class="flex-1 flex justify-center md:justify-end" data-aos="fade-left">
-      <div class="rounded-3xl bg-emerald-800/40 border border-emerald-300/30 p-4 shadow-lg">
-        <img src="images/Banner_1.webp" class="w-full max-w-md rounded-2xl object-cover">
-      </div>
-    </div>
-
   </div>
-
 </header>
 
-<!-- AQUÍ TERMINA LA PARTE 1 -->
 <!-- MAIN -->
 <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
 
-<!-- INSTAGRAM RESPONSIVO -->
-<div class="relative w-full" style="padding-bottom: 60%;">
-  <iframe 
-    src="//lightwidget.com/widgets/61cdf6b8638f5055b50d9a5835f58dfe.html" 
-    class="absolute inset-0 w-full h-full lightwidget-widget"
-    style="border:0; overflow:hidden;">
-  </iframe>
-</div>
+<section data-aos="fade-up" class="space-y-4">
+  <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 text-center">Galería de Imágenes</h2>
+  <p class="text-sm md:text-base text-slate-700 text-center max-w-2xl mx-auto">
+    Un vistazo a nuestras actividades, reuniones y momentos.
+  </p>
+</section>
 
-<!-- CALENDARIO (RESPONSIVE Y CORREGIDO) -->
-<section data-aos="fade-up" class="space-y-6">
-  <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Calendario de Actividades</h2>
+<!-- GALERÍA -->
+<section data-aos="fade-up">
+  <div id="galeria" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
-  <div class="rounded-2xl overflow-hidden shadow-md bg-white flex justify-center">
-    <div class="relative w-full max-w-5xl h-0 pb-[140%] sm:pb-[90%] md:pb-[70%] lg:pb-[60%]">
+    <a href="images/Banner_1.webp">
+      <img src="images/Banner_1.webp" class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
+    </a>
 
-      <iframe
-        loading="lazy"
-        class="absolute inset-0 w-full h-full"
-        src="https://calendar.google.com/calendar/embed?height=575&wkst=1&ctz=America%2FSantiago&bgcolor=%23ffffff&src=NGJvaWVoZGV0aHMzNWw3NjE0bWk1dWV2NDhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=MGljdDFtcGRuY2E2dDF1YzNoNnQ2ZnE4N3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23AD1457&color=%230B8043&color=%2333B679"
-        frameborder="0"
-        scrolling="no">
-      </iframe>
+    <a href="images/Banner_2.webp">
+      <img src="images/Banner_2.webp" class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
+    </a>
 
-    </div>
+    <a href="images/Banner_3.webp">
+      <img src="images/Banner_3.webp" class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
+    </a>
+
+    <a href="images/Banner_4.webp">
+      <img src="images/Banner_4.webp" class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
+    </a>
+
+    <a href="images/PXL_20240805_170629278.webp">
+      <img src="images/PXL_20240805_170629278.webp" class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
+    </a>
+
   </div>
 </section>
 
 </main>
 
-<!-- FOOTER -->
+<!-- FOOTER PREMIUM -->
 <footer class="relative mt-20 text-slate-100">
 
   <div class="absolute inset-0 bg-gradient-to-br from-primary to-emerald-900 opacity-95"></div>
 
   <div class="absolute inset-0 opacity-10"
-       style="background-image:url('data:image/svg+xml,%3Csvg width=\'120\' height=\'120\' viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M60 10 C40 40 40 80 60 110 C80 80 80 40 60 10 Z\' fill=\'%23ffffff\'/%3E%3C/svg%3E'); background-size:180px;">
+       style="background-image:url('data:image/svg+xml,%3Csvg width=\'120\' height=\'120\' viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M60 10 C40 40 40 80 60 110 C80 80 80 40 60 10 Z\' fill=\'%23ffffff\'/%3E%3C/svg%3E');background-size:180px;">
   </div>
 
   <div class="relative max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-3">
 
     <div class="space-y-5">
       <img src="images/logotipo.svg" class="h-20 drop-shadow-lg brightness-110">
-      <p class="text-emerald-100 text-sm leading-relaxed">
-        Somos la Asociación Gremial Feria Agrícola Melipilla, dedicada al fortalecimiento,
-        organización y representación de nuestros feriantes.
-      </p>
+      <p class="text-emerald-100 text-sm leading-relaxed">Somos la Asociación Gremial Feria Agrícola Melipilla.</p>
     </div>
 
     <div class="space-y-5">
@@ -204,12 +186,12 @@
 
       <div class="flex gap-5">
         <a href="https://www.facebook.com/asoc.feria.agricola.melipilla" target="_blank"
-           class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
+          class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
           <i class="fa-brands fa-facebook-f text-xl"></i>
         </a>
 
         <a href="https://www.instagram.com/asoc.feria.agricola.melipilla" target="_blank"
-           class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
+          class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
           <i class="fa-brands fa-instagram text-xl"></i>
         </a>
       </div>
@@ -220,7 +202,6 @@
           a.g.feria.agricola.m@gmail.com
         </a>
       </div>
-
     </div>
   </div>
 
@@ -229,13 +210,13 @@
       © 2025 Asociación Gremial Feria Agrícola Melipilla — Todos los derechos reservados.
     </div>
   </div>
-
 </footer>
 
-<!-- JS FINAL -->
+<!-- SCRIPTS FINALES -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
 
+    // Menú móvil
     const mobileBtn = document.getElementById('mobileMenuButton');
     const mobileClose = document.getElementById('mobileMenuClose');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -251,16 +232,22 @@
       mobileBackdrop.classList.add('hidden');
     }
 
-    if (mobileBtn) mobileBtn.addEventListener("click", openMenu);
-    if (mobileClose) mobileClose.addEventListener("click", closeMenu);
-    if (mobileBackdrop) mobileBackdrop.addEventListener("click", closeMenu);
+    if (mobileBtn) mobileBtn.addEventListener('click', openMenu);
+    if (mobileClose) mobileClose.addEventListener('click', closeMenu);
+    if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMenu);
 
-    // Swiper
-    new Swiper(".mySwiper", {
-      loop: true,
-      autoplay: { delay: 3500, disableOnInteraction: false }
-    });
-
+    // LightGallery
+    const galeria = document.getElementById("galeria");
+    if (galeria) {
+      lightGallery(galeria, {
+        selector: 'a',
+        download: false,
+        zoom: true,
+        thumbnail: true,
+        animateThumb: true,
+        showThumbByDefault: true
+      });
+    }
   });
 </script>
 
