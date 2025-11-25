@@ -138,6 +138,44 @@
 </header>
 
 <!-- AQUÍ TERMINA LA PARTE 1 -->
+
+<section class="max-w-6xl mx-auto px-4 py-16 border-b border-slate-200">
+  <div class="flex justify-between items-end mb-8">
+    <div data-aos="fade-right">
+      <span class="text-secondary font-bold tracking-widest text-sm uppercase">Actualidad</span>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mt-2">Últimas Noticias</h2>
+    </div>
+    <a href="Noticias.html" class="hidden md:inline-flex items-center gap-2 text-primary font-semibold hover:text-emerald-800 transition">
+      Ver todas <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </div>
+
+  <div id="home-noticias-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up">
+      <div class="col-span-full text-center text-slate-400">Cargando...</div>
+  </div>
+
+  <div class="mt-8 text-center md:hidden">
+    <a href="Noticias.html" class="inline-flex px-6 py-3 bg-primary text-white rounded-full font-semibold shadow-lg hover:bg-emerald-800 transition">
+      Ver todas las noticias
+    </a>
+  </div>
+</section>
+
+<div id="home-modal-backdrop" class="fixed inset-0 bg-black/60 z-50 hidden transition-opacity opacity-0 backdrop-blur-sm" onclick="cerrarModalHome()"></div>
+<div id="home-modal-panel" class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none hidden p-4">
+    <div class="bg-white w-full max-w-4xl h-[90vh] rounded-2xl shadow-2xl flex flex-col pointer-events-auto transform transition-all scale-95 opacity-0 duration-300" id="home-modal-box">
+        <div class="relative shrink-0 h-64">
+            <button onclick="cerrarModalHome()" class="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center z-20"><i class="fa-solid fa-xmark"></i></button>
+            <img id="home-modal-img" src="" class="w-full h-full object-cover rounded-t-2xl">
+            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6 pt-20">
+               <h2 id="home-modal-titulo" class="text-2xl font-bold text-white leading-tight"></h2>
+            </div>
+        </div>
+        <div class="overflow-y-auto p-8 bg-white rounded-b-2xl">
+            <div id="home-modal-cuerpo" class="prose prose-green max-w-none text-slate-700"></div>
+        </div>
+    </div>
+</div>
 <!-- MAIN -->
 <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
 
@@ -280,3 +318,83 @@
 
 </body>
 </html>
+
+<script>
+  let homeNoticias = [];
+
+  function cargarHomeNoticias(json) {
+      var entradas = json.feed.entry;
+      var contenedor = document.getElementById('home-noticias-grid');
+      var html = '';
+
+      if (!entradas) return;
+      homeNoticias = entradas;
+
+      // Solo mostramos las primeras 3
+      for (var i = 0; i < Math.min(entradas.length, 3); i++) {
+          var entrada = entradas[i];
+          var titulo = entrada.title.$t;
+          var contenido = entrada.content.$t;
+          var fecha = new Date(entrada.published.$t).toLocaleDateString('es-CL', {day: 'numeric', month: 'short'});
+          
+          var imagenUrl = "images/Banner_1.webp"; 
+          if (entrada.media$thumbnail) {
+              imagenUrl = entrada.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w500-h300-c/");
+          }
+
+          var divTemporal = document.createElement("div");
+          divTemporal.innerHTML = contenido;
+          var resumen = (divTemporal.innerText || "").substring(0, 90) + "...";
+
+          html += `
+          <div class="bg-white rounded-xl shadow border border-slate-100 overflow-hidden hover:shadow-lg transition cursor-pointer group" onclick="abrirModalHome(${i})">
+              <div class="relative h-48 overflow-hidden">
+                  <img src="${imagenUrl}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  <div class="absolute top-2 right-2 bg-white/90 px-2 py-1 rounded text-xs font-bold text-primary shadow">${fecha}</div>
+              </div>
+              <div class="p-5">
+                  <h3 class="font-bold text-lg text-slate-800 mb-2 line-clamp-2 group-hover:text-primary">${titulo}</h3>
+                  <p class="text-sm text-slate-500 mb-3">${resumen}</p>
+                  <span class="text-xs font-bold text-secondary uppercase tracking-wide">Leer más</span>
+              </div>
+          </div>`;
+      }
+      contenedor.innerHTML = html;
+  }
+
+  // Lógica simple del Modal para el Home
+  const hBackdrop = document.getElementById('home-modal-backdrop');
+  const hPanel = document.getElementById('home-modal-panel');
+  const hBox = document.getElementById('home-modal-box');
+
+  function abrirModalHome(index) {
+      var data = homeNoticias[index];
+      var img = "images/Banner_1.webp";
+      if (data.media$thumbnail) img = data.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w800-h400-c/");
+      
+      document.getElementById('home-modal-titulo').innerText = data.title.$t;
+      document.getElementById('home-modal-cuerpo').innerHTML = data.content.$t;
+      document.getElementById('home-modal-img').src = img;
+
+      hBackdrop.classList.remove('hidden');
+      hPanel.classList.remove('hidden');
+      setTimeout(() => {
+          hBackdrop.classList.remove('opacity-0');
+          hBox.classList.remove('scale-95', 'opacity-0');
+          hBox.classList.add('scale-100', 'opacity-100');
+      }, 10);
+      document.body.style.overflow = 'hidden';
+  }
+
+  function cerrarModalHome() {
+      hBackdrop.classList.add('opacity-0');
+      hBox.classList.remove('scale-100', 'opacity-100');
+      hBox.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+          hBackdrop.classList.add('hidden');
+          hPanel.classList.add('hidden');
+          document.body.style.overflow = 'auto';
+      }, 300);
+  }
+</script>
+<script src="https://feriaagricolamelipilla.blogspot.com/feeds/posts/default?alt=json-in-script&callback=cargarHomeNoticias&max-results=3"></script>
