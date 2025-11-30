@@ -1,28 +1,45 @@
 {
-  "background_color": "#ffffff",
+  "name": "Feria Melipilla",
+  "short_name": "Feria Melipilla",
+  "description": "Encuentra información, horarios y puestos de la Feria de Melipilla.",
+  "lang": "es",
   "dir": "ltr",
+  "id": "/feria-melipilla/",
+  "start_url": "/feria-melipilla/",
+  "scope": "/feria-melipilla/",
   "display": "standalone",
-  "name": "joshua-zuniga.github",
-  "orientation": "any",
-  "scope": "/",
-  "short_name": "joshua-zuniga.github",
-  "start_url": "https://joshua-zuniga.github.io/feria-melipilla/",
-  "theme_color": "#166534",
+  "orientation": "portrait",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "categories": [
+    "shopping",
+    "food",
+    "lifestyle"
+  ],
   "icons": [
     {
-      "src": "https://joshua-zuniga.github.io/feria-melipilla/images/favicon.webp",
-      "type": "image/webp",
-      "sizes": "32x32",
-      "isSquare": true,
-      "isPng": false,
-      "isWebp": true,
-      "isJpg": false,
-      "width": 32,
-      "is512x512": false,
-      "is256x256": false,
-      "is192x192": false
+      "src": "/feria-melipilla/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/feria-melipilla/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/feria-melipilla/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/feria-melipilla/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
-  ],
-  "lang": "es",
-  "prefer_related_applications": true
+  ]
 }
