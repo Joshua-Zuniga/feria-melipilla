@@ -1,0 +1,28 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "joshua-zuniga.github",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "joshua-zuniga.github",
+  "start_url": "https://joshua-zuniga.github.io/feria-melipilla/",
+  "theme_color": "#166534",
+  "icons": [
+    {
+      "src": "https://joshua-zuniga.github.io/feria-melipilla/images/favicon.webp",
+      "type": "image/webp",
+      "sizes": "32x32",
+      "isSquare": true,
+      "isPng": false,
+      "isWebp": true,
+      "isJpg": false,
+      "width": 32,
+      "is512x512": false,
+      "is256x256": false,
+      "is192x192": false
+    }
+  ],
+  "lang": "es",
+  "prefer_related_applications": true
+}
