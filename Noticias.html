@@ -129,148 +129,195 @@
     </div>
   </main>
 
-  <!-- Contenido -->
-  <div class="p-6 md:p-10 bg-white">
-    <h2 id="modal-titulo"
-      class="text-2xl md:text-4xl font-bold text-slate-800 mb-6 leading-tight border-b border-slate-100 pb-4">
-    </h2>
-    <div id="modal-cuerpo" class="prose prose-green prose-lg max-w-none text-slate-700 font-sans"></div>
-  </div>
-
-  </div>
-  </div>
-  </div>
-
   <!-- Footer Placeholder -->
   <div id="main-footer"></div>
 
   <script>
     // --- Lógica Noticias ---
-    let noticiasData = [];
+    window.noticiasData = [];
 
-    // Función para limpiar estilos y etiquetas globales que rompen el sitio
     function limpiarContenido(html) {
       if (!html) return "";
-      let c = html;
-      // Eliminar bloques de style y script completos
-      c = c.replace(/<style\b[^>]*>([\s\S]*?)<\/style>/gim, "");
-      c = c.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gim, "");
-      // Eliminar etiquetas estructurales pero mantener contenido
-      c = c.replace(/<head\b[^>]*>([\s\S]*?)<\/head>/gim, "");
-      c = c.replace(/<\/?(html|body|iframe|!DOCTYPE)[^>]*>/gim, (match) => {
-        // Mantenemos iframes porque pueden ser videos
-        if (match.toLowerCase().includes('iframe')) return match;
-        return "";
-      });
-      return c;
+      try {
+        let c = html;
+        c = c.replace(/<style\b[^>]*>([\s\S]*?)<\/style>/gim, "");
+        c = c.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gim, "");
+        c = c.replace(/<head\b[^>]*>([\s\S]*?)<\/head>/gim, "");
+        return c.replace(/<\/?(html|body|iframe|!DOCTYPE)[^>]*>/gim, (match) => {
+          if (match.toLowerCase().includes('iframe')) return match;
+          return "";
+        });
+      } catch (e) { return html; }
     }
 
-    function cargarNoticias(json) {
-      var html = '';
-      var entradas = json.feed.entry;
-      var contenedor = document.getElementById('grilla-noticias');
+    // Callback global
+    window.cargarNoticias = function (json) {
+      console.log('🔔 Blogger: Recibiendo noticias...', json);
+      const contenedor = document.getElementById('grilla-noticias');
+      if (!contenedor) return;
 
-      if (!entradas) {
-        contenedor.innerHTML = '<div class="col-span-full text-center p-10 bg-white rounded-xl shadow"><p class="text-slate-500">No hay noticias publicadas.</p></div>';
-        return;
-      }
-
-      noticiasData = entradas;
-
-      for (var i = 0; i < entradas.length; i++) {
-        var entrada = entradas[i];
-        var titulo = entrada.title.$t;
-        var contenidoRaw = entrada.content.$t;
-        var fecha = new Date(entrada.published.$t).toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' });
-
-        // Usamos una imagen de tu carpeta como fallback si no hay en el post
-        var imagenUrl = "images/Banner_1.webp";
-        if (entrada.media$thumbnail) {
-          imagenUrl = entrada.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w600-h400-c/");
+      try {
+        const entradas = json.feed && json.feed.entry;
+        if (!entradas || entradas.length === 0) {
+          contenedor.innerHTML = '<div class="col-span-full text-center py-10 bg-white rounded-xl shadow text-slate-500">No hay noticias publicadas.</div>';
+          return;
         }
 
-        // Resumen (usando versión limpia)
-        var contenidoLimpio = limpiarContenido(contenidoRaw);
-        var divTemporal = document.createElement("div");
-        divTemporal.innerHTML = contenidoLimpio;
-        var textoPlano = divTemporal.innerText || "";
-        var resumen = textoPlano.length > 120 ? textoPlano.substring(0, 120) + "..." : textoPlano;
+        window.noticiasData = entradas;
+        let html = '';
 
-        html += `
-            <article class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col h-full group cursor-pointer hover-card-effect" onclick="abrirModal(${i})">
+        for (let i = 0; i < entradas.length; i++) {
+          const entrada = entradas[i];
+          const titulo = entrada.title.$t;
+          const fecha = new Date(entrada.published.$t).toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' });
+
+          let imagenUrl = "images/Banner_1.webp"; // Fallback
+          if (entrada.media$thumbnail) {
+            imagenUrl = entrada.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w600-h400-c/");
+          }
+
+          const textoPlano = (entrada.summary && entrada.summary.$t) || (entrada.content && entrada.content.$t) || "";
+          const divTemp = document.createElement("div");
+          divTemp.innerHTML = limpiarContenido(textoPlano);
+          const resumen = (divTemp.innerText || "").substring(0, 120) + "...";
+
+          html += `
+            <article class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col h-full group cursor-pointer" onclick="abrirModal(${i})">
                 <div class="relative h-52 overflow-hidden">
                     <div class="absolute top-3 left-3 bg-primary/90 text-white text-xs font-bold px-3 py-1 rounded-md z-10 shadow-sm">
                         ${fecha}
                     </div>
                     <img src="${imagenUrl}" alt="${titulo}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                    <div class="absolute inset-0 bg-black/10 transition-colors"></div>
                 </div>
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-xl font-bold text-slate-800 mb-3 leading-tight group-hover:text-primary transition-colors">${titulo}</h3>
                     <p class="text-slate-600 text-sm mb-4 flex-grow leading-relaxed">${resumen}</p>
                     <div class="pt-4 border-t border-slate-100 mt-auto flex items-center text-primary font-semibold text-sm">
-                        Leer artículo 
-                        <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        Leer artículo <i class="fa-solid fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                     </div>
                 </div>
             </article>
-            `;
+          `;
+        }
+        contenedor.innerHTML = html;
+      } catch (err) {
+        console.error('❌ Error noticias:', err);
+        contenedor.innerHTML = '<div class="col-span-full text-center py-10 text-red-500">Error al cargar noticias.</div>';
       }
-      contenedor.innerHTML = html;
-    }
+    };
 
-    // --- Lógica Modal ---
-    const backdrop = document.getElementById('modal-backdrop');
-    const modalPanel = document.getElementById('modal-panel');
-    const modalBox = document.getElementById('modal-content-box');
+    window.abrirModal = function (index) {
+      const data = window.noticiasData[index];
+      if (!data) return;
 
-    function abrirModal(index) {
-      var data = noticiasData[index];
-      var imgAlta = "images/Banner_1.webp"; // Fallback
-      if (data.media$thumbnail) {
-        // Usamos una resolución un poco mejor, 1000px ancho
-        imgAlta = data.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w1000-h500-c/");
-      }
-      var fecha = new Date(data.published.$t).toLocaleDateString('es-CL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-
-      // Limpiar contenido antes de mostrar
-      var contenidoLimpio = limpiarContenido(data.content.$t);
+      let imgAlta = "images/Banner_1.webp";
+      if (data.media$thumbnail) imgAlta = data.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w1000-h800-c/");
+      const fecha = new Date(data.published.$t).toLocaleDateString('es-CL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
       document.getElementById('modal-titulo').innerText = data.title.$t;
-      document.getElementById('modal-cuerpo').innerHTML = contenidoLimpio;
+      document.getElementById('modal-cuerpo').innerHTML = limpiarContenido(data.content.$t);
       document.getElementById('modal-img').src = imgAlta;
       document.getElementById('fecha-texto').innerText = fecha;
 
-      // Corregir imágenes dentro del post para que no se salgan
-      var imgs = document.getElementById('modal-cuerpo').getElementsByTagName('img');
-      for (var img of imgs) { img.style.maxWidth = "100%"; img.style.height = "auto"; }
+      const backdrop = document.getElementById('modal-backdrop');
+      const modalPanel = document.getElementById('modal-panel');
+      const modalBox = document.getElementById('modal-content-box');
 
       backdrop.classList.remove('hidden');
       modalPanel.classList.remove('hidden');
+
+      // Asegurar que el modal empiece desde arriba
+      modalPanel.scrollTop = 0;
+
+      document.body.style.overflow = 'hidden';
+      // Refuerzo: eliminar transformaciones del body que rompan el position: fixed
+      document.body.dataset.baseTransform = document.body.style.transform;
+      document.body.style.setProperty('transform', 'none', 'important');
+      // También al html por si acaso
+      document.documentElement.style.setProperty('transform', 'none', 'important');
+
       setTimeout(() => {
         backdrop.classList.remove('opacity-0');
         modalBox.classList.remove('scale-95', 'opacity-0');
         modalBox.classList.add('scale-100', 'opacity-100');
-      }, 10);
-      document.body.style.overflow = 'hidden';
-    }
+      }, 50);
+    };
 
-    function cerrarModal() {
-      backdrop.classList.add('opacity-0');
+    window.cerrarModal = function () {
+      const backdrop = document.getElementById('modal-backdrop');
+      const modalPanel = document.getElementById('modal-panel');
+      const modalBox = document.getElementById('modal-content-box');
+
       modalBox.classList.remove('scale-100', 'opacity-100');
       modalBox.classList.add('scale-95', 'opacity-0');
+      backdrop.classList.add('opacity-0');
       setTimeout(() => {
         backdrop.classList.add('hidden');
         modalPanel.classList.add('hidden');
         document.body.style.overflow = 'auto';
+        // Restaurar transform si existía
+        document.body.style.removeProperty('transform');
+        document.documentElement.style.removeProperty('transform');
+        if (document.body.dataset.baseTransform) {
+          document.body.style.transform = document.body.dataset.baseTransform;
+        }
       }, 300);
-    }
+    };
 
     document.addEventListener('keydown', (e) => { if (e.key === "Escape") cerrarModal(); });
   </script>
 
   <script
     src="https://feriaagricolamelipilla.blogspot.com/feeds/posts/default?alt=json-in-script&callback=cargarNoticias&max-results=12"></script>
+
+  <!-- MODAL DE NOTICIAS - Diseño de Scroll Unificado -->
+  <div id="modal-backdrop"
+    class="fixed inset-0 bg-black/80 z-[9998] hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm"
+    onclick="cerrarModal()"></div>
+
+  <div id="modal-panel" class="fixed inset-0 z-[9999] hidden overflow-y-auto py-10 px-4 pointer-events-auto"
+    style="-webkit-overflow-scrolling: touch;">
+    <div class="min-h-full flex items-start justify-center pointer-events-none">
+      <div id="modal-content-box"
+        class="bg-white w-full max-w-5xl rounded-2xl shadow-2xl transform scale-95 opacity-0 transition-all duration-300 pointer-events-auto relative overflow-hidden h-fit mb-10">
+
+        <!-- Imagen Principal (Cabecera Integrada) -->
+        <div class="relative w-full h-64 md:h-[450px] overflow-hidden bg-slate-200">
+          <img id="modal-img" src="" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+
+          <!-- Botón Cerrar Flotante sobre la imagen -->
+          <div class="absolute top-4 right-4 z-50">
+            <button onclick="cerrarModal()"
+              class="bg-black/40 hover:bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-md transition-all hover:scale-110 border border-white/20 shadow-lg">
+              <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Contenido -->
+        <div class="p-6 md:p-12 space-y-6 bg-white relative">
+          <!-- Decoración superior (opcional, para suavizar transición) -->
+          <div class="absolute -top-6 left-0 right-0 h-6 bg-gradient-to-t from-white to-transparent"></div>
+
+          <div class="border-b border-slate-100 pb-6">
+            <div
+              class="flex items-center gap-3 text-primary font-bold text-xs md:text-sm uppercase tracking-widest mb-4">
+              <i class="fa-regular fa-calendar-check"></i>
+              <span id="fecha-texto"></span>
+            </div>
+            <h2 id="modal-titulo" class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-[1.2]"></h2>
+          </div>
+
+          <div id="modal-cuerpo"
+            class="prose prose-green prose-lg md:prose-xl max-w-none text-slate-700 font-sans leading-relaxed">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 </body>
 

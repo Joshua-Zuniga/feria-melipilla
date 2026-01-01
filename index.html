@@ -73,6 +73,7 @@
 <body class="bg-slate-50 text-slate-800 font-sans">
 
   <script>
+    // Actualizado: 2026-01-01 15:37
     document.addEventListener("DOMContentLoaded", () => {
       AOS.init({ duration: 800, once: true, offset: 80 });
       renderLayout("Inicio");
@@ -157,207 +158,240 @@
       </a>
     </div>
 
-    <!-- MODAL HOME (Diseño Premium) -->
-    <div id="home-modal-backdrop"
-      class="fixed inset-0 bg-black/90 z-[60] hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm"
-      onclick="cerrarModalHome()"></div>
+  </section>
 
-    <div id="home-modal-panel"
-      class="fixed inset-0 z-[70] hidden flex items-center justify-center pointer-events-none p-0 md:p-6">
+  <!-- INSTAGRAM RESPONSIVO -->
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-2xl font-bold mb-6 text-slate-800">Instagram</h2>
+    <!-- Elfsight Instagram Feed -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-42021612-277e-4f71-b867-389b29d5dbc8" data-elfsight-app-lazy></div>
+  </section>
+
+  <!-- CALENDARIO -->
+  <section data-aos="fade-up" class="max-w-6xl mx-auto px-4 py-16 space-y-6">
+    <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Calendario de Actividades</h2>
+
+    <div class="rounded-2xl overflow-hidden shadow-md bg-white flex justify-center">
+      <div class="relative w-full max-w-5xl h-0 pb-[140%] sm:pb-[90%] md:pb-[70%] lg:pb-[60%]">
+        <iframe loading="lazy" class="absolute inset-0 w-full h-full"
+          src="https://calendar.google.com/calendar/embed?height=575&wkst=1&ctz=America%2FSantiago&bgcolor=%23ffffff&src=NGJvaWVoZGV0aHMzNWw3NjE0bWk1dWV2NDhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=MGljdDFtcGRuY2E2dDF1YzNoNnQ2ZnE4N3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23AD1457&color=%230B8043&color=%2333B679"
+          frameborder="0" scrolling="no">
+        </iframe>
+      </div>
+    </div>
+  </section>
+  <div id="main-footer"></div>
+
+  <!-- JS SWIPER -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Swiper
+      new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: { delay: 3500, disableOnInteraction: false }
+      });
+    });
+  </script>
+
+  <!-- MODAL HOME - Diseño de Scroll Unificado -->
+  <div id="home-modal-backdrop"
+    class="fixed inset-0 bg-black/80 z-[9998] hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm"
+    onclick="cerrarModalHome()"></div>
+
+  <div id="home-modal-panel" class="fixed inset-0 z-[9999] hidden overflow-y-auto py-10 px-4 pointer-events-auto"
+    style="-webkit-overflow-scrolling: touch;">
+    <div class="min-h-full flex items-start justify-center pointer-events-none">
       <div id="home-modal-box"
-        class="bg-white w-full max-w-5xl max-h-[95vh] rounded-none md:rounded-2xl shadow-2xl overflow-y-auto transform scale-95 opacity-0 transition-all duration-300 pointer-events-auto relative flex flex-col">
+        class="bg-white w-full max-w-5xl rounded-2xl shadow-2xl transform scale-95 opacity-0 transition-all duration-300 pointer-events-auto relative overflow-hidden h-fit mb-10">
 
-        <!-- Botón Cerrar Sticky -->
-        <div
-          class="sticky top-0 right-0 z-30 flex justify-end p-4 bg-gradient-to-b from-black/50 to-transparent pointer-events-none absolute w-full">
-          <button onclick="cerrarModalHome()"
-            class="pointer-events-auto bg-black/60 hover:bg-black/80 text-white rounded-full w-10 h-10 flex items-center justify-center backdrop-blur transition-transform hover:scale-110 shadow-lg border border-white/20">
-            <i class="fa-solid fa-xmark text-lg"></i>
-          </button>
+        <!-- Imagen Principal (Cabecera Integrada) -->
+        <div class="relative w-full h-64 md:h-[450px] overflow-hidden bg-slate-200">
+          <img id="home-modal-img" src="" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+
+          <!-- Botón Cerrar Flotante -->
+          <div class="absolute top-4 right-4 z-50">
+            <button onclick="cerrarModalHome()"
+              class="bg-black/40 hover:bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-md transition-all hover:scale-110 border border-white/20 shadow-lg">
+              <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+          </div>
         </div>
 
-        <!-- Imagen Principal (Sin recortes) -->
-        <div class="w-full bg-slate-100 flex items-center justify-center min-h-[200px]">
-          <img id="home-modal-img" src="" class="w-full h-auto max-h-[60vh] object-contain shadow-sm">
+        <!-- Contenido de la Noticia -->
+        <div class="p-6 md:p-12 space-y-6 bg-white relative">
+          <!-- Decoración superior -->
+          <div class="absolute -top-6 left-0 right-0 h-6 bg-gradient-to-t from-white to-transparent"></div>
+
+          <div class="border-b border-slate-100 pb-6">
+            <div
+              class="flex items-center gap-3 text-primary font-bold text-xs md:text-sm uppercase tracking-widest mb-4">
+              <i class="fa-regular fa-calendar-check"></i>
+              <span id="home-fecha-texto"></span>
+            </div>
+            <h2 id="home-modal-titulo" class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-[1.2]"></h2>
+          </div>
+
+          <div id="home-modal-cuerpo"
+            class="prose prose-green prose-lg md:prose-xl max-w-none text-slate-700 font-sans leading-relaxed">
+            <!-- El contenido se inyecta aquí -->
+          </div>
         </div>
 
-        <!-- Contenido -->
-        <!-- MAIN -->
-        <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
+      </div>
+    </div>
+  </div>
 
-          <!-- INSTAGRAM RESPONSIVO -->
-          <section class="max-w-6xl mx-auto px-4 py-16">
-            <h2 class="text-2xl font-bold mb-6 text-slate-800">Instagram</h2>
+  <!-- Script de noticias DESPUÉS del modal -->
+  <script>
+    // Variable global para almacenar las noticias
+    window.homeNoticias = [];
 
-            <!-- Elfsight Instagram Feed -->
-            <script src="https://elfsightcdn.com/platform.js" async></script>
-            <div class="elfsight-app-42021612-277e-4f71-b867-389b29d5dbc8" data-elfsight-app-lazy></div>
-          </section>
+    function limpiarContenido(html) {
+      if (!html) return "";
+      try {
+        let c = html;
+        c = c.replace(/<style\b[^>]*>([\s\S]*?)<\/style>/gim, "");
+        c = c.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gim, "");
+        c = c.replace(/<head\b[^>]*>([\s\S]*?)<\/head>/gim, "");
+        return c.replace(/<\/?(html|body|iframe|!DOCTYPE)[^>]*>/gim, (match) => {
+          if (match.toLowerCase().includes('iframe')) return match;
+          return "";
+        });
+      } catch (e) { return html; }
+    }
 
-          <!-- CALENDARIO (RESPONSIVE Y CORREGIDO) -->
-          <section data-aos="fade-up" class="space-y-6">
-            <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Calendario de Actividades</h2>
+    // Callback global para Blogger
+    window.cargarHomeNoticias = function (json) {
+      console.log('🔔 Blogger: Recibiendo datos...', json);
+      const contenedor = document.getElementById('home-noticias-grid');
+      if (!contenedor) return;
 
-            <div class="rounded-2xl overflow-hidden shadow-md bg-white flex justify-center">
-              <div class="relative w-full max-w-5xl h-0 pb-[140%] sm:pb-[90%] md:pb-[70%] lg:pb-[60%]">
-                <iframe loading="lazy" class="absolute inset-0 w-full h-full"
-                  src="https://calendar.google.com/calendar/embed?height=575&wkst=1&ctz=America%2FSantiago&bgcolor=%23ffffff&src=NGJvaWVoZGV0aHMzNWw3NjE0bWk1dWV2NDhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=MGljdDFtcGRuY2E2dDF1YzNoNnQ2ZnE4N3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23AD1457&color=%230B8043&color=%2333B679"
-                  frameborder="0" scrolling="no">
-                </iframe>
+      try {
+        const entradas = json.feed && json.feed.entry;
+        if (!entradas || entradas.length === 0) {
+          contenedor.innerHTML = '<div class="col-span-full text-center py-10 text-slate-500">No hay noticias disponibles por el momento.</div>';
+          return;
+        }
+
+        window.homeNoticias = entradas;
+        let html = '';
+        const limit = Math.min(entradas.length, 3);
+
+        for (let i = 0; i < limit; i++) {
+          const entrada = entradas[i];
+          const titulo = entrada.title.$t;
+          const fechaRaw = new Date(entrada.published.$t);
+          const mes = fechaRaw.toLocaleString('es-CL', { month: 'short' }).toUpperCase();
+          const dia = fechaRaw.getDate();
+
+          let imgUrl = "images/Banner_1.webp"; // Fallback local
+          if (entrada.media$thumbnail) {
+            imgUrl = entrada.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w600-h400-c/");
+          }
+
+          const textoPlano = (entrada.summary && entrada.summary.$t) || (entrada.content && entrada.content.$t) || "";
+          const divTemp = document.createElement("div");
+          divTemp.innerHTML = limpiarContenido(textoPlano);
+          const resumen = (divTemp.innerText || "").substring(0, 100) + "...";
+
+          html += `
+            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer border border-slate-100 flex flex-col h-full" onclick="abrirModalHome(${i})">
+              <div class="relative h-48 overflow-hidden">
+                <img src="${imgUrl}" alt="${titulo}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-black/10 transition-colors"></div>
+                <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-slate-800 rounded-lg px-3 py-1 flex flex-col items-center shadow-sm">
+                  <span class="text-xs font-bold uppercase text-primary">${mes}</span>
+                  <span class="text-lg font-bold leading-none">${dia}</span>
+                </div>
+              </div>
+              <div class="p-5 flex flex-col flex-grow">
+                <h3 class="text-lg font-bold text-slate-800 mb-2 leading-tight group-hover:text-primary transition-colors line-clamp-2">${titulo}</h3>
+                <p class="text-slate-600 text-sm line-clamp-3 mb-4 flex-grow">${resumen}</p>
+                <div class="pt-3 border-t border-slate-50 mt-auto text-primary text-sm font-semibold flex items-center gap-2">
+                  Leer más <i class="fa-solid fa-arrow-right text-xs"></i>
+                </div>
               </div>
             </div>
-          </section>
+          `;
+        }
+        contenedor.innerHTML = html;
+        console.log('✅ Noticias renderizadas');
+      } catch (err) {
+        console.error('❌ Error renderizando noticias:', err);
+        contenedor.innerHTML = '<div class="col-span-full text-center py-10 text-red-500">Ocurrió un error al cargar las noticias.</div>';
+      }
+    };
 
-        </main>
+    window.abrirModalHome = function (index) {
+      const data = window.homeNoticias[index];
+      if (!data) return;
 
-        <!-- FOOTER -->
-        <div id="main-footer"></div>
+      let img = "images/Banner_1.webp";
+      if (data.media$thumbnail) img = data.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w1000-h800-c/");
+      const fecha = new Date(data.published.$t).toLocaleDateString('es-CL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
-        <!-- JS FINAL -->
-        <script>
-          document.addEventListener("DOMContentLoaded", () => {
-            // Swiper
-            new Swiper(".mySwiper", {
-              loop: true,
-              autoplay: { delay: 3500, disableOnInteraction: false }
-            });
-          });
-        </script>
+      document.getElementById('home-modal-titulo').innerText = data.title.$t;
+      document.getElementById('home-modal-cuerpo').innerHTML = limpiarContenido(data.content.$t);
+      document.getElementById('home-modal-img').src = img;
+
+      const displayFecha = document.getElementById('home-fecha-texto');
+      if (displayFecha) displayFecha.innerText = fecha;
+
+      const hBackdrop = document.getElementById('home-modal-backdrop');
+      const hPanel = document.getElementById('home-modal-panel');
+      const hBox = document.getElementById('home-modal-box');
+
+      hBackdrop.classList.remove('hidden');
+      hPanel.classList.remove('hidden');
+
+      // Asegurar que el modal empiece desde arriba
+      hPanel.scrollTop = 0;
+
+      document.body.style.overflow = 'hidden';
+      // Refuerzo: eliminar transformaciones del body que rompan el position: fixed
+      document.body.dataset.baseTransform = document.body.style.transform;
+      document.body.style.setProperty('transform', 'none', 'important');
+      // También al html por si acaso
+      document.documentElement.style.setProperty('transform', 'none', 'important');
+
+      setTimeout(() => {
+        hBackdrop.classList.remove('opacity-0');
+        hBox.classList.remove('scale-95', 'opacity-0');
+        hBox.classList.add('scale-100', 'opacity-100');
+      }, 50);
+    };
+
+    window.cerrarModalHome = function () {
+      const hBackdrop = document.getElementById('home-modal-backdrop');
+      const hPanel = document.getElementById('home-modal-panel');
+      const hBox = document.getElementById('home-modal-box');
+
+      hBox.classList.remove('scale-100', 'opacity-100');
+      hBox.classList.add('scale-95', 'opacity-0');
+      hBackdrop.classList.add('opacity-0');
+      setTimeout(() => {
+        hBackdrop.classList.add('hidden');
+        hPanel.classList.add('hidden');
+        document.body.style.overflow = '';
+        // Restaurar transform si existía
+        document.body.style.removeProperty('transform');
+        document.documentElement.style.removeProperty('transform');
+        if (document.body.dataset.baseTransform) {
+          document.body.style.transform = document.body.dataset.baseTransform;
+        }
+      }, 300);
+    };
+
+    // Lanzar la carga
+    (function loadNews() {
+      const s = document.createElement('script');
+      s.src = 'https://feriaagricolamelipilla.blogspot.com/feeds/posts/default?alt=json-in-script&callback=cargarHomeNoticias&max-results=3';
+      document.body.appendChild(s);
+    })();
+  </script>
 
 </body>
 
 </html>
-
-<script>
-  let homeNoticias = [];
-
-  // Función para limpiar contenido (Igual que en Noticias.html)
-  function limpiarContenido(html) {
-    if (!html) return "";
-    let c = html;
-    c = c.replace(/<style\b[^>]*>([\s\S]*?)<\/style>/gim, "");
-    c = c.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gim, "");
-    c = c.replace(/<head\b[^>]*>([\s\S]*?)<\/head>/gim, "");
-    c = c.replace(/<\/?(html|body|iframe|!DOCTYPE)[^>]*>/gim, (match) => {
-      if (match.toLowerCase().includes('iframe')) return match;
-      return "";
-    });
-    return c;
-  }
-
-  function cargarHomeNoticias(json) {
-    var entradas = json.feed.entry;
-    var contenedor = document.getElementById('home-noticias-grid');
-    var html = '';
-
-    if (!entradas) return;
-    homeNoticias = entradas;
-
-    var limit = Math.min(entradas.length, 3); // Define limit here
-
-    for (var i = 0; i < limit; i++) {
-      var entrada = entradas[i];
-      var titulo = entrada.title.$t;
-      var fechaRaw = new Date(entrada.published.$t);
-      var mes = fechaRaw.toLocaleString('es-CL', { month: 'short' }).toUpperCase();
-      var dia = fechaRaw.getDate();
-
-      // Imagen
-      var imgUrl = "images/Banner_1.webp"; // Default
-      if (entrada.media$thumbnail) {
-        imgUrl = entrada.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w600-h400-c/");
-      }
-
-      // Resumen
-      var contenido = limpiarContenido(entrada.content.$t);
-      var div = document.createElement("div");
-      div.innerHTML = contenido;
-      var texto = div.innerText || "";
-      var resumen = texto.length > 100 ? texto.substring(0, 100) + "..." : texto;
-
-      html += `
-          <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer border border-slate-100 flex flex-col h-full hover-card-effect" onclick="abrirModalHome(${i})">
-            
-            <div class="relative h-48 overflow-hidden">
-              <img src="${imgUrl}" alt="${titulo}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-              <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
-              
-              <!-- Fecha Flotante -->
-              <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-slate-800 rounded-lg px-3 py-1 flex flex-col items-center shadow-sm border border-slate-100">
-                <span class="text-xs font-bold uppercase text-primary">${mes}</span>
-                <span class="text-lg font-bold leading-none">${dia}</span>
-              </div>
-            </div>
-
-            <div class="p-5 flex flex-col flex-grow">
-              <h3 class="text-lg font-bold text-slate-800 mb-2 leading-tight group-hover:text-primary transition-colors line-clamp-2">
-                ${titulo}
-              </h3>
-              <p class="text-slate-600 text-sm line-clamp-3 mb-4 flex-grow">
-                ${resumen}
-              </p>
-              <div class="pt-3 border-t border-slate-50 mt-auto">
-                 <span class="text-primary text-sm font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
-                   Leer más <i class="fa-solid fa-arrow-right text-xs"></i>
-                 </span>
-              </div>
-            </div>
-
-          </div>
-        `;
-    }
-    contenedor.innerHTML = html;
-  }
-
-  // Lógica simple del Modal para el Home
-  const hBackdrop = document.getElementById('home-modal-backdrop');
-  const hPanel = document.getElementById('home-modal-panel');
-  const hBox = document.getElementById('home-modal-box');
-
-  function abrirModalHome(index) {
-    var data = homeNoticias[index];
-    var img = "images/Banner_1.webp";
-    if (data.media$thumbnail) img = data.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w1000-h500-c/");
-    var fecha = new Date(data.published.$t).toLocaleDateString('es-CL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-
-    var contenidoLimpio = limpiarContenido(data.content.$t);
-
-    document.getElementById('home-modal-titulo').innerText = data.title.$t;
-    document.getElementById('home-modal-cuerpo').innerHTML = contenidoLimpio;
-    document.getElementById('home-modal-img').src = img;
-
-    // Fecha en el modal
-    var displayFecha = document.getElementById('home-fecha-texto');
-    if (displayFecha) displayFecha.innerText = fecha;
-
-    // Ajustar imágenes
-    var imgs = document.getElementById('home-modal-cuerpo').getElementsByTagName('img');
-    for (var im of imgs) { im.style.maxWidth = "100%"; im.style.height = "auto"; }
-
-    hBackdrop.classList.remove('hidden');
-    hPanel.classList.remove('hidden');
-    setTimeout(() => {
-      hBackdrop.classList.remove('opacity-0');
-      hBox.classList.remove('scale-95', 'opacity-0');
-      hBox.classList.add('scale-100', 'opacity-100');
-    }, 10);
-    document.body.style.overflow = 'hidden';
-  }
-
-  function cerrarModalHome() {
-    hBox.classList.remove('scale-100', 'opacity-100');
-    hBox.classList.add('scale-95', 'opacity-0');
-    hBackdrop.classList.add('opacity-0');
-    setTimeout(() => {
-      hBackdrop.classList.add('hidden');
-      hPanel.classList.add('hidden');
-      document.body.style.overflow = '';
-    }, 300);
-  }
-
-  // Cargar noticias desde Blogger
-  var script = document.createElement('script');
-  script.src = 'https://www.blogger.com/feeds/1449495790409748920/posts/default?alt=json-in-script&callback=cargarHomeNoticias';
-  document.body.appendChild(script);
-
-</script>
