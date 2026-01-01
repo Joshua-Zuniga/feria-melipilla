@@ -4,7 +4,7 @@
  */
 
 const HEADER_HTML = `
-<header class="bg-primary text-white">
+<header class="relative bg-primary text-white z-[500]">
   <div class="border-b border-emerald-700/80">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3">
@@ -12,33 +12,40 @@ const HEADER_HTML = `
       </a>
 
       <nav class="hidden md:flex items-center gap-6" id="desktop-nav">
-        <!-- Links se inyectan dinámicamente para active state -->
+        <!-- Links se inyectan dinámicamente -->
       </nav>
 
       <button id="mobileMenuButton"
-        class="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white/10">
+        class="md:hidden w-11 h-11 flex items-center justify-center rounded-full bg-white/10 border border-white/20 hover:bg-white/20 transition-all shadow-sm">
         <i class="fa-solid fa-bars text-lg"></i>
       </button>
     </div>
   </div>
-
-  <!-- Menú móvil -->
-  <div id="mobileBackdrop" class="fixed inset-0 bg-black/40 hidden z-40"></div>
-  <aside id="mobileMenu"
-    class="fixed inset-y-0 left-0 w-64 bg-primary/95 border-r border-emerald-700 transform -translate-x-full transition-all duration-200 z-50">
-    
-    <div class="px-4 py-4 flex items-center justify-between border-b border-emerald-700">
-      <span class="font-semibold">Menú</span>
-      <button id="mobileMenuClose" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-    </div>
-
-    <nav class="px-3 py-4 space-y-1" id="mobile-nav-content">
-      <!-- Links móviles -->
-    </nav>
-  </aside>
 </header>
+
+<!-- Menú móvil (Fuera del header para evitar problemas de z-index) -->
+<div id="mobileBackdrop" class="fixed inset-0 bg-black/70 hidden z-[9998] backdrop-blur-md transition-opacity duration-300 opacity-0"></div>
+<aside id="mobileMenu"
+  class="fixed inset-y-0 left-0 w-80 bg-[#166534] border-r border-emerald-800 transform -translate-x-full transition-transform duration-300 ease-out z-[9999] flex flex-col shadow-[10px_0_30px_rgba(0,0,0,0.5)]">
+  
+  <div class="px-6 py-6 flex items-center justify-between border-b border-white/10">
+    <div class="flex items-center gap-3">
+      <img src="images/logotipo.svg" alt="Logo" class="h-10 brightness-110">
+      <span class="font-bold text-white tracking-tight">Menú</span>
+    </div>
+    <button id="mobileMenuClose" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all">
+      <i class="fa-solid fa-xmark text-lg"></i>
+    </button>
+  </div>
+
+  <nav class="flex-grow flex flex-col px-4 py-8 overflow-y-auto space-y-2" id="mobile-nav-content">
+    <!-- Links móviles -->
+  </nav>
+
+  <div class="p-6 border-t border-white/5 bg-black/20">
+    <p class="text-[10px] text-emerald-300/40 uppercase font-black tracking-[0.2em] text-center">Asociación Gremial</p>
+  </div>
+</aside>
 `;
 
 const FOOTER_HTML = `
@@ -119,11 +126,14 @@ const LOGIN_BTN = `
 `;
 
 const LOGIN_BTN_MOBILE = `
-<div class="pt-4 mt-2 border-t border-emerald-800">
+<div class="pt-6 mt-6 border-t border-emerald-800/50">
+  <p class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest mb-3 pl-4">Acceso Usuarios</p>
   <a href="https://feriaagricolaag.vercel.app/"
-    class="block py-2 px-4 text-emerald-100 hover:bg-white/10 rounded-lg font-semibold flex items-center gap-3">
-    <i class="fa-solid fa-user"></i>
-    Ingresar
+    class="flex items-center gap-3 py-4 px-4 bg-white text-primary rounded-xl font-bold shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]">
+    <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+        <i class="fa-solid fa-user"></i>
+    </div>
+    Ingresar a la Intranet
   </a>
 </div>
 `;
@@ -156,7 +166,14 @@ function renderLayout(activePage, isSubDir = false) {
   // 2. Inyectar HTML base
   const headerContainer = document.getElementById('main-header');
   const footerContainer = document.getElementById('main-footer');
-  if (headerContainer) headerContainer.innerHTML = headerHtml;
+  if (headerContainer) {
+    headerContainer.innerHTML = headerHtml;
+    // Mover portal del menú al body para garantizar z-index superior
+    const menu = document.getElementById('mobileMenu');
+    const backdrop = document.getElementById('mobileBackdrop');
+    if (menu) document.body.appendChild(menu);
+    if (backdrop) document.body.appendChild(backdrop);
+  }
   if (footerContainer) footerContainer.innerHTML = footerHtml;
 
   // 3. Inyectar Botón Scroll Top
@@ -194,23 +211,19 @@ function renderLayout(activePage, isSubDir = false) {
     desktopNav.innerHTML = html;
   }
 
-  // Generar Menú Mobile
+  // Generar Menú Mobile (Simplificado para usar CSS robusto)
   const mobileNav = document.getElementById('mobile-nav-content');
   if (mobileNav) {
     let html = '';
     NAV_LINKS.forEach(link => {
-      const isActive = link.label === activePage;
       const href = prefix + link.href;
-      const classes = isActive
-        ? "block py-2 px-4 bg-white/10 rounded-lg"
-        : "block py-2 px-4 hover:bg-white/10 rounded-lg";
-      html += `<a href="${href}" class="${classes}">${link.label}</a>`;
+      html += `<a href="${href}">${link.label}</a>`;
     });
     html += LOGIN_BTN_MOBILE;
     mobileNav.innerHTML = html;
   }
 
-  // Activar lógica del menú móvil
+  // Activar lógica del menú móvil (Estrategia de Portal + CSS robusto)
   const mobileBtn = document.getElementById('mobileMenuButton');
   const mobileClose = document.getElementById('mobileMenuClose');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -220,14 +233,28 @@ function renderLayout(activePage, isSubDir = false) {
     const openMenu = () => {
       mobileMenu.classList.remove('-translate-x-full');
       mobileBackdrop.classList.remove('hidden');
+      setTimeout(() => {
+        mobileBackdrop.classList.remove('opacity-0');
+        document.body.classList.add('menu-open');
+      }, 10);
     };
+
     const closeMenu = () => {
       mobileMenu.classList.add('-translate-x-full');
-      mobileBackdrop.classList.add('hidden');
+      mobileBackdrop.classList.add('opacity-0');
+      setTimeout(() => {
+        mobileBackdrop.classList.add('hidden');
+        document.body.classList.remove('menu-open');
+      }, 300);
     };
 
     mobileBtn.addEventListener('click', openMenu);
-    mobileClose.addEventListener('click', closeMenu);
+    if (mobileClose) mobileClose.addEventListener('click', closeMenu);
     mobileBackdrop.addEventListener('click', closeMenu);
+
+    // Cerrar al clickear un link
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
   }
 }
