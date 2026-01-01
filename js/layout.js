@@ -147,11 +147,36 @@ function renderLayout(activePage, isSubDir = false) {
     footerHtml = footerHtml.replace(/href="Localizanos.html"/g, 'href="../Localizanos.html"');
   }
 
-  // Inyectar HTML base
+  // 1. Inyectar CSS Global de Animaciones
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = prefix + 'css/animations.css';
+  document.head.appendChild(link);
+
+  // 2. Inyectar HTML base
   const headerContainer = document.getElementById('main-header');
   const footerContainer = document.getElementById('main-footer');
   if (headerContainer) headerContainer.innerHTML = headerHtml;
   if (footerContainer) footerContainer.innerHTML = footerHtml;
+
+  // 3. Inyectar Botón Scroll Top
+  const scrollBtn = document.createElement('button');
+  scrollBtn.id = 'scrollTopBtn';
+  scrollBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+  document.body.appendChild(scrollBtn);
+
+  // Lógica Scroll Top
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      scrollBtn.classList.add('show');
+    } else {
+      scrollBtn.classList.remove('show');
+    }
+  });
+
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
   // Generar Menú Desktop
   const desktopNav = document.getElementById('desktop-nav');

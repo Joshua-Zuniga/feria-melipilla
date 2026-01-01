@@ -1,0 +1,108 @@
+/* =========================================
+   ANIMACIONES Y ESTILOS PREMIUM GLOBALES
+   ========================================= */
+
+/* 1. Transición de Entrada de Página Suave */
+body {
+    animation: fadeInPage 0.8s ease-out forwards;
+    opacity: 0; /* Inicia oculto */
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 2. Scrollbar Personalizado (Webkit) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9; /* slate-100 */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #166534; /* primary green */
+    border-radius: 5px;
+    border: 2px solid #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #14532d; /* emerald-900 */
+}
+
+/* 3. Selección de Texto (Color de marca) */
+::selection {
+    background-color: #166534;
+    color: white;
+}
+
+/* 4. Efectos Hover Premium para Tarjetas */
+.hover-card-effect {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-card-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* 5. Efecto Hover para Botones */
+.hover-btn-glow {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-btn-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.hover-btn-glow:hover::after {
+    left: 100%;
+}
+
+/* 6. Botón Scroll Top Flotante */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    width: 50px;
+    height: 50px;
+    border: none;
+    outline: none;
+    background-color: #166534;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    pointer-events: none; /* No clickeable si invisible */
+}
+
+#scrollTopBtn.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+#scrollTopBtn:hover {
+    background-color: #15803d;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}

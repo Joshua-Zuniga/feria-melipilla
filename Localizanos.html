@@ -92,9 +92,17 @@
 
         <!-- Contenedor Mapa -->
         <div class="relative w-full h-0 pb-[60%] bg-slate-100">
+
+          <!-- Skeleton Overlay -->
+          <div id="map-skeleton"
+            class="absolute inset-0 w-full h-full bg-slate-200 animate-pulse flex flex-col items-center justify-center z-20 transition-opacity duration-500">
+            <i class="fa-solid fa-map-location-dot text-5xl text-slate-300 mb-4"></i>
+            <span class="text-slate-400 font-medium tracking-wide">Cargando mapa interactivo...</span>
+          </div>
+
           <iframe id="mapa-frame" loading="lazy"
             src="https://www.google.com/maps/d/embed?mid=1AkVO8siqXth9BmK8SZR8IYQxmvAeaVE&ehbc=2E312F&noprof=1"
-            class="absolute inset-0 w-full h-full text-slate-400 flex items-center justify-center" allow="autoplay">
+            class="absolute inset-0 w-full h-full z-10 opacity-0 transition-opacity duration-500" allow="autoplay">
           </iframe>
         </div>
       </section>
@@ -187,8 +195,14 @@
       ];
 
       function cambiarMapa(index) {
-        // Actualizar iframe
         const iframe = document.getElementById('mapa-frame');
+        const skeleton = document.getElementById('map-skeleton');
+
+        // Mostrar skeleton y ocultar mapa mientras carga
+        skeleton.classList.remove('opacity-0', 'pointer-events-none');
+        iframe.classList.add('opacity-0');
+
+        // Actualizar iframe
         iframe.src = MAP_URLS[index];
 
         // Actualizar tabs
@@ -201,6 +215,18 @@
           }
         }
       }
+
+      // Manejar carga del iframe
+      document.addEventListener("DOMContentLoaded", () => {
+        const iframe = document.getElementById('mapa-frame');
+        const skeleton = document.getElementById('map-skeleton');
+
+        iframe.onload = () => {
+          // Ocultar skeleton y mostrar mapa suavemente
+          skeleton.classList.add('opacity-0', 'pointer-events-none');
+          iframe.classList.remove('opacity-0');
+        };
+      });
     </script>
 
   </body>

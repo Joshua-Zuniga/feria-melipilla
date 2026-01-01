@@ -90,9 +90,41 @@
 
   <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16 min-h-[50vh]">
     <div id="grilla-noticias" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="col-span-full flex flex-col justify-center items-center py-20 text-slate-400">
-        <i class="fa-solid fa-circle-notch fa-spin text-4xl text-primary mb-4"></i>
-        <p>Cargando novedades...</p>
+      <!-- SKELETON LOADERS: Se muestran mientras carga la data real -->
+      <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 h-full animate-pulse">
+        <div class="h-52 bg-slate-200"></div>
+        <div class="p-6 space-y-4">
+          <div class="h-4 bg-slate-200 rounded w-1/4"></div>
+          <div class="h-6 bg-slate-200 rounded w-3/4"></div>
+          <div class="space-y-2 pt-2">
+            <div class="h-4 bg-slate-200 rounded"></div>
+            <div class="h-4 bg-slate-200 rounded w-5/6"></div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 h-full animate-pulse hidden md:block">
+        <div class="h-52 bg-slate-200"></div>
+        <div class="p-6 space-y-4">
+          <div class="h-4 bg-slate-200 rounded w-1/4"></div>
+          <div class="h-6 bg-slate-200 rounded w-3/4"></div>
+          <div class="space-y-2 pt-2">
+            <div class="h-4 bg-slate-200 rounded"></div>
+            <div class="h-4 bg-slate-200 rounded w-5/6"></div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 h-full animate-pulse hidden lg:block">
+        <div class="h-52 bg-slate-200"></div>
+        <div class="p-6 space-y-4">
+          <div class="h-4 bg-slate-200 rounded w-1/4"></div>
+          <div class="h-6 bg-slate-200 rounded w-3/4"></div>
+          <div class="space-y-2 pt-2">
+            <div class="h-4 bg-slate-200 rounded"></div>
+            <div class="h-4 bg-slate-200 rounded w-5/6"></div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -188,7 +220,7 @@
         var resumen = textoPlano.length > 120 ? textoPlano.substring(0, 120) + "..." : textoPlano;
 
         html += `
-            <article class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col h-full group cursor-pointer" onclick="abrirModal(${i})">
+            <article class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col h-full group cursor-pointer hover-card-effect" onclick="abrirModal(${i})">
                 <div class="relative h-52 overflow-hidden">
                     <div class="absolute top-3 left-3 bg-primary/90 text-white text-xs font-bold px-3 py-1 rounded-md z-10 shadow-sm">
                         ${fecha}
