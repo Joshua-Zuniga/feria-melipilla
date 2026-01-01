@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +34,7 @@
             dark: '#020617'
           },
           fontFamily: {
-            sans: ['Poppins','system-ui','sans-serif'],
+            sans: ['Poppins', 'system-ui', 'sans-serif'],
           }
         }
       }
@@ -47,226 +48,100 @@
   <!-- Iconos -->
   <script src="https://kit.fontawesome.com/c38e3367c6.js" crossorigin="anonymous"></script>
 
+  <!-- Layout Script -->
+  <script src="js/layout.js"></script>
 </head>
 
 <body class="bg-slate-50 text-slate-800 font-sans">
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    AOS.init({ duration: 800, once: true, offset: 80 });
-  });
-</script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      AOS.init({ duration: 800, once: true, offset: 80 });
+      renderLayout("Galería");
+    });
+  </script>
 
-<!-- HEADER -->
-<header class="bg-primary text-white">
-  <div class="border-b border-emerald-700/80">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+  <!-- Header Placeholder -->
+  <div id="main-header"></div>
 
-      <a href="index.html" class="flex items-center gap-3">
-        <img src="images/logotipo.svg" class="h-16 md:h-20" alt="Logo">
-      </a>
-
-      <nav class="hidden md:flex items-center gap-6">
-        <a href="index.html" class="text-sm text-white/80 hover:text-white">Inicio</a>
-        <a href="Nosotros.html" class="text-sm text-white/80 hover:text-white">Nosotros</a>
-        <a href="Directiva.html" class="text-sm text-white/80 hover:text-white">Directiva</a>
-        <a href="Socios.html" class="text-sm text-white/80 hover:text-white">Socios</a>
-        <a href="Noticias.html" class="text-sm text-white/80 hover:text-white">Noticias</a>
-        <a href="Galeria.html" class="text-sm font-medium text-white hover:text-white transition-colors border-b-2 border-white">Galería</a>
-        <a href="Localizanos.html" class="text-sm text-white/80 hover:text-white">Localízanos</a>
-      </nav>
-
-      <!-- Botón móvil -->
-      <button id="mobileMenuButton" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white/10">
-        <i class="fa-solid fa-bars text-lg"></i>
-      </button>
-    </div>
-  </div>
-
-  <!-- Menú móvil -->
-  <div id="mobileBackdrop" class="fixed inset-0 bg-black/40 hidden"></div>
-
-  <aside id="mobileMenu" class="fixed inset-y-0 left-0 w-64 bg-primary/95 border-r border-emerald-700 transform -translate-x-full transition-all duration-200 z-50">
-
-    <div class="px-4 py-4 flex items-center justify-between border-b border-emerald-700">
-      <span class="font-semibold">Menú</span>
-      <button id="mobileMenuClose" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-    </div>
-
-    <nav class="px-3 py-4 space-y-1">
-      <a href="index.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Inicio</a>
-      <a href="Nosotros.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Nosotros</a>
-      <a href="Directiva.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Directiva</a>
-      <a href="Socios.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Socios</a>
-      <a href="Noticias.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Noticias</a>
-      <a href="Galeria.html" class="block py-2 px-4 bg-white/10 rounded-lg">Galería</a>
-      <a href="Localizanos.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Localízanos</a>
-    </nav>
-
-  </aside>
-
-  <!-- Hero -->
-  <div class="max-w-6xl mx-auto px-4 py-10 md:py-14">
-    <div data-aos="fade-right" class="space-y-3">
-      <p class="text-xs tracking-[0.25em] uppercase text-emerald-200 font-semibold">Feria Agrícola Melipilla</p>
-      <h1 class="text-3xl md:text-4xl font-bold">Galería</h1>
-      <p class="text-sm md:text-base text-emerald-100 max-w-xl">Explora los mejores momentos y actividades.</p>
-    </div>
-  </div>
-</header>
-
-<!-- MAIN -->
-<main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
-
-<section data-aos="fade-up" class="space-y-4">
-  <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 text-center">Galería de Imágenes</h2>
-  <p class="text-sm md:text-base text-slate-700 text-center max-w-2xl mx-auto">
-    Un vistazo a nuestras actividades, reuniones y momentos.
-  </p>
-</section>
-
-<!-- GALERÍA -->
-<section data-aos="fade-up">
-  <div id="galeria" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-
-    <a href="images/Banner_1.webp">
-      <img src="images/Banner_1.webp" class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
-    </a>
-
-    <a href="images/Banner_2.webp">
-      <img src="images/Banner_2.webp" class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
-    </a>
-
-    <a href="images/Banner_3.webp">
-      <img src="images/Banner_3.webp" class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
-    </a>
-
-    <a href="images/Banner_4.webp">
-      <img src="images/Banner_4.webp" class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
-    </a>
-
-    <a href="images/PXL_20240805_170629278.webp">
-      <img src="images/PXL_20240805_170629278.webp" class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
-    </a>
-
-  </div>
-</section>
-
-</main>
-
-<!-- FOOTER PREMIUM -->
-<footer class="relative mt-20 text-slate-100">
-
-  <!-- Fondo decorativo con textura -->
-  <div class="absolute inset-0 bg-gradient-to-br from-primary to-emerald-900 opacity-95"></div>
-
-  <!-- Patrón tipo hojas -->
-  <div class="absolute inset-0 opacity-10"
-       style="background-image: url('data:image/svg+xml,%3Csvg width=\'120\' height=\'120\' viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M60 10 C40 40 40 80 60 110 C80 80 80 40 60 10 Z\' fill=\'%23ffffff\'/%3E%3C/svg%3E'); background-size: 180px;">
-  </div>
-
-  <!-- Contenido -->
-  <div class="relative max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-3">
-
-    <!-- Columna 1 -->
-   <div class="space-y-5">
-  <a href="index.html" class="flex items-center gap-3 transition-opacity hover:opacity-80">
-      
-      <img src="images/logotipo.svg" alt="Logo Feria Agrícola" class="h-20 drop-shadow-lg brightness-110">
-      
-  </a> <p class="text-sm text-emerald-100 leading-relaxed max-w-sm">
-    Somos la Asociación Gremial Feria Agrícola Melipilla, dedicada al fortalecimiento,
-    organización y representación de nuestros feriantes y su comunidad.
-  </p>
-</div>
-
-    <!-- Columna 2 -->
-    <div class="space-y-5">
-      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-200">Enlaces rápidos</h4>
-      <ul class="space-y-2 text-sm">
-        <li><a href="Nosotros.html" class="hover:text-white hover:underline">Nosotros</a></li>
-        <li><a href="Directiva.html" class="hover:text-white hover:underline">Directiva</a></li>
-        <li><a href="Socios.html" class="hover:text-white hover:underline">Socios</a></li>
-        <li><a href="Noticias.html" class="hover:text-white hover:underline">Noticias</a></li>
-        <li><a href="Galeria.html" class="hover:text-white hover:underline">Galería</a></li>
-        <li><a href="Localizanos.html" class="hover:text-white hover:underline">Localízanos</a></li>
-      </ul>
-    </div>
-
-    <!-- Columna 3 -->
-    <div class="space-y-5">
-      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-200">Síguenos</h4>
-
-      <div class="flex gap-5">
-        <a href="https://www.facebook.com/asoc.feria.agricola.melipilla" target="_blank"
-           class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
-          <i class="fa-brands fa-facebook-f text-xl"></i>
-        </a>
-
-        <a href="https://www.instagram.com/asoc.feria.agricola.melipilla" target="_blank"
-           class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
-          <i class="fa-brands fa-instagram text-xl"></i>
-        </a>
-      </div>
-
-      <div class="pt-3">
-        <p class="text-sm text-emerald-100">Correo de contacto:</p>
-        <a href="mailto:a.g.feria.agricola.m@gmail.com"
-           class="text-lime-200 hover:text-white underline text-sm">
-          a.g.feria.agricola.m@gmail.com
-        </a>
+  <!-- Hero (Extracted) -->
+  <div class="bg-primary text-white border-b border-emerald-700/80">
+    <div class="max-w-6xl mx-auto px-4 py-10 md:py-14">
+      <div data-aos="fade-right" class="space-y-3">
+        <p class="text-xs tracking-[0.25em] uppercase text-emerald-200 font-semibold">Feria Agrícola Melipilla</p>
+        <h1 class="text-3xl md:text-4xl font-bold">Galería</h1>
+        <p class="text-sm md:text-base text-emerald-100 max-w-xl">Explora los mejores momentos y actividades.</p>
       </div>
     </div>
   </div>
 
-  <!-- Línea inferior -->
- <div class="relative border-t border-emerald-700/60 bg-emerald-950/60 backdrop-blur-sm">
-    <div class="max-w-7xl mx-auto px-6 py-4 text-center text-xs text-emerald-300/80">
-      © 2025 Asociación Gremial Feria Agrícola Melipilla — Todos los derechos reservados.
-    </div>
-  </div>
-</footer>
+  <!-- MAIN -->
+  <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
 
-<!-- SCRIPTS FINALES -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
+    <section data-aos="fade-up" class="space-y-4">
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 text-center">Galería de Imágenes</h2>
+      <p class="text-sm md:text-base text-slate-700 text-center max-w-2xl mx-auto">
+        Un vistazo a nuestras actividades, reuniones y momentos.
+      </p>
+    </section>
 
-    // Menú móvil
-    const mobileBtn = document.getElementById('mobileMenuButton');
-    const mobileClose = document.getElementById('mobileMenuClose');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileBackdrop = document.getElementById('mobileBackdrop');
+    <!-- GALERÍA -->
+    <section data-aos="fade-up">
+      <div id="galeria" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
-    function openMenu() {
-      mobileMenu.classList.remove('-translate-x-full');
-      mobileBackdrop.classList.remove('hidden');
-    }
+        <a href="images/Banner_1.webp">
+          <img src="images/Banner_1.webp"
+            class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
+        </a>
 
-    function closeMenu() {
-      mobileMenu.classList.add('-translate-x-full');
-      mobileBackdrop.classList.add('hidden');
-    }
+        <a href="images/Banner_2.webp">
+          <img src="images/Banner_2.webp"
+            class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
+        </a>
 
-    if (mobileBtn) mobileBtn.addEventListener('click', openMenu);
-    if (mobileClose) mobileClose.addEventListener('click', closeMenu);
-    if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMenu);
+        <a href="images/Banner_3.webp">
+          <img src="images/Banner_3.webp"
+            class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
+        </a>
 
-    // LightGallery
-    const galeria = document.getElementById("galeria");
-    if (galeria) {
-      lightGallery(galeria, {
-        selector: 'a',
-        download: false,
-        zoom: true,
-        thumbnail: true,
-        animateThumb: true,
-        showThumbByDefault: true
-      });
-    }
-  });
-</script>
+        <a href="images/Banner_4.webp">
+          <img src="images/Banner_4.webp"
+            class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
+        </a>
+
+        <a href="images/luis.webp">
+          <img src="images/luis.webp" class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
+        </a>
+
+        <a href="images/ana.webp">
+          <img src="images/ana.webp" class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Placeholder -->
+  <div id="main-footer"></div>
+
+  <!-- SCRIPTS FINALES -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // LightGallery
+      const galeria = document.getElementById("galeria");
+      if (galeria) {
+        lightGallery(galeria, {
+          selector: 'a',
+          download: false,
+          zoom: true,
+          thumbnail: true,
+          animateThumb: true,
+          showThumbByDefault: true
+        });
+      }
+    });
+  </script>
 
 </body>
+
 </html>

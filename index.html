@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,310 +44,221 @@
   <!-- Swiper -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<link rel="manifest" href="manifest.json" />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Layout Script -->
+  <script src="js/layout.js"></script>
+
+  <style>
+    /* Forzar centrado de imágenes y videos en el modal del Home */
+    #home-modal-cuerpo img,
+    #home-modal-cuerpo iframe,
+    #home-modal-cuerpo video {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
+    }
+
+    #home-modal-cuerpo iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      height: auto;
+    }
+  </style>
 </head>
 
 <body class="bg-slate-50 text-slate-800 font-sans">
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    AOS.init({ duration: 800, once: true, offset: 80 });
-  });
-</script>
-
-<!-- HEADER -->
-<header class="bg-primary text-white">
-  <div class="border-b border-emerald-700/80">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      
-      <a href="index.html" class="flex items-center gap-3">
-        <img src="images/logotipo.svg" alt="Feria Agrícola Melipilla" class="h-16 md:h-20">
-      </a>
-
-      <nav class="hidden md:flex items-center gap-6">
-        <a href="index.html" class="text-sm font-medium text-white hover:text-white transition-colors border-b-2 border-white">Inicio</a>
-        <a href="Nosotros.html" class="text-sm text-white/80 hover:text-white">Nosotros</a>
-        <a href="Directiva.html" class="text-sm text-white/80 hover:text-white">Directiva</a>
-        <a href="Socios.html" class="text-sm text-white/80 hover:text-white">Socios</a>
-        <a href="Noticias.html" class="text-sm text-white/80 hover:text-white">Noticias</a>
-        <a href="Galeria.html" class="text-sm text-white/80 hover:text-white">Galería</a>
-        <a href="Localizanos.html" class="text-sm text-white/80 hover:text-white">Localízanos</a>
-      </nav>
-
-      <button id="mobileMenuButton" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-white/30 hover:bg-white/10">
-        <i class="fa-solid fa-bars text-lg"></i>
-      </button>
-
-    </div>
-  </div>
-
-  <!-- Menú móvil -->
-  <div id="mobileBackdrop" class="fixed inset-0 bg-black/40 hidden"></div>
-
-  <aside id="mobileMenu" class="fixed inset-y-0 left-0 w-64 bg-primary/95 border-r border-emerald-700 transform -translate-x-full transition-all duration-200 z-50">
-
-    <div class="px-4 py-4 flex items-center justify-between border-b border-emerald-700">
-      <span class="font-semibold">Menú</span>
-      <button id="mobileMenuClose" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-    </div>
-
-    <nav class="px-3 py-4 space-y-1">
-      <a href="index.html" class="block py-2 px-4 bg-white/10 rounded-lg">Inicio</a>
-      <a href="Nosotros.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Nosotros</a>
-      <a href="Directiva.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Directiva</a>
-      <a href="Socios.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Socios</a>
-      <a href="Noticias.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Noticias</a>
-      <a href="Galeria.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Galería</a>
-      <a href="Localizanos.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Localízanos</a>
-    </nav>
-
-  </aside>
-
-  <!-- HERO -->
-  <div class="max-w-6xl mx-auto px-4 py-10 md:py-16 flex flex-col md:flex-row items-center gap-10">
-
-    <div class="flex-1 space-y-6" data-aos="fade-right">
-      <p class="text-sm font-semibold tracking-[0.2em] uppercase text-emerald-200">Asociación Gremial</p>
-
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">Feria Agrícola Melipilla</h1>
-
-      <p class="text-sm md:text-base text-emerald-100 max-w-xl">
-        Somos la principal Asociación de la Feria Libre de Melipilla, comprometida con el desarrollo,
-        la organización y la representación de nuestros feriantes.
-      </p>
-
-      <div class="flex flex-wrap gap-4">
-        <a href="Nosotros.html" class="px-5 py-2.5 rounded-full bg-white text-primary font-semibold shadow hover:bg-emerald-50">
-          Conocer más
-        </a>
-        <a href="Localizanos.html" class="px-5 py-2.5 rounded-full border border-white/50 text-white font-semibold hover:bg-white/10">
-          ¿Dónde estamos?
-        </a>
-      </div>
-    </div>
-
-    <div class="flex-1 flex justify-center md:justify-end" data-aos="fade-left">
-      <div class="rounded-3xl bg-emerald-800/40 border border-emerald-300/30 p-4 shadow-lg">
-        <img src="images/Banner_1.webp" class="w-full max-w-md rounded-2xl object-cover">
-      </div>
-    </div>
-
-  </div>
-
-</header>
-
-<!-- AQUÍ TERMINA LA PARTE 1 -->
-
-<section class="max-w-6xl mx-auto px-4 py-16 border-b border-slate-200">
-  <div class="flex justify-between items-end mb-8">
-    <div data-aos="fade-right">
-      <span class="text-secondary font-bold tracking-widest text-sm uppercase">Actualidad</span>
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mt-2">Últimas Noticias</h2>
-    </div>
-    <a href="Noticias.html" class="hidden md:inline-flex items-center gap-2 text-primary font-semibold hover:text-emerald-800 transition">
-      Ver todas <i class="fa-solid fa-arrow-right"></i>
-    </a>
-  </div>
-
-  <div id="home-noticias-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up">
-      <div class="col-span-full text-center text-slate-400">Cargando...</div>
-  </div>
-
-  <div class="mt-8 text-center md:hidden">
-    <a href="Noticias.html" class="inline-flex px-6 py-3 bg-primary text-white rounded-full font-semibold shadow-lg hover:bg-emerald-800 transition">
-      Ver todas las noticias
-    </a>
-  </div>
-</section>
-
-<div id="home-modal-backdrop" class="fixed inset-0 bg-black/60 z-50 hidden transition-opacity opacity-0 backdrop-blur-sm" onclick="cerrarModalHome()"></div>
-<div id="home-modal-panel" class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none hidden p-4">
-    <div class="bg-white w-full max-w-4xl h-[90vh] rounded-2xl shadow-2xl flex flex-col pointer-events-auto transform transition-all scale-95 opacity-0 duration-300" id="home-modal-box">
-        <div class="relative shrink-0 h-64">
-            <button onclick="cerrarModalHome()" class="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center z-20"><i class="fa-solid fa-xmark"></i></button>
-            <img id="home-modal-img" src="" class="w-full h-full object-cover rounded-t-2xl">
-            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-6 pt-20">
-               <h2 id="home-modal-titulo" class="text-2xl font-bold text-white leading-tight"></h2>
-            </div>
-        </div>
-        <div class="overflow-y-auto p-8 bg-white rounded-b-2xl">
-            <div id="home-modal-cuerpo" class="prose prose-green max-w-none text-slate-700"></div>
-        </div>
-    </div>
-</div>
-<!-- MAIN -->
-<main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
-
-<!-- INSTAGRAM RESPONSIVO -->
-<section class="max-w-6xl mx-auto px-4 py-16">
-  <h2 class="text-2xl font-bold mb-6 text-slate-800">Instagram</h2>
-
-  <!-- Elfsight Instagram Feed -->
-  <script src="https://elfsightcdn.com/platform.js" async></script>
-  <div class="elfsight-app-42021612-277e-4f71-b867-389b29d5dbc8" data-elfsight-app-lazy></div>
-</section>
-
-
-
-<!-- CALENDARIO (RESPONSIVE Y CORREGIDO) -->
-<section data-aos="fade-up" class="space-y-6">
-  <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Calendario de Actividades</h2>
-
-  <div class="rounded-2xl overflow-hidden shadow-md bg-white flex justify-center">
-    <div class="relative w-full max-w-5xl h-0 pb-[140%] sm:pb-[90%] md:pb-[70%] lg:pb-[60%]">
-
-      <iframe
-        loading="lazy"
-        class="absolute inset-0 w-full h-full"
-        src="https://calendar.google.com/calendar/embed?height=575&wkst=1&ctz=America%2FSantiago&bgcolor=%23ffffff&src=NGJvaWVoZGV0aHMzNWw3NjE0bWk1dWV2NDhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=MGljdDFtcGRuY2E2dDF1YzNoNnQ2ZnE4N3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23AD1457&color=%230B8043&color=%2333B679"
-        frameborder="0"
-        scrolling="no">
-      </iframe>
-
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- FOOTER -->
-<footer class="relative mt-20 text-slate-100">
-
-  <!-- Fondo decorativo con textura -->
-  <div class="absolute inset-0 bg-gradient-to-br from-primary to-emerald-900 opacity-95"></div>
-
-  <!-- Patrón tipo hojas -->
-  <div class="absolute inset-0 opacity-10"
-       style="background-image: url('data:image/svg+xml,%3Csvg width=\'120\' height=\'120\' viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M60 10 C40 40 40 80 60 110 C80 80 80 40 60 10 Z\' fill=\'%23ffffff\'/%3E%3C/svg%3E'); background-size: 180px;">
-  </div>
-
-  <!-- Contenido -->
-  <div class="relative max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-3">
-
-    <!-- Columna 1 -->
-   <div class="space-y-5">
-  <a href="index.html" class="flex items-center gap-3 transition-opacity hover:opacity-80">
-      
-      <img src="images/logotipo.svg" alt="Logo Feria Agrícola" class="h-20 drop-shadow-lg brightness-110">
-      
-  </a> <p class="text-sm text-emerald-100 leading-relaxed max-w-sm">
-    Somos la Asociación Gremial Feria Agrícola Melipilla, dedicada al fortalecimiento,
-    organización y representación de nuestros feriantes y su comunidad.
-  </p>
-</div>
-
-    <!-- Columna 2 -->
-    <div class="space-y-5">
-      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-200">Enlaces rápidos</h4>
-      <ul class="space-y-2 text-sm">
-        <li><a href="Nosotros.html" class="hover:text-white hover:underline">Nosotros</a></li>
-        <li><a href="Directiva.html" class="hover:text-white hover:underline">Directiva</a></li>
-        <li><a href="Socios.html" class="hover:text-white hover:underline">Socios</a></li>
-        <li><a href="Noticias.html" class="hover:text-white hover:underline">Noticias</a></li>
-        <li><a href="Galeria.html" class="hover:text-white hover:underline">Galería</a></li>
-        <li><a href="Localizanos.html" class="hover:text-white hover:underline">Localízanos</a></li>
-      </ul>
-    </div>
-
-    <!-- Columna 3 -->
-    <div class="space-y-5">
-      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-200">Síguenos</h4>
-
-      <div class="flex gap-5">
-        <a href="https://www.facebook.com/asoc.feria.agricola.melipilla" target="_blank"
-           class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
-          <i class="fa-brands fa-facebook-f text-xl"></i>
-        </a>
-
-        <a href="https://www.instagram.com/asoc.feria.agricola.melipilla" target="_blank"
-           class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
-          <i class="fa-brands fa-instagram text-xl"></i>
-        </a>
-      </div>
-
-      <div class="pt-3">
-        <p class="text-sm text-emerald-100">Correo de contacto:</p>
-        <a href="mailto:a.g.feria.agricola.m@gmail.com"
-           class="text-lime-200 hover:text-white underline text-sm">
-          a.g.feria.agricola.m@gmail.com
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Línea inferior -->
- <div class="relative border-t border-emerald-700/60 bg-emerald-950/60 backdrop-blur-sm">
-    <div class="max-w-7xl mx-auto px-6 py-4 text-center text-xs text-emerald-300/80">
-      © 2025 Asociación Gremial Feria Agrícola Melipilla — Todos los derechos reservados.
-    </div>
-  </div>
-</footer>
-
-<!-- JS FINAL -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-
-    const mobileBtn = document.getElementById('mobileMenuButton');
-    const mobileClose = document.getElementById('mobileMenuClose');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileBackdrop = document.getElementById('mobileBackdrop');
-
-    function openMenu() {
-      mobileMenu.classList.remove('-translate-x-full');
-      mobileBackdrop.classList.remove('hidden');
-    }
-
-    function closeMenu() {
-      mobileMenu.classList.add('-translate-x-full');
-      mobileBackdrop.classList.add('hidden');
-    }
-
-    if (mobileBtn) mobileBtn.addEventListener("click", openMenu);
-    if (mobileClose) mobileClose.addEventListener("click", closeMenu);
-    if (mobileBackdrop) mobileBackdrop.addEventListener("click", closeMenu);
-
-    // Swiper
-    new Swiper(".mySwiper", {
-      loop: true,
-      autoplay: { delay: 3500, disableOnInteraction: false }
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      AOS.init({ duration: 800, once: true, offset: 80 });
+      renderLayout("Inicio");
     });
+  </script>
 
-  });
-</script>
+  <!-- HEADER -->
+  <div id="main-header"></div>
+
+  <!-- HERO (Separado del Header) -->
+  <div class="bg-primary text-white">
+    <div class="max-w-6xl mx-auto px-4 py-10 md:py-16 flex flex-col md:flex-row items-center gap-10">
+      <div class="flex-1 space-y-6" data-aos="fade-right">
+        <p class="text-sm font-semibold tracking-[0.2em] uppercase text-emerald-200">Asociación Gremial</p>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">Feria Agrícola Melipilla</h1>
+        <p class="text-sm md:text-base text-emerald-100 max-w-xl">
+          Somos la principal Asociación de la Feria Libre de Melipilla, comprometida con el desarrollo,
+          la organización y la representación de nuestros feriantes.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="Nosotros.html"
+            class="px-5 py-2.5 rounded-full bg-white text-primary font-semibold shadow hover:bg-emerald-50">
+            Conocer más
+          </a>
+          <a href="Localizanos.html"
+            class="px-5 py-2.5 rounded-full border border-white/50 text-white font-semibold hover:bg-white/10">
+            ¿Dónde estamos?
+          </a>
+        </div>
+      </div>
+      <div class="flex-1 flex justify-center md:justify-end" data-aos="fade-left">
+        <div class="rounded-3xl bg-emerald-800/40 border border-emerald-300/30 p-4 shadow-lg">
+          <img src="images/Banner_1.webp" class="w-full max-w-md rounded-2xl object-cover">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="max-w-6xl mx-auto px-4 py-16 border-b border-slate-200">
+    <div class="flex justify-between items-end mb-8">
+      <div data-aos="fade-right">
+        <span class="text-secondary font-bold tracking-widest text-sm uppercase">Actualidad</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mt-2">Últimas Noticias</h2>
+      </div>
+      <a href="Noticias.html"
+        class="hidden md:inline-flex items-center gap-2 text-primary font-semibold hover:text-emerald-800 transition">
+        Ver todas <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <div id="home-noticias-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up">
+      <div class="col-span-full text-center text-slate-400">Cargando...</div>
+    </div>
+
+    <div class="mt-8 text-center md:hidden">
+      <a href="Noticias.html"
+        class="inline-flex px-6 py-3 bg-primary text-white rounded-full font-semibold shadow-lg hover:bg-emerald-800 transition">
+        Ver todas las noticias
+      </a>
+    </div>
+  </section>
+
+  <div id="home-modal-backdrop"
+    class="fixed inset-0 bg-black/60 z-50 hidden transition-opacity opacity-0 backdrop-blur-sm"
+    onclick="cerrarModalHome()"></div>
+  <div id="home-modal-panel" class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none hidden p-4">
+    <div
+      class="bg-white w-full max-w-4xl h-[90vh] rounded-2xl shadow-2xl relative transform transition-all scale-95 opacity-0 duration-300 pointer-events-auto"
+      id="home-modal-box">
+      <!-- Contenedor con Scroll Único -->
+      <div class="h-full overflow-y-auto rounded-2xl custom-scrollbar">
+
+        <!-- Banner / Header -->
+        <div class="relative h-64 md:h-96 w-full">
+          <button onclick="cerrarModalHome()"
+            class="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center z-20 transition-colors backdrop-blur-sm">
+            <i class="fa-solid fa-xmark text-xl"></i>
+          </button>
+          <img id="home-modal-img" src="" class="w-full h-full object-cover bg-slate-200">
+          <div class="absolute bottom-4 left-4 z-10 w-full pr-8">
+            <span id="home-modal-fecha"
+              class="inline-block px-3 py-1 bg-secondary/90 text-white text-xs font-bold rounded-full shadow-lg uppercase tracking-wider backdrop-blur-sm"></span>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
+        </div>
+
+        <!-- Contenido -->
+        <div class="p-6 md:p-10 bg-white">
+          <h2 id="home-modal-titulo"
+            class="text-2xl md:text-4xl font-bold text-slate-800 mb-6 leading-tight border-b border-slate-100 pb-4">
+          </h2>
+          <div id="home-modal-cuerpo" class="prose prose-green prose-lg max-w-none text-slate-700 font-sans"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- MAIN -->
+  <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
+
+    <!-- INSTAGRAM RESPONSIVO -->
+    <section class="max-w-6xl mx-auto px-4 py-16">
+      <h2 class="text-2xl font-bold mb-6 text-slate-800">Instagram</h2>
+
+      <!-- Elfsight Instagram Feed -->
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-42021612-277e-4f71-b867-389b29d5dbc8" data-elfsight-app-lazy></div>
+    </section>
+
+    <!-- CALENDARIO (RESPONSIVE Y CORREGIDO) -->
+    <section data-aos="fade-up" class="space-y-6">
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Calendario de Actividades</h2>
+
+      <div class="rounded-2xl overflow-hidden shadow-md bg-white flex justify-center">
+        <div class="relative w-full max-w-5xl h-0 pb-[140%] sm:pb-[90%] md:pb-[70%] lg:pb-[60%]">
+          <iframe loading="lazy" class="absolute inset-0 w-full h-full"
+            src="https://calendar.google.com/calendar/embed?height=575&wkst=1&ctz=America%2FSantiago&bgcolor=%23ffffff&src=NGJvaWVoZGV0aHMzNWw3NjE0bWk1dWV2NDhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=MGljdDFtcGRuY2E2dDF1YzNoNnQ2ZnE4N3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23AD1457&color=%230B8043&color=%2333B679"
+            frameborder="0" scrolling="no">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <div id="main-footer"></div>
+
+  <!-- JS FINAL -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Swiper
+      new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: { delay: 3500, disableOnInteraction: false }
+      });
+    });
+  </script>
 
 </body>
+
 </html>
 
 <script>
   let homeNoticias = [];
 
+  // Función para limpiar contenido (Igual que en Noticias.html)
+  function limpiarContenido(html) {
+    if (!html) return "";
+    let c = html;
+    c = c.replace(/<style\b[^>]*>([\s\S]*?)<\/style>/gim, "");
+    c = c.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gim, "");
+    c = c.replace(/<head\b[^>]*>([\s\S]*?)<\/head>/gim, "");
+    c = c.replace(/<\/?(html|body|iframe|!DOCTYPE)[^>]*>/gim, (match) => {
+      if (match.toLowerCase().includes('iframe')) return match;
+      return "";
+    });
+    return c;
+  }
+
   function cargarHomeNoticias(json) {
-      var entradas = json.feed.entry;
-      var contenedor = document.getElementById('home-noticias-grid');
-      var html = '';
+    var entradas = json.feed.entry;
+    var contenedor = document.getElementById('home-noticias-grid');
+    var html = '';
 
-      if (!entradas) return;
-      homeNoticias = entradas;
+    if (!entradas) return;
+    homeNoticias = entradas;
 
-      // Solo mostramos las primeras 3
-      for (var i = 0; i < Math.min(entradas.length, 3); i++) {
-          var entrada = entradas[i];
-          var titulo = entrada.title.$t;
-          var contenido = entrada.content.$t;
-          var fecha = new Date(entrada.published.$t).toLocaleDateString('es-CL', {day: 'numeric', month: 'short'});
-          
-          var imagenUrl = "images/Banner_1.webp"; 
-          if (entrada.media$thumbnail) {
-              imagenUrl = entrada.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w500-h300-c/");
-          }
+    // Solo mostramos las primeras 3
+    for (var i = 0; i < Math.min(entradas.length, 3); i++) {
+      var entrada = entradas[i];
+      var titulo = entrada.title.$t;
+      var contenidoRaw = entrada.content.$t;
+      var fecha = new Date(entrada.published.$t).toLocaleDateString('es-CL', { day: 'numeric', month: 'short' });
 
-          var divTemporal = document.createElement("div");
-          divTemporal.innerHTML = contenido;
-          var resumen = (divTemporal.innerText || "").substring(0, 90) + "...";
+      var imagenUrl = "images/Banner_1.webp";
+      if (entrada.media$thumbnail) {
+        imagenUrl = entrada.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w500-h300-c/");
+      }
 
-          html += `
+      // Resumen limpio
+      var contenidoLimpio = limpiarContenido(contenidoRaw);
+      var divTemporal = document.createElement("div");
+      divTemporal.innerHTML = contenidoLimpio;
+      var textoPlano = divTemporal.innerText || "";
+      var resumen = textoPlano.length > 90 ? textoPlano.substring(0, 90) + "..." : textoPlano;
+
+      html += `
           <div class="bg-white rounded-xl shadow border border-slate-100 overflow-hidden hover:shadow-lg transition cursor-pointer group" onclick="abrirModalHome(${i})">
               <div class="relative h-48 overflow-hidden">
                   <img src="${imagenUrl}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
@@ -358,8 +270,8 @@
                   <span class="text-xs font-bold text-secondary uppercase tracking-wide">Leer más</span>
               </div>
           </div>`;
-      }
-      contenedor.innerHTML = html;
+    }
+    contenedor.innerHTML = html;
   }
 
   // Lógica simple del Modal para el Home
@@ -368,33 +280,49 @@
   const hBox = document.getElementById('home-modal-box');
 
   function abrirModalHome(index) {
-      var data = homeNoticias[index];
-      var img = "images/Banner_1.webp";
-      if (data.media$thumbnail) img = data.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w800-h400-c/");
-      
-      document.getElementById('home-modal-titulo').innerText = data.title.$t;
-      document.getElementById('home-modal-cuerpo').innerHTML = data.content.$t;
-      document.getElementById('home-modal-img').src = img;
+    var data = homeNoticias[index];
+    var img = "images/Banner_1.webp";
+    if (data.media$thumbnail) img = data.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w1000-h500-c/");
+    var fecha = new Date(data.published.$t).toLocaleDateString('es-CL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
-      hBackdrop.classList.remove('hidden');
-      hPanel.classList.remove('hidden');
-      setTimeout(() => {
-          hBackdrop.classList.remove('opacity-0');
-          hBox.classList.remove('scale-95', 'opacity-0');
-          hBox.classList.add('scale-100', 'opacity-100');
-      }, 10);
-      document.body.style.overflow = 'hidden';
+    var contenidoLimpio = limpiarContenido(data.content.$t);
+
+    document.getElementById('home-modal-titulo').innerText = data.title.$t;
+    document.getElementById('home-modal-cuerpo').innerHTML = contenidoLimpio;
+    document.getElementById('home-modal-img').src = img;
+
+    // Fecha en el modal
+    var displayFecha = document.getElementById('home-modal-fecha');
+    if (displayFecha) displayFecha.innerText = fecha;
+
+    // Ajustar imágenes
+    var imgs = document.getElementById('home-modal-cuerpo').getElementsByTagName('img');
+    for (var im of imgs) { im.style.maxWidth = "100%"; im.style.height = "auto"; }
+
+    hBackdrop.classList.remove('hidden');
+    hPanel.classList.remove('hidden');
+    setTimeout(() => {
+      hBackdrop.classList.remove('opacity-0');
+      hBox.classList.remove('scale-95', 'opacity-0');
+      hBox.classList.add('scale-100', 'opacity-100');
+    }, 10);
+    document.body.style.overflow = 'hidden';
   }
 
   function cerrarModalHome() {
-      hBackdrop.classList.add('opacity-0');
-      hBox.classList.remove('scale-100', 'opacity-100');
-      hBox.classList.add('scale-95', 'opacity-0');
-      setTimeout(() => {
-          hBackdrop.classList.add('hidden');
-          hPanel.classList.add('hidden');
-          document.body.style.overflow = 'auto';
-      }, 300);
+    hBox.classList.remove('scale-100', 'opacity-100');
+    hBox.classList.add('scale-95', 'opacity-0');
+    hBackdrop.classList.add('opacity-0');
+    setTimeout(() => {
+      hBackdrop.classList.add('hidden');
+      hPanel.classList.add('hidden');
+      document.body.style.overflow = '';
+    }, 300);
   }
+
+  // Cargar noticias desde Blogger
+  var script = document.createElement('script');
+  script.src = 'https://www.blogger.com/feeds/1449495790409748920/posts/default?alt=json-in-script&callback=cargarHomeNoticias';
+  document.body.appendChild(script);
+
 </script>
-<script src="https://feriaagricolamelipilla.blogspot.com/feeds/posts/default?alt=json-in-script&callback=cargarHomeNoticias&max-results=3"></script>

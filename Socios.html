@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,7 +25,7 @@
             dark: '#020617'
           },
           fontFamily: {
-            sans: ['Poppins','system-ui','sans-serif'],
+            sans: ['Poppins', 'system-ui', 'sans-serif'],
           }
         }
       }
@@ -37,880 +38,921 @@
 
   <!-- Iconos -->
   <script src="https://kit.fontawesome.com/c38e3367c6.js" crossorigin="anonymous"></script>
+  <script src="js/layout.js"></script>
 
 </head>
+
 <body class="bg-slate-50 text-slate-800 font-sans">
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    AOS.init({ duration: 800, once: true, offset: 80 });
-  });
-</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({ duration: 800, once: true, offset: 80 });
+      renderLayout("Socios");
+    });
+  </script>
 
-<header class="bg-primary text-white">
-  <div class="border-b border-emerald-700/80">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-      <a href="index.html" class="flex items-center gap-3">
-        <img src="images/logotipo.svg" alt="Feria Agrícola Melipilla" class="h-16 md:h-20">
-      </a>
-      <nav class="hidden md:flex items-center gap-6">
-        <a href="index.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Inicio</a>
-        <a href="Nosotros.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Nosotros</a>
-        <a href="Directiva.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Directiva</a>
-        <a href="Socios.html" class="text-sm font-medium text-white hover:text-white transition-colors border-b-2 border-white">Socios</a>
-        <a href="Noticias.html" class="text-sm font-medium text-white hover:text-white transition-colors">Noticias</a>
-        <a href="Galeria.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Galería</a>
-        <a href="Localizanos.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Localizanos</a>
-      </nav>
-      <button id="mobileMenuButton" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/30 hover:bg-white/10 transition" aria-label="Abrir menú">
-        <i class="fa-solid fa-bars text-lg"></i>
-      </button>
+  <!-- Header Placeholder -->
+  <div id="main-header"></div>
+
+  <!-- Hero Personalizado para Socios -->
+  <div class="bg-primary text-white border-b border-emerald-700/80">
+    <div class="max-w-6xl mx-auto px-4 py-10 md:py-14 flex items-center justify-between gap-6">
+      <div class="space-y-3 md:space-y-4" data-aos="fade-right">
+        <p class="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-emerald-200">
+          Feria Agrícola Melipilla
+        </p>
+        <h1 class="text-3xl md:text-4xl font-bold">Socios</h1>
+        <p class="text-sm md:text-base text-emerald-100 max-w-xl">
+          Nuestras socias y socios son el corazón de la feria y de la comunidad.
+        </p>
+      </div>
     </div>
   </div>
 
-  <!-- Menú móvil slide-in -->
-  <div id="mobileBackdrop" class="fixed inset-0 bg-black/40 hidden md:hidden"></div>
-  <aside id="mobileMenu" class="fixed inset-y-0 left-0 w-64 bg-primary/95 border-r border-emerald-600/60 transform -translate-x-full transition-transform duration-200 md:hidden z-50">
-    <div class="px-4 py-4 flex items-center justify-between border-b border-emerald-700">
-      <span class="font-semibold">Menú</span>
-      <button id="mobileMenuClose" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10" aria-label="Cerrar menú">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-    </div>
-    <nav class="px-3 py-4 space-y-1">
-      <a href="index.html" class="block py-2 px-4 text-base hover:bg-white/10 rounded-lg">Inicio</a>
-      <a href="Nosotros.html" class="block py-2 px-4 text-base hover:bg-white/10 rounded-lg">Nosotros</a>
-      <a href="Directiva.html" class="block py-2 px-4 text-base hover:bg-white/10 rounded-lg">Directiva</a>
-      <a href="Socios.html" class="block py-2 px-4 bg-white/10 rounded-lg">Socios</a>
-      <a href="Noticias.html" class="block py-2 px-4 text-base bg-white/10 rounded-lg">Noticias</a>
-      <a href="Galeria.html" class="block py-2 px-4 text-base hover:bg-white/10 rounded-lg">Galería</a>
-      <a href="Localizanos.html" class="block py-2 px-4 text-base hover:bg-white/10 rounded-lg">Localizanos</a>
-    </nav>
-  </aside>
+  <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
 
-  <div class="max-w-6xl mx-auto px-4 py-10 md:py-14 flex items-center justify-between gap-6">
-    <div class="space-y-3 md:space-y-4" data-aos="fade-right">
-      <p class="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-emerald-200">
-        Feria Agrícola Melipilla
-      </p>
-      <h1 class="text-3xl md:text-4xl font-bold">Socios</h1>
-      <p class="text-sm md:text-base text-emerald-100 max-w-xl">
-        Nuestras socias y socios son el corazón de la feria y de la comunidad.
-      </p>
-    </div>
-  </div>
-
-</header>
-
-<main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
-
-  <section data-aos="fade-up">
-    <!-- Buscador de socios -->
-    <div class="mb-8 max-w-md">
-      <label for="buscadorSocios" class="block text-sm font-medium text-slate-700">Buscar socio por nombre</label>
-      <div class="mt-1 relative rounded-md shadow-sm">
-        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-          <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
+    <section data-aos="fade-up">
+      <!-- Buscador de socios -->
+      <div class="mb-8 max-w-md">
+        <label for="buscadorSocios" class="block text-sm font-medium text-slate-700">Buscar socio por nombre</label>
+        <div class="mt-1 relative rounded-md shadow-sm">
+          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
+          </div>
+          <input id="buscadorSocios" type="text" oninput="filtrarSocios()"
+            class="block w-full rounded-xl border border-slate-300 bg-white py-2.5 pl-10 pr-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary shadow-sm"
+            placeholder="Ej: Juan Pérez, González, etc." />
         </div>
-        <input
-          id="buscadorSocios"
-          type="text"
-          oninput="filtrarSocios()"
-          class="block w-full rounded-xl border border-slate-300 bg-white py-2.5 pl-10 pr-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary shadow-sm"
-          placeholder="Ej: Juan Pérez, González, etc." />
       </div>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-
-      <!-- Cada tarjeta es un socio, ordenado por PRIMER APELLIDO -->
-
-     <a href="socios/alejandro-alfredo-acevedo-pontigo.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Alejandro Alfredo Acevedo Pontigo">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">A</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Alejandro Alfredo Acevedo Pontigo</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/eduardo-antonio-aguilar-villar.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Eduardo Antonio Aguilar Villar">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">E</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Eduardo Antonio Aguilar Villar</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/carla-fernanda-alvarado-maureira.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Carla Fernanda Alvarado Maureira">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">C</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Carla Fernanda Alvarado Maureira</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/alberto-enrique-alvarado-leon.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Alberto Enrique Alvarado León">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">A</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Alberto Enrique Alvarado León</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/priscila-estefania-alvarado-martinez.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Priscila Estefanía Alvarado Martínez">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">P</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Priscila Estefanía Alvarado Martínez</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/gino-armando-alvarez-meza.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Gino Armando Alvarez Meza">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">G</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Gino Armando Alvarez Meza</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/joshua-mauricio-araos-gonzalez.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Joshua Mauricio Araos Gonzalez">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">J</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Joshua Mauricio Araos Gonzalez</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/justin-alejandro-araos-gonzalez.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Justin Alejandro Araos Gonzalez">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">J</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Justin Alejandro Araos Gonzalez</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/luis-alberto-arratia-munoz.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Luis Alberto Arratia Muñoz">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">L</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Luis Alberto Arratia Muñoz</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/manuel-clemente-canas-tejos.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Manuel Clemente Cañas Tejos">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">M</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Manuel Clemente Cañas Tejos</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/anabella-del-rosario-carrasco-vargas.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Anabella del Rosario Carrasco Vargas">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">A</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Anabella del Rosario Carrasco Vargas</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/berta-alejandra-catalan-farias.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Berta Alejandra Catalán Farias">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">B</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Berta Alejandra Catalán Farias</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/javier-ignacio-catalan-cardoza.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Javier Ignacio Catalán Cardoza">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">J</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Javier Ignacio Catalán Cardoza</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/fresia-edith-caviedes-leyton.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Fresia Edith Caviedes Leyton">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">F</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Fresia Edith Caviedes Leyton</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/luz-elena-celis-monsefu.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Luz Elena Celis Monsefú">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">L</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Luz Elena Celis Monsefú</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/maria-ines-cespedes-arce.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Maria Inés Céspedes Arce">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">M</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Maria Inés Céspedes Arce</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/manuel-enrique-chandia-cordova.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Manuel Enrique Chandia Córdova">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">M</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Manuel Enrique Chandia Córdova</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/yesenia-adriana-chandia-santis.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Yesenia Adriana Chandia Santis">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">Y</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Yesenia Adriana Chandia Santis</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/grisel-elvira-cortes-gonzalez.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Grisel Elvira Cortes Gonzalez">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">G</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Grisel Elvira Cortes Gonzalez</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/cecilia-de-las-mercedes-droguett-caceres.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Cecilia de las Mercedes Droguett Cáceres">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">C</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Cecilia de las Mercedes Droguett Cáceres</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/luis-roberto-duarte-mendoza.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Luis Roberto Duarte Mendoza">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">L</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Luis Roberto Duarte Mendoza</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/claudia-de-las-mercedes-elgueta-perez.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Claudia de las Mercedes Elgueta Perez">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">C</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Claudia de las Mercedes Elgueta Perez</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/romina-ester-espinosa-maldonado.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Romina Ester Espinosa Maldonado">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">R</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Romina Ester Espinosa Maldonado</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/leyla-espinosa-frias.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Leyla Espinosa Frías">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">L</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Leyla Espinosa Frías</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/victor-emilio-escalante-guala.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Victor Emilio Escalante Guala">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">V</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Victor Emilio Escalante Guala</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/fernando-adrian-ferreira-farias.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Fernando Adrian Ferreira Farias">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">F</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Fernando Adrian Ferreira Farias</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/etelvina-de-las-mercedes-fuentes-aldana.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Etelvina de las Mercedes Fuentes Aldana">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">E</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Etelvina de las Mercedes Fuentes Aldana</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/emilia-del-carmen-fuentes-acuna.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Emilia del Carmen Fuentes Acuña">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">E</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Emilia del Carmen Fuentes Acuña</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/ana-paulina-gonzalez-becerra.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Ana Paulina González Becerra">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">A</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Ana Paulina González Becerra</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/jessica-patricia-gonzalez-ampuero.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Jessica Patricia González Ampuero">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">J</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Jessica Patricia González Ampuero</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/carlos-alberto-gonzalez-grinen.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Carlos Alberto Gonzalez Griñen">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">C</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Carlos Alberto Gonzalez Griñen</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/francisca-alejandra-gonzalez-becerra.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Francisca Alejandra Gonzalez Becerra">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">F</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Francisca Alejandra Gonzalez Becerra</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/lilian-lorena-herrada-dayller.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Lilian Lorena Herrada Dayller">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">L</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Lilian Lorena Herrada Dayller</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/elda-del-carmen-huenchullan-piutrin.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Elda del Carmen Huenchullán Piutrin">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">E</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Elda del Carmen Huenchullán Piutrin</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/marta-susana-huerta-gomez.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Marta Susana Huerta Gomez">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">M</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Marta Susana Huerta Gomez</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/valentina-antonia-hurtado-ruminao.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Valentina Antonia Hurtado Ruminao">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">V</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Valentina Antonia Hurtado Ruminao</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/hans-carlos-ibarra-rojas.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Hans Carlos Ibarra Rojas">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">H</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Hans Carlos Ibarra Rojas</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/marian-romane-leon-sepulveda.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Marian Romane Leon Sepúlveda">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">M</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Marian Romane Leon Sepúlveda</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/roberto-francisco-maldonado-carrasco.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Roberto Francisco Maldonado Carrasco">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">R</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Roberto Francisco Maldonado Carrasco</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/jose-ismael-manzo-garate.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Jose Ismael Manzo Garate">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">J</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Jose Ismael Manzo Garate</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/alondra-martinez-bello.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Alondra Martinez Bello">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">A</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Alondra Martinez Bello</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/emanuel-david-mateluna-soto.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Emanuel David Mateluna Soto">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">E</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Emanuel David Mateluna Soto</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/cristian-alexis-maureira-perez.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Cristian Alexis Maureira Perez">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">C</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Cristian Alexis Maureira Perez</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/brian-alexis-moreno-santis.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Brian Alexis Moreno Santis">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">B</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Brian Alexis Moreno Santis</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/claudio-cristian-nunez-pena.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Claudio Cristian Nuñez Peña">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">C</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Claudio Cristian Nuñez Peña</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/luis-reynaldo-olivares-santibanez.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Luis Reynaldo Olivares Santibañez">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">L</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Luis Reynaldo Olivares Santibañez</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/antonia-ignacia-olmedo-zuniga.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Antonia Ignacia Olmedo Zuñiga">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">A</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Antonia Ignacia Olmedo Zuñiga</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/victor-ignacio-olmedo-vilchez.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Victor Ignacio Olmedo Vilchez">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">V</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Victor Ignacio Olmedo Vilchez</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/leonardo-manuel-otts-arellano.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Leonardo Manuel Otts Arellano">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">L</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Leonardo Manuel Otts Arellano</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/rosa-otts-riveros.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Rosa Otts Riveros">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">R</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Rosa Otts Riveros</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/juan-carlos-perez-armijo.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Juan Carlos Perez Armijo">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">J</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Juan Carlos Perez Armijo</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/luz-marina-perez-armijo.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Luz Marina Perez Armijo">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">L</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Luz Marina Perez Armijo</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/jeniffer-paz-ramirez-mardones.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Jeniffer Paz Ramirez Mardones">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">J</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Jeniffer Paz Ramirez Mardones</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/walter-patricio-ramirez-rojas.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Walter Patricio Ramírez Rojas">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">W</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Walter Patricio Ramírez Rojas</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/stephania-edith-reyes-caviedes.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Stephania Edith Reyes Caviedes">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">S</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Stephania Edith Reyes Caviedes</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/bryan-esteban-reyes-caviedes.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Bryan Esteban Reyes Caviedes">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">B</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Bryan Esteban Reyes Caviedes</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/amalia-elda-rios-huenchullan.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Amalia Elda Ríos Huenchullán">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">A</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Amalia Elda Ríos Huenchullán</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="Socios/manuel-antonio-rios-santis.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Manuel Antonio Ríos Santis">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">M</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Manuel Antonio Ríos Santis</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/hilda-riveros-tapia.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Hilda Riveros Tapia">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">H</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Hilda Riveros Tapia</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/maria-luisa-rojas-morales.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="María Luisa Rojas Morales">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">M</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">María Luisa Rojas Morales</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/victor-hugo-rojas-adasme.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Victor Hugo Rojas Adasme">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">V</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Victor Hugo Rojas Adasme</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/jose-jacob-rojas-encina.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Jose Jacob Rojas Encina">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">J</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Jose Jacob Rojas Encina</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/adriana-ruminao-munoz.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Adriana Ruminao Muñoz">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">A</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Adriana Ruminao Muñoz</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/cecilia-del-carmen-ruminao-munoz.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Cecilia del Carmen Ruminao Muñoz">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">C</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Cecilia del Carmen Ruminao Muñoz</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/marta-raquel-salas-ortiz.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Marta Raquel Salas Ortiz">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">M</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Marta Raquel Salas Ortiz</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/mariela-del-carmen-santis-mendoza.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Mariela del Carmen Santis Mendoza">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">M</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Mariela del Carmen Santis Mendoza</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/maritza-loreto-santis-gatica.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Maritza Loreto Santis Gatica">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">M</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Maritza Loreto Santis Gatica</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/ana-luisa-santibanez-carrasco.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Ana Luisa Santibañez Carrasco">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">A</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Ana Luisa Santibañez Carrasco</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/caterin-magdalena-santibanez-carrasco.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Caterin Magdalena Santibañez Carrasco">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">C</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Caterin Magdalena Santibañez Carrasco</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/luis-antonio-santibanez-salas.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Luis Antonio Santibañez Salas">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">L</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Luis Antonio Santibañez Salas</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/luis-andres-soto-munoz.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Luis Andrés Soto Muñoz">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">L</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Luis Andrés Soto Muñoz</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/juana-isabel-surez-viveros.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Juana Isabel Suárez Viveros">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">J</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Juana Isabel Suárez Viveros</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/marianela-irene-surez-viveros.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Marianela Irene Suárez Viveros">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">M</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Marianela Irene Suárez Viveros</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/camila-ignacia-urbina-barros.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Camila Ignacia Urbina Barros">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">C</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Camila Ignacia Urbina Barros</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/eduardo-nicolas-valencia-hernandez.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Eduardo Nicolás Valencia Hernández">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">E</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Eduardo Nicolás Valencia Hernández</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/ximena-del-rosario-valdovinos-herrera.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Ximena del Rosario Valdovinos Herrera">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">X</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Ximena del Rosario Valdovinos Herrera</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/raul-angel-valderrama-reyes.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Raul Ángel Valderrama Reyes">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">R</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Raul Ángel Valderrama Reyes</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/juan-ramon-vasquez-carreno.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Juan Ramón Vasquez Carreño">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">J</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Juan Ramón Vasquez Carreño</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/ramon-alexis-vasquez-silva.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Ramón Alexis Vasquez Silva">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">R</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Ramón Alexis Vasquez Silva</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/marcela-yanina-veliz-munoz.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Marcela Yanina Veliz Muñoz">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">M</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Marcela Yanina Veliz Muñoz</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/joshua-alexander-zuniga-aguilar.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Joshua Alexander Zuñiga Aguilar">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">J</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Joshua Alexander Zuñiga Aguilar</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/luis-fernando-zuniga-pavez.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Luis Fernando Zuñiga Pavez">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">L</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Luis Fernando Zuñiga Pavez</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-<a href="socios/victor-luis-zuniga-retamal.html" class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition" data-nombre="Victor Luis Zuñiga Retamal">
-  <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
-    <span class="text-xl font-semibold text-green-700">V</span>
-  </div>
-  <h3 class="text-base font-semibold text-slate-900">Victor Luis Zuñiga Retamal</h3>
-  <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
-</a>
-
-    </div>
-  </section>
-
-</main>
-
-<footer class="relative mt-20 text-slate-100">
-
-  <!-- Fondo decorativo con textura -->
-  <div class="absolute inset-0 bg-gradient-to-br from-primary to-emerald-900 opacity-95"></div>
-
-  <!-- Patrón tipo hojas -->
-  <div class="absolute inset-0 opacity-10"
-       style="background-image: url('data:image/svg+xml,%3Csvg width=\'120\' height=\'120\' viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M60 10 C40 40 40 80 60 110 C80 80 80 40 60 10 Z\' fill=\'%23ffffff\'/%3E%3C/svg%3E'); background-size: 180px;">
-  </div>
-
-  <!-- Contenido -->
-  <div class="relative max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-3">
-
-    <!-- Columna 1 -->
-   <div class="space-y-5">
-  <a href="index.html" class="flex items-center gap-3 transition-opacity hover:opacity-80">
-      
-      <img src="images/logotipo.svg" alt="Logo Feria Agrícola" class="h-20 drop-shadow-lg brightness-110">
-      
-  </a> <p class="text-sm text-emerald-100 leading-relaxed max-w-sm">
-    Somos la Asociación Gremial Feria Agrícola Melipilla, dedicada al fortalecimiento,
-    organización y representación de nuestros feriantes y su comunidad.
-  </p>
-</div>
-
-    <!-- Columna 2 -->
-    <div class="space-y-5">
-      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-200">Enlaces rápidos</h4>
-      <ul class="space-y-2 text-sm">
-        <li><a href="Nosotros.html" class="hover:text-white hover:underline">Nosotros</a></li>
-        <li><a href="Directiva.html" class="hover:text-white hover:underline">Directiva</a></li>
-        <li><a href="Socios.html" class="hover:text-white hover:underline">Socios</a></li>
-        <li><a href="Noticias.html" class="hover:text-white hover:underline">Noticias</a></li>
-        <li><a href="Galeria.html" class="hover:text-white hover:underline">Galería</a></li>
-        <li><a href="Localizanos.html" class="hover:text-white hover:underline">Localízanos</a></li>
-      </ul>
-    </div>
-
-    <!-- Columna 3 -->
-    <div class="space-y-5">
-      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-200">Síguenos</h4>
-
-      <div class="flex gap-5">
-        <a href="https://www.facebook.com/asoc.feria.agricola.melipilla" target="_blank"
-           class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
-          <i class="fa-brands fa-facebook-f text-xl"></i>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        <!-- Cada tarjeta es un socio, ordenado por PRIMER APELLIDO -->
+
+        <a href="socios/alejandro-alfredo-acevedo-pontigo.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Alejandro Alfredo Acevedo Pontigo">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">A</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Alejandro Alfredo Acevedo Pontigo</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
         </a>
 
-        <a href="https://www.instagram.com/asoc.feria.agricola.melipilla" target="_blank"
-           class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
-          <i class="fa-brands fa-instagram text-xl"></i>
+        <a href="socios/eduardo-antonio-aguilar-villar.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Eduardo Antonio Aguilar Villar">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">E</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Eduardo Antonio Aguilar Villar</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
         </a>
-      </div>
 
-      <div class="pt-3">
-        <p class="text-sm text-emerald-100">Correo de contacto:</p>
-        <a href="mailto:a.g.feria.agricola.m@gmail.com"
-           class="text-lime-200 hover:text-white underline text-sm">
-          a.g.feria.agricola.m@gmail.com
+        <a href="socios/carla-fernanda-alvarado-maureira.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Carla Fernanda Alvarado Maureira">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">C</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Carla Fernanda Alvarado Maureira</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
         </a>
+
+        <a href="socios/alberto-enrique-alvarado-leon.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Alberto Enrique Alvarado León">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">A</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Alberto Enrique Alvarado León</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/priscila-estefania-alvarado-martinez.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Priscila Estefanía Alvarado Martínez">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">P</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Priscila Estefanía Alvarado Martínez</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/gino-armando-alvarez-meza.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Gino Armando Alvarez Meza">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">G</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Gino Armando Alvarez Meza</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/joshua-mauricio-araos-gonzalez.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Joshua Mauricio Araos Gonzalez">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">J</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Joshua Mauricio Araos Gonzalez</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/justin-alejandro-araos-gonzalez.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Justin Alejandro Araos Gonzalez">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">J</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Justin Alejandro Araos Gonzalez</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/luis-alberto-arratia-munoz.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Luis Alberto Arratia Muñoz">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">L</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Luis Alberto Arratia Muñoz</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/manuel-clemente-canas-tejos.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Manuel Clemente Cañas Tejos">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">M</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Manuel Clemente Cañas Tejos</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/anabella-del-rosario-carrasco-vargas.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Anabella del Rosario Carrasco Vargas">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">A</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Anabella del Rosario Carrasco Vargas</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/berta-alejandra-catalan-farias.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Berta Alejandra Catalán Farias">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">B</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Berta Alejandra Catalán Farias</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/javier-ignacio-catalan-cardoza.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Javier Ignacio Catalán Cardoza">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">J</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Javier Ignacio Catalán Cardoza</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/fresia-edith-caviedes-leyton.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Fresia Edith Caviedes Leyton">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">F</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Fresia Edith Caviedes Leyton</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/luz-elena-celis-monsefu.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Luz Elena Celis Monsefú">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">L</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Luz Elena Celis Monsefú</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/maria-ines-cespedes-arce.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Maria Inés Céspedes Arce">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">M</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Maria Inés Céspedes Arce</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/manuel-enrique-chandia-cordova.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Manuel Enrique Chandia Córdova">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">M</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Manuel Enrique Chandia Córdova</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/yesenia-adriana-chandia-santis.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Yesenia Adriana Chandia Santis">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">Y</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Yesenia Adriana Chandia Santis</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/grisel-elvira-cortes-gonzalez.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Grisel Elvira Cortes Gonzalez">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">G</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Grisel Elvira Cortes Gonzalez</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/cecilia-de-las-mercedes-droguett-caceres.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Cecilia de las Mercedes Droguett Cáceres">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">C</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Cecilia de las Mercedes Droguett Cáceres</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/luis-roberto-duarte-mendoza.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Luis Roberto Duarte Mendoza">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">L</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Luis Roberto Duarte Mendoza</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/claudia-de-las-mercedes-elgueta-perez.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Claudia de las Mercedes Elgueta Perez">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">C</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Claudia de las Mercedes Elgueta Perez</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/romina-ester-espinosa-maldonado.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Romina Ester Espinosa Maldonado">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">R</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Romina Ester Espinosa Maldonado</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/leyla-espinosa-frias.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Leyla Espinosa Frías">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">L</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Leyla Espinosa Frías</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/victor-emilio-escalante-guala.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Victor Emilio Escalante Guala">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">V</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Victor Emilio Escalante Guala</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/fernando-adrian-ferreira-farias.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Fernando Adrian Ferreira Farias">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">F</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Fernando Adrian Ferreira Farias</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/etelvina-de-las-mercedes-fuentes-aldana.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Etelvina de las Mercedes Fuentes Aldana">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">E</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Etelvina de las Mercedes Fuentes Aldana</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/emilia-del-carmen-fuentes-acuna.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Emilia del Carmen Fuentes Acuña">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">E</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Emilia del Carmen Fuentes Acuña</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/ana-paulina-gonzalez-becerra.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Ana Paulina González Becerra">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">A</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Ana Paulina González Becerra</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/jessica-patricia-gonzalez-ampuero.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Jessica Patricia González Ampuero">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">J</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Jessica Patricia González Ampuero</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/carlos-alberto-gonzalez-grinen.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Carlos Alberto Gonzalez Griñen">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">C</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Carlos Alberto Gonzalez Griñen</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/francisca-alejandra-gonzalez-becerra.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Francisca Alejandra Gonzalez Becerra">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">F</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Francisca Alejandra Gonzalez Becerra</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/lilian-lorena-herrada-dayller.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Lilian Lorena Herrada Dayller">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">L</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Lilian Lorena Herrada Dayller</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/elda-del-carmen-huenchullan-piutrin.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Elda del Carmen Huenchullán Piutrin">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">E</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Elda del Carmen Huenchullán Piutrin</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/marta-susana-huerta-gomez.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Marta Susana Huerta Gomez">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">M</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Marta Susana Huerta Gomez</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/valentina-antonia-hurtado-ruminao.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Valentina Antonia Hurtado Ruminao">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">V</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Valentina Antonia Hurtado Ruminao</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/hans-carlos-ibarra-rojas.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Hans Carlos Ibarra Rojas">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">H</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Hans Carlos Ibarra Rojas</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/marian-romane-leon-sepulveda.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Marian Romane Leon Sepúlveda">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">M</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Marian Romane Leon Sepúlveda</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/roberto-francisco-maldonado-carrasco.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Roberto Francisco Maldonado Carrasco">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">R</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Roberto Francisco Maldonado Carrasco</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/jose-ismael-manzo-garate.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Jose Ismael Manzo Garate">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">J</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Jose Ismael Manzo Garate</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/alondra-martinez-bello.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Alondra Martinez Bello">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">A</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Alondra Martinez Bello</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/emanuel-david-mateluna-soto.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Emanuel David Mateluna Soto">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">E</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Emanuel David Mateluna Soto</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/cristian-alexis-maureira-perez.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Cristian Alexis Maureira Perez">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">C</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Cristian Alexis Maureira Perez</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/brian-alexis-moreno-santis.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Brian Alexis Moreno Santis">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">B</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Brian Alexis Moreno Santis</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/claudio-cristian-nunez-pena.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Claudio Cristian Nuñez Peña">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">C</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Claudio Cristian Nuñez Peña</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/luis-reynaldo-olivares-santibanez.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Luis Reynaldo Olivares Santibañez">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">L</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Luis Reynaldo Olivares Santibañez</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/antonia-ignacia-olmedo-zuniga.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Antonia Ignacia Olmedo Zuñiga">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">A</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Antonia Ignacia Olmedo Zuñiga</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/victor-ignacio-olmedo-vilchez.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Victor Ignacio Olmedo Vilchez">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">V</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Victor Ignacio Olmedo Vilchez</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/leonardo-manuel-otts-arellano.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Leonardo Manuel Otts Arellano">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">L</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Leonardo Manuel Otts Arellano</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/rosa-otts-riveros.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Rosa Otts Riveros">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">R</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Rosa Otts Riveros</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/juan-carlos-perez-armijo.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Juan Carlos Perez Armijo">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">J</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Juan Carlos Perez Armijo</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/luz-marina-perez-armijo.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Luz Marina Perez Armijo">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">L</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Luz Marina Perez Armijo</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/jeniffer-paz-ramirez-mardones.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Jeniffer Paz Ramirez Mardones">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">J</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Jeniffer Paz Ramirez Mardones</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/walter-patricio-ramirez-rojas.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Walter Patricio Ramírez Rojas">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">W</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Walter Patricio Ramírez Rojas</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/stephania-edith-reyes-caviedes.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Stephania Edith Reyes Caviedes">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">S</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Stephania Edith Reyes Caviedes</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/bryan-esteban-reyes-caviedes.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Bryan Esteban Reyes Caviedes">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">B</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Bryan Esteban Reyes Caviedes</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/amalia-elda-rios-huenchullan.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Amalia Elda Ríos Huenchullán">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">A</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Amalia Elda Ríos Huenchullán</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="Socios/manuel-antonio-rios-santis.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Manuel Antonio Ríos Santis">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">M</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Manuel Antonio Ríos Santis</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/hilda-riveros-tapia.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Hilda Riveros Tapia">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">H</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Hilda Riveros Tapia</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/maria-luisa-rojas-morales.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="María Luisa Rojas Morales">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">M</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">María Luisa Rojas Morales</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/victor-hugo-rojas-adasme.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Victor Hugo Rojas Adasme">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">V</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Victor Hugo Rojas Adasme</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/jose-jacob-rojas-encina.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Jose Jacob Rojas Encina">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">J</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Jose Jacob Rojas Encina</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/adriana-ruminao-munoz.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Adriana Ruminao Muñoz">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">A</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Adriana Ruminao Muñoz</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/cecilia-del-carmen-ruminao-munoz.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Cecilia del Carmen Ruminao Muñoz">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">C</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Cecilia del Carmen Ruminao Muñoz</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/marta-raquel-salas-ortiz.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Marta Raquel Salas Ortiz">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">M</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Marta Raquel Salas Ortiz</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/mariela-del-carmen-santis-mendoza.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Mariela del Carmen Santis Mendoza">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">M</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Mariela del Carmen Santis Mendoza</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/maritza-loreto-santis-gatica.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Maritza Loreto Santis Gatica">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">M</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Maritza Loreto Santis Gatica</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/ana-luisa-santibanez-carrasco.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Ana Luisa Santibañez Carrasco">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">A</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Ana Luisa Santibañez Carrasco</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/caterin-magdalena-santibanez-carrasco.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Caterin Magdalena Santibañez Carrasco">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">C</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Caterin Magdalena Santibañez Carrasco</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/luis-antonio-santibanez-salas.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Luis Antonio Santibañez Salas">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">L</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Luis Antonio Santibañez Salas</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/luis-andres-soto-munoz.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Luis Andrés Soto Muñoz">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">L</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Luis Andrés Soto Muñoz</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/juana-isabel-surez-viveros.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Juana Isabel Suárez Viveros">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">J</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Juana Isabel Suárez Viveros</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/marianela-irene-surez-viveros.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Marianela Irene Suárez Viveros">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">M</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Marianela Irene Suárez Viveros</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/camila-ignacia-urbina-barros.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Camila Ignacia Urbina Barros">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">C</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Camila Ignacia Urbina Barros</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/eduardo-nicolas-valencia-hernandez.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Eduardo Nicolás Valencia Hernández">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">E</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Eduardo Nicolás Valencia Hernández</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/ximena-del-rosario-valdovinos-herrera.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Ximena del Rosario Valdovinos Herrera">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">X</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Ximena del Rosario Valdovinos Herrera</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/raul-angel-valderrama-reyes.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Raul Ángel Valderrama Reyes">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">R</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Raul Ángel Valderrama Reyes</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/juan-ramon-vasquez-carreno.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Juan Ramón Vasquez Carreño">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">J</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Juan Ramón Vasquez Carreño</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/ramon-alexis-vasquez-silva.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Ramón Alexis Vasquez Silva">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">R</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Ramón Alexis Vasquez Silva</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/marcela-yanina-veliz-munoz.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Marcela Yanina Veliz Muñoz">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">M</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Marcela Yanina Veliz Muñoz</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/joshua-alexander-zuniga-aguilar.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Joshua Alexander Zuñiga Aguilar">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">J</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Joshua Alexander Zuñiga Aguilar</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/luis-fernando-zuniga-pavez.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Luis Fernando Zuñiga Pavez">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">L</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Luis Fernando Zuñiga Pavez</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
+        <a href="socios/victor-luis-zuniga-retamal.html"
+          class="tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition"
+          data-nombre="Victor Luis Zuñiga Retamal">
+          <div class="w-16 h-16 rounded-full bg-green-200 flex items-center justify-center mb-4">
+            <span class="text-xl font-semibold text-green-700">V</span>
+          </div>
+          <h3 class="text-base font-semibold text-slate-900">Victor Luis Zuñiga Retamal</h3>
+          <p class="text-xs text-slate-500 mt-1">Socio/a de la Asociación</p>
+        </a>
+
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Línea inferior -->
- <div class="relative border-t border-emerald-700/60 bg-emerald-950/60 backdrop-blur-sm">
-    <div class="max-w-7xl mx-auto px-6 py-4 text-center text-xs text-emerald-300/80">
-      © 2025 Asociación Gremial Feria Agrícola Melipilla — Todos los derechos reservados.
-    </div>
-  </div>
-</footer>
+  </main>
 
-<script>
-  function filtrarSocios() {
-    const input = document.getElementById('buscadorSocios');
-    if (!input) return;
+  <div id="main-footer"></div>
 
-    const filtro = input.value
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '');
+  <script>
+    function filtrarSocios() {
+      const input = document.getElementById('buscadorSocios');
+      if (!input) return;
 
-    const cards = document.querySelectorAll('.tarjeta-socio');
-
-    cards.forEach(card => {
-      const nombre = (card.getAttribute('data-nombre') || '')
+      const filtro = input.value
         .toLowerCase()
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '');
 
-      if (!filtro || nombre.includes(filtro)) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  }
-</script>
+      const cards = document.querySelectorAll('.tarjeta-socio');
 
-<script>
-  // Menú móvil slide-in
-  const mobileBtn = document.getElementById('mobileMenuButton');
-  const mobileClose = document.getElementById('mobileMenuClose');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const mobileBackdrop = document.getElementById('mobileBackdrop');
+      cards.forEach(card => {
+        const nombre = (card.getAttribute('data-nombre') || '')
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '');
 
-  function openMenu() {
-    mobileMenu.classList.remove('-translate-x-full');
-    mobileBackdrop.classList.remove('hidden');
-  }
-  function closeMenu() {
-    mobileMenu.classList.add('-translate-x-full');
-    mobileBackdrop.classList.add('hidden');
-  }
+        if (!filtro || nombre.includes(filtro)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
 
-  if (mobileBtn) mobileBtn.addEventListener('click', openMenu);
-  if (mobileClose) mobileClose.addEventListener('click', closeMenu);
-  if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMenu);
-</script>
+
 
 </body>
+
 </html>

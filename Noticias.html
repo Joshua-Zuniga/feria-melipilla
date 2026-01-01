@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Noticias - Feria Agrícola Melipilla</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -24,7 +25,7 @@
             dark: '#020617'
           },
           fontFamily: {
-            sans: ['Poppins','system-ui','sans-serif'],
+            sans: ['Poppins', 'system-ui', 'sans-serif'],
           }
         }
       }
@@ -34,216 +35,157 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="https://kit.fontawesome.com/c38e3367c6.js" crossorigin="anonymous"></script>
+
+  <!-- Layout Script -->
+  <script src="js/layout.js"></script>
+
+  <style>
+    /* Forzar centrado de imágenes y videos en el contenido de la noticia */
+    #modal-cuerpo img,
+    #modal-cuerpo iframe,
+    #modal-cuerpo video {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
+    }
+
+    /* Ajustes para iframes (videos de youtube/blogger) */
+    #modal-cuerpo iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      height: auto;
+    }
+  </style>
 </head>
+
 <body class="bg-slate-50 text-slate-800 font-sans">
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => { AOS.init({ duration: 800, once: true, offset: 80 }); });
-</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({ duration: 800, once: true, offset: 80 });
+      renderLayout("Noticias");
+    });
+  </script>
 
-<header class="bg-primary text-white">
-  <div class="border-b border-emerald-700/80">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-      <a href="index.html" class="flex items-center gap-3">
-        <img src="images/logotipo.svg" alt="Feria Agrícola Melipilla" class="h-16 md:h-20">
-      </a>
-      <nav class="hidden md:flex items-center gap-6">
-        <a href="index.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Inicio</a>
-        <a href="Nosotros.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Nosotros</a>
-        <a href="Directiva.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Directiva</a>
-        <a href="Socios.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Socios</a>
-        <a href="Noticias.html" class="text-sm font-medium text-white hover:text-white transition-colors border-b-2 border-white">Noticias</a>
-        <a href="Galeria.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Galería</a>
-        <a href="Localizanos.html" class="text-sm font-medium text-white/80 hover:text-white transition-colors">Localizanos</a>
-      </nav>
-      <button id="mobileMenuButton" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/30 hover:bg-white/10 transition">
-        <i class="fa-solid fa-bars text-lg"></i>
-      </button>
+  <!-- Header Placeholder -->
+  <div id="main-header"></div>
+
+  <!-- Hero Personalizado para Noticias -->
+  <div class="bg-primary text-white border-b border-emerald-700/80">
+    <div class="max-w-6xl mx-auto px-4 py-10 md:py-14 flex items-center justify-between gap-6">
+      <div class="space-y-3 md:space-y-4" data-aos="fade-right">
+        <p class="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-emerald-200">
+          Actualidad
+        </p>
+        <h1 class="text-3xl md:text-4xl font-bold">Nuestras Noticias</h1>
+        <p class="text-sm md:text-base text-emerald-100 max-w-xl">
+          Infórmate de las últimas novedades, eventos y comunicados de la asociación.
+        </p>
+      </div>
     </div>
   </div>
 
-  <div id="mobileBackdrop" class="fixed inset-0 bg-black/40 hidden md:hidden z-40"></div>
-  <aside id="mobileMenu" class="fixed inset-y-0 left-0 w-64 bg-primary/95 border-r border-emerald-600/60 transform -translate-x-full transition-transform duration-200 md:hidden z-50">
-    <div class="px-4 py-4 flex items-center justify-between border-b border-emerald-700">
-      <span class="font-semibold">Menú</span>
-      <button id="mobileMenuClose" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-    </div>
-    <nav class="px-3 py-4 space-y-1">
-      <a href="index.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Inicio</a>
-      <a href="Nosotros.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Nosotros</a>
-      <a href="Directiva.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Directiva</a>
-      <a href="Socios.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Socios</a>
-      <a href="Noticias.html" class="block py-2 px-4 bg-white/10 rounded-lg">Noticias</a>
-      <a href="Galeria.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Galeria</a>
-      <a href="Localizanos.html" class="block py-2 px-4 hover:bg-white/10 rounded-lg">Localízanos</a>
-    </nav>
-  </aside>
-
-  <div class="max-w-6xl mx-auto px-4 py-10 md:py-14 flex items-center justify-between gap-6">
-    <div class="space-y-3 md:space-y-4" data-aos="fade-right">
-      <p class="text-xs md:text-sm font-semibold tracking-[0.25em] uppercase text-emerald-200">
-        Actualidad
-      </p>
-      <h1 class="text-3xl md:text-4xl font-bold">Nuestras Noticias</h1>
-      <p class="text-sm md:text-base text-emerald-100 max-w-xl">
-        Infórmate de las últimas novedades, eventos y comunicados de la asociación.
-      </p>
-    </div>
-  </div>
-</header>
-
-<main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16 min-h-[50vh]">
-    
+  <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16 min-h-[50vh]">
     <div id="grilla-noticias" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="col-span-full flex flex-col justify-center items-center py-20 text-slate-400">
-            <i class="fa-solid fa-circle-notch fa-spin text-4xl text-primary mb-4"></i>
-            <p>Cargando novedades...</p>
-        </div>
-    </div>
-
-</main>
-
-<div id="modal-backdrop" class="fixed inset-0 bg-black/60 z-50 hidden transition-opacity opacity-0 backdrop-blur-sm" onclick="cerrarModal()"></div>
-<div id="modal-panel" class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none hidden p-4">
-    <div class="bg-white w-full max-w-4xl h-[90vh] rounded-2xl shadow-2xl flex flex-col pointer-events-auto transform transition-all scale-95 opacity-0 duration-300" id="modal-content-box">
-        <div class="relative shrink-0 h-64 md:h-80">
-            <button onclick="cerrarModal()" class="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center z-20 transition-colors">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-            <img id="modal-img" src="" class="w-full h-full object-cover rounded-t-2xl bg-slate-200">
-            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6 pt-20">
-                <span id="modal-fecha" class="inline-block px-3 py-1 bg-secondary text-white text-xs font-bold rounded-full mb-2 uppercase tracking-wider"></span>
-                <h2 id="modal-titulo" class="text-2xl md:text-3xl font-bold text-white leading-tight shadow-sm"></h2>
-            </div>
-        </div>
-        <div class="overflow-y-auto p-6 md:p-10 bg-white rounded-b-2xl">
-            <div id="modal-cuerpo" class="prose prose-green prose-lg max-w-none text-slate-700 font-sans"></div>
-        </div>
-    </div>
-</div>
-
-<footer class="relative mt-20 text-slate-100">
-
-  <!-- Fondo decorativo con textura -->
-  <div class="absolute inset-0 bg-gradient-to-br from-primary to-emerald-900 opacity-95"></div>
-
-  <!-- Patrón tipo hojas -->
-  <div class="absolute inset-0 opacity-10"
-       style="background-image: url('data:image/svg+xml,%3Csvg width=\'120\' height=\'120\' viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M60 10 C40 40 40 80 60 110 C80 80 80 40 60 10 Z\' fill=\'%23ffffff\'/%3E%3C/svg%3E'); background-size: 180px;">
-  </div>
-
-  <!-- Contenido -->
-  <div class="relative max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-3">
-
-    <!-- Columna 1 -->
-   <div class="space-y-5">
-  <a href="index.html" class="flex items-center gap-3 transition-opacity hover:opacity-80">
-      
-      <img src="images/logotipo.svg" alt="Logo Feria Agrícola" class="h-20 drop-shadow-lg brightness-110">
-      
-  </a> <p class="text-sm text-emerald-100 leading-relaxed max-w-sm">
-    Somos la Asociación Gremial Feria Agrícola Melipilla, dedicada al fortalecimiento,
-    organización y representación de nuestros feriantes y su comunidad.
-  </p>
-</div>
-
-    <!-- Columna 2 -->
-    <div class="space-y-5">
-      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-200">Enlaces rápidos</h4>
-      <ul class="space-y-2 text-sm">
-        <li><a href="Nosotros.html" class="hover:text-white hover:underline">Nosotros</a></li>
-        <li><a href="Directiva.html" class="hover:text-white hover:underline">Directiva</a></li>
-        <li><a href="Socios.html" class="hover:text-white hover:underline">Socios</a></li>
-        <li><a href="Noticias.html" class="hover:text-white hover:underline">Noticias</a></li>
-        <li><a href="Galeria.html" class="hover:text-white hover:underline">Galería</a></li>
-        <li><a href="Localizanos.html" class="hover:text-white hover:underline">Localízanos</a></li>
-      </ul>
-    </div>
-
-    <!-- Columna 3 -->
-    <div class="space-y-5">
-      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-200">Síguenos</h4>
-
-      <div class="flex gap-5">
-        <a href="https://www.facebook.com/asoc.feria.agricola.melipilla" target="_blank"
-           class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
-          <i class="fa-brands fa-facebook-f text-xl"></i>
-        </a>
-
-        <a href="https://www.instagram.com/asoc.feria.agricola.melipilla" target="_blank"
-           class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
-          <i class="fa-brands fa-instagram text-xl"></i>
-        </a>
+      <div class="col-span-full flex flex-col justify-center items-center py-20 text-slate-400">
+        <i class="fa-solid fa-circle-notch fa-spin text-4xl text-primary mb-4"></i>
+        <p>Cargando novedades...</p>
       </div>
+    </div>
+  </main>
 
-      <div class="pt-3">
-        <p class="text-sm text-emerald-100">Correo de contacto:</p>
-        <a href="mailto:a.g.feria.agricola.m@gmail.com"
-           class="text-lime-200 hover:text-white underline text-sm">
-          a.g.feria.agricola.m@gmail.com
-        </a>
+  <div id="modal-backdrop" class="fixed inset-0 bg-black/60 z-50 hidden transition-opacity opacity-0 backdrop-blur-sm"
+    onclick="cerrarModal()"></div>
+  <div id="modal-panel" class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none hidden p-4">
+    <div
+      class="bg-white w-full max-w-4xl h-[90vh] rounded-2xl shadow-2xl relative transform transition-all scale-95 opacity-0 duration-300 pointer-events-auto"
+      id="modal-content-box">
+      <!-- Contenedor con Scroll Único para todo el modal -->
+      <div class="h-full overflow-y-auto rounded-2xl custom-scrollbar">
+
+        <!-- Banner / Header -->
+        <div class="relative h-64 md:h-96 w-full">
+          <button onclick="cerrarModal()"
+            class="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center z-20 transition-colors backdrop-blur-sm">
+            <i class="fa-solid fa-xmark text-xl"></i>
+          </button>
+          <img id="modal-img" src="" class="w-full h-full object-cover bg-slate-200">
+          <div class="absolute bottom-4 left-4 z-10 w-full pr-8">
+            <span id="modal-fecha"
+              class="inline-block px-3 py-1 bg-secondary/90 text-white text-xs font-bold rounded-full shadow-lg uppercase tracking-wider backdrop-blur-sm"></span>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
+        </div>
+
+        <!-- Contenido -->
+        <div class="p-6 md:p-10 bg-white">
+          <h2 id="modal-titulo"
+            class="text-2xl md:text-4xl font-bold text-slate-800 mb-6 leading-tight border-b border-slate-100 pb-4">
+          </h2>
+          <div id="modal-cuerpo" class="prose prose-green prose-lg max-w-none text-slate-700 font-sans"></div>
+        </div>
+
       </div>
     </div>
   </div>
 
-  <!-- Línea inferior -->
- <div class="relative border-t border-emerald-700/60 bg-emerald-950/60 backdrop-blur-sm">
-    <div class="max-w-7xl mx-auto px-6 py-4 text-center text-xs text-emerald-300/80">
-      © 2025 Asociación Gremial Feria Agrícola Melipilla — Todos los derechos reservados.
-    </div>
-  </div>
-</footer>
+  <!-- Footer Placeholder -->
+  <div id="main-footer"></div>
 
-</footer>
-
-<script>
-    // --- Lógica Menú Móvil ---
-    const mobileBtn = document.getElementById('mobileMenuButton');
-    const mobileClose = document.getElementById('mobileMenuClose');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileBackdrop = document.getElementById('mobileBackdrop');
-    function openMenu() { mobileMenu.classList.remove('-translate-x-full'); mobileBackdrop.classList.remove('hidden'); }
-    function closeMenu() { mobileMenu.classList.add('-translate-x-full'); mobileBackdrop.classList.add('hidden'); }
-    if(mobileBtn) mobileBtn.addEventListener('click', openMenu);
-    if(mobileClose) mobileClose.addEventListener('click', closeMenu);
-    if(mobileBackdrop) mobileBackdrop.addEventListener('click', closeMenu);
-
+  <script>
     // --- Lógica Noticias ---
     let noticiasData = [];
 
-    function cargarNoticias(json) {
-        var html = '';
-        var entradas = json.feed.entry;
-        var contenedor = document.getElementById('grilla-noticias');
+    // Función para limpiar estilos y etiquetas globales que rompen el sitio
+    function limpiarContenido(html) {
+      if (!html) return "";
+      let c = html;
+      // Eliminar bloques de style y script completos
+      c = c.replace(/<style\b[^>]*>([\s\S]*?)<\/style>/gim, "");
+      c = c.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gim, "");
+      // Eliminar etiquetas estructurales pero mantener contenido
+      c = c.replace(/<head\b[^>]*>([\s\S]*?)<\/head>/gim, "");
+      c = c.replace(/<\/?(html|body|iframe|!DOCTYPE)[^>]*>/gim, (match) => {
+        // Mantenemos iframes porque pueden ser videos
+        if (match.toLowerCase().includes('iframe')) return match;
+        return "";
+      });
+      return c;
+    }
 
-        if (!entradas) {
-            contenedor.innerHTML = '<div class="col-span-full text-center p-10 bg-white rounded-xl shadow"><p class="text-slate-500">No hay noticias publicadas.</p></div>';
-            return;
+    function cargarNoticias(json) {
+      var html = '';
+      var entradas = json.feed.entry;
+      var contenedor = document.getElementById('grilla-noticias');
+
+      if (!entradas) {
+        contenedor.innerHTML = '<div class="col-span-full text-center p-10 bg-white rounded-xl shadow"><p class="text-slate-500">No hay noticias publicadas.</p></div>';
+        return;
+      }
+
+      noticiasData = entradas;
+
+      for (var i = 0; i < entradas.length; i++) {
+        var entrada = entradas[i];
+        var titulo = entrada.title.$t;
+        var contenidoRaw = entrada.content.$t;
+        var fecha = new Date(entrada.published.$t).toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        // Usamos una imagen de tu carpeta como fallback si no hay en el post
+        var imagenUrl = "images/Banner_1.webp";
+        if (entrada.media$thumbnail) {
+          imagenUrl = entrada.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w600-h400-c/");
         }
 
-        noticiasData = entradas;
+        // Resumen (usando versión limpia)
+        var contenidoLimpio = limpiarContenido(contenidoRaw);
+        var divTemporal = document.createElement("div");
+        divTemporal.innerHTML = contenidoLimpio;
+        var textoPlano = divTemporal.innerText || "";
+        var resumen = textoPlano.length > 120 ? textoPlano.substring(0, 120) + "..." : textoPlano;
 
-        for (var i = 0; i < entradas.length; i++) {
-            var entrada = entradas[i];
-            var titulo = entrada.title.$t;
-            var contenido = entrada.content.$t;
-            var fecha = new Date(entrada.published.$t).toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' });
-            
-            // Usamos una imagen de tu carpeta como fallback si no hay en el post
-            var imagenUrl = "images/Banner_1.webp"; 
-            if (entrada.media$thumbnail) {
-                imagenUrl = entrada.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w600-h400-c/"); 
-            }
-
-            // Resumen
-            var divTemporal = document.createElement("div");
-            divTemporal.innerHTML = contenido;
-            var textoPlano = divTemporal.innerText || "";
-            var resumen = textoPlano.length > 120 ? textoPlano.substring(0, 120) + "..." : textoPlano;
-
-            html += `
+        html += `
             <article class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col h-full group cursor-pointer" onclick="abrirModal(${i})">
                 <div class="relative h-52 overflow-hidden">
                     <div class="absolute top-3 left-3 bg-primary/90 text-white text-xs font-bold px-3 py-1 rounded-md z-10 shadow-sm">
@@ -262,8 +204,8 @@
                 </div>
             </article>
             `;
-        }
-        contenedor.innerHTML = html;
+      }
+      contenedor.innerHTML = html;
     }
 
     // --- Lógica Modal ---
@@ -272,47 +214,53 @@
     const modalBox = document.getElementById('modal-content-box');
 
     function abrirModal(index) {
-        var data = noticiasData[index];
-        var imgAlta = "images/Banner_1.webp"; // Fallback
-        if (data.media$thumbnail) {
-            imgAlta = data.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w1000-h500-c/"); 
-        }
-        var fecha = new Date(data.published.$t).toLocaleDateString('es-CL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      var data = noticiasData[index];
+      var imgAlta = "images/Banner_1.webp"; // Fallback
+      if (data.media$thumbnail) {
+        // Usamos una resolución un poco mejor, 1000px ancho
+        imgAlta = data.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w1000-h500-c/");
+      }
+      var fecha = new Date(data.published.$t).toLocaleDateString('es-CL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
-        document.getElementById('modal-titulo').innerText = data.title.$t;
-        document.getElementById('modal-cuerpo').innerHTML = data.content.$t;
-        document.getElementById('modal-img').src = imgAlta;
-        document.getElementById('modal-fecha').innerText = fecha;
+      // Limpiar contenido antes de mostrar
+      var contenidoLimpio = limpiarContenido(data.content.$t);
 
-        // Corregir imágenes dentro del post para que no se salgan
-        var imgs = document.getElementById('modal-cuerpo').getElementsByTagName('img');
-        for(var img of imgs) { img.style.maxWidth = "100%"; img.style.height = "auto"; }
+      document.getElementById('modal-titulo').innerText = data.title.$t;
+      document.getElementById('modal-cuerpo').innerHTML = contenidoLimpio;
+      document.getElementById('modal-img').src = imgAlta;
+      document.getElementById('modal-fecha').innerText = fecha;
 
-        backdrop.classList.remove('hidden');
-        modalPanel.classList.remove('hidden');
-        setTimeout(() => {
-            backdrop.classList.remove('opacity-0');
-            modalBox.classList.remove('scale-95', 'opacity-0');
-            modalBox.classList.add('scale-100', 'opacity-100');
-        }, 10);
-        document.body.style.overflow = 'hidden';
+      // Corregir imágenes dentro del post para que no se salgan
+      var imgs = document.getElementById('modal-cuerpo').getElementsByTagName('img');
+      for (var img of imgs) { img.style.maxWidth = "100%"; img.style.height = "auto"; }
+
+      backdrop.classList.remove('hidden');
+      modalPanel.classList.remove('hidden');
+      setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+        modalBox.classList.remove('scale-95', 'opacity-0');
+        modalBox.classList.add('scale-100', 'opacity-100');
+      }, 10);
+      document.body.style.overflow = 'hidden';
     }
 
     function cerrarModal() {
-        backdrop.classList.add('opacity-0');
-        modalBox.classList.remove('scale-100', 'opacity-100');
-        modalBox.classList.add('scale-95', 'opacity-0');
-        setTimeout(() => {
-            backdrop.classList.add('hidden');
-            modalPanel.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }, 300);
+      backdrop.classList.add('opacity-0');
+      modalBox.classList.remove('scale-100', 'opacity-100');
+      modalBox.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        backdrop.classList.add('hidden');
+        modalPanel.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }, 300);
     }
-    
-    document.addEventListener('keydown', (e) => { if(e.key === "Escape") cerrarModal(); });
-</script>
 
-<script src="https://feriaagricolamelipilla.blogspot.com/feeds/posts/default?alt=json-in-script&callback=cargarNoticias&max-results=12"></script>
+    document.addEventListener('keydown', (e) => { if (e.key === "Escape") cerrarModal(); });
+  </script>
+
+  <script
+    src="https://feriaagricolamelipilla.blogspot.com/feeds/posts/default?alt=json-in-script&callback=cargarNoticias&max-results=12"></script>
 
 </body>
+
 </html>
