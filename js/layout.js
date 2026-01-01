@@ -128,12 +128,30 @@ const LOGIN_BTN_MOBILE = `
 </div>
 `;
 
-function renderLayout(activePage) {
+function renderLayout(activePage, isSubDir = false) {
+  const prefix = isSubDir ? "../" : "";
+
+  // Ajustar imágenes en Header y Footer
+  let headerHtml = HEADER_HTML.replace(/src="images\//g, `src="${prefix}images/`).replace(/href="index.html"/g, `href="${prefix}index.html"`);
+  let footerHtml = FOOTER_HTML.replace(/src="images\//g, `src="${prefix}images/`).replace(/href="index.html"/g, `href="${prefix}index.html"`);
+
+  // Ajustar enlaces estáticos en Footer (están hardcodados en la constante FOOTER_HTML)
+  // Reemplazar href="X.html" por href="../X.html" si es subdir
+  if (isSubDir) {
+    // Links rápidos footer
+    footerHtml = footerHtml.replace(/href="Nosotros.html"/g, 'href="../Nosotros.html"');
+    footerHtml = footerHtml.replace(/href="Directiva.html"/g, 'href="../Directiva.html"');
+    footerHtml = footerHtml.replace(/href="Socios.html"/g, 'href="../Socios.html"');
+    footerHtml = footerHtml.replace(/href="Noticias.html"/g, 'href="../Noticias.html"');
+    footerHtml = footerHtml.replace(/href="Galeria.html"/g, 'href="../Galeria.html"');
+    footerHtml = footerHtml.replace(/href="Localizanos.html"/g, 'href="../Localizanos.html"');
+  }
+
   // Inyectar HTML base
   const headerContainer = document.getElementById('main-header');
   const footerContainer = document.getElementById('main-footer');
-  if (headerContainer) headerContainer.innerHTML = HEADER_HTML;
-  if (footerContainer) footerContainer.innerHTML = FOOTER_HTML;
+  if (headerContainer) headerContainer.innerHTML = headerHtml;
+  if (footerContainer) footerContainer.innerHTML = footerHtml;
 
   // Generar Menú Desktop
   const desktopNav = document.getElementById('desktop-nav');
@@ -141,12 +159,13 @@ function renderLayout(activePage) {
     let html = '';
     NAV_LINKS.forEach(link => {
       const isActive = link.label === activePage;
-      const classes = isActive 
+      const href = prefix + link.href;
+      const classes = isActive
         ? "text-sm font-medium text-white hover:text-white transition-colors border-b-2 border-white"
         : "text-sm text-white/80 hover:text-white transition-colors";
-      html += `<a href="${link.href}" class="${classes}">${link.label}</a>`;
+      html += `<a href="${href}" class="${classes}">${link.label}</a>`;
     });
-    html += LOGIN_BTN; // Agregar botón login
+    html += LOGIN_BTN; // Login es externo, no necesita prefix
     desktopNav.innerHTML = html;
   }
 
@@ -155,11 +174,12 @@ function renderLayout(activePage) {
   if (mobileNav) {
     let html = '';
     NAV_LINKS.forEach(link => {
-       const isActive = link.label === activePage;
-       const classes = isActive 
-         ? "block py-2 px-4 bg-white/10 rounded-lg"
-         : "block py-2 px-4 hover:bg-white/10 rounded-lg";
-       html += `<a href="${link.href}" class="${classes}">${link.label}</a>`;
+      const isActive = link.label === activePage;
+      const href = prefix + link.href;
+      const classes = isActive
+        ? "block py-2 px-4 bg-white/10 rounded-lg"
+        : "block py-2 px-4 hover:bg-white/10 rounded-lg";
+      html += `<a href="${href}" class="${classes}">${link.label}</a>`;
     });
     html += LOGIN_BTN_MOBILE;
     mobileNav.innerHTML = html;
