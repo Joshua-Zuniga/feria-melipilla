@@ -156,84 +156,73 @@
         Ver todas las noticias
       </a>
     </div>
-  </section>
 
-  <div id="home-modal-backdrop"
-    class="fixed inset-0 bg-black/60 z-50 hidden transition-opacity opacity-0 backdrop-blur-sm"
-    onclick="cerrarModalHome()"></div>
-  <div id="home-modal-panel" class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none hidden p-4">
-    <div
-      class="bg-white w-full max-w-4xl h-[90vh] rounded-2xl shadow-2xl relative transform transition-all scale-95 opacity-0 duration-300 pointer-events-auto"
-      id="home-modal-box">
-      <!-- Contenedor con Scroll Único -->
-      <div class="h-full overflow-y-auto rounded-2xl custom-scrollbar">
+    <!-- MODAL HOME (Diseño Premium) -->
+    <div id="home-modal-backdrop"
+      class="fixed inset-0 bg-black/90 z-[60] hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm"
+      onclick="cerrarModalHome()"></div>
 
-        <!-- Banner / Header -->
-        <div class="relative h-64 md:h-96 w-full">
+    <div id="home-modal-panel"
+      class="fixed inset-0 z-[70] hidden flex items-center justify-center pointer-events-none p-0 md:p-6">
+      <div id="home-modal-box"
+        class="bg-white w-full max-w-5xl max-h-[95vh] rounded-none md:rounded-2xl shadow-2xl overflow-y-auto transform scale-95 opacity-0 transition-all duration-300 pointer-events-auto relative flex flex-col">
+
+        <!-- Botón Cerrar Sticky -->
+        <div
+          class="sticky top-0 right-0 z-30 flex justify-end p-4 bg-gradient-to-b from-black/50 to-transparent pointer-events-none absolute w-full">
           <button onclick="cerrarModalHome()"
-            class="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center z-20 transition-colors backdrop-blur-sm">
-            <i class="fa-solid fa-xmark text-xl"></i>
+            class="pointer-events-auto bg-black/60 hover:bg-black/80 text-white rounded-full w-10 h-10 flex items-center justify-center backdrop-blur transition-transform hover:scale-110 shadow-lg border border-white/20">
+            <i class="fa-solid fa-xmark text-lg"></i>
           </button>
-          <img id="home-modal-img" src="" class="w-full h-full object-cover bg-slate-200">
-          <div class="absolute bottom-4 left-4 z-10 w-full pr-8">
-            <span id="home-modal-fecha"
-              class="inline-block px-3 py-1 bg-secondary/90 text-white text-xs font-bold rounded-full shadow-lg uppercase tracking-wider backdrop-blur-sm"></span>
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
+        </div>
+
+        <!-- Imagen Principal (Sin recortes) -->
+        <div class="w-full bg-slate-100 flex items-center justify-center min-h-[200px]">
+          <img id="home-modal-img" src="" class="w-full h-auto max-h-[60vh] object-contain shadow-sm">
         </div>
 
         <!-- Contenido -->
-        <div class="p-6 md:p-10 bg-white">
-          <h2 id="home-modal-titulo"
-            class="text-2xl md:text-4xl font-bold text-slate-800 mb-6 leading-tight border-b border-slate-100 pb-4">
-          </h2>
-          <div id="home-modal-cuerpo" class="prose prose-green prose-lg max-w-none text-slate-700 font-sans"></div>
-        </div>
+        <!-- MAIN -->
+        <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
 
-      </div>
-    </div>
-  </div>
-  <!-- MAIN -->
-  <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
+          <!-- INSTAGRAM RESPONSIVO -->
+          <section class="max-w-6xl mx-auto px-4 py-16">
+            <h2 class="text-2xl font-bold mb-6 text-slate-800">Instagram</h2>
 
-    <!-- INSTAGRAM RESPONSIVO -->
-    <section class="max-w-6xl mx-auto px-4 py-16">
-      <h2 class="text-2xl font-bold mb-6 text-slate-800">Instagram</h2>
+            <!-- Elfsight Instagram Feed -->
+            <script src="https://elfsightcdn.com/platform.js" async></script>
+            <div class="elfsight-app-42021612-277e-4f71-b867-389b29d5dbc8" data-elfsight-app-lazy></div>
+          </section>
 
-      <!-- Elfsight Instagram Feed -->
-      <script src="https://elfsightcdn.com/platform.js" async></script>
-      <div class="elfsight-app-42021612-277e-4f71-b867-389b29d5dbc8" data-elfsight-app-lazy></div>
-    </section>
+          <!-- CALENDARIO (RESPONSIVE Y CORREGIDO) -->
+          <section data-aos="fade-up" class="space-y-6">
+            <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Calendario de Actividades</h2>
 
-    <!-- CALENDARIO (RESPONSIVE Y CORREGIDO) -->
-    <section data-aos="fade-up" class="space-y-6">
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Calendario de Actividades</h2>
+            <div class="rounded-2xl overflow-hidden shadow-md bg-white flex justify-center">
+              <div class="relative w-full max-w-5xl h-0 pb-[140%] sm:pb-[90%] md:pb-[70%] lg:pb-[60%]">
+                <iframe loading="lazy" class="absolute inset-0 w-full h-full"
+                  src="https://calendar.google.com/calendar/embed?height=575&wkst=1&ctz=America%2FSantiago&bgcolor=%23ffffff&src=NGJvaWVoZGV0aHMzNWw3NjE0bWk1dWV2NDhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=MGljdDFtcGRuY2E2dDF1YzNoNnQ2ZnE4N3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23AD1457&color=%230B8043&color=%2333B679"
+                  frameborder="0" scrolling="no">
+                </iframe>
+              </div>
+            </div>
+          </section>
 
-      <div class="rounded-2xl overflow-hidden shadow-md bg-white flex justify-center">
-        <div class="relative w-full max-w-5xl h-0 pb-[140%] sm:pb-[90%] md:pb-[70%] lg:pb-[60%]">
-          <iframe loading="lazy" class="absolute inset-0 w-full h-full"
-            src="https://calendar.google.com/calendar/embed?height=575&wkst=1&ctz=America%2FSantiago&bgcolor=%23ffffff&src=NGJvaWVoZGV0aHMzNWw3NjE0bWk1dWV2NDhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=MGljdDFtcGRuY2E2dDF1YzNoNnQ2ZnE4N3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&color=%23AD1457&color=%230B8043&color=%2333B679"
-            frameborder="0" scrolling="no">
-          </iframe>
-        </div>
-      </div>
-    </section>
+        </main>
 
-  </main>
+        <!-- FOOTER -->
+        <div id="main-footer"></div>
 
-  <!-- FOOTER -->
-  <div id="main-footer"></div>
-
-  <!-- JS FINAL -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Swiper
-      new Swiper(".mySwiper", {
-        loop: true,
-        autoplay: { delay: 3500, disableOnInteraction: false }
-      });
-    });
-  </script>
+        <!-- JS FINAL -->
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            // Swiper
+            new Swiper(".mySwiper", {
+              loop: true,
+              autoplay: { delay: 3500, disableOnInteraction: false }
+            });
+          });
+        </script>
 
 </body>
 
@@ -264,37 +253,58 @@
     if (!entradas) return;
     homeNoticias = entradas;
 
-    // Solo mostramos las primeras 3
-    for (var i = 0; i < Math.min(entradas.length, 3); i++) {
+    var limit = Math.min(entradas.length, 3); // Define limit here
+
+    for (var i = 0; i < limit; i++) {
       var entrada = entradas[i];
       var titulo = entrada.title.$t;
-      var contenidoRaw = entrada.content.$t;
-      var fecha = new Date(entrada.published.$t).toLocaleDateString('es-CL', { day: 'numeric', month: 'short' });
+      var fechaRaw = new Date(entrada.published.$t);
+      var mes = fechaRaw.toLocaleString('es-CL', { month: 'short' }).toUpperCase();
+      var dia = fechaRaw.getDate();
 
-      var imagenUrl = "images/Banner_1.webp";
+      // Imagen
+      var imgUrl = "images/Banner_1.webp"; // Default
       if (entrada.media$thumbnail) {
-        imagenUrl = entrada.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w500-h300-c/");
+        imgUrl = entrada.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w600-h400-c/");
       }
 
-      // Resumen limpio
-      var contenidoLimpio = limpiarContenido(contenidoRaw);
-      var divTemporal = document.createElement("div");
-      divTemporal.innerHTML = contenidoLimpio;
-      var textoPlano = divTemporal.innerText || "";
-      var resumen = textoPlano.length > 90 ? textoPlano.substring(0, 90) + "..." : textoPlano;
+      // Resumen
+      var contenido = limpiarContenido(entrada.content.$t);
+      var div = document.createElement("div");
+      div.innerHTML = contenido;
+      var texto = div.innerText || "";
+      var resumen = texto.length > 100 ? texto.substring(0, 100) + "..." : texto;
 
       html += `
-          <div class="bg-white rounded-xl shadow border border-slate-100 overflow-hidden hover:shadow-lg transition cursor-pointer group" onclick="abrirModalHome(${i})">
-              <div class="relative h-48 overflow-hidden">
-                  <img src="${imagenUrl}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                  <div class="absolute top-2 right-2 bg-white/90 px-2 py-1 rounded text-xs font-bold text-primary shadow">${fecha}</div>
+          <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer border border-slate-100 flex flex-col h-full hover-card-effect" onclick="abrirModalHome(${i})">
+            
+            <div class="relative h-48 overflow-hidden">
+              <img src="${imgUrl}" alt="${titulo}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+              
+              <!-- Fecha Flotante -->
+              <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-slate-800 rounded-lg px-3 py-1 flex flex-col items-center shadow-sm border border-slate-100">
+                <span class="text-xs font-bold uppercase text-primary">${mes}</span>
+                <span class="text-lg font-bold leading-none">${dia}</span>
               </div>
-              <div class="p-5">
-                  <h3 class="font-bold text-lg text-slate-800 mb-2 line-clamp-2 group-hover:text-primary">${titulo}</h3>
-                  <p class="text-sm text-slate-500 mb-3">${resumen}</p>
-                  <span class="text-xs font-bold text-secondary uppercase tracking-wide">Leer más</span>
+            </div>
+
+            <div class="p-5 flex flex-col flex-grow">
+              <h3 class="text-lg font-bold text-slate-800 mb-2 leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                ${titulo}
+              </h3>
+              <p class="text-slate-600 text-sm line-clamp-3 mb-4 flex-grow">
+                ${resumen}
+              </p>
+              <div class="pt-3 border-t border-slate-50 mt-auto">
+                 <span class="text-primary text-sm font-semibold flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                   Leer más <i class="fa-solid fa-arrow-right text-xs"></i>
+                 </span>
               </div>
-          </div>`;
+            </div>
+
+          </div>
+        `;
     }
     contenedor.innerHTML = html;
   }
@@ -317,7 +327,7 @@
     document.getElementById('home-modal-img').src = img;
 
     // Fecha en el modal
-    var displayFecha = document.getElementById('home-modal-fecha');
+    var displayFecha = document.getElementById('home-fecha-texto');
     if (displayFecha) displayFecha.innerText = fecha;
 
     // Ajustar imágenes

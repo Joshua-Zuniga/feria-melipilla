@@ -129,39 +129,16 @@
     </div>
   </main>
 
-  <div id="modal-backdrop" class="fixed inset-0 bg-black/60 z-50 hidden transition-opacity opacity-0 backdrop-blur-sm"
-    onclick="cerrarModal()"></div>
-  <div id="modal-panel" class="fixed inset-0 z-50 flex items-center justify-center pointer-events-none hidden p-4">
-    <div
-      class="bg-white w-full max-w-4xl h-[90vh] rounded-2xl shadow-2xl relative transform transition-all scale-95 opacity-0 duration-300 pointer-events-auto"
-      id="modal-content-box">
-      <!-- Contenedor con Scroll Único para todo el modal -->
-      <div class="h-full overflow-y-auto rounded-2xl custom-scrollbar">
+  <!-- Contenido -->
+  <div class="p-6 md:p-10 bg-white">
+    <h2 id="modal-titulo"
+      class="text-2xl md:text-4xl font-bold text-slate-800 mb-6 leading-tight border-b border-slate-100 pb-4">
+    </h2>
+    <div id="modal-cuerpo" class="prose prose-green prose-lg max-w-none text-slate-700 font-sans"></div>
+  </div>
 
-        <!-- Banner / Header -->
-        <div class="relative h-64 md:h-96 w-full">
-          <button onclick="cerrarModal()"
-            class="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white rounded-full w-10 h-10 flex items-center justify-center z-20 transition-colors backdrop-blur-sm">
-            <i class="fa-solid fa-xmark text-xl"></i>
-          </button>
-          <img id="modal-img" src="" class="w-full h-full object-cover bg-slate-200">
-          <div class="absolute bottom-4 left-4 z-10 w-full pr-8">
-            <span id="modal-fecha"
-              class="inline-block px-3 py-1 bg-secondary/90 text-white text-xs font-bold rounded-full shadow-lg uppercase tracking-wider backdrop-blur-sm"></span>
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
-        </div>
-
-        <!-- Contenido -->
-        <div class="p-6 md:p-10 bg-white">
-          <h2 id="modal-titulo"
-            class="text-2xl md:text-4xl font-bold text-slate-800 mb-6 leading-tight border-b border-slate-100 pb-4">
-          </h2>
-          <div id="modal-cuerpo" class="prose prose-green prose-lg max-w-none text-slate-700 font-sans"></div>
-        </div>
-
-      </div>
-    </div>
+  </div>
+  </div>
   </div>
 
   <!-- Footer Placeholder -->
@@ -262,7 +239,7 @@
       document.getElementById('modal-titulo').innerText = data.title.$t;
       document.getElementById('modal-cuerpo').innerHTML = contenidoLimpio;
       document.getElementById('modal-img').src = imgAlta;
-      document.getElementById('modal-fecha').innerText = fecha;
+      document.getElementById('fecha-texto').innerText = fecha;
 
       // Corregir imágenes dentro del post para que no se salgan
       var imgs = document.getElementById('modal-cuerpo').getElementsByTagName('img');
