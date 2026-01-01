@@ -87,37 +87,13 @@
       </p>
     </section>
 
-    <!-- GALERÍA -->
+    <!-- GALERÍA DINÁMICA -->
     <section data-aos="fade-up">
       <div id="galeria" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-
-        <a href="images/Banner_1.webp">
-          <img src="images/Banner_1.webp"
-            class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
-        </a>
-
-        <a href="images/Banner_2.webp">
-          <img src="images/Banner_2.webp"
-            class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
-        </a>
-
-        <a href="images/Banner_3.webp">
-          <img src="images/Banner_3.webp"
-            class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
-        </a>
-
-        <a href="images/Banner_4.webp">
-          <img src="images/Banner_4.webp"
-            class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
-        </a>
-
-        <a href="images/luis.webp">
-          <img src="images/luis.webp" class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
-        </a>
-
-        <a href="images/ana.webp">
-          <img src="images/ana.webp" class="w-full h-56 rounded-xl shadow-md object-cover hover:scale-105 transition">
-        </a>
+        <!-- SKELETON LOADERS (Se eliminan al cargar JS) -->
+        <div class="h-64 bg-slate-200 rounded-xl animate-pulse shadow-md"></div>
+        <div class="h-64 bg-slate-200 rounded-xl animate-pulse shadow-md hidden sm:block"></div>
+        <div class="h-64 bg-slate-200 rounded-xl animate-pulse shadow-md hidden md:block"></div>
       </div>
     </section>
 
@@ -126,19 +102,49 @@
   <!-- Footer Placeholder -->
   <div id="main-footer"></div>
 
+  <!-- Datos de Galería -->
+  <script src="js/galeria-data.js"></script>
+
   <!-- SCRIPTS FINALES -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // LightGallery
-      const galeria = document.getElementById("galeria");
-      if (galeria) {
-        lightGallery(galeria, {
+      const contenedor = document.getElementById("galeria");
+
+      if (contenedor && typeof GALERIA_DATA !== 'undefined') {
+        let html = '';
+
+        GALERIA_DATA.forEach(item => {
+          html += `
+            <a href="${item.url}" 
+               class="group relative block w-full h-64 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover-card-effect"
+               data-sub-html="<h4>${item.titulo}</h4><p>${item.descripcion}</p>">
+               
+              <img src="${item.url}" alt="${item.titulo}" 
+                   class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+              
+              <!-- Overlay Hover -->
+              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors">
+                <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <p class="text-white font-semibold text-sm truncate">${item.titulo}</p>
+                </div>
+              </div>
+            </a>
+          `;
+        });
+
+        // Reemplazar skeletons con contenido real
+        contenedor.innerHTML = html;
+
+        // Iniciar LightGallery
+        lightGallery(contenedor, {
           selector: 'a',
           download: false,
           zoom: true,
           thumbnail: true,
           animateThumb: true,
-          showThumbByDefault: true
+          showThumbByDefault: false,
+          speed: 500,
+          plugins: [lgZoom, lgThumbnail] // Asegurar plugins cargados
         });
       }
     });
