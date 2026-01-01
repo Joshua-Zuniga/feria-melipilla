@@ -11,8 +11,37 @@ section {
     animation: fadeInPage 0.8s ease-out forwards;
 }
 
+html,
+body {
+    overflow-x: hidden !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    -webkit-text-size-adjust: 100%;
+}
+
 body {
     opacity: 1;
+    background-color: #f8fafc;
+    /* slate-50 */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Fix for AOS causing horizontal scroll and "desfase" */
+[data-aos] {
+    pointer-events: none;
+}
+
+[data-aos].aos-animate {
+    pointer-events: auto;
+}
+
+/* Instagram widget containment */
+.elfsight-app-42021612-277e-4f71-b867-389b29d5dbc8 {
+    max-width: 100% !important;
+    overflow: hidden !important;
 }
 
 @keyframes fadeInPage {

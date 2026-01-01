@@ -36,6 +36,7 @@
 
   <!-- AOS Animations -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="css/animations.css">
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
   <!-- Iconos -->
@@ -44,191 +45,188 @@
 </head>
 
 <body class="bg-slate-50 text-slate-800 font-sans">
+
   <script src="js/layout.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       AOS.init({ duration: 800, once: true, offset: 80 });
-      renderLayout("Localízanos"); // Inicia header y footer
+      renderLayout("Localízanos");
     });
   </script>
 
-  </head>
+  <!-- Header Placeholder -->
+  <div id="main-header"></div>
 
-  <body class="bg-slate-50 text-slate-800 font-sans">
+  <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
 
-    <!-- Header Placeholder -->
-    <div id="main-header"></div>
+    <section data-aos="fade-up" class="space-y-6">
+      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Ubicación Feria Agrícola Melipilla</h2>
+      <p class="text-sm md:text-base text-slate-700 max-w-2xl">
+        Encuéntranos en Melipilla. Selecciona un sector para ver su ubicación exacta en el mapa.
+      </p>
+    </section>
 
-    <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
+    <!-- Mapas Optimizados con Tabs -->
+    <section data-aos="fade-up" class="bg-white rounded-2xl shadow-xl overflow-hidden">
+      <!-- Tabs -->
+      <div class="flex flex-wrap border-b border-slate-100 bg-slate-50">
+        <button onclick="cambiarMapa(0)" id="tab-0"
+          class="px-6 py-4 text-sm font-semibold text-primary border-b-2 border-primary transition-colors hover:bg-white flex-1 md:flex-none">
+          Sector Principal
+        </button>
+        <button onclick="cambiarMapa(1)" id="tab-1"
+          class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
+          Sector 2
+        </button>
+        <button onclick="cambiarMapa(2)" id="tab-2"
+          class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
+          Sector 3
+        </button>
+        <button onclick="cambiarMapa(3)" id="tab-3"
+          class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
+          Sector 4
+        </button>
+      </div>
 
-      <section data-aos="fade-up" class="space-y-6">
-        <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Ubicación Feria Agrícola Melipilla</h2>
-        <p class="text-sm md:text-base text-slate-700 max-w-2xl">
-          Encuéntranos en Melipilla. Selecciona un sector para ver su ubicación exacta en el mapa.
+      <!-- Contenedor Mapa -->
+      <div class="relative w-full h-0 pb-[60%] bg-slate-100">
+
+        <!-- Skeleton Overlay -->
+        <div id="map-skeleton"
+          class="absolute inset-0 w-full h-full bg-slate-200 animate-pulse flex flex-col items-center justify-center z-20 transition-opacity duration-500">
+          <i class="fa-solid fa-map-location-dot text-5xl text-slate-300 mb-4"></i>
+          <span class="text-slate-400 font-medium tracking-wide">Cargando mapa interactivo...</span>
+        </div>
+
+        <iframe id="mapa-frame" loading="lazy"
+          src="https://www.google.com/maps/d/embed?mid=1AkVO8siqXth9BmK8SZR8IYQxmvAeaVE&ehbc=2E312F&noprof=1"
+          class="absolute inset-0 w-full h-full z-10 opacity-0 transition-opacity duration-500" allow="autoplay">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section data-aos="fade-up" class="grid md:grid-cols-2 gap-12 items-start mt-20">
+
+      <div class="space-y-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Contáctanos</h2>
+        <p class="text-slate-600 leading-relaxed">
+          ¿Tienes dudas o necesitas más información? Escríbenos y te responderemos a la brevedad.
+          También puedes visitarnos en nuestros horarios de atención.
         </p>
-      </section>
 
-      <!-- Mapas Optimizados con Tabs -->
-      <section data-aos="fade-up" class="bg-white rounded-2xl shadow-xl overflow-hidden">
-        <!-- Tabs -->
-        <div class="flex flex-wrap border-b border-slate-100 bg-slate-50">
-          <button onclick="cambiarMapa(0)" id="tab-0"
-            class="px-6 py-4 text-sm font-semibold text-primary border-b-2 border-primary transition-colors hover:bg-white flex-1 md:flex-none">
-            Sector Principal
-          </button>
-          <button onclick="cambiarMapa(1)" id="tab-1"
-            class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
-            Sector 2
-          </button>
-          <button onclick="cambiarMapa(2)" id="tab-2"
-            class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
-            Sector 3
-          </button>
-          <button onclick="cambiarMapa(3)" id="tab-3"
-            class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
-            Sector 4
-          </button>
-        </div>
-
-        <!-- Contenedor Mapa -->
-        <div class="relative w-full h-0 pb-[60%] bg-slate-100">
-
-          <!-- Skeleton Overlay -->
-          <div id="map-skeleton"
-            class="absolute inset-0 w-full h-full bg-slate-200 animate-pulse flex flex-col items-center justify-center z-20 transition-opacity duration-500">
-            <i class="fa-solid fa-map-location-dot text-5xl text-slate-300 mb-4"></i>
-            <span class="text-slate-400 font-medium tracking-wide">Cargando mapa interactivo...</span>
+        <div class="space-y-4 pt-4">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-primary shrink-0">
+              <i class="fa-solid fa-map-location-dot"></i>
+            </div>
+            <div>
+              <h4 class="font-semibold text-slate-900">Ubicación</h4>
+              <p class="text-sm text-slate-600">Melipilla, Región Metropolitana</p>
+            </div>
           </div>
 
-          <iframe id="mapa-frame" loading="lazy"
-            src="https://www.google.com/maps/d/embed?mid=1AkVO8siqXth9BmK8SZR8IYQxmvAeaVE&ehbc=2E312F&noprof=1"
-            class="absolute inset-0 w-full h-full z-10 opacity-0 transition-opacity duration-500" allow="autoplay">
-          </iframe>
-        </div>
-      </section>
-
-      <!-- Sección de Contacto -->
-      <section data-aos="fade-up" class="grid md:grid-cols-2 gap-12 items-start mt-20">
-
-        <div class="space-y-6">
-          <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Contáctanos</h2>
-          <p class="text-slate-600 leading-relaxed">
-            ¿Tienes dudas o necesitas más información? Escríbenos y te responderemos a la brevedad.
-            También puedes visitarnos en nuestros horarios de atención.
-          </p>
-
-          <div class="space-y-4 pt-4">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-primary shrink-0">
-                <i class="fa-solid fa-map-location-dot"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-slate-900">Ubicación</h4>
-                <p class="text-sm text-slate-600">Melipilla, Región Metropolitana</p>
-              </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-primary shrink-0">
+              <i class="fa-solid fa-envelope"></i>
             </div>
-
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-primary shrink-0">
-                <i class="fa-solid fa-envelope"></i>
-              </div>
-              <div>
-                <h4 class="font-semibold text-slate-900">Email</h4>
-                <a href="mailto:a.g.feria.agricola.m@gmail.com"
-                  class="text-sm text-slate-600 hover:text-primary transition">a.g.feria.agricola.m@gmail.com</a>
-              </div>
+            <div>
+              <h4 class="font-semibold text-slate-900">Email</h4>
+              <a href="mailto:a.g.feria.agricola.m@gmail.com"
+                class="text-sm text-slate-600 hover:text-primary transition">a.g.feria.agricola.m@gmail.com</a>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Formulario (Web3Forms) -->
-        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-slate-100">
-          <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+      <!-- Formulario (Web3Forms) -->
+      <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-slate-100">
+        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
 
-            <!-- Configuración Web3Forms -->
-            <input type="hidden" name="access_key" value="b436229f-e1c2-405a-90a1-6862f927998b">
-            <input type="hidden" name="from_name" value="Web Feria Melipilla">
-            <input type="hidden" name="subject" value="Nuevo Mensaje de Contacto">
-            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+          <!-- Configuración Web3Forms -->
+          <input type="hidden" name="access_key" value="b436229f-e1c2-405a-90a1-6862f927998b">
+          <input type="hidden" name="from_name" value="Web Feria Melipilla">
+          <input type="hidden" name="subject" value="Nuevo Mensaje de Contacto">
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-            <div>
-              <label class="block text-sm font-medium text-slate-700 mb-1">Nombre Completo</label>
-              <input type="text" name="name" required
-                class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"
-                placeholder="Tu nombre">
-            </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Nombre Completo</label>
+            <input type="text" name="name" required
+              class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"
+              placeholder="Tu nombre">
+          </div>
 
-            <div>
-              <label class="block text-sm font-medium text-slate-700 mb-1">Correo Electrónico</label>
-              <input type="email" name="email" required
-                class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"
-                placeholder="tucorreo@ejemplo.com">
-            </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Correo Electrónico</label>
+            <input type="email" name="email" required
+              class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"
+              placeholder="tucorreo@ejemplo.com">
+          </div>
 
-            <div>
-              <label class="block text-sm font-medium text-slate-700 mb-1">Mensaje</label>
-              <textarea name="message" rows="4" required
-                class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"
-                placeholder="¿En qué podemos ayudarte?"></textarea>
-            </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Mensaje</label>
+            <textarea name="message" rows="4" required
+              class="w-full px-4 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"
+              placeholder="¿En qué podemos ayudarte?"></textarea>
+          </div>
 
-            <button type="submit"
-              class="w-full py-3 px-6 bg-primary text-white font-bold rounded-lg shadow hover:bg-emerald-800 transition transform hover:scale-[1.02]">
-              Enviar Mensaje
-            </button>
-          </form>
-        </div>
+          <button type="submit"
+            class="w-full py-3 px-6 bg-primary text-white font-bold rounded-lg shadow hover:bg-emerald-800 transition transform hover:scale-[1.02]">
+            Enviar Mensaje
+          </button>
+        </form>
+      </div>
 
-      </section>
+    </section>
 
-    </main>
+  </main>
 
-    <!-- Footer Placeholder -->
-    <div id="main-footer"></div>
+  <!-- Footer Placeholder -->
+  <div id="main-footer"></div>
 
-    <script>
-      const MAP_URLS = [
-        "https://www.google.com/maps/d/embed?mid=1AkVO8siqXth9BmK8SZR8IYQxmvAeaVE&ehbc=2E312F&noprof=1",
-        "https://www.google.com/maps/d/embed?mid=1C6TYGzuZ9W7-K8Zufh_cZh1tDiWsOz0&ehbc=2E312F&noprof=1",
-        "https://www.google.com/maps/d/embed?mid=14Ej2qbdxc_hEbvZbY__VIDy0Fur3Xks&ehbc=2E312F&noprof=1",
-        "https://www.google.com/maps/d/embed?mid=1-rGV0L51XRuUuIrNH0bx97_yZ5sL4XQ&ehbc=2E312F&noprof=1"
-      ];
+  <script>
+    const MAP_URLS = [
+      "https://www.google.com/maps/d/embed?mid=1AkVO8siqXth9BmK8SZR8IYQxmvAeaVE&ehbc=2E312F&noprof=1",
+      "https://www.google.com/maps/d/embed?mid=1C6TYGzuZ9W7-K8Zufh_cZh1tDiWsOz0&ehbc=2E312F&noprof=1",
+      "https://www.google.com/maps/d/embed?mid=14Ej2qbdxc_hEbvZbY__VIDy0Fur3Xks&ehbc=2E312F&noprof=1",
+      "https://www.google.com/maps/d/embed?mid=1-rGV0L51XRuUuIrNH0bx97_yZ5sL4XQ&ehbc=2E312F&noprof=1"
+    ];
 
-      function cambiarMapa(index) {
-        const iframe = document.getElementById('mapa-frame');
-        const skeleton = document.getElementById('map-skeleton');
+    function cambiarMapa(index) {
+      const iframe = document.getElementById('mapa-frame');
+      const skeleton = document.getElementById('map-skeleton');
 
-        // Mostrar skeleton y ocultar mapa mientras carga
-        skeleton.classList.remove('opacity-0', 'pointer-events-none');
-        iframe.classList.add('opacity-0');
+      // Mostrar skeleton y ocultar mapa mientras carga
+      skeleton.classList.remove('opacity-0', 'pointer-events-none');
+      iframe.classList.add('opacity-0');
 
-        // Actualizar iframe
-        iframe.src = MAP_URLS[index];
+      // Actualizar iframe
+      iframe.src = MAP_URLS[index];
 
-        // Actualizar tabs
-        for (let i = 0; i < 4; i++) {
-          const btn = document.getElementById('tab-' + i);
-          if (i === index) {
-            btn.className = "px-6 py-4 text-sm font-semibold text-primary border-b-2 border-primary transition-colors hover:bg-white flex-1 md:flex-none";
-          } else {
-            btn.className = "px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none";
-          }
+      // Actualizar tabs
+      for (let i = 0; i < 4; i++) {
+        const btn = document.getElementById('tab-' + i);
+        if (i === index) {
+          btn.className = "px-6 py-4 text-sm font-semibold text-primary border-b-2 border-primary transition-colors hover:bg-white flex-1 md:flex-none";
+        } else {
+          btn.className = "px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none";
         }
       }
+    }
 
-      // Manejar carga del iframe
-      document.addEventListener("DOMContentLoaded", () => {
-        const iframe = document.getElementById('mapa-frame');
-        const skeleton = document.getElementById('map-skeleton');
+    // Manejar carga del iframe
+    document.addEventListener("DOMContentLoaded", () => {
+      const iframe = document.getElementById('mapa-frame');
+      const skeleton = document.getElementById('map-skeleton');
 
-        iframe.onload = () => {
-          // Ocultar skeleton y mostrar mapa suavemente
-          skeleton.classList.add('opacity-0', 'pointer-events-none');
-          iframe.classList.remove('opacity-0');
-        };
-      });
-    </script>
+      iframe.onload = () => {
+        // Ocultar skeleton y mostrar mapa suavemente
+        skeleton.classList.add('opacity-0', 'pointer-events-none');
+        iframe.classList.remove('opacity-0');
+      };
+    });
+  </script>
 
-  </body>
+</body>
 
 </html>
