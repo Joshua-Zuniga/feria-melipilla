@@ -23,7 +23,7 @@ const HEADER_HTML = `
   </div>
 </header>
 
-<!-- Menú móvil (Fuera del header para evitar problemas de z-index) -->
+<!-- Menú móvil -->
 <div id="mobileBackdrop" class="fixed inset-0 bg-black/70 hidden z-[9998] backdrop-blur-md transition-opacity duration-300 opacity-0"></div>
 <aside id="mobileMenu"
   class="fixed inset-y-0 left-0 w-80 bg-[#166534] border-r border-emerald-800 transform -translate-x-full transition-transform duration-300 ease-out z-[9999] flex flex-col shadow-[10px_0_30px_rgba(0,0,0,0.5)]">
@@ -31,7 +31,7 @@ const HEADER_HTML = `
   <div class="px-6 py-6 flex items-center justify-between border-b border-white/10">
     <div class="flex items-center gap-3">
       <img src="images/logotipo.svg" alt="Logo" class="h-10 brightness-110">
-      <span class="font-bold text-white tracking-tight">Menú</span>
+      <!-- "Menú" removido por petición del usuario -->
     </div>
     <button id="mobileMenuClose" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all">
       <i class="fa-solid fa-xmark text-lg"></i>
@@ -127,13 +127,13 @@ const LOGIN_BTN = `
 
 const LOGIN_BTN_MOBILE = `
 <div class="pt-6 mt-6 border-t border-emerald-800/50">
-  <p class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest mb-3 pl-4">Acceso Usuarios</p>
+  <p class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest mb-3 pl-4">Mi Cuenta</p>
   <a href="https://feriaagricolaag.vercel.app/"
     class="flex items-center gap-3 py-4 px-4 bg-white text-primary rounded-xl font-bold shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]">
     <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
         <i class="fa-solid fa-user"></i>
     </div>
-    Ingresar a la Intranet
+    Iniciar Sesión
   </a>
 </div>
 `;
@@ -145,10 +145,7 @@ function renderLayout(activePage, isSubDir = false) {
   let headerHtml = HEADER_HTML.replace(/src="images\//g, `src="${prefix}images/`).replace(/href="index.html"/g, `href="${prefix}index.html"`);
   let footerHtml = FOOTER_HTML.replace(/src="images\//g, `src="${prefix}images/`).replace(/href="index.html"/g, `href="${prefix}index.html"`);
 
-  // Ajustar enlaces estáticos en Footer (están hardcodados en la constante FOOTER_HTML)
-  // Reemplazar href="X.html" por href="../X.html" si es subdir
   if (isSubDir) {
-    // Links rápidos footer
     footerHtml = footerHtml.replace(/href="Nosotros.html"/g, 'href="../Nosotros.html"');
     footerHtml = footerHtml.replace(/href="Directiva.html"/g, 'href="../Directiva.html"');
     footerHtml = footerHtml.replace(/href="Socios.html"/g, 'href="../Socios.html"');
@@ -207,11 +204,11 @@ function renderLayout(activePage, isSubDir = false) {
         : "text-sm text-white/80 hover:text-white transition-colors";
       html += `<a href="${href}" class="${classes}">${link.label}</a>`;
     });
-    html += LOGIN_BTN; // Login es externo, no necesita prefix
+    html += LOGIN_BTN;
     desktopNav.innerHTML = html;
   }
 
-  // Generar Menú Mobile (Simplificado para usar CSS robusto)
+  // Generar Menú Mobile
   const mobileNav = document.getElementById('mobile-nav-content');
   if (mobileNav) {
     let html = '';
@@ -223,7 +220,7 @@ function renderLayout(activePage, isSubDir = false) {
     mobileNav.innerHTML = html;
   }
 
-  // Activar lógica del menú móvil (Estrategia de Portal + CSS robusto)
+  // Activar lógica del menú móvil
   const mobileBtn = document.getElementById('mobileMenuButton');
   const mobileClose = document.getElementById('mobileMenuClose');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -252,7 +249,6 @@ function renderLayout(activePage, isSubDir = false) {
     if (mobileClose) mobileClose.addEventListener('click', closeMenu);
     mobileBackdrop.addEventListener('click', closeMenu);
 
-    // Cerrar al clickear un link
     mobileNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', closeMenu);
     });
