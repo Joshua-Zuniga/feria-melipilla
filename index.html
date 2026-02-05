@@ -71,7 +71,7 @@
   </style>
 </head>
 
-<body class="bg-slate-50 text-slate-800 font-sans">
+<body class="bg-slate-50 text-slate-800 font-sans no-header-padding">
 
   <script>
     // Actualizado: 2026-01-01 15:37
@@ -84,31 +84,49 @@
   <!-- HEADER -->
   <div id="main-header"></div>
 
-  <!-- HERO (Separado del Header) -->
-  <div class="bg-primary text-white">
-    <div class="max-w-6xl mx-auto px-4 py-10 md:py-16 flex flex-col md:flex-row items-center gap-10">
-      <div class="flex-1 space-y-6" data-aos="fade-right">
-        <p class="text-sm font-semibold tracking-[0.2em] uppercase text-emerald-200">Asociación Gremial</p>
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">Feria Agrícola Melipilla</h1>
-        <p class="text-sm md:text-base text-emerald-100 max-w-xl">
-          Somos la principal Asociación de la Feria Libre de Melipilla, comprometida con el desarrollo,
-          la organización y la representación de nuestros feriantes.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="Nosotros.html"
-            class="px-5 py-2.5 rounded-full bg-white text-primary font-semibold shadow hover:bg-emerald-50">
-            Conocer más
-          </a>
-          <a href="Localizanos.html"
-            class="px-5 py-2.5 rounded-full border border-white/50 text-white font-semibold hover:bg-white/10">
-            ¿Dónde estamos?
-          </a>
-        </div>
+  <!-- HERO (Imagen de Fondo) -->
+  <div class="relative w-full pt-44 pb-20 md:py-48 bg-[#166534] overflow-hidden group">
+    <!-- Background -->
+    <div class="absolute inset-0">
+      <img src="images/Banner_1.webp"
+        class="w-full h-full object-cover opacity-60 group-hover:opacity-70 transition-opacity duration-1000 scale-105 group-hover:scale-100">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#166534] via-[#166534]/50 to-[#166534]/30"></div>
+      <!-- Decorative Pattern -->
+      <div class="absolute inset-0 opacity-10"
+        style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM22.485 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 22.485l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 22.485l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 54.627l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 54.627l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM54.627 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828zM22.485 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
       </div>
-      <div class="flex-1 flex justify-center md:justify-end" data-aos="fade-left">
-        <div class="rounded-3xl bg-emerald-800/40 border border-emerald-300/30 p-4 shadow-lg">
-          <img src="images/Banner_1.webp" class="w-full max-w-md rounded-2xl object-cover">
-        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative max-w-5xl mx-auto px-6 text-center z-10 space-y-8">
+      <div data-aos="fade-down">
+        <span
+          class="inline-block py-1 px-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-emerald-200 text-xs md:text-sm font-bold uppercase tracking-[0.2em] shadow-lg">
+          Asociación Gremial
+        </span>
+      </div>
+
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight drop-shadow-2xl tracking-tight"
+        data-aos="fade-up">
+        Feria Agrícola Melipilla
+      </h1>
+
+      <p class="text-lg md:text-xl text-emerald-50 max-w-2xl mx-auto leading-relaxed font-medium drop-shadow-md"
+        data-aos="fade-up" data-aos-delay="100">
+        Somos el corazón agrícola de la zona. Encuentra los mejores productos frescos, frutas y verduras directamente de
+        nuestros productores locales.
+      </p>
+
+      <div class="flex flex-col md:flex-row flex-wrap justify-center gap-4 pt-6" data-aos="fade-up"
+        data-aos-delay="200">
+        <a href="Nosotros.html"
+          class="px-8 py-4 rounded-full bg-white text-primary font-bold shadow-xl hover:bg-emerald-50 hover:scale-105 transition-all transform duration-300 border-2 border-transparent">
+          Conocer más
+        </a>
+        <a href="Localizanos.html"
+          class="px-8 py-4 rounded-full bg-white/10 backdrop-blur-md text-white font-bold border-2 border-white/30 hover:bg-white/20 hover:border-white hover:scale-105 transition-all transform duration-300 shadow-lg">
+          ¿Dónde estamos?
+        </a>
       </div>
     </div>
   </div>
@@ -195,203 +213,8 @@
     });
   </script>
 
-  <!-- MODAL HOME - Diseño de Scroll Unificado -->
-  <div id="home-modal-backdrop"
-    class="fixed inset-0 bg-black/80 z-[9998] hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm"
-    onclick="cerrarModalHome()"></div>
-
-  <div id="home-modal-panel" class="fixed inset-0 z-[9999] hidden overflow-y-auto py-10 px-4 pointer-events-auto"
-    style="-webkit-overflow-scrolling: touch;">
-    <div class="min-h-full flex items-start justify-center pointer-events-none">
-      <div id="home-modal-box"
-        class="bg-white w-full max-w-5xl rounded-2xl shadow-2xl transform scale-95 opacity-0 transition-all duration-300 pointer-events-auto relative overflow-hidden h-fit mb-10">
-
-        <!-- Imagen Principal (Cabecera Integrada) -->
-        <div class="relative w-full h-64 md:h-[450px] overflow-hidden bg-slate-200">
-          <img id="home-modal-img" src="" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-
-          <!-- Botón Cerrar Flotante -->
-          <div class="absolute top-4 right-4 z-50">
-            <button onclick="cerrarModalHome()"
-              class="bg-black/40 hover:bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-md transition-all hover:scale-110 border border-white/20 shadow-lg">
-              <i class="fa-solid fa-xmark text-lg"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Contenido de la Noticia -->
-        <div class="p-6 md:p-12 space-y-6 bg-white relative">
-          <!-- Decoración superior -->
-          <div class="absolute -top-6 left-0 right-0 h-6 bg-gradient-to-t from-white to-transparent"></div>
-
-          <div class="border-b border-slate-100 pb-6">
-            <div
-              class="flex items-center gap-3 text-primary font-bold text-xs md:text-sm uppercase tracking-widest mb-4">
-              <i class="fa-regular fa-calendar-check"></i>
-              <span id="home-fecha-texto"></span>
-            </div>
-            <h2 id="home-modal-titulo" class="text-3xl md:text-5xl font-extrabold text-slate-900 leading-[1.2]"></h2>
-          </div>
-
-          <div id="home-modal-cuerpo"
-            class="prose prose-green prose-lg md:prose-xl max-w-none text-slate-700 font-sans leading-relaxed">
-            <!-- El contenido se inyecta aquí -->
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- Script de noticias DESPUÉS del modal -->
-  <script>
-    // Variable global para almacenar las noticias
-    window.homeNoticias = [];
-
-    function limpiarContenido(html) {
-      if (!html) return "";
-      try {
-        let c = html;
-        c = c.replace(/<style\b[^>]*>([\s\S]*?)<\/style>/gim, "");
-        c = c.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gim, "");
-        c = c.replace(/<head\b[^>]*>([\s\S]*?)<\/head>/gim, "");
-        return c.replace(/<\/?(html|body|iframe|!DOCTYPE)[^>]*>/gim, (match) => {
-          if (match.toLowerCase().includes('iframe')) return match;
-          return "";
-        });
-      } catch (e) { return html; }
-    }
-
-    // Callback global para Blogger
-    window.cargarHomeNoticias = function (json) {
-      console.log('🔔 Blogger: Recibiendo datos...', json);
-      const contenedor = document.getElementById('home-noticias-grid');
-      if (!contenedor) return;
-
-      try {
-        const entradas = json.feed && json.feed.entry;
-        if (!entradas || entradas.length === 0) {
-          contenedor.innerHTML = '<div class="col-span-full text-center py-10 text-slate-500">No hay noticias disponibles por el momento.</div>';
-          return;
-        }
-
-        window.homeNoticias = entradas;
-        let html = '';
-        const limit = Math.min(entradas.length, 3);
-
-        for (let i = 0; i < limit; i++) {
-          const entrada = entradas[i];
-          const titulo = entrada.title.$t;
-          const fechaRaw = new Date(entrada.published.$t);
-          const mes = fechaRaw.toLocaleString('es-CL', { month: 'short' }).toUpperCase();
-          const dia = fechaRaw.getDate();
-
-          let imgUrl = "images/Banner_1.webp"; // Fallback local
-          if (entrada.media$thumbnail) {
-            imgUrl = entrada.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w600-h400-c/");
-          }
-
-          const textoPlano = (entrada.summary && entrada.summary.$t) || (entrada.content && entrada.content.$t) || "";
-          const divTemp = document.createElement("div");
-          divTemp.innerHTML = limpiarContenido(textoPlano);
-          const resumen = (divTemp.innerText || "").substring(0, 100) + "...";
-
-          html += `
-            <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer border border-slate-100 flex flex-col h-full" onclick="abrirModalHome(${i})">
-              <div class="relative h-48 overflow-hidden">
-                <img src="${imgUrl}" alt="${titulo}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                <div class="absolute inset-0 bg-black/10 transition-colors"></div>
-                <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-slate-800 rounded-lg px-3 py-1 flex flex-col items-center shadow-sm">
-                  <span class="text-xs font-bold uppercase text-primary">${mes}</span>
-                  <span class="text-lg font-bold leading-none">${dia}</span>
-                </div>
-              </div>
-              <div class="p-5 flex flex-col flex-grow">
-                <h3 class="text-lg font-bold text-slate-800 mb-2 leading-tight group-hover:text-primary transition-colors line-clamp-2">${titulo}</h3>
-                <p class="text-slate-600 text-sm line-clamp-3 mb-4 flex-grow">${resumen}</p>
-                <div class="pt-3 border-t border-slate-50 mt-auto text-primary text-sm font-semibold flex items-center gap-2">
-                  Leer más <i class="fa-solid fa-arrow-right text-xs"></i>
-                </div>
-              </div>
-            </div>
-          `;
-        }
-        contenedor.innerHTML = html;
-        console.log('✅ Noticias renderizadas');
-      } catch (err) {
-        console.error('❌ Error renderizando noticias:', err);
-        contenedor.innerHTML = '<div class="col-span-full text-center py-10 text-red-500">Ocurrió un error al cargar las noticias.</div>';
-      }
-    };
-
-    window.abrirModalHome = function (index) {
-      const data = window.homeNoticias[index];
-      if (!data) return;
-
-      let img = "images/Banner_1.webp";
-      if (data.media$thumbnail) img = data.media$thumbnail.url.replace(/\/s[0-9]+.*?\//, "/w1000-h800-c/");
-      const fecha = new Date(data.published.$t).toLocaleDateString('es-CL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-
-      document.getElementById('home-modal-titulo').innerText = data.title.$t;
-      document.getElementById('home-modal-cuerpo').innerHTML = limpiarContenido(data.content.$t);
-      document.getElementById('home-modal-img').src = img;
-
-      const displayFecha = document.getElementById('home-fecha-texto');
-      if (displayFecha) displayFecha.innerText = fecha;
-
-      const hBackdrop = document.getElementById('home-modal-backdrop');
-      const hPanel = document.getElementById('home-modal-panel');
-      const hBox = document.getElementById('home-modal-box');
-
-      hBackdrop.classList.remove('hidden');
-      hPanel.classList.remove('hidden');
-
-      // Asegurar que el modal empiece desde arriba
-      hPanel.scrollTop = 0;
-
-      document.body.style.overflow = 'hidden';
-      // Refuerzo: eliminar transformaciones del body que rompan el position: fixed
-      document.body.dataset.baseTransform = document.body.style.transform;
-      document.body.style.setProperty('transform', 'none', 'important');
-      // También al html por si acaso
-      document.documentElement.style.setProperty('transform', 'none', 'important');
-
-      setTimeout(() => {
-        hBackdrop.classList.remove('opacity-0');
-        hBox.classList.remove('scale-95', 'opacity-0');
-        hBox.classList.add('scale-100', 'opacity-100');
-      }, 50);
-    };
-
-    window.cerrarModalHome = function () {
-      const hBackdrop = document.getElementById('home-modal-backdrop');
-      const hPanel = document.getElementById('home-modal-panel');
-      const hBox = document.getElementById('home-modal-box');
-
-      hBox.classList.remove('scale-100', 'opacity-100');
-      hBox.classList.add('scale-95', 'opacity-0');
-      hBackdrop.classList.add('opacity-0');
-      setTimeout(() => {
-        hBackdrop.classList.add('hidden');
-        hPanel.classList.add('hidden');
-        document.body.style.overflow = '';
-        // Restaurar transform si existía
-        document.body.style.removeProperty('transform');
-        document.documentElement.style.removeProperty('transform');
-        if (document.body.dataset.baseTransform) {
-          document.body.style.transform = document.body.dataset.baseTransform;
-        }
-      }, 300);
-    };
-
-    // Lanzar la carga
-    (function loadNews() {
-      const s = document.createElement('script');
-      s.src = 'https://feriaagricolamelipilla.blogspot.com/feeds/posts/default?alt=json-in-script&callback=cargarHomeNoticias&max-results=3';
-      document.body.appendChild(s);
-    })();
-  </script>
+  <!-- Script de Últimas Noticias (Supabase) -->
+  <script type="module" src="js/home-news.js"></script>
 
 </body>
 

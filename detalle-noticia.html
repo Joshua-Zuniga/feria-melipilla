@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticia - Feria Agrícola Melipilla</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.webp" type="image/x-icon">
+    <meta name="theme-color" content="#166534">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#166534',
+                        secondary: '#65a30d',
+                        accent: '#f97316',
+                        dark: '#020617'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        };
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://kit.fontawesome.com/c38e3367c6.js" crossorigin="anonymous"></script>
+
+    <!-- Layout Script -->
+    <script src="js/layout.js"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans no-header-padding">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderLayout("Noticias");
+        });
+    </script>
+
+    <div id="main-header"></div>
+
+    <!-- Contenido de la Noticia -->
+    <main class="min-h-screen pb-20">
+
+        <!-- Hero / Portada -->
+        <div
+            class="relative w-full h-[65vh] md:h-[90vh] bg-slate-900 group flex flex-col items-center justify-center pt-0 md:pt-32">
+            <img id="news-image" src=""
+                class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-50 transition-opacity duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+
+            <!-- Botón Volver (Posicionado arriba a la izquierda para evitar el Navbar) -->
+            <div class="absolute top-0 left-0 w-full pt-28 md:pt-40 px-6 md:px-12 z-30 pointer-events-none text-left">
+                <a href="Noticias.html"
+                    class="pointer-events-auto inline-flex items-center text-white/90 hover:text-white transition-colors text-sm font-bold tracking-widest uppercase bg-black/20 hover:bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Volver
+                </a>
+            </div>
+
+            <!-- Contenido Centrado (Título y Fecha) -->
+            <div class="relative w-full max-w-7xl px-6 z-20 flex flex-col items-center text-center">
+                <div
+                    class="flex items-center gap-3 text-emerald-300 font-bold text-xs md:text-sm uppercase tracking-widest mb-6 animate-fade-in-up">
+                    <span
+                        class="bg-emerald-600/90 text-white px-3 py-1 rounded-full shadow-lg backdrop-blur-sm border border-emerald-400/30">Feria
+                        Informa</span>
+                    <span id="news-date" class="drop-shadow-md"></span>
+                </div>
+
+                <h1 id="news-title"
+                    class="text-3xl md:text-6xl lg:text-6xl font-black text-white leading-tight drop-shadow-2xl tracking-tight">
+                    Cargando noticia...
+                </h1>
+            </div>
+        </div>
+
+        <!-- Cuerpo del Texto -->
+        <article class="max-w-7xl mx-auto px-4 md:px-6 -mt-16 md:-mt-20 relative z-10 pb-20">
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-100">
+                <div id="news-content"
+                    class="prose prose-lg md:prose-xl prose-emerald max-w-none text-slate-700 leading-relaxed overflow-x-hidden break-words [&_img]:max-w-full [&_img]:h-auto [&_iframe]:max-w-full [&_div]:max-w-full [&_table]:w-full [&_td]:break-all">
+                    <!-- El contenido se inyecta aquí -->
+                    <div class="animate-pulse space-y-4">
+                        <div class="h-4 bg-slate-200 rounded w-3/4"></div>
+                        <div class="h-4 bg-slate-200 rounded"></div>
+                        <div class="h-4 bg-slate-200 rounded"></div>
+                        <div class="h-4 bg-slate-200 rounded w-1/2"></div>
+                    </div>
+                </div>
+
+                <!-- Firma -->
+                <div
+                    class="mt-12 pt-8 border-t border-slate-100 text-slate-500 text-sm flex justify-between items-center">
+                    <span>Publicado por <strong class="text-primary" id="news-author">Administración</strong></span>
+                    <div class="flex gap-2">
+                        <button onclick="compartir()"
+                            class="text-slate-400 hover:text-primary transition-colors text-lg">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <div id="main-footer"></div>
+
+    <script type="module">
+        import { supabase } from './js/supabase-client.js';
+
+        async function loadNews() {
+            // Obtener ID de la URL
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+
+            if (!id) {
+                window.location.href = 'Noticias.html';
+                return;
+            }
+
+            try {
+                const { data, error } = await supabase
+                    .from('web_news')
+                    .select('*')
+                    .eq('id', id)
+                    .single();
+
+                if (error) throw error;
+                if (!data) throw new Error("Noticia no encontrada");
+
+                // Rellenar datos
+                document.title = `${data.title} - Feria Agrícola Melipilla`;
+
+                // Imagen
+                const imgEl = document.getElementById('news-image');
+                imgEl.src = data.image_url || "images/Banner_1.webp";
+
+                // Fecha
+                const dateObj = new Date(data.published_at);
+                const fechaStr = dateObj.toLocaleDateString('es-CL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                document.getElementById('news-date').innerText = fechaStr;
+
+                // Título
+                document.getElementById('news-title').innerText = data.title;
+
+                // Contenido Sanitizado
+                let cleanContent = data.content || "";
+
+                // 1. Si el contenido trae estructura HTML completa, extraer solo el body
+                const bodyMatch = cleanContent.match(/<body[^>]*>([\s\S]*)<\/body>/i);
+                if (bodyMatch && bodyMatch[1]) {
+                    cleanContent = bodyMatch[1];
+                }
+
+                // 2. Eliminar scripts y estilos peligrosos que rompen el diseño
+                cleanContent = cleanContent.replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gim, "");
+                cleanContent = cleanContent.replace(/<style\b[^>]*>([\s\S]*?)<\/style>/gim, "");
+                
+                // 3. Eliminar etiquetas html/head sueltas si quedaron
+                cleanContent = cleanContent.replace(/<\/?html[^>]*>/gi, "").replace(/<\/?head[^>]*>/gi, "");
+
+                document.getElementById('news-content').innerHTML = cleanContent || "<p>Sin contenido.</p>";
+
+                // Autor
+                if (data.author) document.getElementById('news-author').innerText = data.author;
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('news-content').innerHTML = `
+                <div class="text-center py-10">
+                    <p class="text-red-500 font-semibold text-xl mb-4">Lo sentimos, no pudimos cargar la noticia.</p>
+                    <a href="Noticias.html" class="inline-block px-6 py-2 bg-primary text-white rounded-full hover:bg-emerald-800 transition">Volver</a>
+                </div>
+            `;
+                document.getElementById('news-title').innerText = "Error";
+            }
+        }
+
+        window.compartir = function () {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                alert("Copia este enlace para compartir: " + window.location.href);
+            }
+        }
+
+        loadNews();
+    </script>
+
+</body>
+
+</html>

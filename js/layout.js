@@ -9,7 +9,7 @@
 const HEADER_HTML = `
 <!-- HEADER DESKTOP -->
 <header id="desktop-header" class="hidden md:flex fixed top-0 left-0 right-0 w-full z-[9990] justify-center py-6 px-4 transition-all duration-300 pointer-events-none sticky-header-init">
-  <div class="pointer-events-auto bg-[#166534] border border-emerald-400/30 shadow-2xl rounded-full pl-6 pr-2 py-1 flex items-center justify-between gap-6 w-full max-w-7xl transition-all duration-300">
+  <div class="pointer-events-auto bg-[#166534] border border-emerald-400/30 shadow-2xl rounded-full pl-6 pr-6 py-1 flex items-center justify-between gap-6 w-full max-w-7xl transition-all duration-300">
     
     <!-- Logo -->
     <a href="index.html" class="flex items-center gap-2 shrink-0 group mr-6 bg-white/10 rounded-full p-2 hover:bg-white/20 transition-colors my-1">
@@ -72,43 +72,78 @@ const FOOTER_HTML = `
   <div class="absolute inset-0 opacity-10"
     style="background-image: url('data:image/svg+xml,%3Csvg width=\\'120\\' height=\\'120\\' viewBox=\\'0 0 120 120\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cpath d=\\'M60 10 C40 40 40 80 60 110 C80 80 80 40 60 10 Z\\' fill=\\'%23ffffff\\'/%3E%3C/svg%3E'); background-size: 180px;">
   </div>
-  <div class="relative max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-3">
-    <div class="space-y-5">
+  <div class="relative max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-4">
+    
+    <!-- Col 1: Brand -->
+    <div class="space-y-5 md:col-span-1">
       <a href="index.html" class="flex items-center gap-3 transition-opacity hover:opacity-80">
         <img src="images/logotipo.svg" alt="Logo Feria Agrícola" class="h-24 drop-shadow-lg filter-none">
       </a>
       <p class="text-sm text-emerald-100 leading-relaxed max-w-sm">
-        Asociación Gremial Feria Agrícola Melipilla.
+        Asociación Gremial Feria Agrícola Melipilla. <br>
+        <span class="opacity-70 text-xs">Juntos construyendo comunidad.</span>
       </p>
     </div>
+
+    <!-- Col 2: Navigation -->
     <div class="space-y-5">
-      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-300">Enlaces</h4>
+      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-300">Navegación</h4>
       <ul class="space-y-2 text-sm">
-        <li><a href="Nosotros.html" class="hover:text-white hover:underline text-emerald-50">Nosotros</a></li>
-        <li><a href="Socios.html" class="hover:text-white hover:underline text-emerald-50">Socios</a></li>
-        <li><a href="Noticias.html" class="hover:text-white hover:underline text-emerald-50">Noticias</a></li>
+        <li><a href="Nosotros.html" class="hover:text-white hover:underline text-emerald-50 transition">Nosotros</a></li>
+        <li><a href="Socios.html" class="hover:text-white hover:underline text-emerald-50 transition">Socios</a></li>
+        <li><a href="Noticias.html" class="hover:text-white hover:underline text-emerald-50 transition">Noticias</a></li>
+        <li><a href="Localizanos.html" class="hover:text-white hover:underline text-emerald-50 transition">Mapa / Ubicación</a></li>
       </ul>
     </div>
+
+    <!-- Col 3: Legal -->
+    <div class="space-y-5">
+      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-300">Legal</h4>
+      <ul class="space-y-2 text-sm">
+        <li><a href="terminos.html" class="hover:text-white hover:underline text-emerald-50 transition">Términos y Condiciones</a></li>
+        <li><a href="privacidad.html" class="hover:text-white hover:underline text-emerald-50 transition">Política de Privacidad</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 4: Contact -->
     <div class="space-y-5">
       <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-300">Contacto</h4>
-      <div class="flex gap-4">
-        <a href="https://www.facebook.com/asoc.feria.agricola.melipilla" target="_blank"
-          class="w-10 h-10 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg text-white">
-          <i class="fab fa-facebook-f text-lg"></i>
-        </a>
-        <a href="https://www.instagram.com/asoc.feria.agricola.melipilla" target="_blank"
-          class="w-10 h-10 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg text-white">
-          <i class="fab fa-instagram text-lg"></i>
+      
+      <div class="space-y-3">
+        <!-- Socials -->
+        <div class="flex gap-4">
+          <a href="https://www.facebook.com/asoc.feria.agricola.melipilla" target="_blank"
+            class="w-10 h-10 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg text-white group">
+            <i class="fab fa-facebook-f text-lg group-hover:scale-110 transition-transform"></i>
+          </a>
+          <a href="https://www.instagram.com/asoc.feria.agricola.melipilla" target="_blank"
+            class="w-10 h-10 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg text-white group">
+            <i class="fab fa-instagram text-lg group-hover:scale-110 transition-transform"></i>
+          </a>
+        </div>
+
+        <!-- Mail -->
+        <a href="mailto:a.g.feria.agricola.m@gmail.com" class="flex items-center gap-3 text-emerald-50 hover:text-white group">
+             <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-white/20 transition">
+                 <i class="fas fa-envelope text-lime-300"></i>
+            </div>
+            <span class="text-xs break-all">a.g.feria.agricola.m@gmail.com</span>
         </a>
       </div>
-      <a href="mailto:a.g.feria.agricola.m@gmail.com" class="block text-lime-200 hover:text-white underline text-xs mt-2">
-        a.g.feria.agricola.m@gmail.com
-      </a>
     </div>
+
   </div>
+
+  <!-- Bottom Bar -->
   <div class="relative border-t border-emerald-700/60 bg-emerald-950/60 backdrop-blur-sm">
-    <div class="max-w-7xl mx-auto px-6 py-4 text-center text-xs text-emerald-300/80">
-      © 2025 Asociación Gremial Feria Agrícola Melipilla
+    <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-xs text-emerald-300/80 gap-4">
+      <div class="text-center md:text-left">
+        © ${new Date().getFullYear()} Asociación Gremial Feria Agrícola Melipilla. <br class="md:hidden"> Todos los derechos reservados.
+      </div>
+      <div class="flex items-center gap-4 opacity-50 hover:opacity-100 transition-opacity">
+        <i class="fas fa-leaf"></i>
+        <span>Melipilla, Región Metropolitana</span>
+      </div>
     </div>
   </div>
 </footer>
@@ -161,7 +196,7 @@ function renderLayout(activePage, isSubDir = false) {
     document.body.appendChild(mobileContainer);
 
     const nextEl = headerContainer.nextElementSibling;
-    if (nextEl && nextEl.tagName !== 'SCRIPT') {
+    if (nextEl && nextEl.tagName !== 'SCRIPT' && !document.body.classList.contains('no-header-padding')) {
       nextEl.classList.add('pt-24', 'md:pt-48');
     }
   }
@@ -242,6 +277,24 @@ function renderLayout(activePage, isSubDir = false) {
              </a>
         `;
     popupContent.innerHTML = pHtml;
+  }
+
+  // 5. Sticky Header Effect
+  const header = document.getElementById('desktop-header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('py-2');
+        header.classList.remove('py-6');
+        header.firstElementChild.classList.add('bg-[#166534]/90', 'backdrop-blur-md', 'shadow-xl');
+        header.firstElementChild.classList.remove('bg-[#166534]');
+      } else {
+        header.classList.remove('py-2');
+        header.classList.add('py-6');
+        header.firstElementChild.classList.remove('bg-[#166534]/90', 'backdrop-blur-md', 'shadow-xl');
+        header.firstElementChild.classList.add('bg-[#166534]');
+      }
+    });
   }
 
   window.togglePopupMenu = function () {
