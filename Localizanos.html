@@ -57,17 +57,34 @@
   <!-- Header Placeholder -->
   <div id="main-header"></div>
 
-  <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
-
-    <section data-aos="fade-up" class="space-y-6">
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900">Ubicación Feria Agrícola Melipilla</h2>
-      <p class="text-sm md:text-base text-slate-700 max-w-2xl">
-        Encuéntranos en Melipilla. Selecciona un sector para ver su ubicación exacta en el mapa.
+  <!-- HERO UBICACIÓN -->
+  <div class="relative w-full pt-40 pb-32 md:pt-48 md:pb-40 bg-[#166534] overflow-hidden group">
+    <div class="absolute inset-0">
+      <img src="images/Banner_1.webp"
+        class="w-full h-full object-cover opacity-60 group-hover:opacity-70 transition-opacity duration-1000 scale-105 group-hover:scale-100">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#166534] via-[#166534]/50 to-[#166534]/30"></div>
+      <div class="absolute inset-0 opacity-10"
+        style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM22.485 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 22.485l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 22.485l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 54.627l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 54.627l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM54.627 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828zM22.485 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
+      </div>
+    </div>
+    <div class="relative max-w-6xl mx-auto px-6 text-center z-10 space-y-4 mt-24 md:mt-0">
+      <span
+        class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-emerald-200 text-xs font-bold uppercase tracking-widest animate-fade-in-up">
+        ¿Dónde estamos?
+      </span>
+      <h1 class="text-3xl md:text-6xl font-black text-white leading-tight drop-shadow-lg" data-aos="fade-up">
+        Ubicación Feria Agrícola
+      </h1>
+      <p class="text-lg text-emerald-100 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+        Encuéntranos en Melipilla. Selecciona un sector en el mapa interactivo para ver cómo llegar.
       </p>
-    </section>
+    </div>
+  </div>
+
+  <main class="max-w-7xl mx-auto px-4 py-12 md:py-20 space-y-16 -mt-10 relative z-20">
 
     <!-- Mapas Optimizados con Tabs -->
-    <section data-aos="fade-up" class="bg-white rounded-2xl shadow-xl overflow-hidden">
+    <section data-aos="fade-up" class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100">
       <!-- Tabs -->
       <div class="flex flex-wrap border-b border-slate-100 bg-slate-50">
         <button onclick="cambiarMapa(0)" id="tab-0"
@@ -76,11 +93,11 @@
         </button>
         <button onclick="cambiarMapa(1)" id="tab-1"
           class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
-          Miercoles
+          Miércoles
         </button>
         <button onclick="cambiarMapa(2)" id="tab-2"
           class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
-          Sabado
+          Sábado
         </button>
         <button onclick="cambiarMapa(3)" id="tab-3"
           class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
@@ -89,7 +106,8 @@
       </div>
 
       <!-- Contenedor Mapa -->
-      <div class="relative w-full h-0 pb-[60%] bg-slate-100">
+      <!-- Contenedor Mapa -->
+      <div class="relative w-full h-0 pb-[120%] md:pb-[55%] bg-slate-100">
 
         <!-- Skeleton Overlay -->
         <!-- Skeleton Overlay (Static, no pulse to avoid flicker perception) -->
