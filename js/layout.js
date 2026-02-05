@@ -1,256 +1,277 @@
 /**
  * Componentes reutilizables para el sitio web
- * Maneja Header, Footer y Menú Móvil
+ * Ref: Diseño "Green Native Bar" - Legacy Icon Support
+ * Fix: Usando nombres de iconos compatibles (FA5/FA6) para evitar las "X".
  */
 
+/* Mismos HTML, solo cambiando IDs si fuera necesario, pero la clave está en el JS config */
+
 const HEADER_HTML = `
-<header class="relative bg-primary text-white z-[500]">
-  <div class="border-b border-emerald-700/80">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
-        <img src="images/logotipo.svg" alt="Feria Agrícola Melipilla" class="h-16 md:h-20">
-      </a>
+<!-- HEADER DESKTOP -->
+<header id="desktop-header" class="hidden md:flex fixed top-0 left-0 right-0 w-full z-[9990] justify-center py-6 px-4 transition-all duration-300 pointer-events-none sticky-header-init">
+  <div class="pointer-events-auto bg-[#166534] border border-emerald-400/30 shadow-2xl rounded-full pl-6 pr-2 py-1 flex items-center justify-between gap-6 w-full max-w-7xl transition-all duration-300">
+    
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center gap-2 shrink-0 group mr-6 bg-white/10 rounded-full p-2 hover:bg-white/20 transition-colors my-1">
+      <img src="images/logotipo.svg" alt="Feria Melipilla" class="h-20 w-auto drop-shadow-sm group-hover:scale-105 transition-transform">
+    </a>
 
-      <nav class="hidden md:flex items-center gap-6" id="desktop-nav">
-        <!-- Links se inyectan dinámicamente -->
-      </nav>
+    <!-- Nav Desktop -->
+    <nav class="flex items-center gap-1 justify-center flex-grow" id="desktop-nav">
+      <!-- Links injected here -->
+    </nav>
 
-      <button id="mobileMenuButton"
-        class="md:hidden w-11 h-11 flex items-center justify-center rounded-full bg-white/10 border border-white/20 hover:bg-white/20 transition-all shadow-sm">
-        <i class="fa-solid fa-bars text-lg"></i>
-      </button>
+    <!-- Login -->
+    <div class="flex items-center pl-4">
+        <a href="https://feriaagricolaag.vercel.app/"
+           class="flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-[#166534] bg-white hover:bg-emerald-50 rounded-full transition-all shadow-lg hover:shadow-white/20 transform hover:-translate-y-0.5">
+           <i class="fas fa-user"></i>
+           <span>Ingresar</span>
+        </a>
     </div>
   </div>
 </header>
+`;
 
-<!-- Menú móvil -->
-<div id="mobileBackdrop" class="fixed inset-0 bg-black/70 hidden z-[9998] backdrop-blur-md transition-opacity duration-300 opacity-0"></div>
-<aside id="mobileMenu"
-  class="fixed inset-y-0 left-0 w-80 bg-[#166534] border-r border-emerald-800 transform -translate-x-full transition-transform duration-300 ease-out z-[9999] flex flex-col shadow-[10px_0_30px_rgba(0,0,0,0.5)]">
-  
-  <div class="px-6 py-6 flex items-center justify-between border-b border-white/10">
-    <div class="flex items-center gap-3">
-      <img src="images/logotipo.svg" alt="Logo" class="h-10 brightness-110">
-      <!-- "Menú" removido por petición del usuario -->
-    </div>
-    <button id="mobileMenuClose" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-all">
-      <i class="fa-solid fa-xmark text-lg"></i>
-    </button>
-  </div>
+const MOBILE_HTML = `
+<!-- MOBILE TOP BAR -->
+<div class="md:hidden fixed top-0 left-0 right-0 z-[9000] bg-[#166534] px-4 py-3 shadow-md flex items-center justify-center transition-all duration-300">
+    <a href="index.html" class="flex items-center justify-center bg-white/10 rounded-full p-2">
+      <img src="images/logotipo.svg" alt="Feria Melipilla" class="h-16 w-auto drop-shadow-md">
+    </a>
+</div>
 
-  <nav class="flex-grow flex flex-col px-4 py-8 overflow-y-auto space-y-2" id="mobile-nav-content">
-    <!-- Links móviles -->
-  </nav>
+<!-- POPUP MENU -->
+<div id="mobile-popup-menu" class="hidden md:hidden fixed bottom-28 left-4 right-4 bg-white z-[10000] rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] border-2 border-[#166534] p-6 transition-all duration-300 origin-bottom transform scale-90 opacity-0">
+     <div class="flex items-center justify-between mb-4 border-b border-gray-100 pb-2">
+         <h3 class="text-[#166534] font-bold text-lg">Más Secciones</h3>
+         <button onclick="togglePopupMenu()" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-500 hover:bg-gray-200">
+            <i class="fas fa-times"></i>
+         </button>
+     </div>
+     <div class="grid grid-cols-2 gap-4" id="popup-content">
+        <!-- Extra Links Injected Here -->
+     </div>
+     <div class="absolute -bottom-3 right-8 w-6 h-6 bg-white border-b-2 border-r-2 border-[#166534] transform rotate-45"></div>
+</div>
+<div id="menu-backdrop" class="hidden fixed inset-0 z-[9995] bg-black/60 backdrop-blur-sm" onclick="togglePopupMenu()"></div>
 
-  <div class="p-6 border-t border-white/5 bg-black/20">
-    <p class="text-[10px] text-emerald-300/40 uppercase font-black tracking-[0.2em] text-center">Asociación Gremial</p>
-  </div>
-</aside>
+<!-- MOBILE BOTTOM NAV -->
+<nav id="mobile-bottom-nav" class="md:hidden fixed bottom-0 left-0 right-0 bg-[#166534] z-[9999] border-t-2 border-emerald-500 shadow-[0_-5px_20px_rgba(0,0,0,0.3)] pb-safe pt-2 px-1 flex justify-between items-end h-[85px]">
+    <!-- Main Links Injected Here -->
+</nav>
+
+<style>
+.pb-safe { padding-bottom: env(safe-area-inset-bottom, 10px); }
+</style>
 `;
 
 const FOOTER_HTML = `
-<footer class="relative mt-20 text-slate-100">
-  <div class="absolute inset-0 bg-gradient-to-br from-primary to-emerald-900 opacity-95"></div>
+<footer class="relative mt-20 text-slate-100 mb-24 md:mb-0">
+  <div class="absolute inset-0 bg-gradient-to-br from-[#166534] to-emerald-900 opacity-95"></div>
   <div class="absolute inset-0 opacity-10"
     style="background-image: url('data:image/svg+xml,%3Csvg width=\\'120\\' height=\\'120\\' viewBox=\\'0 0 120 120\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cpath d=\\'M60 10 C40 40 40 80 60 110 C80 80 80 40 60 10 Z\\' fill=\\'%23ffffff\\'/%3E%3C/svg%3E'); background-size: 180px;">
   </div>
-
   <div class="relative max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-3">
     <div class="space-y-5">
       <a href="index.html" class="flex items-center gap-3 transition-opacity hover:opacity-80">
-        <img src="images/logotipo.svg" alt="Logo Feria Agrícola" class="h-20 drop-shadow-lg brightness-110">
+        <img src="images/logotipo.svg" alt="Logo Feria Agrícola" class="h-24 drop-shadow-lg filter-none">
       </a>
       <p class="text-sm text-emerald-100 leading-relaxed max-w-sm">
-        Somos la Asociación Gremial Feria Agrícola Melipilla, dedicada al fortalecimiento,
-        organización y representación de nuestros feriantes y su comunidad.
+        Asociación Gremial Feria Agrícola Melipilla.
       </p>
     </div>
-
     <div class="space-y-5">
-      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-200">Enlaces rápidos</h4>
+      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-300">Enlaces</h4>
       <ul class="space-y-2 text-sm">
-        <li><a href="Nosotros.html" class="hover:text-white hover:underline">Nosotros</a></li>
-        <li><a href="Directiva.html" class="hover:text-white hover:underline">Directiva</a></li>
-        <li><a href="Socios.html" class="hover:text-white hover:underline">Socios</a></li>
-        <li><a href="Noticias.html" class="hover:text-white hover:underline">Noticias</a></li>
-        <li><a href="Galeria.html" class="hover:text-white hover:underline">Galería</a></li>
-        <li><a href="Localizanos.html" class="hover:text-white hover:underline">Localízanos</a></li>
+        <li><a href="Nosotros.html" class="hover:text-white hover:underline text-emerald-50">Nosotros</a></li>
+        <li><a href="Socios.html" class="hover:text-white hover:underline text-emerald-50">Socios</a></li>
+        <li><a href="Noticias.html" class="hover:text-white hover:underline text-emerald-50">Noticias</a></li>
       </ul>
     </div>
-
     <div class="space-y-5">
-      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-200">Síguenos</h4>
-      <div class="flex gap-5">
+      <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-300">Contacto</h4>
+      <div class="flex gap-4">
         <a href="https://www.facebook.com/asoc.feria.agricola.melipilla" target="_blank"
-          class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
-          <i class="fa-brands fa-facebook-f text-xl"></i>
+          class="w-10 h-10 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg text-white">
+          <i class="fab fa-facebook-f text-lg"></i>
         </a>
         <a href="https://www.instagram.com/asoc.feria.agricola.melipilla" target="_blank"
-          class="w-12 h-12 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg">
-          <i class="fa-brands fa-instagram text-xl"></i>
+          class="w-10 h-10 grid place-items-center rounded-full bg-emerald-700/50 border border-lime-300/30 hover:bg-emerald-600 transition shadow-lg text-white">
+          <i class="fab fa-instagram text-lg"></i>
         </a>
       </div>
-      <div class="pt-3">
-        <p class="text-sm text-emerald-100">Correo de contacto:</p>
-        <a href="mailto:a.g.feria.agricola.m@gmail.com" class="text-lime-200 hover:text-white underline text-sm">
-          a.g.feria.agricola.m@gmail.com
-        </a>
-      </div>
+      <a href="mailto:a.g.feria.agricola.m@gmail.com" class="block text-lime-200 hover:text-white underline text-xs mt-2">
+        a.g.feria.agricola.m@gmail.com
+      </a>
     </div>
   </div>
-
   <div class="relative border-t border-emerald-700/60 bg-emerald-950/60 backdrop-blur-sm">
     <div class="max-w-7xl mx-auto px-6 py-4 text-center text-xs text-emerald-300/80">
-      © 2025 Asociación Gremial Feria Agrícola Melipilla — Todos los derechos reservados.
+      © 2025 Asociación Gremial Feria Agrícola Melipilla
     </div>
   </div>
 </footer>
 `;
 
-const NAV_LINKS = [
-  { href: 'index.html', label: 'Inicio' },
-  { href: 'Nosotros.html', label: 'Nosotros' },
-  { href: 'Directiva.html', label: 'Directiva' },
-  { href: 'Socios.html', label: 'Socios' },
-  { href: 'Noticias.html', label: 'Noticias' },
-  { href: 'Galeria.html', label: 'Galería' },
-  { href: 'Localizanos.html', label: 'Localízanos' }
+// USANDO CLASES DE ICONOS COMPATIBLES (Legacy v5)
+// Esto asegura que se vean incluso si se carga una versión anterior de FontAwesome por tu 'kit' antiguo
+const NAV_ITEMS = [
+  { href: 'index.html', label: 'Inicio', icon: 'fas fa-home', main: true },
+  { href: 'Socios.html', label: 'Socios', icon: 'fas fa-store', main: true },
+  { href: 'Noticias.html', label: 'Noticias', icon: 'far fa-newspaper', main: true }, // 'far' a veces es mas seguro para newspaper
+  { href: 'Localizanos.html', label: 'Mapa', icon: 'fas fa-map-marker-alt', main: true }, // fa-map-location-dot -> fa-map-marker-alt
+
+  // Popup
+  { href: 'Nosotros.html', label: 'Nosotros', icon: 'fas fa-users', main: false },
+  { href: 'Directiva.html', label: 'Directiva', icon: 'fas fa-file-alt', main: false }, // fa-file-signature -> fa-file-alt
+  { href: 'Galeria.html', label: 'Galería', icon: 'fas fa-images', main: false }, // fa-camera -> fa-images
 ];
-
-const LOGIN_BTN = `
-<a href="https://feriaagricolaag.vercel.app/"
-  class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-white/10 hover:bg-white/20 rounded-full transition-colors border border-white/20 ml-2">
-  <i class="fa-solid fa-user text-xs"></i>
-  <span>Ingresar</span>
-</a>
-`;
-
-const LOGIN_BTN_MOBILE = `
-<div class="pt-6 mt-6 border-t border-emerald-800/50">
-  <p class="text-[10px] text-emerald-400 font-bold uppercase tracking-widest mb-3 pl-4">Mi Cuenta</p>
-  <a href="https://feriaagricolaag.vercel.app/"
-    class="flex items-center gap-3 py-4 px-4 bg-white text-primary rounded-xl font-bold shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98]">
-    <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-        <i class="fa-solid fa-user"></i>
-    </div>
-    Iniciar Sesión
-  </a>
-</div>
-`;
 
 function renderLayout(activePage, isSubDir = false) {
   const prefix = isSubDir ? "../" : "";
 
-  // Ajustar imágenes en Header y Footer
-  let headerHtml = HEADER_HTML.replace(/src="images\//g, `src="${prefix}images/`).replace(/href="index.html"/g, `href="${prefix}index.html"`);
-  let footerHtml = FOOTER_HTML.replace(/src="images\//g, `src="${prefix}images/`).replace(/href="index.html"/g, `href="${prefix}index.html"`);
+  // IMPORTANT: Inject FA 6 as Backup, but relying on Legacy Names helps bridging
+  const faLink = document.createElement('link');
+  faLink.rel = 'stylesheet';
+  faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+  document.head.appendChild(faLink);
 
-  if (isSubDir) {
-    footerHtml = footerHtml.replace(/href="Nosotros.html"/g, 'href="../Nosotros.html"');
-    footerHtml = footerHtml.replace(/href="Directiva.html"/g, 'href="../Directiva.html"');
-    footerHtml = footerHtml.replace(/href="Socios.html"/g, 'href="../Socios.html"');
-    footerHtml = footerHtml.replace(/href="Noticias.html"/g, 'href="../Noticias.html"');
-    footerHtml = footerHtml.replace(/href="Galeria.html"/g, 'href="../Galeria.html"');
-    footerHtml = footerHtml.replace(/href="Localizanos.html"/g, 'href="../Localizanos.html"');
-  }
+  const animLink = document.createElement('link');
+  animLink.rel = 'stylesheet';
+  animLink.href = prefix + 'css/animations.css';
+  document.head.appendChild(animLink);
 
-  // 1. Inyectar CSS Global de Animaciones
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = prefix + 'css/animations.css';
-  document.head.appendChild(link);
-
-  // 2. Inyectar HTML base
+  // 2. HTML Injection
   const headerContainer = document.getElementById('main-header');
   const footerContainer = document.getElementById('main-footer');
+
   if (headerContainer) {
-    headerContainer.innerHTML = headerHtml;
-    // Mover portal del menú al body para garantizar z-index superior
-    const menu = document.getElementById('mobileMenu');
-    const backdrop = document.getElementById('mobileBackdrop');
-    if (menu) document.body.appendChild(menu);
-    if (backdrop) document.body.appendChild(backdrop);
-  }
-  if (footerContainer) footerContainer.innerHTML = footerHtml;
+    let hHtml = HEADER_HTML.replace(/src="images\//g, `src="${prefix}images/`).replace(/href="index.html"/g, `href="${prefix}index.html"`);
+    let mHtml = MOBILE_HTML.replace(/src="images\//g, `src="${prefix}images/`).replace(/href="index.html"/g, `href="${prefix}index.html"`);
 
-  // 3. Inyectar Botón Scroll Top
-  const scrollBtn = document.createElement('button');
-  scrollBtn.id = 'scrollTopBtn';
-  scrollBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
-  document.body.appendChild(scrollBtn);
-
-  // Lógica Scroll Top
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      scrollBtn.classList.add('show');
-    } else {
-      scrollBtn.classList.remove('show');
+    if (isSubDir) {
+      hHtml = hHtml.replace(/href="([^"]+)\.html"/g, `href="../$1.html"`);
+      mHtml = mHtml.replace(/href="([^"]+)\.html"/g, `href="../$1.html"`);
     }
-  });
 
-  scrollBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+    headerContainer.innerHTML = hHtml;
+    const mobileContainer = document.createElement('div');
+    mobileContainer.innerHTML = mHtml;
+    document.body.appendChild(mobileContainer);
 
-  // Generar Menú Desktop
+    const nextEl = headerContainer.nextElementSibling;
+    if (nextEl && nextEl.tagName !== 'SCRIPT') {
+      nextEl.classList.add('pt-24', 'md:pt-48');
+    }
+  }
+
+  if (footerContainer) {
+    let fHtml = FOOTER_HTML.replace(/src="images\//g, `src="${prefix}images/`).replace(/href="index.html"/g, `href="${prefix}index.html"`);
+    if (isSubDir) fHtml = fHtml.replace(/href="([^"]+)\.html"/g, `href="../$1.html"`);
+    footerContainer.innerHTML = fHtml;
+  }
+
+  // 3. Logic - Desktop Nav
   const desktopNav = document.getElementById('desktop-nav');
   if (desktopNav) {
     let html = '';
-    NAV_LINKS.forEach(link => {
-      const isActive = link.label === activePage;
-      const href = prefix + link.href;
-      const classes = isActive
-        ? "text-sm font-medium text-white hover:text-white transition-colors border-b-2 border-white"
-        : "text-sm text-white/80 hover:text-white transition-colors";
-      html += `<a href="${href}" class="${classes}">${link.label}</a>`;
+    NAV_ITEMS.forEach(item => {
+      const href = prefix + item.href;
+      const isActive = item.label === activePage || (item.label === 'Mapa' && activePage === 'Localízanos');
+      const baseClass = "text-sm font-medium px-4 py-2 rounded-full transition-colors duration-200 tracking-wide";
+      const activeClass = isActive ? "text-[#166534] bg-white font-bold shadow-sm" : "text-emerald-100 hover:text-white hover:bg-white/10";
+      html += `<a href="${href}" class="${baseClass} ${activeClass}">${item.label}</a>`;
     });
-    html += LOGIN_BTN;
     desktopNav.innerHTML = html;
   }
 
-  // Generar Menú Mobile
-  const mobileNav = document.getElementById('mobile-nav-content');
-  if (mobileNav) {
+  // 4. Logic - Mobile Bottom Nav
+  const mobileBottomNav = document.getElementById('mobile-bottom-nav');
+  const popupContent = document.getElementById('popup-content');
+
+  if (mobileBottomNav) {
     let html = '';
-    NAV_LINKS.forEach(link => {
-      const href = prefix + link.href;
-      html += `<a href="${href}">${link.label}</a>`;
+
+    NAV_ITEMS.filter(i => i.main).forEach(item => {
+      const href = prefix + item.href;
+      const isActive = item.label === activePage || (item.label === 'Mapa' && activePage === 'Localízanos');
+      const colorClass = isActive ? "text-white scale-105" : "text-emerald-300 hover:text-emerald-100";
+      const bgClass = isActive ? "bg-white/10 rounded-xl shadow-inner border border-white/10" : "";
+
+      html += `
+            <a href="${href}" class="flex flex-col items-center justify-center gap-1 w-full h-[65px] ${colorClass} ${bgClass} active:bg-white/20 transition-all rounded-xl">
+               <i class="${item.icon} text-3xl mb-1"></i>
+               <span class="text-[11px] font-bold tracking-wide">${item.label}</span>
+            </a>
+            `;
     });
-    html += LOGIN_BTN_MOBILE;
-    mobileNav.innerHTML = html;
+
+    // "Más" Button (Using fa-th-large for generic grid)
+    html += `
+        <button onclick="togglePopupMenu()" class="flex flex-col items-center justify-center gap-1 w-full h-[65px] text-emerald-300 hover:text-emerald-100 active:text-white active:bg-white/20 transition-all rounded-xl">
+           <i class="fas fa-th-large text-3xl mb-1"></i>
+           <span class="text-[11px] font-bold tracking-wide">Más</span>
+        </button>
+        `;
+
+    mobileBottomNav.innerHTML = html;
   }
 
-  // Activar lógica del menú móvil
-  const mobileBtn = document.getElementById('mobileMenuButton');
-  const mobileClose = document.getElementById('mobileMenuClose');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const mobileBackdrop = document.getElementById('mobileBackdrop');
-
-  if (mobileBtn && mobileMenu && mobileBackdrop) {
-    const openMenu = () => {
-      mobileMenu.classList.remove('-translate-x-full');
-      mobileBackdrop.classList.remove('hidden');
-      setTimeout(() => {
-        mobileBackdrop.classList.remove('opacity-0');
-        document.body.classList.add('menu-open');
-      }, 10);
-    };
-
-    const closeMenu = () => {
-      mobileMenu.classList.add('-translate-x-full');
-      mobileBackdrop.classList.add('opacity-0');
-      setTimeout(() => {
-        mobileBackdrop.classList.add('hidden');
-        document.body.classList.remove('menu-open');
-      }, 300);
-    };
-
-    mobileBtn.addEventListener('click', openMenu);
-    if (mobileClose) mobileClose.addEventListener('click', closeMenu);
-    mobileBackdrop.addEventListener('click', closeMenu);
-
-    mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
+  // Popup Content
+  if (popupContent) {
+    let pHtml = '';
+    NAV_ITEMS.filter(i => !i.main).forEach(item => {
+      const href = prefix + item.href;
+      pHtml += `
+             <a href="${href}" class="flex flex-col items-center justify-center gap-3 p-4 bg-emerald-50 hover:bg-emerald-100 rounded-2xl transition-all border border-emerald-100 group">
+                <div class="w-12 h-12 bg-[#166534] text-white rounded-full flex items-center justify-center text-xl shadow-lg group-hover:scale-110 transition-transform">
+                   <i class="${item.icon}"></i>
+                </div>
+                <span class="font-bold text-[#166534] text-sm">${item.label}</span>
+             </a>
+             `;
     });
+
+    pHtml += `
+             <a href="https://feriaagricolaag.vercel.app/" class="flex flex-col items-center justify-center gap-3 p-4 bg-[#166534] hover:bg-emerald-900 rounded-2xl transition-all border border-emerald-600 shadow-xl group">
+                <div class="w-12 h-12 bg-white text-[#166534] rounded-full flex items-center justify-center text-xl shadow-inner group-hover:scale-110 transition-transform">
+                   <i class="fas fa-sign-in-alt"></i>
+                </div>
+                <span class="font-bold text-white text-sm">Ingresar</span>
+             </a>
+        `;
+    popupContent.innerHTML = pHtml;
   }
+
+  window.togglePopupMenu = function () {
+    const popup = document.getElementById('mobile-popup-menu');
+    const backdrop = document.getElementById('menu-backdrop');
+    const btn = document.querySelector('button[onclick="togglePopupMenu()"] i');
+
+    if (popup.classList.contains('hidden')) {
+      popup.classList.remove('hidden');
+      backdrop.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        popup.classList.remove('scale-90', 'opacity-0');
+        popup.classList.add('scale-100', 'opacity-100');
+        if (btn) {
+          btn.classList.remove('fa-th-large');
+          btn.classList.add('fa-times');
+        }
+      });
+    } else {
+      popup.classList.remove('scale-100', 'opacity-100');
+      popup.classList.add('scale-90', 'opacity-0');
+      if (btn) {
+        btn.classList.remove('fa-times');
+        btn.classList.add('fa-th-large');
+      }
+
+      setTimeout(() => {
+        popup.classList.add('hidden');
+        backdrop.classList.add('hidden');
+      }, 200);
+    }
+  };
 }

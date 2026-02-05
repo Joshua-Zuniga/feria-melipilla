@@ -1,8 +1,8 @@
 {
   "name": "Feria Melipilla",
   "short_name": "Feria Melipilla",
-  "start_url": "https://joshua-zuniga.github.io//feria-melipilla/",
-  "scope": "https://joshua-zuniga.github.io/feria-melipilla/",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "description": "Información y novedades de la Feria de Melipilla",
   "lang": "es-CL",

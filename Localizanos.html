@@ -92,13 +92,17 @@
       <div class="relative w-full h-0 pb-[60%] bg-slate-100">
 
         <!-- Skeleton Overlay -->
+        <!-- Skeleton Overlay (Static, no pulse to avoid flicker perception) -->
         <div id="map-skeleton"
-          class="absolute inset-0 w-full h-full bg-slate-200 animate-pulse flex flex-col items-center justify-center z-20 transition-opacity duration-500">
+          class="absolute inset-0 w-full h-full bg-slate-100 flex flex-col items-center justify-center z-20 transition-opacity duration-500">
           <i class="fa-solid fa-map-location-dot text-5xl text-slate-300 mb-4"></i>
           <span class="text-slate-400 font-medium tracking-wide">Cargando mapa interactivo...</span>
         </div>
 
-        <iframe id="mapa-frame" loading="lazy"
+        <!-- Background Safety Layer (Prevents white flash from iframe rendering) -->
+        <div class="absolute inset-0 z-0 bg-slate-100"></div>
+
+        <iframe id="mapa-frame" loading="lazy" style="background-color: #f1f5f9;"
           src="https://www.google.com/maps/d/embed?mid=1AkVO8siqXth9BmK8SZR8IYQxmvAeaVE&ehbc=2E312F&noprof=1"
           class="absolute inset-0 w-full h-full z-10 opacity-0 transition-opacity duration-500" allow="autoplay">
         </iframe>
@@ -196,11 +200,23 @@
       const iframe = document.getElementById('mapa-frame');
       const skeleton = document.getElementById('map-skeleton');
 
-      // Mostrar skeleton y ocultar mapa mientras carga
-      skeleton.classList.remove('opacity-0', 'pointer-events-none');
-      iframe.classList.add('opacity-0');
+      // 1. Ocultar iframe y mostrar skeleton INSTANTÁNEAMENTE (sin transición) para tapar el parpadeo
+      iframe.classList.remove('transition-opacity', 'duration-500');
+      skeleton.classList.remove('transition-opacity', 'duration-500');
 
-      // Actualizar iframe
+      iframe.classList.add('opacity-0');
+      skeleton.classList.remove('opacity-0', 'pointer-events-none');
+
+      // Force reflow para aplicar cambios instantáneos
+      void iframe.offsetWidth;
+
+      // 2. Restaurar transiciones para el Fade-In suave cuando cargue
+      requestAnimationFrame(() => {
+        iframe.classList.add('transition-opacity', 'duration-500');
+        skeleton.classList.add('transition-opacity', 'duration-500');
+      });
+
+      // 3. Actualizar source
       iframe.src = MAP_URLS[index];
 
       // Actualizar tabs
