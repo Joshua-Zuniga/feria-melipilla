@@ -116,52 +116,80 @@
   <!-- Footer Placeholder -->
   <div id="main-footer"></div>
 
-  <!-- Datos de Galería -->
-  <script src="js/galeria-data.js"></script>
+  <!-- Datos de Galería (Eliminado, ahora se usa Supabase) -->
+  <!-- <script src="js/galeria-data.js"></script> -->
 
   <!-- SCRIPTS FINALES -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
+  <script type="module">
+    import { supabase } from './js/supabase-client.js';
+
+    // Función principal para cargar la galería
+    async function loadGallery() {
       const contenedor = document.getElementById("galeria");
+      if (!contenedor) return;
 
-      if (contenedor && typeof GALERIA_DATA !== 'undefined') {
-        let html = '';
+      try {
+        // Consultar Supabase
+        const { data: images, error } = await supabase
+          .from('gallery_images')
+          .select('*')
+          .order('created_at', { ascending: false });
 
-        GALERIA_DATA.forEach(item => {
-          html += `
-            <a href="${item.url}" 
-               class="group relative block w-full h-64 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover-card-effect"
-               data-sub-html="<h4>${item.titulo}</h4><p>${item.descripcion}</p>">
-               
-              <img src="${item.url}" alt="${item.titulo}" 
-                   class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-              
-              <!-- Overlay Hover -->
-              <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors">
-                <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p class="text-white font-semibold text-sm truncate">${item.titulo}</p>
+        if (error) throw error;
+
+        // Renderizar imágenes
+        if (images && images.length > 0) {
+          let html = '';
+          images.forEach(item => {
+            // Data mapping
+            const title = item.title || 'Sin Título';
+            const imageUrl = item.image_url;
+            const description = item.description || '';
+
+            html += `
+              <a href="${imageUrl}" 
+                 class="group relative block w-full h-64 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover-card-effect"
+                 data-sub-html="<h4>${title}</h4><p>${description}</p>">
+                 
+                <img src="${imageUrl}" alt="${title}" 
+                     class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                
+                <!-- Overlay Hover -->
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors">
+                  <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p class="text-white font-semibold text-sm truncate">${title}</p>
+                    ${description ? `<p class="text-gray-200 text-xs truncate mt-1">${description}</p>` : ''}
+                  </div>
                 </div>
-              </div>
-            </a>
-          `;
-        });
+              </a>
+            `;
+          });
+          contenedor.innerHTML = html;
 
-        // Reemplazar skeletons con contenido real
-        contenedor.innerHTML = html;
+          // Iniciar LightGallery
+          lightGallery(contenedor, {
+            selector: 'a',
+            download: false,
+            zoom: true,
+            thumbnail: true,
+            animateThumb: true,
+            showThumbByDefault: false,
+            speed: 500,
+            plugins: [lgZoom, lgThumbnail]
+          });
 
-        // Iniciar LightGallery
-        lightGallery(contenedor, {
-          selector: 'a',
-          download: false,
-          zoom: true,
-          thumbnail: true,
-          animateThumb: true,
-          showThumbByDefault: false,
-          speed: 500,
-          plugins: [lgZoom, lgThumbnail] // Asegurar plugins cargados
-        });
+        } else {
+          contenedor.innerHTML = '<p class="text-slate-500 text-center col-span-full py-10">No hay imágenes disponibles en la galería por el momento.</p>';
+        }
+
+      } catch (err) {
+        console.error("Error cargando galería:", err);
+        contenedor.innerHTML = '<p class="text-red-500 text-center col-span-full py-10">Hubo un error al cargar las imágenes. Por favor intenta nuevamente.</p>';
       }
-    });
+    }
+
+    // Ejecutar al cargar
+    loadGallery();
   </script>
 
 </body>
