@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Socio - Feria Agrícola Melipilla</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.webp" type="image/x-icon">
+    <meta name="theme-color" content="#166534">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#166534',
+                        secondary: '#65a30d',
+                        accent: '#f97316',
+                        dark: '#020617'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- AOS Animations -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Icons & Layout -->
+    <script src="https://kit.fontawesome.com/c38e3367c6.js" crossorigin="anonymous"></script>
+    <script src="js/layout.js"></script>
+
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({ duration: 800, once: true, offset: 80 });
+            renderLayout("Socios");
+        });
+    </script>
+
+    <!-- Header Placeholder -->
+    <div id="main-header"></div>
+
+    <div class="relative w-full pt-40 pb-40 md:pt-48 md:pb-48 bg-[#166534]">
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#166534] via-[#166534]/50 to-[#166534]/30"></div>
+            <div class="absolute inset-0 opacity-10"
+                style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM22.485 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 22.485l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 22.485l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 54.627l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 54.627l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM54.627 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828zM22.485 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415 1.415-.828.828z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
+            </div>
+        </div>
+        <div class="relative max-w-4xl mx-auto px-6 text-center z-10 space-y-4">
+            <h1
+                class="inline-block py-2 px-6 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-emerald-100 text-lg md:text-xl font-bold uppercase tracking-widest animate-fade-in-up shadow-lg">
+                Perfil del Socio
+            </h1>
+        </div>
+    </div>
+
+    <main class="max-w-4xl mx-auto px-4 py-0 md:py-8 space-y-8 -mt-16 md:-mt-24 relative z-20 mb-20">
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 text-center" data-aos="fade-up">
+
+            <!-- Avatar -->
+            <div
+                class="relative w-40 h-40 md:w-52 md:h-52 mx-auto -mt-24 md:-mt-32 mb-6 ring-8 ring-white shadow-2xl rounded-full overflow-hidden bg-white z-30">
+                <img id="socio-image" src="" alt="Foto Socio" class="w-full h-full object-cover hidden">
+                <div id="no-image-placeholder"
+                    class="flex items-center justify-center w-full h-full bg-emerald-100/50 text-emerald-400 text-6xl">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+
+            <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-2" id="card-name"></h2>
+            <p class="text-emerald-600 font-medium mb-8">Socio de la Asociación Gremial</p>
+
+            <!-- Info Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-lg mx-auto mb-6">
+                <div
+                    class="bg-slate-50 p-5 rounded-2xl border border-slate-100 hover:border-emerald-200 transition-colors group">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div
+                            class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Puesto / Stand</span>
+                    </div>
+                    <span class="text-lg font-semibold text-slate-700 block pl-11" id="socio-stall">-</span>
+                </div>
+
+                <div
+                    class="bg-slate-50 p-5 rounded-2xl border border-slate-100 hover:border-emerald-200 transition-colors group">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div
+                            class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                            <i class="fas fa-shapes"></i>
+                        </div>
+                        <span class="text-xs font-bold text-blue-700 uppercase tracking-wider">Sector / Rubro</span>
+                    </div>
+                    <span class="text-lg font-semibold text-slate-700 block pl-11" id="socio-section">-</span>
+                </div>
+            </div>
+
+            <!-- WhatsApp Action -->
+            <div id="whatsapp-container" class="max-w-lg mx-auto mb-10 hidden">
+                <a id="whatsapp-link" href="#" target="_blank"
+                    class="flex items-center justify-center gap-3 w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-green-300/50 transition transform hover:-translate-y-1">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    <span class="text-lg">Contactar por WhatsApp</span>
+                </a>
+            </div>
+
+            <div class="border-t border-slate-100 pt-8">
+                <a href="Socios.html"
+                    class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-slate-100 text-slate-700 font-bold hover:bg-slate-200 transition">
+                    <i class="fas fa-arrow-left"></i>
+                    Volver al directorio
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="main-footer"></div>
+
+    <!-- Supabase Logic -->
+    <script type="module">
+        import { supabase } from './js/supabase-client.js';
+
+        async function loadProfile() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+
+            if (!id) {
+                window.location.href = 'Socios.html';
+                return;
+            }
+
+            try {
+                // Fetch member AND public profile
+                const { data, error } = await supabase
+                    .from('members')
+                    .select('*, public_profiles(*)')
+                    .eq('id', id)
+                    .single();
+
+                if (error) throw error;
+                if (!data) throw new Error('Socio no encontrado');
+
+                // Update UI
+                document.title = `${data.name} - Feria Agrícola Melipilla`;
+                // document.getElementById('socio-name').innerText = data.name; // Title is now static
+                document.getElementById('card-name').innerText = data.name;
+                document.getElementById('socio-stall').innerText = data.stall || 'Sin asignar';
+                document.getElementById('socio-section').innerText = data.section || 'General';
+
+                const imgEl = document.getElementById('socio-image');
+                const placeholder = document.getElementById('no-image-placeholder');
+
+                if (data.profile_image) {
+                    imgEl.src = data.profile_image;
+                    imgEl.classList.remove('hidden');
+                    placeholder.classList.add('hidden');
+                }
+
+                // Logic for WhatsApp
+                // public_profiles can be an array or object depending on relationship setup
+                let profile = null;
+                if (Array.isArray(data.public_profiles)) {
+                    profile = data.public_profiles[0];
+                } else {
+                    profile = data.public_profiles;
+                }
+
+                if (profile && profile.whatsapp_number) {
+                    const cleanNumber = profile.whatsapp_number.replace(/\D/g, ''); // Remove non-digits
+                    if (cleanNumber.length >= 8) { // Basic validation
+                        const waLink = document.getElementById('whatsapp-link');
+                        const waContainer = document.getElementById('whatsapp-container');
+
+                        waLink.href = `https://wa.me/${cleanNumber}?text=Hola, te contacto desde la web de la Feria Agrícola.`;
+                        waContainer.classList.remove('hidden');
+                        waContainer.classList.add('animate-fade-in-up');
+                    }
+                }
+
+            } catch (err) {
+                console.error('Error fetching member:', err);
+                // document.getElementById('socio-name').innerText = 'Error al cargar'; // Title is static
+                document.getElementById('card-name').innerText = 'No se pudo cargar la información';
+            }
+        }
+
+        loadProfile();
+    </script>
+</body>
+
+</html>
