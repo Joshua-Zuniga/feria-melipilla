@@ -97,9 +97,13 @@
         </button>
         <button onclick="cambiarMapa(2)" id="tab-2"
           class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
-          Sábado
+          Viernes
         </button>
         <button onclick="cambiarMapa(3)" id="tab-3"
+          class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
+          Sábado
+        </button>
+        <button onclick="cambiarMapa(4)" id="tab-4"
           class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
           Domingo
         </button>
@@ -210,6 +214,7 @@
     const MAP_URLS = [
       "https://www.google.com/maps/d/embed?mid=1AkVO8siqXth9BmK8SZR8IYQxmvAeaVE&ehbc=2E312F&noprof=1",
       "https://www.google.com/maps/d/embed?mid=1C6TYGzuZ9W7-K8Zufh_cZh1tDiWsOz0&ehbc=2E312F&noprof=1",
+      "https://www.google.com/maps/d/u/0/embed?mid=1axqoDjc8INs1StOl0yYyzMCvP3a1Dgg&ehbc=2E312F&noprof=1",
       "https://www.google.com/maps/d/embed?mid=14Ej2qbdxc_hEbvZbY__VIDy0Fur3Xks&ehbc=2E312F&noprof=1",
       "https://www.google.com/maps/d/embed?mid=1-rGV0L51XRuUuIrNH0bx97_yZ5sL4XQ&ehbc=2E312F&noprof=1"
     ];
@@ -238,7 +243,7 @@
       iframe.src = MAP_URLS[index];
 
       // Actualizar tabs
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 5; i++) {
         const btn = document.getElementById('tab-' + i);
         if (i === index) {
           btn.className = "px-6 py-4 text-sm font-semibold text-primary border-b-2 border-primary transition-colors hover:bg-white flex-1 md:flex-none";
