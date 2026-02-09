@@ -133,7 +133,8 @@
       try {
         const { data: members, error } = await supabase
           .from('members')
-          .select('id, name, profile_image');
+          .select('id, name, profile_image')
+          .eq('is_active', true);
 
         if (error) throw error;
 
