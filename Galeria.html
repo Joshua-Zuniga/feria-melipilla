@@ -69,15 +69,16 @@
 
   <!-- Hero (Extracted) -->
   <!-- Hero Personalizado para Galería -->
-  <div class="relative w-full pt-40 pb-32 md:pt-48 md:pb-40 bg-[#166534] overflow-hidden group">
-    <div class="absolute inset-0">
-      <img src="images/Banner_1.webp"
-        class="w-full h-full object-cover opacity-60 group-hover:opacity-70 transition-opacity duration-1000 scale-105 group-hover:scale-100">
-      <div class="absolute inset-0 bg-gradient-to-t from-[#166534] via-[#166534]/50 to-[#166534]/30"></div>
-      <div class="absolute inset-0 opacity-10"
-        style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM22.485 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 22.485l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 22.485l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 54.627l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 54.627l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM54.627 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828zM22.485 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
-      </div>
+  <div
+    class="relative w-full pt-44 pb-32 md:pt-48 md:pb-40 bg-[url('images/Banner_1.webp')] bg-fixed bg-center bg-cover overflow-hidden group">
+    <!-- Background Gradient -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#166534]/50 via-[#166534]/60 to-[#166534]/95"></div>
+    <!-- Decorative Pattern -->
+    <div class="absolute inset-0 opacity-10"
+      style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM22.485 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 22.485l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 22.485l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 54.627l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 54.627l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM54.627 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828zM22.485 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
     </div>
+
+    <!-- Content -->
     <div class="relative max-w-6xl mx-auto px-6 text-center z-10 space-y-4 mt-24 md:mt-0">
       <span
         class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-emerald-200 text-xs font-bold uppercase tracking-widest animate-fade-in-up">
@@ -89,6 +90,16 @@
       <p class="text-lg text-emerald-100 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
         Un recorrido visual por la vida, eventos y colores de nuestra feria.
       </p>
+    </div>
+
+    <!-- Wave Divider -->
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
+      <svg class="relative block w-full h-[50px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.06,155.45,116.88,230.15,97.77Z"
+          fill="#f8fafc"></path>
+      </svg>
     </div>
   </div>
 
@@ -104,11 +115,15 @@
 
     <!-- GALERÍA DINÁMICA -->
     <section data-aos="fade-up">
-      <div id="galeria" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div id="galeria" class="w-full columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
         <!-- SKELETON LOADERS (Se eliminan al cargar JS) -->
-        <div class="h-64 bg-slate-200 rounded-xl animate-pulse shadow-md"></div>
-        <div class="h-64 bg-slate-200 rounded-xl animate-pulse shadow-md hidden sm:block"></div>
-        <div class="h-64 bg-slate-200 rounded-xl animate-pulse shadow-md hidden md:block"></div>
+        <div class="h-64 bg-slate-200 rounded-3xl animate-pulse shadow-md mb-4 inline-block w-full"></div>
+        <div class="h-48 bg-slate-200 rounded-3xl animate-pulse shadow-md mb-4 inline-block w-full hidden sm:block">
+        </div>
+        <div class="h-80 bg-slate-200 rounded-3xl animate-pulse shadow-md mb-4 inline-block w-full hidden md:block">
+        </div>
+        <div class="h-56 bg-slate-200 rounded-3xl animate-pulse shadow-md mb-4 inline-block w-full hidden lg:block">
+        </div>
       </div>
     </section>
 
@@ -128,6 +143,9 @@
     async function loadGallery() {
       const contenedor = document.getElementById("galeria");
       if (!contenedor) return;
+
+      // Update container to be a Masonry Layout
+      contenedor.className = 'w-full columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4';
 
       try {
         // Consultar Supabase
@@ -152,65 +170,50 @@
             const isYouTube = Boolean(imageUrl.includes('youtube.com') || imageUrl.includes('youtu.be'));
 
             let itemMarkup = '';
+            // Determine video config for lightgallery based on type
+            let videoDataAttr = '';
+            let ytImg = '';
             if (isVideo) {
-              itemMarkup = `
-              <a data-video='{"source": [{"src":"${imageUrl}", "type":"${videoType}"}], "attributes": {"preload": false, "controls": true}}'
-                 class="group relative block w-full h-64 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover-card-effect cursor-pointer"
-                 data-sub-html="<h4>${title}</h4><p>${description}</p>">
-                 
-                <video src="${imageUrl}#t=0.1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" muted playsinline></video>
-                <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                  <i class="fa-solid fa-play text-white text-5xl opacity-80 group-hover:opacity-100 transition-opacity drop-shadow-lg"></i>
-                </div>
-                <!-- Overlay Hover -->
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-20 pointer-events-none">
-                  <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p class="text-white font-semibold text-sm truncate">${title}</p>
-                    ${description ? `<p class="text-gray-200 text-xs truncate mt-1">${description}</p>` : ''}
-                  </div>
-                </div>
-              </a>
-              `;
+              videoDataAttr = `data-video='{"source": [{"src":"${imageUrl}", "type":"${videoType}"}], "attributes": {"preload": false, "controls": true}}'`;
             } else if (isYouTube) {
+              // for youtube, lightgallery usually can figure it out from the href, but we can also use data-src
+              videoDataAttr = `data-src="${imageUrl}"`;
               let ytId = imageUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
-              let ytImg = ytId ? `https://img.youtube.com/vi/${ytId[1]}/hqdefault.jpg` : imageUrl;
-              itemMarkup = `
-              <a href="${imageUrl}"
-                 class="group relative block w-full h-64 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover-card-effect cursor-pointer"
-                 data-sub-html="<h4>${title}</h4><p>${description}</p>">
-                 
-                <img src="${ytImg}" alt="${title}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" loading="lazy">
-                <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                  <i class="fa-brands fa-youtube text-red-600 text-6xl opacity-90 group-hover:opacity-100 transition-opacity drop-shadow-lg bg-white/30 rounded-full"></i>
-                </div>
-                <!-- Overlay Hover -->
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-20 pointer-events-none">
-                  <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p class="text-white font-semibold text-sm truncate">${title}</p>
-                    ${description ? `<p class="text-gray-200 text-xs truncate mt-1">${description}</p>` : ''}
-                  </div>
-                </div>
-              </a>
-              `;
+              ytImg = ytId ? `https://img.youtube.com/vi/${ytId[1]}/hqdefault.jpg` : imageUrl;
             } else {
-              itemMarkup = `
-              <a href="${imageUrl}" 
-                 class="group relative block w-full h-64 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover-card-effect cursor-pointer"
-                 data-sub-html="<h4>${title}</h4><p>${description}</p>">
+              videoDataAttr = `href="${imageUrl}"`;
+            }
+
+            const thumbnailImg = (isYouTube && ytImg) ? ytImg : (isVideo ? `${imageUrl}#t=0.1` : imageUrl);
+            const mediaTag = (isVideo && !isYouTube)
+              ? `<video src="${thumbnailImg}" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" muted playsinline></video>`
+              : `<img src="${thumbnailImg}" alt="${title}" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">`;
+
+            const iconHtml = isYouTube
+              ? `<i class="fa-brands fa-youtube text-red-600 text-5xl opacity-90 group-hover:opacity-100 transition-transform transform group-hover:scale-110 drop-shadow-lg bg-white/30 rounded-full"></i>`
+              : (isVideo ? `<i class="fa-solid fa-play text-white text-4xl opacity-80 group-hover:opacity-100 transition-transform transform group-hover:scale-110 drop-shadow-lg"></i>` : ``);
+
+            itemMarkup = `
+            <a ${videoDataAttr} ${isVideo && !isYouTube ? `data-poster=""` /* optional for lg-video */ : ''}
+                 class="group relative block w-full mb-4 rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-500 cursor-pointer isolate bg-slate-50"
+                 data-sub-html="<h4 class='font-bold text-lg mb-1'>${title}</h4>${description ? `<p class='text-sm opacity-90'>${description}</p>` : ''}">
                  
-                <img src="${imageUrl}" alt="${title}" 
-                     class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" loading="lazy">
+                ${mediaTag}
                 
-                <!-- Overlay Hover -->
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-20 pointer-events-none">
-                  <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p class="text-white font-semibold text-sm truncate">${title}</p>
-                    ${description ? `<p class="text-gray-200 text-xs truncate mt-1">${description}</p>` : ''}
+                ${iconHtml ? `
+                <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                  ${iconHtml}
+                </div>` : ''}
+
+                <!-- Subtle Overlay Gradient -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 pointer-events-none rounded-2xl">
+                  <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                    <p class="text-white font-bold text-sm md:text-base leading-tight drop-shadow-md">${title}</p>
+                    ${description ? `<p class="text-white/80 text-xs mt-1.5 line-clamp-2 drop-shadow-sm font-medium">${description}</p>` : ''}
                   </div>
                 </div>
-              </a>
-              `;
-            }
+            </a>
+            `;
             html += itemMarkup;
           });
           contenedor.innerHTML = html;

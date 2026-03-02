@@ -57,15 +57,16 @@
   <div id="main-header"></div>
 
   <!-- Hero Personalizado para Socios -->
-  <div class="relative w-full pt-40 pb-32 md:pt-48 md:pb-40 bg-[#166534] overflow-hidden group">
-    <div class="absolute inset-0">
-      <img src="images/Banner_1.webp"
-        class="w-full h-full object-cover opacity-60 group-hover:opacity-70 transition-opacity duration-1000 scale-105 group-hover:scale-100">
-      <div class="absolute inset-0 bg-gradient-to-t from-[#166534] via-[#166534]/50 to-[#166534]/30"></div>
-      <div class="absolute inset-0 opacity-10"
-        style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM22.485 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 22.485l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 22.485l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 54.627l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 54.627l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM54.627 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828zM22.485 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
-      </div>
+  <div
+    class="relative w-full pt-44 pb-32 md:pt-48 md:pb-40 bg-[url('images/Banner_1.webp')] bg-fixed bg-center bg-cover overflow-hidden group">
+    <!-- Background Gradient -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#166534]/50 via-[#166534]/60 to-[#166534]/95"></div>
+    <!-- Decorative Pattern -->
+    <div class="absolute inset-0 opacity-10"
+      style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM22.485 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 22.485l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 22.485l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 54.627l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 54.627l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM54.627 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828zM22.485 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
     </div>
+
+    <!-- Content -->
     <div class="relative max-w-6xl mx-auto px-6 text-center z-10 space-y-4 mt-24 md:mt-0">
       <span
         class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-emerald-200 text-xs font-bold uppercase tracking-widest animate-fade-in-up">
@@ -78,21 +79,35 @@
         Descubre los puestos y productos de nuestros asociados.
       </p>
     </div>
+
+    <!-- Wave Divider -->
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
+      <svg class="relative block w-full h-[50px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.06,155.45,116.88,230.15,97.77Z"
+          fill="#f8fafc"></path>
+      </svg>
+    </div>
   </div>
 
   <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
 
     <section data-aos="fade-up">
       <!-- Buscador de socios -->
-      <div class="mb-8 max-w-md">
-        <label for="buscadorSocios" class="block text-sm font-medium text-slate-700">Buscar socio por nombre</label>
-        <div class="mt-1 relative rounded-md shadow-sm">
-          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
+      <div class="mb-10 max-w-lg mx-auto md:mx-0">
+        <div class="relative group">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none z-10">
+            <i
+              class="fa-solid fa-magnifying-glass text-slate-400 group-focus-within:text-primary transition-colors"></i>
           </div>
           <input id="buscadorSocios" type="text" oninput="filtrarSocios()"
-            class="block w-full rounded-xl border border-slate-300 bg-white py-2.5 pl-10 pr-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary shadow-sm"
-            placeholder="Ej: Juan Pérez, González, etc." />
+            class="peer w-full pl-12 pr-4 pt-6 pb-2 rounded-xl border-2 border-slate-200 focus:border-primary focus:ring-4 focus:ring-emerald-50 outline-none transition-all placeholder-transparent bg-slate-50 focus:bg-white text-slate-800 font-medium"
+            placeholder=" " />
+          <label for="buscadorSocios"
+            class="absolute left-12 top-4 text-slate-400 text-sm transition-all transform -translate-y-3 scale-75 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-primary font-medium pointer-events-none">
+            Buscar socio por nombre
+          </label>
         </div>
       </div>
 
@@ -158,24 +173,31 @@
           // Card HTML
           const card = document.createElement('a');
           card.href = `perfil.html?id=${member.id}`;
-          card.className = 'tarjeta-socio bg-white shadow-md rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-xl transition hover-card-effect group opacity-0 translate-y-4';
+          card.className = 'tarjeta-socio bg-white border border-slate-100 rounded-3xl p-6 md:p-8 flex flex-col items-center text-center shadow-lg hover:shadow-2xl transition hover:border-emerald-200 transform hover:-translate-y-2 group opacity-0 translate-y-4';
           card.setAttribute('data-nombre', member.name); // Para el buscador
 
           // Imagen o Inicial
           let imgHtml = '';
           if (member.profile_image) {
-            imgHtml = `<img src="${member.profile_image}" alt="${member.name}" class="w-20 h-20 rounded-full object-cover mb-4 ring-4 ring-emerald-50 group-hover:ring-emerald-100 transition shadow-sm bg-gray-100">`;
+            imgHtml = `<img src="${member.profile_image}" alt="${member.name}" class="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover mb-6 ring-4 ring-emerald-50 group-hover:ring-emerald-200 transition-all shadow-md bg-gray-100 group-hover:scale-105">`;
           } else {
             imgHtml = `
-                <div class="w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4 ring-4 ring-emerald-50 group-hover:ring-emerald-100 transition shadow-sm">
-                    <span class="text-2xl font-bold">${firstLetter}</span>
+                <div class="w-24 h-24 md:w-28 md:h-28 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-6 ring-4 ring-emerald-50 group-hover:ring-emerald-200 transition-all shadow-md group-hover:scale-105">
+                    <span class="text-3xl font-black opacity-80">${firstLetter}</span>
                 </div>`;
           }
 
           card.innerHTML = `
                 ${imgHtml}
-                <h3 class="text-base font-bold text-slate-800 group-hover:text-emerald-700 transition leading-snug">${member.name}</h3>
-                <p class="text-xs text-slate-500 mt-2 font-medium bg-slate-50 px-3 py-1 rounded-full uppercase tracking-wide">Socio</p>
+                <h3 class="text-lg md:text-xl font-bold text-slate-800 group-hover:text-emerald-700 transition-colors leading-snug mb-3">${member.name}</h3>
+                <p class="text-[10px] md:text-xs text-emerald-700 font-bold bg-emerald-50 px-4 py-1.5 rounded-full uppercase tracking-widest border border-emerald-100/50 flex items-center justify-center gap-1.5 shadow-inner">
+                    <i class="fas fa-store text-[9px] opacity-70"></i> Socio 
+                </p>
+                
+                <!-- Hover Hint (Flecha sutil abajo) -->
+                <div class="mt-6 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0 text-slate-300 group-hover:text-emerald-500">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
             `;
 
           grid.appendChild(card);

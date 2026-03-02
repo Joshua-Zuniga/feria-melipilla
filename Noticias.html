@@ -75,68 +75,79 @@
   <div id="main-header"></div>
 
   <!-- Hero Personalizado para Noticias (Imagen de Fondo) -->
-  <div class="relative w-full pt-44 pb-20 md:pt-48 md:pb-32 bg-[#166534] overflow-hidden group">
-    <!-- Background Image -->
-    <div class="absolute inset-0">
-      <img src="images/Banner_1.webp"
-        class="w-full h-full object-cover opacity-60 group-hover:opacity-70 transition-opacity duration-1000 scale-105 group-hover:scale-100">
-      <div class="absolute inset-0 bg-gradient-to-t from-[#166534] via-[#166534]/50 to-[#166534]/30"></div>
-      <!-- Decorative Pattern -->
-      <div class="absolute inset-0 opacity-10"
-        style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM22.485 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 22.485l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 22.485l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 54.627l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 54.627l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM54.627 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828zM22.485 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
-      </div>
+  <div
+    class="relative w-full pt-44 pb-32 md:pt-48 md:pb-40 bg-[url('images/Banner_1.webp')] bg-fixed bg-center bg-cover overflow-hidden group">
+    <!-- Background Gradient -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#166534]/50 via-[#166534]/60 to-[#166534]/95"></div>
+    <!-- Decorative Pattern -->
+    <div class="absolute inset-0 opacity-10"
+      style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM22.485 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 22.485l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 22.485l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 54.627l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 54.627l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM54.627 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828zM22.485 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
     </div>
 
-    <div class="relative max-w-6xl mx-auto px-6 text-center z-10">
+    <!-- Content -->
+    <div class="relative max-w-6xl mx-auto px-6 text-center z-10 space-y-4 mt-12 md:mt-0">
       <span
-        class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-emerald-200 text-xs font-bold uppercase tracking-widest mb-4 animate-fade-in-up">
+        class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-emerald-200 text-xs font-bold uppercase tracking-widest animate-fade-in-up">
         Actualidad & Comunicados
       </span>
-      <h1 class="text-3xl md:text-6xl font-black text-white mb-4 md:mb-6 leading-tight drop-shadow-lg"
-        data-aos="fade-up">
+      <h1 class="text-3xl md:text-6xl font-black text-white leading-tight drop-shadow-lg" data-aos="fade-up">
         Noticias de la Feria
       </h1>
       <p class="text-lg text-emerald-100 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
         El espacio donde compartimos nuestros logros, eventos y avisos importantes para nuestros socios y la comunidad.
       </p>
     </div>
+
+    <!-- Wave Divider -->
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
+      <svg class="relative block w-full h-[50px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.06,155.45,116.88,230.15,97.77Z"
+          fill="#f8fafc"></path>
+      </svg>
+    </div>
   </div>
 
   <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16 min-h-[50vh]">
     <div id="grilla-noticias" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- SKELETON LOADERS: Se muestran mientras carga la data real -->
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 h-full animate-pulse">
-        <div class="h-52 bg-slate-200"></div>
-        <div class="p-6 space-y-4">
-          <div class="h-4 bg-slate-200 rounded w-1/4"></div>
-          <div class="h-6 bg-slate-200 rounded w-3/4"></div>
-          <div class="space-y-2 pt-2">
-            <div class="h-4 bg-slate-200 rounded"></div>
-            <div class="h-4 bg-slate-200 rounded w-5/6"></div>
+      <div
+        class="bg-white rounded-3xl shadow-md overflow-hidden h-[400px] animate-pulse border border-slate-100 relative w-full max-w-sm mx-auto flex flex-col">
+        <div class="h-48 md:h-56 bg-slate-200 rounded-t-3xl shrink-0"></div>
+        <div class="p-6 md:p-8 space-y-4 flex-grow flex flex-col bg-white rounded-b-3xl">
+          <div class="h-5 bg-slate-200 rounded-full w-24 mb-2"></div>
+          <div class="h-6 bg-slate-200 rounded w-full"></div>
+          <div class="h-6 bg-slate-200 rounded w-4/5 pt-2"></div>
+          <div class="mt-auto pt-4 flex justify-between items-center">
+            <div class="h-4 bg-slate-200 rounded w-20"></div>
+            <div class="w-8 h-8 rounded-full bg-slate-200 shrink-0"></div>
           </div>
         </div>
       </div>
       <div
-        class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 h-full animate-pulse hidden md:block">
-        <div class="h-52 bg-slate-200"></div>
-        <div class="p-6 space-y-4">
-          <div class="h-4 bg-slate-200 rounded w-1/4"></div>
-          <div class="h-6 bg-slate-200 rounded w-3/4"></div>
-          <div class="space-y-2 pt-2">
-            <div class="h-4 bg-slate-200 rounded"></div>
-            <div class="h-4 bg-slate-200 rounded w-5/6"></div>
+        class="bg-white rounded-3xl shadow-md overflow-hidden h-[400px] animate-pulse border border-slate-100 hidden md:flex flex-col relative w-full max-w-sm mx-auto">
+        <div class="h-48 md:h-56 bg-slate-200 rounded-t-3xl shrink-0"></div>
+        <div class="p-6 md:p-8 space-y-4 flex-grow flex flex-col bg-white rounded-b-3xl">
+          <div class="h-5 bg-slate-200 rounded-full w-24 mb-2"></div>
+          <div class="h-6 bg-slate-200 rounded w-full"></div>
+          <div class="h-6 bg-slate-200 rounded w-4/5 pt-2"></div>
+          <div class="mt-auto pt-4 flex justify-between items-center">
+            <div class="h-4 bg-slate-200 rounded w-20"></div>
+            <div class="w-8 h-8 rounded-full bg-slate-200 shrink-0"></div>
           </div>
         </div>
       </div>
       <div
-        class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100 h-full animate-pulse hidden lg:block">
-        <div class="h-52 bg-slate-200"></div>
-        <div class="p-6 space-y-4">
-          <div class="h-4 bg-slate-200 rounded w-1/4"></div>
-          <div class="h-6 bg-slate-200 rounded w-3/4"></div>
-          <div class="space-y-2 pt-2">
-            <div class="h-4 bg-slate-200 rounded"></div>
-            <div class="h-4 bg-slate-200 rounded w-5/6"></div>
+        class="bg-white rounded-3xl shadow-md overflow-hidden h-[400px] animate-pulse border border-slate-100 hidden lg:flex flex-col relative w-full max-w-sm mx-auto">
+        <div class="h-48 md:h-56 bg-slate-200 rounded-t-3xl shrink-0"></div>
+        <div class="p-6 md:p-8 space-y-4 flex-grow flex flex-col bg-white rounded-b-3xl">
+          <div class="h-5 bg-slate-200 rounded-full w-24 mb-2"></div>
+          <div class="h-6 bg-slate-200 rounded w-full"></div>
+          <div class="h-6 bg-slate-200 rounded w-4/5 pt-2"></div>
+          <div class="mt-auto pt-4 flex justify-between items-center">
+            <div class="h-4 bg-slate-200 rounded w-20"></div>
+            <div class="w-8 h-8 rounded-full bg-slate-200 shrink-0"></div>
           </div>
         </div>
       </div>
@@ -195,7 +206,7 @@
         let rawSummary = item.summary || item.content || "";
         const tempDiv = document.createElement("div");
         tempDiv.innerHTML = rawSummary;
-        
+
         // Quitar scripts y estilos para que no salga código en el resumen
         const scripts = tempDiv.querySelectorAll('script');
         scripts.forEach(s => s.remove());
@@ -207,47 +218,47 @@
         let resumen = cleanSummary.length > 140 ? cleanSummary.substring(0, 140) + "..." : cleanSummary;
 
         html += `
-            <a href="detalle-noticia.html?id=${item.id}" class="group bg-white rounded-[2rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col h-full overflow-hidden hover:-translate-y-2 cursor-pointer">
+            <a href="detalle-noticia.html?id=${item.id}" class="group bg-white rounded-3xl shadow-md hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col h-full overflow-hidden hover:-translate-y-2 cursor-pointer isolate relative max-w-sm mx-auto w-full">
                 
                 <!-- Imagen con Overlay y Badge de Fecha -->
-                <div class="relative h-64 overflow-hidden">
-                    <img src="${imagenUrl}" alt="${item.title}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 will-change-transform">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
-                    
-                    <!-- Badge Fecha Flotante -->
-                    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-2 rounded-2xl shadow-lg flex flex-col items-center min-w-[60px] border border-white/50">
-                        <span class="text-2xl font-bold text-slate-900 leading-none">${dia}</span>
-                        <span class="text-[10px] font-bold text-primary tracking-widest uppercase">${mes}</span>
-                    </div>
+                <div class="relative h-56 md:h-64 overflow-hidden rounded-t-3xl">
+                    <img src="${imagenUrl}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out will-change-transform">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
                 </div>
 
                 <!-- Contenido -->
-                <div class="p-8 flex flex-col flex-grow relative">
+                <div class="p-6 md:p-8 flex flex-col flex-grow relative bg-white rounded-b-3xl">
+                    <!-- Badge Fecha (Posicionado en el borde de la imagen y el contenido) -->
+                    <div class="absolute -top-12 left-6 bg-white px-4 py-2 rounded-2xl shadow-lg border border-slate-50 flex flex-col items-center min-w-[3.5rem] z-10 transition-transform group-hover:-translate-y-1 duration-300">
+                        <span class="text-xl md:text-2xl font-black text-slate-800 leading-none">${dia}</span>
+                        <span class="text-[9px] md:text-[10px] font-bold text-primary tracking-widest uppercase mt-0.5">${mes}</span>
+                    </div>
+
                     <!-- Categoría (Visual) -->
-                    <div class="mb-4">
-                        <span class="bg-emerald-50 text-emerald-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-emerald-100">
-                            Feria informa
+                    <div class="mb-3 mt-4">
+                        <span class="inline-block bg-emerald-50 text-emerald-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-emerald-100/50">
+                            Feria Informa
                         </span>
                     </div>
 
-                    <h3 class="text-xl md:text-2xl font-bold text-slate-800 mb-4 leading-tight group-hover:text-primary transition-colors">
+                    <h3 class="text-lg md:text-xl font-bold text-slate-800 mb-3 leading-snug group-hover:text-primary transition-colors duration-300 line-clamp-2">
                         ${item.title}
                     </h3>
                     
-                    <p class="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-3 font-medium">
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-3 font-normal opacity-90 group-hover:opacity-100 transition-opacity flex-grow">
                         ${resumen || ''}
                     </p>
 
                     <!-- Footer Card -->
-                    <div class="pt-6 border-t border-slate-100 mt-auto flex items-center justify-between">
-                        <span class="text-xs font-bold text-slate-400 group-hover:text-primary transition-colors tracking-widest uppercase">Leer completa</span>
-                        <div class="w-10 h-10 rounded-full bg-slate-50 group-hover:bg-primary text-slate-400 group-hover:text-white flex items-center justify-center transition-all shadow-sm group-hover:shadow-lg transform group-hover:rotate-[-45deg]">
-                            <i class="fa-solid fa-arrow-right"></i>
+                    <div class="pt-5 border-t border-slate-100 mt-auto flex items-center justify-between">
+                        <span class="text-xs font-bold text-slate-400 group-hover:text-primary transition-colors tracking-widest uppercase">Leer noticia</span>
+                        <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-primary group-hover:text-white transition-all transform group-hover:scale-110 shadow-sm group-hover:shadow-emerald-200">
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
                         </div>
                     </div>
                 </div>
             </a>
-          `;
+        `;
       });
       contenedor.innerHTML = html;
     }
