@@ -55,7 +55,7 @@
   <script src="js/layout.js"></script>
 </head>
 
-<body class="bg-slate-50 text-slate-800 font-sans">
+<body class="bg-slate-50 text-slate-800 font-sans overflow-x-hidden">
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -70,7 +70,7 @@
   <!-- Hero (Extracted) -->
   <!-- Hero Personalizado para Galería -->
   <div
-    class="relative w-full pt-44 pb-32 md:pt-48 md:pb-40 bg-[url('images/Banner_1.webp')] bg-fixed bg-center bg-cover overflow-hidden group">
+    class="relative w-full pt-44 pb-32 md:pt-48 md:pb-40 bg-[url('images/Banner_1.webp')] bg-scroll bg-center bg-cover overflow-hidden group">
     <!-- Background Gradient -->
     <div class="absolute inset-0 bg-gradient-to-b from-[#166534]/50 via-[#166534]/60 to-[#166534]/95"></div>
     <!-- Decorative Pattern -->
@@ -115,15 +115,21 @@
 
     <!-- GALERÍA DINÁMICA -->
     <section data-aos="fade-up">
-      <div id="galeria" class="w-full columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-        <!-- SKELETON LOADERS (Se eliminan al cargar JS) -->
-        <div class="h-64 bg-slate-200 rounded-3xl animate-pulse shadow-md mb-4 inline-block w-full"></div>
-        <div class="h-48 bg-slate-200 rounded-3xl animate-pulse shadow-md mb-4 inline-block w-full hidden sm:block">
-        </div>
-        <div class="h-80 bg-slate-200 rounded-3xl animate-pulse shadow-md mb-4 inline-block w-full hidden md:block">
-        </div>
-        <div class="h-56 bg-slate-200 rounded-3xl animate-pulse shadow-md mb-4 inline-block w-full hidden lg:block">
-        </div>
+      <div id="galeria" class="w-full columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4">
+        <!-- SKELETON LOADERS col 1 -->
+        <div class="h-64 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block"></div>
+        <div class="h-48 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block"></div>
+        <div class="h-72 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden sm:block"></div>
+        <!-- SKELETON LOADERS col 2 -->
+        <div class="h-56 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden sm:block"></div>
+        <div class="h-80 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden sm:block"></div>
+        <div class="h-48 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden sm:block"></div>
+        <!-- SKELETON LOADERS col 3 -->
+        <div class="h-64 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden md:block"></div>
+        <div class="h-72 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden md:block"></div>
+        <!-- SKELETON LOADERS col 4 -->
+        <div class="h-56 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden lg:block"></div>
+        <div class="h-48 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden lg:block"></div>
       </div>
     </section>
 
@@ -131,9 +137,6 @@
 
   <!-- Footer Placeholder -->
   <div id="main-footer"></div>
-
-  <!-- Datos de Galería (Eliminado, ahora se usa Supabase) -->
-  <!-- <script src="js/galeria-data.js"></script> -->
 
   <!-- SCRIPTS FINALES -->
   <script type="module">
@@ -145,10 +148,9 @@
       if (!contenedor) return;
 
       // Update container to be a Masonry Layout
-      contenedor.className = 'w-full columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4';
+      contenedor.className = 'w-full columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4';
 
       try {
-        // Consultar Supabase
         const { data: images, error } = await supabase
           .from('gallery_images')
           .select('*')
@@ -156,71 +158,108 @@
 
         if (error) throw error;
 
-        // Renderizar imágenes
         if (images && images.length > 0) {
+
+          // --- Helper: extract a video frame as base64 via Canvas ---
+          function extractVideoFrame(src) {
+            return new Promise((resolve) => {
+              const v = document.createElement('video');
+              v.crossOrigin = 'anonymous';
+              v.muted = true;
+              v.preload = 'metadata';
+              const done = (dataUrl) => { resolve(dataUrl); };
+              v.onloadedmetadata = () => { v.currentTime = Math.min(1.5, (v.duration || 3) * 0.1); };
+              v.onseeked = () => {
+                try {
+                  const c = document.createElement('canvas');
+                  c.width = v.videoWidth || 640; c.height = v.videoHeight || 360;
+                  c.getContext('2d').drawImage(v, 0, 0);
+                  done(c.toDataURL('image/jpeg', 0.85));
+                } catch (e) { done(null); }
+              };
+              v.onerror = () => done(null);
+              setTimeout(() => done(null), 8000);
+              v.src = src;
+            });
+          }
+
+          // --- Step 1: Identify videos and extract thumbnails in parallel (before building HTML) ---
+          const videoFrames = {}; // imageUrl -> base64 dataUrl
+          const videoItems = images.filter(item => {
+            const u = item.image_url || '';
+            return /\.(mp4|webm|ogg|mov)($|\?)/i.test(u);
+          });
+
+          if (videoItems.length > 0) {
+            await Promise.all(videoItems.map(async item => {
+              const frame = await extractVideoFrame(item.image_url);
+              if (frame) videoFrames[item.image_url] = frame;
+            }));
+          }
+
+          // --- Step 2: Build gallery HTML ---
           let html = '';
           images.forEach(item => {
-            // Data mapping
             const title = item.title || 'Sin Título';
             const imageUrl = item.image_url || '';
             const description = item.description || '';
-            const isVideoMatch = imageUrl.match(/\\.(mp4|webm|ogg|mov)$/i);
+            const isVideoMatch = imageUrl.match(/\.(mp4|webm|ogg|mov)($|\?)/i);
             const isVideo = Boolean(isVideoMatch);
             const videoType = isVideoMatch ? `video/${isVideoMatch[1].toLowerCase()}` : 'video/mp4';
             const isYouTube = Boolean(imageUrl.includes('youtube.com') || imageUrl.includes('youtu.be'));
 
-            let itemMarkup = '';
-            // Determine video config for lightgallery based on type
-            let videoDataAttr = '';
-            let ytImg = '';
+            let thumbnailHtml = '';
+            let playIconHtml = '';
+            let anchorAttrs = '';
+            const subHtml = `<h4 class='font-bold text-lg mb-1'>${title}</h4>${description ? `<p class='text-sm opacity-90'>${description}</p>` : ''}`;
+
             if (isVideo) {
-              // LightGallery v2 HTML5 Video
-              // Added data-sub-html to correctly capture titles/descriptions without breaking HTML attrs
-              videoDataAttr = `data-src="${imageUrl}" data-video='{"source": [{"src":"${imageUrl}", "type":"${videoType}"}], "attributes": {"preload": false, "controls": true}}'`;
+              // data-video (NO data-src which conflicts) + data-poster for LG thumbnail strip
+              const videoJson = JSON.stringify({
+                source: [{ src: imageUrl, type: videoType }],
+                attributes: { preload: false, controls: true }
+              });
+              const posterFrame = videoFrames[imageUrl] || '';
+              const posterAttr = posterFrame ? ` data-poster="${posterFrame}"` : '';
+              anchorAttrs = `data-video='${videoJson}'${posterAttr} data-sub-html="${subHtml}"`;
+
+              if (posterFrame) {
+                // Show real video frame thumbnail
+                thumbnailHtml = `<img src="${posterFrame}" alt="${title}" class="w-full h-auto block object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">`;
+              } else {
+                // Fallback placeholder
+                thumbnailHtml = `<div class="w-full bg-gradient-to-br from-slate-700 to-slate-900 flex flex-col items-center justify-center gap-2 text-white/50" style="min-height:180px"><i class="fa-solid fa-film text-4xl"></i><span class="text-xs uppercase tracking-widest font-semibold">Video</span></div>`;
+              }
+              playIconHtml = `<i class="fa-solid fa-circle-play text-white text-5xl drop-shadow-2xl opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>`;
+
             } else if (isYouTube) {
-              // for youtube, lightgallery usually can figure it out from the href, but we can also use data-src
-              videoDataAttr = `data-src="${imageUrl}"`;
-              let ytId = imageUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
-              ytImg = ytId ? `https://img.youtube.com/vi/${ytId[1]}/hqdefault.jpg` : imageUrl;
+              anchorAttrs = `data-src="${imageUrl}" data-sub-html="${subHtml}"`;
+              const ytId = imageUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+              const ytImg = ytId ? `https://img.youtube.com/vi/${ytId[1]}/hqdefault.jpg` : '';
+              thumbnailHtml = `<img src="${ytImg || imageUrl}" alt="${title}" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">`;
+              playIconHtml = `<i class="fa-brands fa-youtube text-red-600 text-5xl bg-white/30 rounded-full drop-shadow-lg opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>`;
+
             } else {
-              videoDataAttr = `data-src="${imageUrl}"`;
+              anchorAttrs = `data-src="${imageUrl}" data-sub-html="${subHtml}"`;
+              thumbnailHtml = `<img src="${imageUrl}" alt="${title}" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">`;
             }
 
-            const thumbnailImg = (isYouTube && ytImg) ? ytImg : (isVideo ? `${imageUrl}#t=0.1` : imageUrl);
-            const mediaTag = (isVideo && !isYouTube)
-              ? `<video src="${thumbnailImg}" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" muted playsinline></video>`
-              : `<img src="${thumbnailImg}" alt="${title}" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">`;
-
-            const iconHtml = isYouTube
-              ? `<i class="fa-brands fa-youtube text-red-600 text-5xl opacity-90 group-hover:opacity-100 transition-transform transform group-hover:scale-110 drop-shadow-lg bg-white/30 rounded-full"></i>`
-              : (isVideo ? `<i class="fa-solid fa-play text-white text-4xl opacity-80 group-hover:opacity-100 transition-transform transform group-hover:scale-110 drop-shadow-lg"></i>` : ``);
-
-            itemMarkup = `
-            <a ${videoDataAttr}
-                 class="group relative block w-full mb-4 rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-500 cursor-pointer isolate bg-slate-50"
-                 data-sub-html="<h4 class='font-bold text-lg mb-1'>${title}</h4>${description ? `<p class='text-sm opacity-90'>${description}</p>` : ''}">
-                 
-                ${mediaTag}
-                
-                ${iconHtml ? `
-                <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                  ${iconHtml}
-                </div>` : ''}
-
-                <!-- Subtle Overlay Gradient -->
+            html += `
+            <a ${anchorAttrs}
+                 class="group relative block w-full mb-4 rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-500 cursor-pointer isolate bg-slate-50">
+                ${thumbnailHtml}
+                ${playIconHtml ? `<div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">${playIconHtml}</div>` : ''}
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 pointer-events-none rounded-2xl">
                   <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                     <p class="text-white font-bold text-sm md:text-base leading-tight drop-shadow-md">${title}</p>
                     ${description ? `<p class="text-white/80 text-xs mt-1.5 line-clamp-2 drop-shadow-sm font-medium">${description}</p>` : ''}
                   </div>
                 </div>
-            </a>
-            `;
-            html += itemMarkup;
+            </a>`;
           });
-          contenedor.innerHTML = html;
 
-          // Iniciar LightGallery
+          // --- Step 3: Set HTML then init LightGallery (with lgVideo for videos) ---
+          contenedor.innerHTML = html;
           lightGallery(contenedor, {
             selector: 'a',
             download: false,
@@ -237,10 +276,12 @@
         }
 
       } catch (err) {
-        console.error("Error cargando galería:", err);
+        console.error('Error cargando galería:', err);
         contenedor.innerHTML = '<p class="text-red-500 text-center col-span-full py-10">Hubo un error al cargar las imágenes. Por favor intenta nuevamente.</p>';
       }
     }
+
+
 
     // Ejecutar al cargar
     loadGallery();

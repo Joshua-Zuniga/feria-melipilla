@@ -166,7 +166,7 @@ const NAV_ITEMS = [
 function renderLayout(activePage, isSubDir = false) {
   const prefix = isSubDir ? "../" : "";
 
-  // IMPORTANT: Inject FA 6 as Backup, but relying on Legacy Names helps bridging
+  // IMPORTANT: Inject FA 6 as Backup
   const faLink = document.createElement('link');
   faLink.rel = 'stylesheet';
   faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
