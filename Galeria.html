@@ -22,6 +22,7 @@
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/video/lg-video.min.js"></script>
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -143,26 +144,74 @@
           images.forEach(item => {
             // Data mapping
             const title = item.title || 'Sin Título';
-            const imageUrl = item.image_url;
+            const imageUrl = item.image_url || '';
             const description = item.description || '';
+            const isVideoMatch = imageUrl.match(/\\.(mp4|webm|ogg|mov)$/i);
+            const isVideo = Boolean(isVideoMatch);
+            const videoType = isVideoMatch ? `video/${isVideoMatch[1].toLowerCase()}` : 'video/mp4';
+            const isYouTube = Boolean(imageUrl.includes('youtube.com') || imageUrl.includes('youtu.be'));
 
-            html += `
-              <a href="${imageUrl}" 
-                 class="group relative block w-full h-64 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover-card-effect"
+            let itemMarkup = '';
+            if (isVideo) {
+              itemMarkup = `
+              <a data-video='{"source": [{"src":"${imageUrl}", "type":"${videoType}"}], "attributes": {"preload": false, "controls": true}}'
+                 class="group relative block w-full h-64 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover-card-effect cursor-pointer"
                  data-sub-html="<h4>${title}</h4><p>${description}</p>">
                  
-                <img src="${imageUrl}" alt="${title}" 
-                     class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-                
+                <video src="${imageUrl}#t=0.1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" muted playsinline></video>
+                <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                  <i class="fa-solid fa-play text-white text-5xl opacity-80 group-hover:opacity-100 transition-opacity drop-shadow-lg"></i>
+                </div>
                 <!-- Overlay Hover -->
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-20 pointer-events-none">
                   <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                     <p class="text-white font-semibold text-sm truncate">${title}</p>
                     ${description ? `<p class="text-gray-200 text-xs truncate mt-1">${description}</p>` : ''}
                   </div>
                 </div>
               </a>
-            `;
+              `;
+            } else if (isYouTube) {
+              let ytId = imageUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+              let ytImg = ytId ? `https://img.youtube.com/vi/${ytId[1]}/hqdefault.jpg` : imageUrl;
+              itemMarkup = `
+              <a href="${imageUrl}"
+                 class="group relative block w-full h-64 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover-card-effect cursor-pointer"
+                 data-sub-html="<h4>${title}</h4><p>${description}</p>">
+                 
+                <img src="${ytImg}" alt="${title}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" loading="lazy">
+                <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                  <i class="fa-brands fa-youtube text-red-600 text-6xl opacity-90 group-hover:opacity-100 transition-opacity drop-shadow-lg bg-white/30 rounded-full"></i>
+                </div>
+                <!-- Overlay Hover -->
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-20 pointer-events-none">
+                  <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p class="text-white font-semibold text-sm truncate">${title}</p>
+                    ${description ? `<p class="text-gray-200 text-xs truncate mt-1">${description}</p>` : ''}
+                  </div>
+                </div>
+              </a>
+              `;
+            } else {
+              itemMarkup = `
+              <a href="${imageUrl}" 
+                 class="group relative block w-full h-64 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover-card-effect cursor-pointer"
+                 data-sub-html="<h4>${title}</h4><p>${description}</p>">
+                 
+                <img src="${imageUrl}" alt="${title}" 
+                     class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" loading="lazy">
+                
+                <!-- Overlay Hover -->
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-20 pointer-events-none">
+                  <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p class="text-white font-semibold text-sm truncate">${title}</p>
+                    ${description ? `<p class="text-gray-200 text-xs truncate mt-1">${description}</p>` : ''}
+                  </div>
+                </div>
+              </a>
+              `;
+            }
+            html += itemMarkup;
           });
           contenedor.innerHTML = html;
 
@@ -175,7 +224,7 @@
             animateThumb: true,
             showThumbByDefault: false,
             speed: 500,
-            plugins: [lgZoom, lgThumbnail]
+            plugins: [lgZoom, lgThumbnail, lgVideo]
           });
 
         } else {
