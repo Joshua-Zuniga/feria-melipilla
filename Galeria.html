@@ -174,14 +174,16 @@
             let videoDataAttr = '';
             let ytImg = '';
             if (isVideo) {
-              videoDataAttr = `data-video='{"source": [{"src":"${imageUrl}", "type":"${videoType}"}], "attributes": {"preload": false, "controls": true}}'`;
+              // LightGallery v2 HTML5 Video
+              // Added data-sub-html to correctly capture titles/descriptions without breaking HTML attrs
+              videoDataAttr = `data-src="${imageUrl}" data-video='{"source": [{"src":"${imageUrl}", "type":"${videoType}"}], "attributes": {"preload": false, "controls": true}}'`;
             } else if (isYouTube) {
               // for youtube, lightgallery usually can figure it out from the href, but we can also use data-src
               videoDataAttr = `data-src="${imageUrl}"`;
               let ytId = imageUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
               ytImg = ytId ? `https://img.youtube.com/vi/${ytId[1]}/hqdefault.jpg` : imageUrl;
             } else {
-              videoDataAttr = `href="${imageUrl}"`;
+              videoDataAttr = `data-src="${imageUrl}"`;
             }
 
             const thumbnailImg = (isYouTube && ytImg) ? ytImg : (isVideo ? `${imageUrl}#t=0.1` : imageUrl);
@@ -194,7 +196,7 @@
               : (isVideo ? `<i class="fa-solid fa-play text-white text-4xl opacity-80 group-hover:opacity-100 transition-transform transform group-hover:scale-110 drop-shadow-lg"></i>` : ``);
 
             itemMarkup = `
-            <a ${videoDataAttr} ${isVideo && !isYouTube ? `data-poster=""` /* optional for lg-video */ : ''}
+            <a ${videoDataAttr}
                  class="group relative block w-full mb-4 rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-500 cursor-pointer isolate bg-slate-50"
                  data-sub-html="<h4 class='font-bold text-lg mb-1'>${title}</h4>${description ? `<p class='text-sm opacity-90'>${description}</p>` : ''}">
                  
