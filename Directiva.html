@@ -57,16 +57,12 @@
   <!-- Header Placeholder -->
   <div id="main-header"></div>
 
-  <!-- Hero Section (Extracted from Header) -->
   <!-- Hero Personalizado para Directiva -->
-  <div class="relative w-full pt-40 pb-32 md:pt-48 md:pb-40 bg-[#166534] overflow-hidden group">
-    <div class="absolute inset-0">
-      <img src="images/Banner_1.webp"
-        class="w-full h-full object-cover opacity-60 group-hover:opacity-70 transition-opacity duration-1000 scale-105 group-hover:scale-100">
-      <div class="absolute inset-0 bg-gradient-to-t from-[#166534] via-[#166534]/50 to-[#166534]/30"></div>
-      <div class="absolute inset-0 opacity-10"
-        style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM22.485 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 22.485l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 22.485l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 54.627l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 54.627l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM54.627 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828.828.828 1.415-1.415.828-.828zM22.485 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
-      </div>
+  <div
+    class="relative w-full pt-40 pb-32 md:pt-48 md:pb-40 bg-[url('images/Banner_1.webp')] bg-fixed bg-center bg-cover overflow-hidden group">
+    <div class="absolute inset-0 bg-gradient-to-b from-[#166534]/50 via-[#166534]/60 to-[#166534]/95"></div>
+    <div class="absolute inset-0 opacity-10"
+      style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM22.485 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 22.485l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 22.485l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 54.627l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 54.627l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM54.627 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828.828.828 1.415-1.415.828-.828zM22.485 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
     </div>
     <div class="relative max-w-6xl mx-auto px-6 text-center z-10 space-y-4 mt-24 md:mt-0">
       <span
@@ -77,185 +73,229 @@
         Directiva Gremial
       </h1>
       <p class="text-lg text-emerald-100 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-        Conoce a las personas que organizan y dan vida a nuestra feria.
+        Conoce a las personas que organizan y dan vida a nuestra feria con dedicación y compromiso.
       </p>
+    </div>
+
+    <!-- Wave Divider -->
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
+      <svg class="relative block w-full h-[50px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.06,155.45,116.88,230.15,97.77Z"
+          fill="#f8fafc"></path>
+      </svg>
     </div>
   </div>
 
-  <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
+  <main class="max-w-6xl mx-auto px-4 py-8 md:py-12 space-y-16">
 
-
-    <section data-aos="fade-up">
+    <section>
       <div class="flex flex-wrap justify-center gap-8">
 
         <!-- PRESIDENTE -->
-        <article
-          class="w-full md:w-80 lg:w-[21rem] bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-300 hover:-translate-y-2 overflow-hidden group">
-          <div class="bg-gradient-to-br from-emerald-600 to-emerald-800 h-24 relative">
+        <article data-aos="fade-up" data-aos-delay="0"
+          class="w-full md:w-80 lg:w-[21rem] bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-500 hover:-translate-y-3 overflow-hidden group">
+          <div class="bg-gradient-to-br from-emerald-700 to-emerald-900 h-28 relative">
             <div class="absolute inset-0 opacity-20"
               style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 10px 10px;">
             </div>
+            <div class="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 to-amber-500"></div>
           </div>
-          <div class="flex flex-col items-center -mt-12 px-6 pb-8 text-center relative z-10">
-            <div class="relative">
+          <div class="flex flex-col items-center -mt-14 px-6 pb-8 text-center relative z-10">
+            <div class="relative inline-block">
+              <div
+                class="absolute inset-0 bg-emerald-500 opacity-0 group-hover:opacity-30 rounded-full blur-md transition-opacity duration-300">
+              </div>
               <img src="images/Luis.webp" alt="Luis Soto Muñoz"
-                class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md group-hover:scale-105 transition-transform duration-300">
-              <div class="absolute bottom-1 right-1 bg-emerald-500 rounded-full p-1.5 border-2 border-white"
-                title="Verificado">
-                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                </svg>
+                class="relative w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg group-hover:scale-110 group-hover:border-emerald-100 transition-all duration-500">
+              <div class="absolute bottom-1 right-1 bg-yellow-500 rounded-full p-1.5 border-2 border-white shadow-sm"
+                title="Líder Principal">
+                <i class="fa-solid fa-star text-white text-[10px]"></i>
               </div>
             </div>
 
-            <div class="mt-4 space-y-2">
+            <div class="mt-5 space-y-2">
               <span
-                class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-wider">
+                class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold uppercase tracking-wider border border-emerald-100">
                 Presidente
               </span>
-              <h3 class="text-xl font-bold text-slate-800 group-hover:text-primary transition-colors">Luis Soto Muñoz
-              </h3>
+              <h3 class="text-xl font-bold text-slate-800 group-hover:text-emerald-700 transition-colors">Luis Soto
+                Muñoz</h3>
             </div>
 
-            <p class="text-sm text-slate-500 mt-4 leading-relaxed">
+            <p class="text-sm text-slate-500 mt-4 leading-relaxed group-hover:text-slate-700 transition-colors">
               Responsable de la coordinación general, representación institucional y toma de decisiones estratégicas
               para el crecimiento de la feria.
             </p>
 
             <div
-              class="mt-6 pt-6 border-t border-slate-100 w-full flex justify-center space-x-4 opacity-60 hover:opacity-100 transition-opacity">
-              <i class="fa-solid fa-users-gear text-emerald-700 text-lg" title="Gestión"></i>
-              <i class="fa-solid fa-handshake text-emerald-700 text-lg" title="Liderazgo"></i>
+              class="mt-6 pt-5 border-t border-slate-100 w-full flex justify-center space-x-5 opacity-70 group-hover:opacity-100 transition-opacity">
+              <a href="#" title="Contactar por correo"
+                class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors duration-300 shadow-sm">
+                <i class="fa-solid fa-envelope"></i>
+              </a>
             </div>
           </div>
         </article>
 
         <!-- VICEPRESIDENTE -->
-        <article
-          class="w-full md:w-80 lg:w-[21rem] bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-300 hover:-translate-y-2 overflow-hidden group">
-          <div class="bg-gradient-to-br from-emerald-600 to-emerald-800 h-24 relative">
+        <article data-aos="fade-up" data-aos-delay="100"
+          class="w-full md:w-80 lg:w-[21rem] bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-500 hover:-translate-y-3 overflow-hidden group">
+          <div class="bg-gradient-to-br from-emerald-600 to-emerald-800 h-28 relative">
             <div class="absolute inset-0 opacity-20"
               style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 10px 10px;">
             </div>
+            <div class="absolute -bottom-1 left-0 w-full h-1 bg-emerald-400"></div>
           </div>
-          <div class="flex flex-col items-center -mt-12 px-6 pb-8 text-center relative z-10">
-            <div class="relative">
+          <div class="flex flex-col items-center -mt-14 px-6 pb-8 text-center relative z-10">
+            <div class="relative inline-block">
+              <div
+                class="absolute inset-0 bg-emerald-500 opacity-0 group-hover:opacity-30 rounded-full blur-md transition-opacity duration-300">
+              </div>
               <img src="images/ana.webp" alt="Ana Santibañez Carrasco"
-                class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md group-hover:scale-105 transition-transform duration-300">
+                class="relative w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg group-hover:scale-110 group-hover:border-emerald-100 transition-all duration-500">
             </div>
 
-            <div class="mt-4 space-y-2">
+            <div class="mt-5 space-y-2">
               <span
-                class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-wider">
-                Vicepresidente
+                class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold uppercase tracking-wider border border-emerald-100">
+                Vicepresidenta
               </span>
-              <h3 class="text-xl font-bold text-slate-800 group-hover:text-primary transition-colors">Ana Santibañez
+              <h3 class="text-xl font-bold text-slate-800 group-hover:text-emerald-700 transition-colors">Ana Santibañez
                 Carrasco</h3>
             </div>
 
-            <p class="text-sm text-slate-500 mt-4 leading-relaxed">
+            <p class="text-sm text-slate-500 mt-4 leading-relaxed group-hover:text-slate-700 transition-colors">
               Encargada de asistir en la gestión directiva, fortalecer la articulación interna y velar por el correcto
               funcionamiento organizacional.
             </p>
 
             <div
-              class="mt-6 pt-6 border-t border-slate-100 w-full flex justify-center space-x-4 opacity-60 hover:opacity-100 transition-opacity">
-              <i class="fa-solid fa-people-arrows text-emerald-700 text-lg"></i>
-              <i class="fa-solid fa-clipboard-check text-emerald-700 text-lg"></i>
+              class="mt-6 pt-5 border-t border-slate-100 w-full flex justify-center space-x-5 opacity-70 group-hover:opacity-100 transition-opacity">
+              <a href="#" title="Contactar por correo"
+                class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors duration-300 shadow-sm">
+                <i class="fa-solid fa-envelope"></i>
+              </a>
             </div>
           </div>
         </article>
 
         <!-- TESORERO -->
-        <article
-          class="w-full md:w-80 lg:w-[21rem] bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-300 hover:-translate-y-2 overflow-hidden group">
-          <div class="bg-gradient-to-br from-slate-700 to-slate-800 h-24 relative">
-            <div class="absolute inset-0 opacity-20"
+        <article data-aos="fade-up" data-aos-delay="200"
+          class="w-full md:w-80 lg:w-[21rem] bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-500 hover:-translate-y-3 overflow-hidden group">
+          <div class="bg-gradient-to-br from-emerald-500 to-emerald-700 h-28 relative">
+            <div class="absolute inset-0 opacity-10"
               style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 10px 10px;">
             </div>
           </div>
-          <div class="flex flex-col items-center -mt-12 px-6 pb-8 text-center relative z-10">
-            <div class="relative">
+          <div class="flex flex-col items-center -mt-14 px-6 pb-8 text-center relative z-10">
+            <div class="relative inline-block">
+              <div
+                class="absolute inset-0 bg-emerald-500 opacity-0 group-hover:opacity-30 rounded-full blur-md transition-opacity duration-300">
+              </div>
               <img src="images/luis_d.webp" alt="Luis Duarte Mendoza"
-                class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md group-hover:scale-105 transition-transform duration-300">
+                class="relative w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg group-hover:scale-110 group-hover:border-emerald-100 transition-all duration-500">
             </div>
 
-            <div class="mt-4 space-y-2">
+            <div class="mt-5 space-y-2">
               <span
-                class="inline-block px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider">
+                class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold uppercase tracking-wider border border-emerald-100">
                 Tesorero
               </span>
-              <h3 class="text-xl font-bold text-slate-800 group-hover:text-slate-600 transition-colors">Luis Duarte
+              <h3 class="text-xl font-bold text-slate-800 group-hover:text-emerald-700 transition-colors">Luis Duarte
                 Mendoza</h3>
             </div>
 
-            <p class="text-sm text-slate-500 mt-4 leading-relaxed">
+            <p class="text-sm text-slate-500 mt-4 leading-relaxed group-hover:text-slate-700 transition-colors">
               Encargado de la administración financiera, transparencia de cuentas y gestión eficiente de los recursos
               del gremio.
             </p>
 
             <div
-              class="mt-6 pt-6 border-t border-slate-100 w-full flex justify-center space-x-4 opacity-60 hover:opacity-100 transition-opacity">
-              <i class="fa-solid fa-scale-balanced text-slate-600 text-lg"></i>
-              <i class="fa-solid fa-file-invoice-dollar text-slate-600 text-lg"></i>
+              class="mt-6 pt-5 border-t border-slate-100 w-full flex justify-center space-x-5 opacity-70 group-hover:opacity-100 transition-opacity">
+              <a href="#" title="Contactar por correo"
+                class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors duration-300 shadow-sm">
+                <i class="fa-solid fa-envelope"></i>
+              </a>
             </div>
           </div>
         </article>
 
-        <!-- DIRECTOR 1 -->
-        <article
-          class="w-full md:w-80 lg:w-[21rem] bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-300 hover:-translate-y-2 overflow-hidden group">
-          <div class="bg-gradient-to-br from-slate-600 to-slate-700 h-24 relative"></div>
-          <div class="flex flex-col items-center -mt-12 px-6 pb-8 text-center relative z-10">
-            <div class="relative">
+        <!-- DIRECTOR -->
+        <article data-aos="fade-up" data-aos-delay="300"
+          class="w-full md:w-80 lg:w-[21rem] bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-500 hover:-translate-y-3 overflow-hidden group">
+          <div class="bg-gradient-to-br from-emerald-500 to-emerald-700 h-28 relative">
+            <div class="absolute inset-0 opacity-10"
+              style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 10px 10px;">
+            </div>
+          </div>
+          <div class="flex flex-col items-center -mt-14 px-6 pb-8 text-center relative z-10">
+            <div class="relative inline-block">
+              <div
+                class="absolute inset-0 bg-emerald-500 opacity-0 group-hover:opacity-30 rounded-full blur-md transition-opacity duration-300">
+              </div>
               <img src="images/luis.webp" alt="Walter Ramirez Rojas"
-                class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md group-hover:scale-105 transition-transform duration-300">
+                class="relative w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg group-hover:scale-110 group-hover:border-emerald-100 transition-all duration-500">
             </div>
 
-            <div class="mt-4 space-y-2">
+            <div class="mt-5 space-y-2">
               <span
-                class="inline-block px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider">
+                class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold uppercase tracking-wider border border-emerald-100">
                 Director
               </span>
-              <h3 class="text-xl font-bold text-slate-800 group-hover:text-slate-600 transition-colors">Walter Ramirez
+              <h3 class="text-xl font-bold text-slate-800 group-hover:text-emerald-700 transition-colors">Walter Ramirez
                 Rojas</h3>
             </div>
 
-            <p class="text-sm text-slate-500 mt-4 leading-relaxed">
+            <p class="text-sm text-slate-500 mt-4 leading-relaxed group-hover:text-slate-700 transition-colors">
               Responsable de apoyar las decisiones directivas y representar la voz de los socios en la mesa de trabajo.
             </p>
             <div
-              class="mt-6 pt-6 border-t border-slate-100 w-full flex justify-center space-x-4 opacity-60 hover:opacity-100 transition-opacity">
-              <i class="fa-solid fa-user-group text-slate-600 text-lg"></i>
+              class="mt-6 pt-5 border-t border-slate-100 w-full flex justify-center space-x-5 opacity-70 group-hover:opacity-100 transition-opacity">
+              <a href="#" title="Contactar por correo"
+                class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors duration-300 shadow-sm">
+                <i class="fa-solid fa-envelope"></i>
+              </a>
             </div>
           </div>
         </article>
 
         <!-- DELEGADO -->
-        <article
-          class="w-full md:w-80 lg:w-[21rem] bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-300 hover:-translate-y-2 overflow-hidden group">
-          <div class="bg-gradient-to-br from-slate-600 to-slate-700 h-24 relative"></div>
-          <div class="flex flex-col items-center -mt-12 px-6 pb-8 text-center relative z-10">
-            <div class="relative">
+        <article data-aos="fade-up" data-aos-delay="400"
+          class="w-full md:w-80 lg:w-[21rem] bg-white rounded-3xl shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-500 hover:-translate-y-3 overflow-hidden group">
+          <div class="bg-gradient-to-br from-emerald-500 to-emerald-700 h-28 relative">
+            <div class="absolute inset-0 opacity-10"
+              style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 10px 10px;">
+            </div>
+          </div>
+          <div class="flex flex-col items-center -mt-14 px-6 pb-8 text-center relative z-10">
+            <div class="relative inline-block">
+              <div
+                class="absolute inset-0 bg-emerald-500 opacity-0 group-hover:opacity-30 rounded-full blur-md transition-opacity duration-300">
+              </div>
               <img src="images/joshua_z.webp" alt="Joshua Zúñiga Aguilar"
-                class="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md group-hover:scale-105 transition-transform duration-300">
+                class="relative w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg group-hover:scale-110 group-hover:border-emerald-100 transition-all duration-500">
             </div>
 
-            <div class="mt-4 space-y-2">
+            <div class="mt-5 space-y-2">
               <span
-                class="inline-block px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider">
+                class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold uppercase tracking-wider border border-emerald-100">
                 Delegado
               </span>
-              <h3 class="text-xl font-bold text-slate-800 group-hover:text-slate-600 transition-colors">Joshua Zúñiga
+              <h3 class="text-xl font-bold text-slate-800 group-hover:text-emerald-700 transition-colors">Joshua Zúñiga
                 Aguilar</h3>
             </div>
 
-            <p class="text-sm text-slate-500 mt-4 leading-relaxed">
+            <p class="text-sm text-slate-500 mt-4 leading-relaxed group-hover:text-slate-700 transition-colors">
               Conecta a la directiva con las bases, impulsando iniciativas comunitarias y fomentando la participación.
             </p>
             <div
-              class="mt-6 pt-6 border-t border-slate-100 w-full flex justify-center space-x-4 opacity-60 hover:opacity-100 transition-opacity">
-              <i class="fa-solid fa-bullhorn text-slate-600 text-lg"></i>
+              class="mt-6 pt-5 border-t border-slate-100 w-full flex justify-center space-x-5 opacity-70 group-hover:opacity-100 transition-opacity">
+              <a href="#" title="Contactar por correo"
+                class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors duration-300 shadow-sm">
+                <i class="fa-solid fa-envelope"></i>
+              </a>
             </div>
           </div>
         </article>
