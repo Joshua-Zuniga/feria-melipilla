@@ -41,7 +41,7 @@
       }, 3500);
     };
 
-    // Apertura y Cierre de Panel Móvil 'Más'
+    // Apertura, Cierre y Alternancia de Panel Móvil 'Más'
     window.openMorePanel = function () {
       window.closeAllModals();
       if (moreSheet) moreSheet.classList.add('open');
@@ -64,8 +64,27 @@
       if (moreIcon) moreIcon.classList.replace('fa-xmark', 'fa-bars');
     };
 
-    if (moreButton) moreButton.addEventListener('click', window.openMorePanel);
+    window.toggleMorePanel = function () {
+      if (moreSheet && moreSheet.classList.contains('open')) {
+        window.closeMorePanel();
+      } else {
+        window.openMorePanel();
+      }
+    };
+
+    if (moreButton) moreButton.addEventListener('click', window.toggleMorePanel);
     if (closeMore) closeMore.addEventListener('click', window.closeMorePanel);
+
+    // Cerrar panel móvil al hacer clic en cualquier enlace interno dentro de 'Más'
+    if (moreSheet) {
+      moreSheet.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (!link.target || link.target !== '_blank') {
+            window.closeMorePanel();
+          }
+        });
+      });
+    }
 
     // Cerrar todas las ventanas emergentes activas
     window.closeAllModals = function () {
