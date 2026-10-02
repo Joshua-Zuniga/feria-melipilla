@@ -1,223 +1,377 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Socio - Feria Agrícola Melipilla</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Perfil de Socio | Feria Agrícola Melipilla</title>
+  <meta name="description" content="Información y puesto del socio perteneciente a la Asociación Gremial Feria Agrícola Melipilla.">
+  <link rel="shortcut icon" href="images/favicon.webp" type="image/x-icon">
+  <meta name="theme-color" content="#166534">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="images/favicon.webp" type="image/x-icon">
-    <meta name="theme-color" content="#166534">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#166534',
-                        secondary: '#65a30d',
-                        accent: '#f97316',
-                        dark: '#020617'
-                    },
-                    fontFamily: {
-                        sans: ['Poppins', 'system-ui', 'sans-serif'],
-                    }
-                }
-            }
-        };
-    </script>
-
-    <!-- AOS Animations -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-
-    <!-- Icons & Layout -->
-    <script src="https://kit.fontawesome.com/c38e3367c6.js" crossorigin="anonymous"></script>
-    <script src="js/layout.js"></script>
-
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
+<body class="relative min-h-screen flex flex-col justify-between">
 
-<body class="bg-slate-50 text-slate-800 font-sans">
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            AOS.init({ duration: 800, once: true, offset: 80 });
-            renderLayout("Socios");
-        });
-    </script>
+  <!-- HEADER MÓVIL -->
+  <header class="md:hidden bg-white border-b border-slate-100 h-[88px] flex items-center justify-between px-6 sticky top-0 z-40 shadow-sm">
+    <a href="index.html" class="flex items-center" aria-label="Inicio Feria Melipilla">
+      <img src="images/logo-color.webp" alt="Feria Agrícola Melipilla" width="192" height="64" class="h-14 w-auto">
+    </a>
+    <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-green-800 text-white rounded-full px-4 py-2 text-xs font-bold shadow hover:bg-green-700 active:scale-95 transition">
+      <i class="fa-solid fa-user"></i>
+      <span>Ingresar</span>
+    </a>
+  </header>
 
-    <!-- Header Placeholder -->
-    <div id="main-header"></div>
-
-    <div
-        class="relative w-full pt-44 pb-48 md:pt-48 md:pb-56 bg-[url('images/Banner_1.webp')] bg-fixed bg-center bg-cover overflow-hidden group">
-        <!-- Background Gradient -->
-        <div class="absolute inset-0 bg-gradient-to-b from-[#166534]/50 via-[#166534]/60 to-[#166534]/95"></div>
-        <!-- Decorative Pattern -->
-        <div class="absolute inset-0 opacity-10"
-            style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM22.485 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 22.485l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 22.485l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 54.627l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 54.627l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM54.627 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828zM22.485 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
+  <!-- HEADER ESCRITORIO -->
+  <header class="hidden md:block bg-white/95 backdrop-blur border-b border-slate-100 sticky top-0 z-40 transition-shadow duration-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-8">
+      <a href="index.html" class="flex items-center shrink-0">
+        <img src="images/logo-color.webp" width="240" height="80" class="h-14 w-auto transition-transform hover:scale-105" alt="Feria Agrícola Melipilla">
+      </a>
+      
+      <!-- Navegación de escritorio -->
+      <nav class="flex-1 flex justify-center items-center gap-8 text-sm font-semibold text-slate-700">
+        <a href="index.html" class="hover:text-green-700 transition-colors py-2">Inicio</a>
+        
+        <!-- Dropdown 'Nosotros' -->
+        <div class="dropdown-parent relative py-2">
+          <div class="flex items-center gap-1.5 hover:text-green-700 cursor-pointer group">
+            <a href="nosotros.html" class="hover:text-green-800">Nosotros</a>
+            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200 group-hover:rotate-180"></i>
+          </div>
+          
+          <div class="dropdown-menu absolute top-full left-0 w-64 bg-white rounded-2xl shadow-xl border border-slate-100 py-2.5 mt-1 z-50">
+            <a href="nosotros.html" class="flex items-center gap-3 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-green-700 transition">
+              <i class="fa-solid fa-seedling w-4 text-center text-green-700"></i>
+              <div>
+                <span class="block">Sobre Nosotros</span>
+                <span class="text-[10px] text-slate-400 font-normal">Historia, misión y visión</span>
+              </div>
+            </a>
+            
+            <a href="directiva.html" class="flex items-center gap-3 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-green-700 transition">
+              <i class="fa-solid fa-users w-4 text-center text-slate-400"></i>
+              <span>Directiva Vigente</span>
+            </a>
+            <a href="socios.html" class="flex items-center gap-3 px-4 py-2.5 text-xs font-bold text-green-800 bg-green-50/80 border-l-4 border-green-700">
+              <i class="fa-solid fa-store w-4 text-center text-green-700"></i>
+              <span>Socios y Puestos</span>
+            </a>
+            <a href="nosotros.html#estatutos" class="flex items-center gap-3 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-green-700 transition">
+              <i class="fa-solid fa-book-bookmark w-4 text-center text-slate-400"></i>
+              <span>Estatutos y Reglamento</span>
+            </a>
+          </div>
         </div>
 
-        <div class="relative max-w-4xl mx-auto px-6 text-center z-10 space-y-4">
-            <h1
-                class="inline-block py-2 px-6 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-emerald-100 text-lg md:text-xl font-bold uppercase tracking-widest animate-fade-in-up shadow-lg">
-                Perfil del Socio
-            </h1>
+        <a href="localizanos.html" class="hover:text-green-700 transition-colors py-2">Localízanos</a>
+        <a href="noticias.html" class="hover:text-green-700 transition-colors py-2">Noticias</a>
+        <a href="galeria.html" class="hover:text-green-700 transition-colors py-2">Galería</a>
+        <a href="localizanos.html#contacto" class="hover:text-green-700 transition-colors py-2">Contacto</a>
+      </nav>
+      
+      <!-- Botón de Ingreso -->
+      <div class="flex items-center gap-3">
+        <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="bg-green-800 hover:bg-green-700 active:scale-95 text-white rounded-full px-5 py-2.5 text-sm font-bold shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer">
+          <i class="fa-solid fa-user"></i>
+          <span>Ingresar</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    <!-- HERO SECTION -->
+    <section class="hero min-h-[300px] md:min-h-[360px] flex items-end relative">
+      <div class="max-w-7xl mx-auto w-full px-6 pb-12 md:pb-16 text-white">
+        <div class="flex items-center flex-wrap gap-2 text-sm md:text-base text-emerald-100 mb-4 font-medium">
+          <a href="index.html" class="hover:text-white hover:underline transition">Inicio</a>
+          <span class="text-emerald-300">›</span>
+          <a href="socios.html" class="text-emerald-100 hover:text-white hover:underline transition">Socios</a>
+          <span class="text-emerald-300">›</span>
+          <span class="text-lime-300 font-semibold" id="breadcrumb-name">Detalle del Socio</span>
+        </div>
+        <div class="max-w-2xl">
+          <div class="inline-flex items-center gap-2 bg-lime-400/20 text-lime-300 border border-lime-300/30 font-extrabold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-3">
+            <i class="fa-solid fa-id-card text-[11px]"></i>
+            <span>Ficha Oficial de Socio</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight" id="hero-title">
+            Perfil del Socio
+          </h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- DETALLE DEL SOCIO -->
+    <section class="max-w-3xl mx-auto px-6 -mt-10 md:-mt-14 relative z-20 pb-20">
+      <div class="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 shadow-xl text-center relative overflow-hidden">
+        
+        <!-- Skeleton de Carga Inicial -->
+        <div id="profile-skeleton" class="animate-pulse space-y-6">
+          <div class="w-32 h-32 sm:w-40 sm:h-40 mx-auto rounded-full bg-slate-200"></div>
+          <div class="h-6 bg-slate-200 rounded w-48 mx-auto"></div>
+          <div class="h-4 bg-slate-200 rounded w-32 mx-auto"></div>
+          <div class="grid sm:grid-cols-2 gap-4 pt-4">
+            <div class="h-20 bg-slate-100 rounded-2xl"></div>
+            <div class="h-20 bg-slate-100 rounded-2xl"></div>
+          </div>
         </div>
 
-        <!-- Wave Divider -->
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
-            <svg class="relative block w-full h-[50px] md:h-[100px]" data-name="Layer 1"
-                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path
-                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.06,155.45,116.88,230.15,97.77Z"
-                    fill="#f8fafc"></path>
-            </svg>
+        <!-- Contenido Real (Oculto mientras carga) -->
+        <div id="profile-content" class="hidden">
+          
+          <!-- Avatar con Marco Verde -->
+          <div class="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-xl ring-4 ring-green-700/20 bg-emerald-50 mb-6 flex items-center justify-center">
+            <img id="socio-image" src="" alt="Foto del Socio" class="w-full h-full object-cover hidden">
+            <div id="socio-avatar-initial" class="w-full h-full flex items-center justify-center bg-gradient-to-br from-green-700 to-green-900 text-white text-4xl sm:text-5xl font-extrabold">
+              <span id="initial-char">S</span>
+            </div>
+          </div>
+
+          <!-- Nombre y Estado -->
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-green-800 border border-emerald-200 mb-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Socio Activo
+          </span>
+
+          <h2 id="card-name" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1 mb-1">
+            Nombre del Socio
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-500 font-medium mb-8">
+            Asociación Gremial Feria Agrícola Melipilla
+          </p>
+
+          <!-- Datos del Puesto y Rubro -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left mb-8">
+            <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-green-100 text-green-800 grid place-items-center text-xl shrink-0">
+                <i class="fa-solid fa-store"></i>
+              </div>
+              <div>
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Número de Puesto</p>
+                <p id="socio-stall" class="text-base sm:text-lg font-bold text-slate-800 mt-0.5">Sin asignar</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 grid place-items-center text-xl shrink-0">
+                <i class="fa-solid fa-apple-whole"></i>
+              </div>
+              <div>
+                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Sector / Rubro</p>
+                <p id="socio-section" class="text-base sm:text-lg font-bold text-slate-800 mt-0.5">General</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botón de Contacto por WhatsApp si está disponible -->
+          <div id="whatsapp-container" class="mb-8 hidden">
+            <a id="whatsapp-link" href="#" target="_blank" rel="noopener noreferrer"
+               class="w-full py-4 px-6 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm sm:text-base shadow-lg hover:shadow-green-500/20 active:scale-[0.98] transition flex items-center justify-center gap-3">
+              <i class="fa-brands fa-whatsapp text-2xl"></i>
+              <span>Contactar al socio por WhatsApp</span>
+            </a>
+          </div>
+
+          <!-- Botón Volver -->
+          <div class="border-t border-slate-100 pt-6 flex justify-center">
+            <a href="socios.html" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-bold transition">
+              <i class="fa-solid fa-arrow-left text-xs"></i>
+              <span>Volver al directorio de socios</span>
+            </a>
+          </div>
+
         </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#063b24] text-white">
+    <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Col 1: Identidad -->
+      <div>
+        <img src="images/logotipo.svg" width="240" height="80" class="h-16 w-auto" alt="Logo Feria Melipilla" loading="lazy">
+        <p class="text-sm text-emerald-100/75 mt-4 leading-relaxed">
+          Asociación Gremial Feria Agrícola Melipilla.<br>
+          Fomentando la agricultura local, el comercio justo y la unión comunitaria y gremial.
+        </p>
+        <div class="mt-4 flex items-center gap-2 text-xs text-emerald-200/80">
+          <i class="fa-solid fa-location-dot text-lime-400"></i>
+          <span>Melipilla, Región Metropolitana</span>
+        </div>
+        <p class="text-[11px] text-emerald-200/60 mt-1">Personalidad Jurídica: 20 de noviembre de 2023</p>
+      </div>
+
+      <!-- Col 2: Navegación -->
+      <div>
+        <h3 class="font-bold text-lime-300 mb-4 tracking-wide text-xs uppercase">Navegación Gremial</h3>
+        <div class="grid grid-cols-1 gap-2 text-sm text-emerald-100/80">
+          <a href="index.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Inicio</a>
+          <a href="nosotros.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Sobre Nosotros</a>
+          <a href="directiva.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Directiva Vigente</a>
+          <a href="socios.html" class="hover:text-lime-300 transition flex items-center gap-2 font-bold text-lime-200"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Socios y Puestos</a>
+          <a href="localizanos.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Localízanos</a>
+          <a href="noticias.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Noticias</a>
+          <a href="galeria.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Galería Fotográfica</a>
+        </div>
+      </div>
+
+      <!-- Col 3: Legal & Gremial -->
+      <div>
+        <h3 class="font-bold text-lime-300 mb-4 tracking-wide text-xs uppercase">Legal & Estatutos</h3>
+        <div class="grid grid-cols-1 gap-2 text-sm text-emerald-100/80">
+          <a href="nosotros.html#estatutos" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Estatutos y Reglamento</a>
+          <a href="terminos.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Términos y Condiciones</a>
+          <a href="privacidad.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Política de Privacidad</a>
+          <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="hover:text-lime-300 transition flex items-center gap-2 text-lime-300 font-semibold mt-2"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>Portal Web Socios</a>
+        </div>
+      </div>
+
+      <!-- Col 4: Contacto y Redes -->
+      <div>
+        <h3 class="font-bold text-lime-300 mb-4 tracking-wide text-xs uppercase">Contacto Oficial</h3>
+        <div class="space-y-3 text-xs text-emerald-100/80">
+          <a href="mailto:a.g.feria.agricola.m@gmail.com" class="flex items-center gap-2.5 text-emerald-100 hover:text-lime-300 transition break-all">
+            <i class="fa-solid fa-envelope text-lime-400 text-sm shrink-0"></i>
+            <span>a.g.feria.agricola.m@gmail.com</span>
+          </a>
+          <a href="localizanos.html#contacto" class="flex items-center gap-2.5 text-emerald-100 hover:text-lime-300 transition">
+            <i class="fa-regular fa-paper-plane text-lime-400 text-sm shrink-0"></i>
+            <span>Formulario de Contacto</span>
+          </a>
+          <p class="text-[11px] text-emerald-200/70 pt-1">
+            Horario en Feria:<br>
+            <strong class="text-white">08:00 a 15:30 hrs</strong> (Mar · Mié · Vie · Sáb · Dom)
+          </p>
+        </div>
+
+        <div class="mt-5">
+          <p class="text-[11px] font-bold uppercase tracking-wider text-lime-300 mb-2">Síguenos en Redes</p>
+          <div class="flex gap-2.5">
+            <a href="https://www.instagram.com/asoc.feria.agricola.melipilla" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-lime-400 hover:text-green-950 transition grid place-items-center" aria-label="Instagram Oficial">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="https://www.facebook.com/asoc.feria.agricola.melipilla" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-lime-400 hover:text-green-950 transition grid place-items-center" aria-label="Facebook Oficial">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="localizanos.html#contacto" class="w-9 h-9 rounded-full bg-white/10 hover:bg-lime-400 hover:text-green-950 transition grid place-items-center" aria-label="Escribir mensaje">
+              <i class="fa-regular fa-envelope text-sm"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <main class="max-w-4xl mx-auto px-4 py-0 md:py-8 space-y-8 -mt-16 md:-mt-24 relative z-20 mb-20">
-        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 text-center" data-aos="fade-up">
+    <div class="border-t border-white/10 text-center text-xs text-emerald-100/60 py-5 px-6 flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto gap-2">
+      <div>
+        © 2026 Asociación Gremial Feria Agrícola Melipilla. Todos los derechos reservados.
+      </div>
+      <div class="flex items-center gap-4 text-[11px] text-emerald-200/70">
+        <a href="terminos.html" class="hover:text-lime-300 transition">Términos</a>
+        <span>·</span>
+        <a href="privacidad.html" class="hover:text-lime-300 transition">Privacidad</a>
+        <span>·</span>
+        <a href="localizanos.html#contacto" class="hover:text-lime-300 transition">Contacto</a>
+      </div>
+    </div>
+  </footer>
 
-            <!-- Avatar -->
-            <div
-                class="relative w-40 h-40 md:w-52 md:h-52 mx-auto -mt-24 md:-mt-32 mb-6 ring-8 ring-white shadow-2xl rounded-full overflow-hidden bg-white z-30">
-                <img id="socio-image" src="" alt="Foto Socio" class="w-full h-full object-cover hidden">
-                <div id="no-image-placeholder"
-                    class="flex items-center justify-center w-full h-full bg-emerald-100/50 text-emerald-400 text-6xl">
-                    <i class="fas fa-user"></i>
-                </div>
-            </div>
+  <!-- MOBILE BOTTOM NAV -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-[90] bg-[#166534] text-white bottom-nav flex justify-around items-center px-1 shadow-[0_-6px_25px_rgba(0,0,0,.2)]">
+    <a href="index.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i class="fa-solid fa-house text-lg"></i><span>Inicio</span>
+    </a>
+    <a href="socios.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] text-lime-300 font-bold">
+      <i class="fa-solid fa-store text-lg"></i><span>Socios</span>
+    </a>
+    <a href="localizanos.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i class="fa-solid fa-map-location-dot text-lg"></i><span>Localízanos</span>
+    </a>
+    <a href="noticias.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i class="fa-regular fa-newspaper text-lg"></i><span>Noticias</span>
+    </a>
+    <button type="button" id="moreButton" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i id="moreIcon" class="fa-solid fa-bars text-lg"></i><span>Más</span>
+    </button>
+  </nav>
 
-            <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-2" id="card-name"></h2>
-            <p class="text-emerald-600 font-medium mb-8">Socio de la Asociación Gremial</p>
+  <!-- BACKDROP OVERLAY -->
+  <div id="backdrop" class="backdrop fixed inset-0 bg-black/50 backdrop-blur-[2px] z-[100]"></div>
 
-            <!-- Info Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-lg mx-auto mb-6">
-                <div
-                    class="bg-slate-50 p-5 rounded-2xl border border-slate-100 hover:border-emerald-200 transition-colors group">
-                    <div class="flex items-center gap-3 mb-2">
-                        <div
-                            class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                            <i class="fas fa-store"></i>
-                        </div>
-                        <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Puesto / Stand</span>
-                    </div>
-                    <span class="text-lg font-semibold text-slate-700 block pl-11" id="socio-stall">-</span>
-                </div>
+  <!-- MOBILE BOTTOM SHEET 'MÁS' -->
+  <section id="moreSheet" class="sheet fixed left-0 right-0 bottom-0 z-[110] bg-white rounded-t-[28px] shadow-2xl p-6 pb-[95px] max-h-[82vh] overflow-y-auto">
+    <div class="w-12 h-1.5 bg-slate-200 rounded-full mx-auto mb-4"></div>
+    <div class="flex items-center justify-between mb-5">
+      <div>
+        <p class="text-xs font-extrabold uppercase tracking-widest text-green-700">Navegación</p>
+        <h2 class="text-2xl font-extrabold text-slate-900">Más opciones</h2>
+      </div>
+      <button id="closeMore" type="button" class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center transition">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+    <div class="grid grid-cols-2 gap-3">
+      <a href="nosotros.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-seedling"></i></span>
+        <span class="font-bold text-green-950 text-sm">Historia & Misión</span>
+      </a>
+      <a href="directiva.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-users"></i></span>
+        <span class="font-bold text-green-950 text-sm">Directiva</span>
+      </a>
+      <a href="socios.html" class="bg-green-800 rounded-2xl p-4 flex flex-col items-center gap-2 border border-green-800 text-center shadow-md">
+        <span class="w-11 h-11 rounded-full bg-white text-green-800 grid place-items-center"><i class="fa-solid fa-store"></i></span>
+        <span class="font-bold text-white text-sm">Socios</span>
+      </a>
+      <a href="localizanos.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-map-location-dot"></i></span>
+        <span class="font-bold text-green-950 text-sm">Localízanos</span>
+      </a>
+      <a href="galeria.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-regular fa-images"></i></span>
+        <span class="font-bold text-green-950 text-sm">Galería</span>
+      </a>
+      <a href="localizanos.html#contacto" onclick="closeMorePanel()" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-regular fa-envelope"></i></span>
+        <span class="font-bold text-green-950 text-sm">Contacto</span>
+      </a>
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-regular fa-envelope"></i></span>
+        <span class="font-bold text-green-950 text-sm">Contacto</span>
+      </a>
+      <a href="terminos.html" class="bg-slate-50 hover:bg-slate-100 rounded-2xl p-3 flex items-center justify-center gap-2 border border-slate-200 text-xs font-bold text-slate-700 transition">
+        <i class="fa-solid fa-scale-balanced text-green-700"></i>
+        <span>Términos</span>
+      </a>
+      <a href="privacidad.html" class="bg-slate-50 hover:bg-slate-100 rounded-2xl p-3 flex items-center justify-center gap-2 border border-slate-200 text-xs font-bold text-slate-700 transition">
+        <i class="fa-solid fa-user-shield text-green-700"></i>
+        <span>Privacidad</span>
+      </a>
+      <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="col-span-2 bg-lime-500 hover:bg-lime-400 rounded-2xl p-3.5 flex items-center justify-center gap-2 text-center transition shadow font-bold text-green-950 text-sm">
+        <i class="fa-solid fa-right-to-bracket text-base"></i>
+        <span>Ingresar al Portal</span>
+      </a>
+    </div>
+  </section>
 
-                <div
-                    class="bg-slate-50 p-5 rounded-2xl border border-slate-100 hover:border-emerald-200 transition-colors group">
-                    <div class="flex items-center gap-3 mb-2">
-                        <div
-                            class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                            <i class="fas fa-shapes"></i>
-                        </div>
-                        <span class="text-xs font-bold text-blue-700 uppercase tracking-wider">Sector / Rubro</span>
-                    </div>
-                    <span class="text-lg font-semibold text-slate-700 block pl-11" id="socio-section">-</span>
-                </div>
-            </div>
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-[130] bg-slate-900 text-white text-sm px-5 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 max-w-sm">
+    <div id="toastIcon" class="w-7 h-7 rounded-full bg-lime-400 text-green-950 flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-check text-xs"></i>
+    </div>
+    <div id="toastMessage" class="text-xs font-medium leading-snug">Operación realizada con éxito</div>
+  </div>
 
-            <!-- WhatsApp Action -->
-            <div id="whatsapp-container" class="max-w-lg mx-auto mb-10 hidden">
-                <a id="whatsapp-link" href="#" target="_blank"
-                    class="flex items-center justify-center gap-3 w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-green-300/50 transition transform hover:-translate-y-1">
-                    <i class="fab fa-whatsapp text-2xl"></i>
-                    <span class="text-lg">Contactar por WhatsApp</span>
-                </a>
-            </div>
-
-            <div class="border-t border-slate-100 pt-8">
-                <a href="Socios.html"
-                    class="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-slate-100 text-slate-700 font-bold hover:bg-slate-200 transition">
-                    <i class="fas fa-arrow-left"></i>
-                    Volver al directorio
-                </a>
-            </div>
-
-        </div>
-    </main>
-
-    <div id="main-footer"></div>
-
-    <!-- Supabase Logic -->
-    <script type="module">
-        import { supabase } from './js/supabase-client.js';
-
-        async function loadProfile() {
-            const params = new URLSearchParams(window.location.search);
-            const id = params.get('id');
-
-            if (!id) {
-                window.location.href = 'Socios.html';
-                return;
-            }
-
-            try {
-                // Fetch member AND public profile
-                const { data, error } = await supabase
-                    .from('members')
-                    .select('*, public_profiles(*)')
-                    .eq('id', id)
-                    .eq('is_active', true)
-                    .single();
-
-                if (error) throw error;
-                if (!data) throw new Error('Socio no encontrado');
-
-                // Update UI
-                document.title = `${data.name} - Feria Agrícola Melipilla`;
-                // document.getElementById('socio-name').innerText = data.name; // Title is now static
-                document.getElementById('card-name').innerText = data.name;
-                document.getElementById('socio-stall').innerText = data.stall || 'Sin asignar';
-                document.getElementById('socio-section').innerText = data.section || 'General';
-
-                const imgEl = document.getElementById('socio-image');
-                const placeholder = document.getElementById('no-image-placeholder');
-
-                if (data.profile_image) {
-                    imgEl.src = data.profile_image;
-                    imgEl.classList.remove('hidden');
-                    placeholder.classList.add('hidden');
-                }
-
-                // Logic for WhatsApp
-                // public_profiles can be an array or object depending on relationship setup
-                let profile = null;
-                if (Array.isArray(data.public_profiles)) {
-                    profile = data.public_profiles[0];
-                } else {
-                    profile = data.public_profiles;
-                }
-
-                if (profile && profile.whatsapp_number) {
-                    const cleanNumber = profile.whatsapp_number.replace(/\D/g, ''); // Remove non-digits
-                    if (cleanNumber.length >= 8) { // Basic validation
-                        const waLink = document.getElementById('whatsapp-link');
-                        const waContainer = document.getElementById('whatsapp-container');
-
-                        waLink.href = `https://wa.me/${cleanNumber}?text=Hola, te contacto desde la web de la Feria Agrícola.`;
-                        waContainer.classList.remove('hidden');
-                        waContainer.classList.add('animate-fade-in-up');
-                    }
-                }
-
-            } catch (err) {
-                console.error('Error fetching member:', err);
-                // document.getElementById('socio-name').innerText = 'Error al cargar'; // Title is static
-                document.getElementById('card-name').innerText = 'No se pudo cargar la información';
-            }
-        }
-
-        loadProfile();
-    </script>
+  <script src="js/global.js"></script>
+  <script type="module" src="js/perfil.js"></script>
 </body>
-
 </html>

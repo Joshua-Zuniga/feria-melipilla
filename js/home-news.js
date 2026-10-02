@@ -7,7 +7,7 @@ async function fetchHomeNoticias() {
   try {
     const { data: noticias, error } = await supabase
       .from('web_news')
-      .select('*')
+      .select('id, title, summary, content, image_url, published_at, created_at')
       .eq('is_published', true)
       .order('published_at', { ascending: false })
       .limit(3);
@@ -48,7 +48,7 @@ async function fetchHomeNoticias() {
                 
                 <!-- Imagen con Overlay y Badge de Fecha -->
                 <div class="relative h-48 md:h-56 overflow-hidden rounded-t-3xl">
-                    <img src="${imagenUrl}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out will-change-transform">
+                    <img src="${imagenUrl}" alt="${item.title}" loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out will-change-transform">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
                 </div>
 
@@ -95,6 +95,8 @@ async function fetchHomeNoticias() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+if (document.readyState === 'loading') {
+  document.addEventListener("DOMContentLoaded", fetchHomeNoticias);
+} else {
   fetchHomeNoticias();
-});
+}

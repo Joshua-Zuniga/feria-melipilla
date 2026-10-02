@@ -13,7 +13,7 @@ const HEADER_HTML = `
     
     <!-- Logo -->
     <a href="index.html" class="flex items-center gap-2 shrink-0 group mr-6 bg-white/10 rounded-full p-2 hover:bg-white/20 transition-colors my-1">
-      <img src="images/logotipo.svg" alt="Feria Melipilla" class="h-20 w-auto drop-shadow-sm group-hover:scale-105 transition-transform">
+      <img src="images/logotipo.svg" alt="Feria Melipilla" width="240" height="80" class="h-20 w-auto drop-shadow-sm group-hover:scale-105 transition-transform" fetchpriority="high">
     </a>
 
     <!-- Nav Desktop -->
@@ -37,7 +37,7 @@ const MOBILE_HTML = `
 <!-- MOBILE TOP BAR -->
 <div class="md:hidden fixed top-0 left-0 right-0 z-[9000] bg-[#166534] px-4 py-3 shadow-md flex items-center justify-center transition-all duration-300">
     <a href="index.html" class="flex items-center justify-center bg-white/10 rounded-full p-2">
-      <img src="images/logotipo.svg" alt="Feria Melipilla" class="h-16 w-auto drop-shadow-md">
+      <img src="images/logotipo.svg" alt="Feria Melipilla" width="192" height="64" class="h-16 w-auto drop-shadow-md" fetchpriority="high">
     </a>
 </div>
 
@@ -77,7 +77,7 @@ const FOOTER_HTML = `
     <!-- Col 1: Brand -->
     <div class="space-y-5 md:col-span-1">
       <a href="index.html" class="flex items-center gap-3 transition-opacity hover:opacity-80">
-        <img src="images/logotipo.svg" alt="Logo Feria Agrícola" class="h-24 drop-shadow-lg filter-none">
+        <img src="images/logotipo.svg" alt="Logo Feria Agrícola" width="288" height="96" loading="lazy" class="h-24 drop-shadow-lg filter-none">
       </a>
       <p class="text-sm text-emerald-100 leading-relaxed max-w-sm">
         Asociación Gremial Feria Agrícola Melipilla. <br>
@@ -89,10 +89,10 @@ const FOOTER_HTML = `
     <div class="space-y-5">
       <h4 class="text-sm font-semibold tracking-widest uppercase text-lime-300">Navegación</h4>
       <ul class="space-y-2 text-sm">
-        <li><a href="Nosotros.html" class="hover:text-white hover:underline text-emerald-50 transition">Nosotros</a></li>
-        <li><a href="Socios.html" class="hover:text-white hover:underline text-emerald-50 transition">Socios</a></li>
-        <li><a href="Noticias.html" class="hover:text-white hover:underline text-emerald-50 transition">Noticias</a></li>
-        <li><a href="Localizanos.html" class="hover:text-white hover:underline text-emerald-50 transition">Mapa / Ubicación</a></li>
+        <li><a href="nosotros.html" class="hover:text-white hover:underline text-emerald-50 transition">Nosotros</a></li>
+        <li><a href="socios.html" class="hover:text-white hover:underline text-emerald-50 transition">Socios</a></li>
+        <li><a href="noticias.html" class="hover:text-white hover:underline text-emerald-50 transition">Noticias</a></li>
+        <li><a href="localizanos.html" class="hover:text-white hover:underline text-emerald-50 transition">Localízanos</a></li>
       </ul>
     </div>
 
@@ -153,29 +153,33 @@ const FOOTER_HTML = `
 // Esto asegura que se vean incluso si se carga una versión anterior de FontAwesome por tu 'kit' antiguo
 const NAV_ITEMS = [
   { href: 'index.html', label: 'Inicio', icon: 'fas fa-home', main: true },
-  { href: 'Socios.html', label: 'Socios', icon: 'fas fa-store', main: true },
-  { href: 'Noticias.html', label: 'Noticias', icon: 'far fa-newspaper', main: true }, // 'far' a veces es mas seguro para newspaper
-  { href: 'Localizanos.html', label: 'Mapa', icon: 'fas fa-map-marker-alt', main: true }, // fa-map-location-dot -> fa-map-marker-alt
+  { href: 'socios.html', label: 'Socios', icon: 'fas fa-store', main: true },
+  { href: 'noticias.html', label: 'Noticias', icon: 'far fa-newspaper', main: true }, // 'far' a veces es mas seguro para newspaper
+  { href: 'localizanos.html', label: 'Localízanos', icon: 'fas fa-map-marker-alt', main: true }, // fa-map-location-dot -> fa-map-marker-alt
 
   // Popup
-  { href: 'Nosotros.html', label: 'Nosotros', icon: 'fas fa-users', main: false },
-  { href: 'Directiva.html', label: 'Directiva', icon: 'fas fa-file-alt', main: false }, // fa-file-signature -> fa-file-alt
-  { href: 'Galeria.html', label: 'Galería', icon: 'fas fa-images', main: false }, // fa-camera -> fa-images
+  { href: 'nosotros.html', label: 'Nosotros', icon: 'fas fa-users', main: false },
+  { href: 'directiva.html', label: 'Directiva', icon: 'fas fa-file-alt', main: false }, // fa-file-signature -> fa-file-alt
+  { href: 'galeria.html', label: 'Galería', icon: 'fas fa-images', main: false }, // fa-camera -> fa-images
 ];
 
 function renderLayout(activePage, isSubDir = false) {
   const prefix = isSubDir ? "../" : "";
 
-  // IMPORTANT: Inject FA 6 as Backup
-  const faLink = document.createElement('link');
-  faLink.rel = 'stylesheet';
-  faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
-  document.head.appendChild(faLink);
+  // Ensure stylesheets are only injected if not already present in document head
+  if (!document.querySelector('link[href*="font-awesome"]')) {
+    const faLink = document.createElement('link');
+    faLink.rel = 'stylesheet';
+    faLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+    document.head.appendChild(faLink);
+  }
 
-  const animLink = document.createElement('link');
-  animLink.rel = 'stylesheet';
-  animLink.href = prefix + 'css/animations.css';
-  document.head.appendChild(animLink);
+  if (!document.querySelector('link[href*="animations.css"]')) {
+    const animLink = document.createElement('link');
+    animLink.rel = 'stylesheet';
+    animLink.href = prefix + 'css/animations.css';
+    document.head.appendChild(animLink);
+  }
 
   // 2. HTML Injection
   const headerContainer = document.getElementById('main-header');

@@ -1,273 +1,368 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Noticias y Novedades - Feria Agrícola Melipilla</title>
-  <meta name="description"
-    content="Mantente informado con las últimas noticias, eventos y comunicados de la Feria Agrícola Melipilla. Actualidad gremial y comunitaria.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Noticias y Novedades | Feria Agrícola Melipilla</title>
+  <meta name="description" content="Mantente informado con las últimas noticias, eventos y comunicados oficiales de la Asociación Gremial Feria Agrícola Melipilla.">
   <link rel="shortcut icon" href="images/favicon.webp" type="image/x-icon">
   <meta name="theme-color" content="#166534">
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#166534',
-            secondary: '#65a30d',
-            accent: '#f97316',
-            dark: '#020617'
-          },
-          fontFamily: {
-            sans: ['Poppins', 'system-ui', 'sans-serif'],
-          }
-        }
-      }
-    };
-  </script>
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script src="https://kit.fontawesome.com/c38e3367c6.js" crossorigin="anonymous"></script>
-
-  <!-- Layout Script -->
-  <script src="js/layout.js"></script>
-
-  <style>
-    /* Forzar centrado de imágenes y videos en el contenido de la noticia */
-    #modal-cuerpo img,
-    #modal-cuerpo iframe,
-    #modal-cuerpo video {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 100%;
-    }
-
-    /* Ajustes para iframes (videos de youtube/blogger) */
-    #modal-cuerpo iframe {
-      width: 100%;
-      aspect-ratio: 16/9;
-      height: auto;
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
+<body class="relative min-h-screen flex flex-col justify-between">
 
-<body class="bg-slate-50 text-slate-800 font-sans no-header-padding">
+  <!-- HEADER MÓVIL -->
+  <header class="md:hidden bg-white border-b border-slate-100 h-[88px] flex items-center justify-between px-6 sticky top-0 z-40 shadow-sm">
+    <a href="index.html" class="flex items-center" aria-label="Inicio Feria Melipilla">
+      <img src="images/logo-color.webp" alt="Feria Agrícola Melipilla" width="192" height="64" class="h-14 w-auto">
+    </a>
+    <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-green-800 text-white rounded-full px-4 py-2 text-xs font-bold shadow hover:bg-green-700 active:scale-95 transition">
+      <i class="fa-solid fa-user"></i>
+      <span>Ingresar</span>
+    </a>
+  </header>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      AOS.init({ duration: 800, once: true, offset: 80 });
-      renderLayout("Noticias");
-    });
-  </script>
+  <!-- HEADER ESCRITORIO -->
+  <header class="hidden md:block bg-white/95 backdrop-blur border-b border-slate-100 sticky top-0 z-40 transition-shadow duration-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-8">
+      <a href="index.html" class="flex items-center shrink-0">
+        <img src="images/logo-color.webp" width="240" height="80" class="h-14 w-auto transition-transform hover:scale-105" alt="Feria Agrícola Melipilla">
+      </a>
+      
+      <!-- Navegación de escritorio -->
+      <nav class="flex-1 flex justify-center items-center gap-8 text-sm font-semibold text-slate-700">
+        <a href="index.html" class="hover:text-green-700 transition-colors py-2">Inicio</a>
+        
+        <!-- Dropdown 'Nosotros' -->
+        <div class="dropdown-parent relative py-2">
+          <div class="flex items-center gap-1.5 hover:text-green-700 cursor-pointer group">
+            <a href="nosotros.html" class="hover:text-green-800">Nosotros</a>
+            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200 group-hover:rotate-180"></i>
+          </div>
+          
+          <div class="dropdown-menu absolute top-full left-0 w-64 bg-white rounded-2xl shadow-xl border border-slate-100 py-2.5 mt-1 z-50">
+            <a href="nosotros.html" class="flex items-center gap-3 px-4 py-2.5 text-xs font-bold text-green-800 hover:bg-green-50 transition border-l-4 border-transparent hover:border-green-700">
+              <i class="fa-solid fa-seedling w-4 text-center text-green-700"></i>
+              <div>
+                <span class="block">Sobre Nosotros</span>
+                <span class="text-[10px] text-slate-400 font-normal">Historia, misión y visión</span>
+              </div>
+            </a>
+            
+            <a href="directiva.html" class="flex items-center gap-3 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-green-700 transition">
+              <i class="fa-solid fa-users w-4 text-center text-slate-400"></i>
+              <span>Directiva Vigente</span>
+            </a>
+            <a href="socios.html" class="flex items-center gap-3 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-green-700 transition">
+              <i class="fa-solid fa-store w-4 text-center text-slate-400"></i>
+              <span>Socios y Puestos</span>
+            </a>
+            <a href="nosotros.html#estatutos" class="flex items-center gap-3 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-green-700 transition">
+              <i class="fa-solid fa-book-bookmark w-4 text-center text-slate-400"></i>
+              <span>Estatutos y Reglamento</span>
+            </a>
+          </div>
+        </div>
 
-  <!-- Header Placeholder -->
-  <div id="main-header"></div>
-
-  <!-- Hero Personalizado para Noticias (Imagen de Fondo) -->
-  <div
-    class="relative w-full pt-44 pb-32 md:pt-48 md:pb-40 bg-[url('images/Banner_1.webp')] bg-fixed bg-center bg-cover overflow-hidden group">
-    <!-- Background Gradient -->
-    <div class="absolute inset-0 bg-gradient-to-b from-[#166534]/50 via-[#166534]/60 to-[#166534]/95"></div>
-    <!-- Decorative Pattern -->
-    <div class="absolute inset-0 opacity-10"
-      style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM22.485 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 22.485l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 22.485l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 54.627l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 54.627l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM54.627 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828zM22.485 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
+        <a href="localizanos.html" class="hover:text-green-700 transition-colors py-2">Localízanos</a>
+        <a href="noticias.html" class="text-green-700 border-b-2 border-green-700 pb-1 font-bold py-2">Noticias</a>
+        <a href="galeria.html" class="hover:text-green-700 transition-colors py-2">Galería</a>
+        <a href="localizanos.html#contacto" class="hover:text-green-700 transition-colors py-2">Contacto</a>
+      </nav>
+      
+      <!-- Botón de Ingreso -->
+      <div class="flex items-center gap-3">
+        <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="bg-green-800 hover:bg-green-700 active:scale-95 text-white rounded-full px-5 py-2.5 text-sm font-bold shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer">
+          <i class="fa-solid fa-user"></i>
+          <span>Ingresar</span>
+        </a>
+      </div>
     </div>
+  </header>
 
-    <!-- Content -->
-    <div class="relative max-w-6xl mx-auto px-6 text-center z-10 space-y-4 mt-12 md:mt-0">
-      <span
-        class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-emerald-200 text-xs font-bold uppercase tracking-widest animate-fade-in-up">
-        Actualidad & Comunicados
-      </span>
-      <h1 class="text-3xl md:text-6xl font-black text-white leading-tight drop-shadow-lg" data-aos="fade-up">
-        Noticias de la Feria
-      </h1>
-      <p class="text-lg text-emerald-100 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-        El espacio donde compartimos nuestros logros, eventos y avisos importantes para nuestros socios y la comunidad.
-      </p>
-    </div>
+  <main class="flex-grow">
+    <!-- HERO -->
+    <section class="hero min-h-[410px] md:min-h-[460px] flex items-end">
+      <div class="max-w-7xl mx-auto w-full px-6 pb-12 md:pb-16 text-white">
+        <div class="flex items-center flex-wrap gap-2 text-sm md:text-base text-emerald-100 mb-4 font-medium">
+          <a href="index.html" class="hover:text-white hover:underline transition">Inicio</a>
+          <span class="text-emerald-300">›</span>
+          <span class="text-lime-300 font-semibold">Noticias</span>
+        </div>
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 bg-lime-400/20 text-lime-300 border border-lime-300/30 font-extrabold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-4">
+            <i class="fa-solid fa-newspaper text-[11px]"></i>
+            <span>Actualidad y Comunicados</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+            Noticias de la Feria Agrícola Melipilla
+          </h1>
+          <p class="mt-5 text-base md:text-lg text-emerald-50/90 leading-relaxed max-w-2xl">
+            El espacio oficial donde compartimos avances, acuerdos gremiales, proyectos comunitarios y avisos importantes para nuestros asociados y la comunidad melipillana.
+          </p>
+        </div>
+      </div>
+    </section>
 
-    <!-- Wave Divider -->
-    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
-      <svg class="relative block w-full h-[50px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path
-          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.06,155.45,116.88,230.15,97.77Z"
-          fill="#f8fafc"></path>
-      </svg>
-    </div>
-  </div>
+    <!-- GRILLA DE NOTICIAS -->
+    <section class="max-w-7xl mx-auto px-6 py-14 min-h-[50vh]">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+        <div>
+          <div class="inline-flex items-center gap-2 text-green-800 font-extrabold text-xs tracking-widest uppercase mb-1.5">
+            <span class="w-8 h-[3px] bg-lime-500 rounded-full"></span>
+            Todas las publicaciones
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Artículos y Avisos Recientes
+          </h2>
+        </div>
+      </div>
 
-  <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16 min-h-[50vh]">
-    <div id="grilla-noticias" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- SKELETON LOADERS: Se muestran mientras carga la data real -->
-      <div
-        class="bg-white rounded-3xl shadow-md overflow-hidden h-[400px] animate-pulse border border-slate-100 relative w-full max-w-sm mx-auto flex flex-col">
-        <div class="h-48 md:h-56 bg-slate-200 rounded-t-3xl shrink-0"></div>
-        <div class="p-6 md:p-8 space-y-4 flex-grow flex flex-col bg-white rounded-b-3xl">
-          <div class="h-5 bg-slate-200 rounded-full w-24 mb-2"></div>
-          <div class="h-6 bg-slate-200 rounded w-full"></div>
-          <div class="h-6 bg-slate-200 rounded w-4/5 pt-2"></div>
-          <div class="mt-auto pt-4 flex justify-between items-center">
-            <div class="h-4 bg-slate-200 rounded w-20"></div>
-            <div class="w-8 h-8 rounded-full bg-slate-200 shrink-0"></div>
+      <div id="grilla-noticias" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <!-- Skeletons mientras carga la data de Supabase -->
+        <div class="bg-white rounded-3xl shadow-sm overflow-hidden h-[400px] animate-pulse border border-slate-200/80 flex flex-col">
+          <div class="h-48 md:h-56 bg-slate-200 shrink-0"></div>
+          <div class="p-6 space-y-4 flex-grow flex flex-col bg-white">
+            <div class="h-4 bg-slate-200 rounded-full w-24 mb-2"></div>
+            <div class="h-5 bg-slate-200 rounded w-full"></div>
+            <div class="h-5 bg-slate-200 rounded w-4/5 pt-1"></div>
+            <div class="mt-auto pt-4 flex justify-between items-center border-t border-slate-100">
+              <div class="h-3.5 bg-slate-200 rounded w-20"></div>
+              <div class="w-8 h-8 rounded-full bg-slate-200 shrink-0"></div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-3xl shadow-sm overflow-hidden h-[400px] animate-pulse border border-slate-200/80 hidden md:flex flex-col">
+          <div class="h-48 md:h-56 bg-slate-200 shrink-0"></div>
+          <div class="p-6 space-y-4 flex-grow flex flex-col bg-white">
+            <div class="h-4 bg-slate-200 rounded-full w-24 mb-2"></div>
+            <div class="h-5 bg-slate-200 rounded w-full"></div>
+            <div class="h-5 bg-slate-200 rounded w-4/5 pt-1"></div>
+            <div class="mt-auto pt-4 flex justify-between items-center border-t border-slate-100">
+              <div class="h-3.5 bg-slate-200 rounded w-20"></div>
+              <div class="w-8 h-8 rounded-full bg-slate-200 shrink-0"></div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-3xl shadow-sm overflow-hidden h-[400px] animate-pulse border border-slate-200/80 hidden lg:flex flex-col">
+          <div class="h-48 md:h-56 bg-slate-200 shrink-0"></div>
+          <div class="p-6 space-y-4 flex-grow flex flex-col bg-white">
+            <div class="h-4 bg-slate-200 rounded-full w-24 mb-2"></div>
+            <div class="h-5 bg-slate-200 rounded w-full"></div>
+            <div class="h-5 bg-slate-200 rounded w-4/5 pt-1"></div>
+            <div class="mt-auto pt-4 flex justify-between items-center border-t border-slate-100">
+              <div class="h-3.5 bg-slate-200 rounded w-20"></div>
+              <div class="w-8 h-8 rounded-full bg-slate-200 shrink-0"></div>
+            </div>
           </div>
         </div>
       </div>
-      <div
-        class="bg-white rounded-3xl shadow-md overflow-hidden h-[400px] animate-pulse border border-slate-100 hidden md:flex flex-col relative w-full max-w-sm mx-auto">
-        <div class="h-48 md:h-56 bg-slate-200 rounded-t-3xl shrink-0"></div>
-        <div class="p-6 md:p-8 space-y-4 flex-grow flex flex-col bg-white rounded-b-3xl">
-          <div class="h-5 bg-slate-200 rounded-full w-24 mb-2"></div>
-          <div class="h-6 bg-slate-200 rounded w-full"></div>
-          <div class="h-6 bg-slate-200 rounded w-4/5 pt-2"></div>
-          <div class="mt-auto pt-4 flex justify-between items-center">
-            <div class="h-4 bg-slate-200 rounded w-20"></div>
-            <div class="w-8 h-8 rounded-full bg-slate-200 shrink-0"></div>
+    </section>
+
+    <!-- BANNER DE CIERRE -->
+    <section class="bg-[#edf6e8] border-y border-[#dcebd3]">
+      <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-5">
+          <div class="w-14 h-14 rounded-full bg-green-800 text-white grid place-items-center shrink-0 shadow-md">
+            <i class="fa-solid fa-bullhorn text-xl"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl font-extrabold text-green-950">¿Tienes un comunicado o aviso gremial?</h2>
+            <p class="mt-1 text-green-900/70 text-sm">Coordina con la secretaría para la difusión de actividades feriales.</p>
           </div>
         </div>
+        <a href="localizanos.html#contacto" class="bg-green-800 hover:bg-green-700 text-white font-bold px-6 py-3.5 rounded-full text-sm shadow-md transition whitespace-nowrap inline-flex items-center gap-2">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Contactar a Secretaría</span>
+        </a>
       </div>
-      <div
-        class="bg-white rounded-3xl shadow-md overflow-hidden h-[400px] animate-pulse border border-slate-100 hidden lg:flex flex-col relative w-full max-w-sm mx-auto">
-        <div class="h-48 md:h-56 bg-slate-200 rounded-t-3xl shrink-0"></div>
-        <div class="p-6 md:p-8 space-y-4 flex-grow flex flex-col bg-white rounded-b-3xl">
-          <div class="h-5 bg-slate-200 rounded-full w-24 mb-2"></div>
-          <div class="h-6 bg-slate-200 rounded w-full"></div>
-          <div class="h-6 bg-slate-200 rounded w-4/5 pt-2"></div>
-          <div class="mt-auto pt-4 flex justify-between items-center">
-            <div class="h-4 bg-slate-200 rounded w-20"></div>
-            <div class="w-8 h-8 rounded-full bg-slate-200 shrink-0"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   </main>
 
-  <!-- Footer Placeholder -->
-  <div id="main-footer"></div>
+  <!-- FOOTER -->
+  <footer class="bg-[#063b24] text-white">
+    <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Col 1: Identidad -->
+      <div>
+        <img src="images/logotipo.svg" width="240" height="80" class="h-16 w-auto" alt="Logo Feria Melipilla" loading="lazy">
+        <p class="text-sm text-emerald-100/75 mt-4 leading-relaxed">
+          Asociación Gremial Feria Agrícola Melipilla.<br>
+          Fomentando la agricultura local, el comercio justo y la unión comunitaria y gremial.
+        </p>
+        <div class="mt-4 flex items-center gap-2 text-xs text-emerald-200/80">
+          <i class="fa-solid fa-location-dot text-lime-400"></i>
+          <span>Melipilla, Región Metropolitana</span>
+        </div>
+        <p class="text-[11px] text-emerald-200/60 mt-1">Personalidad Jurídica: 20 de noviembre de 2023</p>
+      </div>
 
-  <script type="module">
-    import { supabase } from './js/supabase-client.js';
+      <!-- Col 2: Navegación -->
+      <div>
+        <h3 class="font-bold text-lime-300 mb-4 tracking-wide text-xs uppercase">Navegación Gremial</h3>
+        <div class="grid grid-cols-1 gap-2 text-sm text-emerald-100/80">
+          <a href="index.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Inicio</a>
+          <a href="nosotros.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Sobre Nosotros</a>
+          <a href="directiva.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Directiva Vigente</a>
+          <a href="socios.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Socios y Puestos</a>
+          <a href="localizanos.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Localízanos</a>
+          <a href="noticias.html" class="hover:text-lime-300 transition flex items-center gap-2 font-bold text-lime-200"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Noticias</a>
+          <a href="galeria.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Galería Fotográfica</a>
+        </div>
+      </div>
 
-    window.noticiasData = [];
+      <!-- Col 3: Legal & Gremial -->
+      <div>
+        <h3 class="font-bold text-lime-300 mb-4 tracking-wide text-xs uppercase">Legal & Estatutos</h3>
+        <div class="grid grid-cols-1 gap-2 text-sm text-emerald-100/80">
+          <a href="nosotros.html#estatutos" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Estatutos y Reglamento</a>
+          <a href="terminos.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Términos y Condiciones</a>
+          <a href="privacidad.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Política de Privacidad</a>
+          <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="hover:text-lime-300 transition flex items-center gap-2 text-lime-300 font-semibold mt-2"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>Portal Web Socios</a>
+        </div>
+      </div>
 
-    // Función para obtener noticias de Supabase
-    async function fetchNoticias() {
-      const contenedor = document.getElementById('grilla-noticias');
-      if (!contenedor) return;
+      <!-- Col 4: Contacto y Redes -->
+      <div>
+        <h3 class="font-bold text-lime-300 mb-4 tracking-wide text-xs uppercase">Contacto Oficial</h3>
+        <div class="space-y-3 text-xs text-emerald-100/80">
+          <a href="mailto:a.g.feria.agricola.m@gmail.com" class="flex items-center gap-2.5 text-emerald-100 hover:text-lime-300 transition break-all">
+            <i class="fa-solid fa-envelope text-lime-400 text-sm shrink-0"></i>
+            <span>a.g.feria.agricola.m@gmail.com</span>
+          </a>
+          <a href="localizanos.html#contacto" class="flex items-center gap-2.5 text-emerald-100 hover:text-lime-300 transition">
+            <i class="fa-regular fa-paper-plane text-lime-400 text-sm shrink-0"></i>
+            <span>Formulario de Contacto</span>
+          </a>
+          <p class="text-[11px] text-emerald-200/70 pt-1">
+            Horario en Feria:<br>
+            <strong class="text-white">08:00 a 15:30 hrs</strong> (Mar · Mié · Vie · Sáb · Dom)
+          </p>
+        </div>
 
-      try {
-        const { data: noticias, error } = await supabase
-          .from('web_news')
-          .select('*')
-          .eq('is_published', true)
-          .order('published_at', { ascending: false });
-
-        if (error) throw error;
-
-        if (!noticias || noticias.length === 0) {
-          contenedor.innerHTML = '<div class="col-span-full text-center py-10 bg-white rounded-xl shadow text-slate-500">No hay noticias publicadas aún.</div>';
-          return;
-        }
-
-        window.noticiasData = noticias;
-        renderNoticias(noticias);
-
-      } catch (err) {
-        console.error('❌ Error Supabase:', err);
-        contenedor.innerHTML = '<div class="col-span-full text-center py-10 text-red-500">Error al cargar noticias. Intente más tarde.</div>';
-      }
-    }
-
-    function renderNoticias(lista) {
-      const contenedor = document.getElementById('grilla-noticias');
-      let html = '';
-
-      lista.forEach((item) => {
-        // Formato de fecha elegante (Ej: 05 ENE 2025)
-        const dateObj = new Date(item.published_at);
-        const dia = dateObj.toLocaleDateString('es-CL', { day: '2-digit' });
-        const mes = dateObj.toLocaleDateString('es-CL', { month: 'short' }).toUpperCase().replace('.', '');
-
-        const imagenUrl = item.image_url || "images/Banner_1.webp";
-
-        // Generar resumen limpio (Strip HTML de todo)
-        let rawSummary = item.summary || item.content || "";
-        const tempDiv = document.createElement("div");
-        tempDiv.innerHTML = rawSummary;
-
-        // Quitar scripts y estilos para que no salga código en el resumen
-        const scripts = tempDiv.querySelectorAll('script');
-        scripts.forEach(s => s.remove());
-        const styles = tempDiv.querySelectorAll('style');
-        styles.forEach(s => s.remove());
-
-        let cleanSummary = tempDiv.textContent || tempDiv.innerText || "";
-        cleanSummary = cleanSummary.replace(/\s+/g, " ").trim();
-        let resumen = cleanSummary.length > 140 ? cleanSummary.substring(0, 140) + "..." : cleanSummary;
-
-        html += `
-            <a href="detalle-noticia.html?id=${item.id}" class="group bg-white rounded-3xl shadow-md hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col h-full overflow-hidden hover:-translate-y-2 cursor-pointer isolate relative max-w-sm mx-auto w-full">
-                
-                <!-- Imagen con Overlay y Badge de Fecha -->
-                <div class="relative h-56 md:h-64 overflow-hidden rounded-t-3xl">
-                    <img src="${imagenUrl}" alt="${item.title}" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out will-change-transform">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-500"></div>
-                </div>
-
-                <!-- Contenido -->
-                <div class="p-6 md:p-8 flex flex-col flex-grow relative bg-white rounded-b-3xl">
-                    <!-- Badge Fecha (Posicionado en el borde de la imagen y el contenido) -->
-                    <div class="absolute -top-12 left-6 bg-white px-4 py-2 rounded-2xl shadow-lg border border-slate-50 flex flex-col items-center min-w-[3.5rem] z-10 transition-transform group-hover:-translate-y-1 duration-300">
-                        <span class="text-xl md:text-2xl font-black text-slate-800 leading-none">${dia}</span>
-                        <span class="text-[9px] md:text-[10px] font-bold text-primary tracking-widest uppercase mt-0.5">${mes}</span>
-                    </div>
-
-                    <!-- Categoría (Visual) -->
-                    <div class="mb-3 mt-4">
-                        <span class="inline-block bg-emerald-50 text-emerald-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-emerald-100/50">
-                            Feria Informa
-                        </span>
-                    </div>
-
-                    <h3 class="text-lg md:text-xl font-bold text-slate-800 mb-3 leading-snug group-hover:text-primary transition-colors duration-300 line-clamp-2">
-                        ${item.title}
-                    </h3>
-                    
-                    <p class="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-3 font-normal opacity-90 group-hover:opacity-100 transition-opacity flex-grow">
-                        ${resumen || ''}
-                    </p>
-
-                    <!-- Footer Card -->
-                    <div class="pt-5 border-t border-slate-100 mt-auto flex items-center justify-between">
-                        <span class="text-xs font-bold text-slate-400 group-hover:text-primary transition-colors tracking-widest uppercase">Leer noticia</span>
-                        <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-primary group-hover:text-white transition-all transform group-hover:scale-110 shadow-sm group-hover:shadow-emerald-200">
-                            <i class="fa-solid fa-arrow-right text-sm"></i>
-                        </div>
-                    </div>
-                </div>
+        <div class="mt-5">
+          <p class="text-[11px] font-bold uppercase tracking-wider text-lime-300 mb-2">Síguenos en Redes</p>
+          <div class="flex gap-2.5">
+            <a href="https://www.instagram.com/asoc.feria.agricola.melipilla" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-lime-400 hover:text-green-950 transition grid place-items-center" aria-label="Instagram Oficial">
+              <i class="fab fa-instagram text-sm"></i>
             </a>
-        `;
-      });
-      contenedor.innerHTML = html;
-    }
+            <a href="https://www.facebook.com/asoc.feria.agricola.melipilla" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-lime-400 hover:text-green-950 transition grid place-items-center" aria-label="Facebook Oficial">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="localizanos.html#contacto" class="w-9 h-9 rounded-full bg-white/10 hover:bg-lime-400 hover:text-green-950 transition grid place-items-center" aria-label="Escribir mensaje">
+              <i class="fa-regular fa-envelope text-sm"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    // Iniciar carga
-    fetchNoticias();
+    <div class="border-t border-white/10 text-center text-xs text-emerald-100/60 py-5 px-6 flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto gap-2">
+      <div>
+        © 2026 Asociación Gremial Feria Agrícola Melipilla. Todos los derechos reservados.
+      </div>
+      <div class="flex items-center gap-4 text-[11px] text-emerald-200/70">
+        <a href="terminos.html" class="hover:text-lime-300 transition">Términos</a>
+        <span>·</span>
+        <a href="privacidad.html" class="hover:text-lime-300 transition">Privacidad</a>
+        <span>·</span>
+        <a href="localizanos.html#contacto" class="hover:text-lime-300 transition">Contacto</a>
+      </div>
+    </div>
+  </footer>
 
-  </script>
+  <!-- MOBILE BOTTOM NAV -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-[90] bg-[#166534] text-white bottom-nav flex justify-around items-center px-1 shadow-[0_-6px_25px_rgba(0,0,0,.2)]">
+    <a href="index.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i class="fa-solid fa-house text-lg"></i><span>Inicio</span>
+    </a>
+    <a href="nosotros.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i class="fa-solid fa-users text-lg"></i><span>Nosotros</span>
+    </a>
+    <a href="localizanos.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i class="fa-solid fa-map-location-dot text-lg"></i><span>Localízanos</span>
+    </a>
+    <a href="noticias.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] text-lime-300 font-bold">
+      <i class="fa-regular fa-newspaper text-lg"></i><span>Noticias</span>
+    </a>
+    <button type="button" id="moreButton" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i id="moreIcon" class="fa-solid fa-bars text-lg"></i><span>Más</span>
+    </button>
+  </nav>
 
+  <!-- BACKDROP OVERLAY -->
+  <div id="backdrop" class="backdrop fixed inset-0 bg-black/50 backdrop-blur-[2px] z-[100]"></div>
+
+  <!-- MOBILE BOTTOM SHEET 'MÁS' -->
+  <section id="moreSheet" class="sheet fixed left-0 right-0 bottom-0 z-[110] bg-white rounded-t-[28px] shadow-2xl p-6 pb-[95px] max-h-[82vh] overflow-y-auto">
+    <div class="w-12 h-1.5 bg-slate-200 rounded-full mx-auto mb-4"></div>
+    <div class="flex items-center justify-between mb-5">
+      <div>
+        <p class="text-xs font-extrabold uppercase tracking-widest text-green-700">Navegación</p>
+        <h2 class="text-2xl font-extrabold text-slate-900">Más opciones</h2>
+      </div>
+      <button id="closeMore" type="button" class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center transition">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+    <div class="grid grid-cols-2 gap-3">
+      <a href="nosotros.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-seedling"></i></span>
+        <span class="font-bold text-green-950 text-sm">Historia & Misión</span>
+      </a>
+      <a href="directiva.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-users"></i></span>
+        <span class="font-bold text-green-950 text-sm">Directiva</span>
+      </a>
+      <a href="socios.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-store"></i></span>
+        <span class="font-bold text-green-950 text-sm">Socios</span>
+      </a>
+      <a href="localizanos.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-map-location-dot"></i></span>
+        <span class="font-bold text-green-950 text-sm">Localízanos</span>
+      </a>
+      <a href="galeria.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-regular fa-images"></i></span>
+        <span class="font-bold text-green-950 text-sm">Galería</span>
+      </a>
+      <a href="localizanos.html#contacto" onclick="closeMorePanel()" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-regular fa-envelope"></i></span>
+        <span class="font-bold text-green-950 text-sm">Contacto</span>
+      </a>
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-regular fa-envelope"></i></span>
+        <span class="font-bold text-green-950 text-sm">Contacto</span>
+      </a>
+      <a href="terminos.html" class="bg-slate-50 hover:bg-slate-100 rounded-2xl p-3 flex items-center justify-center gap-2 border border-slate-200 text-xs font-bold text-slate-700 transition">
+        <i class="fa-solid fa-scale-balanced text-green-700"></i>
+        <span>Términos</span>
+      </a>
+      <a href="privacidad.html" class="bg-slate-50 hover:bg-slate-100 rounded-2xl p-3 flex items-center justify-center gap-2 border border-slate-200 text-xs font-bold text-slate-700 transition">
+        <i class="fa-solid fa-user-shield text-green-700"></i>
+        <span>Privacidad</span>
+      </a>
+      <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="col-span-2 bg-lime-500 hover:bg-lime-400 rounded-2xl p-3.5 flex items-center justify-center gap-2 text-center transition shadow font-bold text-green-950 text-sm">
+        <i class="fa-solid fa-right-to-bracket text-base"></i>
+        <span>Ingresar al Portal</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-[130] bg-slate-900 text-white text-sm px-5 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 max-w-sm">
+    <div id="toastIcon" class="w-7 h-7 rounded-full bg-lime-400 text-green-950 flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-check text-xs"></i>
+    </div>
+    <div id="toastMessage" class="text-xs font-medium leading-snug">Operación realizada con éxito</div>
+  </div>
+
+  <script src="js/global.js"></script>
+  <script type="module" src="js/noticias.js"></script>
 </body>
-
 </html>

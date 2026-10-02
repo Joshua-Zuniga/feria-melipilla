@@ -1,294 +1,563 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ubicación y Contacto - Feria Agrícola Melipilla</title>
-  <meta name="description"
-    content="Encuentra la ubicación exacta de los diferentes sectores de la Feria Agrícola Melipilla y contáctanos fácilmente. ¡Te esperamos!">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Localízanos y Contacto | Feria Agrícola Melipilla</title>
+  <meta name="description" content="Encuentra los sectores, recorridos y horarios por día de la Feria Agrícola Melipilla. Revisa el mapa interactivo y contáctanos directamente.">
   <link rel="shortcut icon" href="images/favicon.webp" type="image/x-icon">
   <meta name="theme-color" content="#166534">
 
-  <!-- Tailwind CSS con tema personalizado -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#166534',
-            secondary: '#65a30d',
-            accent: '#f97316',
-            dark: '#020617'
-          },
-          fontFamily: {
-            sans: ['Poppins', 'system-ui', 'sans-serif'],
-          }
-        }
-      }
-    };
-  </script>
-
-  <!-- AOS Animations -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-
-  <!-- Iconos -->
-  <script src="https://kit.fontawesome.com/c38e3367c6.js" crossorigin="anonymous"></script>
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
+<body class="relative min-h-screen flex flex-col justify-between">
 
-<body class="bg-slate-50 text-slate-800 font-sans">
+  <!-- HEADER MÓVIL -->
+  <header class="md:hidden bg-white border-b border-slate-100 h-[88px] flex items-center justify-between px-6 sticky top-0 z-40 shadow-sm">
+    <a href="index.html" class="flex items-center" aria-label="Inicio Feria Melipilla">
+      <img src="images/logo-color.webp" alt="Feria Agrícola Melipilla" width="192" height="64" class="h-14 w-auto">
+    </a>
+    <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-green-800 text-white rounded-full px-4 py-2 text-xs font-bold shadow hover:bg-green-700 active:scale-95 transition">
+      <i class="fa-solid fa-user"></i>
+      <span>Ingresar</span>
+    </a>
+  </header>
 
-  <script src="js/layout.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      AOS.init({ duration: 800, once: true, offset: 80 });
-      renderLayout("Localízanos");
-    });
-  </script>
-
-  <!-- Header Placeholder -->
-  <div id="main-header"></div>
-
-  <!-- HERO UBICACIÓN -->
-  <div
-    class="relative w-full pt-44 pb-32 md:pt-48 md:pb-40 bg-[url('images/Banner_1.webp')] bg-fixed bg-center bg-cover overflow-hidden group">
-    <!-- Background Gradient -->
-    <div class="absolute inset-0 bg-gradient-to-b from-[#166534]/50 via-[#166534]/60 to-[#166534]/95"></div>
-    <div class="absolute inset-0 opacity-10"
-      style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM22.485 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 22.485l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 22.485l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 54.627l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 54.627l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM54.627 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828zM22.485 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
-    </div>
-
-    <!-- Content -->
-    <div class="relative max-w-6xl mx-auto px-6 text-center z-10 space-y-4 mt-24 md:mt-0">
-      <span
-        class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-emerald-200 text-xs font-bold uppercase tracking-widest animate-fade-in-up">
-        ¿Dónde estamos?
-      </span>
-      <h1 class="text-3xl md:text-6xl font-black text-white leading-tight drop-shadow-lg" data-aos="fade-up">
-        Ubicación Feria Agrícola
-      </h1>
-      <p class="text-lg text-emerald-100 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-        Encuéntranos en Melipilla. Selecciona un sector en el mapa interactivo para ver cómo llegar.
-      </p>
-    </div>
-
-    <!-- Wave Divider -->
-    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
-      <svg class="relative block w-full h-[50px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path
-          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.06,155.45,116.88,230.15,97.77Z"
-          fill="#f8fafc"></path>
-      </svg>
-    </div>
-  </div>
-
-  <main class="max-w-7xl mx-auto px-4 py-12 md:py-20 space-y-16 -mt-10 relative z-20">
-
-    <!-- Mapas Optimizados con Tabs -->
-    <section data-aos="fade-up" class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100">
-      <!-- Tabs -->
-      <div class="flex flex-wrap border-b border-slate-100 bg-slate-50">
-        <button onclick="cambiarMapa(0)" id="tab-0"
-          class="px-6 py-4 text-sm font-semibold text-primary border-b-2 border-primary transition-colors hover:bg-white flex-1 md:flex-none">
-          Martes
-        </button>
-        <button onclick="cambiarMapa(1)" id="tab-1"
-          class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
-          Miércoles
-        </button>
-        <button onclick="cambiarMapa(2)" id="tab-2"
-          class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
-          Viernes
-        </button>
-        <button onclick="cambiarMapa(3)" id="tab-3"
-          class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
-          Sábado
-        </button>
-        <button onclick="cambiarMapa(4)" id="tab-4"
-          class="px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none">
-          Domingo
-        </button>
-      </div>
-
-      <!-- Contenedor Mapa -->
-      <!-- Contenedor Mapa -->
-      <div class="relative w-full h-0 pb-[120%] md:pb-[55%] bg-slate-100">
-
-        <!-- Skeleton Overlay -->
-        <!-- Skeleton Overlay (Static, no pulse to avoid flicker perception) -->
-        <div id="map-skeleton"
-          class="absolute inset-0 w-full h-full bg-slate-100 flex flex-col items-center justify-center z-20 transition-opacity duration-500">
-          <i class="fa-solid fa-map-location-dot text-5xl text-slate-300 mb-4"></i>
-          <span class="text-slate-400 font-medium tracking-wide">Cargando mapa interactivo...</span>
+  <!-- HEADER ESCRITORIO -->
+  <header class="hidden md:block bg-white/95 backdrop-blur border-b border-slate-100 sticky top-0 z-40 transition-shadow duration-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-8">
+      <a href="index.html" class="flex items-center shrink-0">
+        <img src="images/logo-color.webp" width="240" height="80" class="h-14 w-auto transition-transform hover:scale-105" alt="Feria Agrícola Melipilla">
+      </a>
+      
+      <!-- Navegación de escritorio -->
+      <nav class="flex-1 flex justify-center items-center gap-8 text-sm font-semibold text-slate-700">
+        <a href="index.html" class="nav-item hover:text-green-700 transition-colors py-2">Inicio</a>
+        
+        <!-- Dropdown 'Nosotros' -->
+        <div class="dropdown-parent relative py-2">
+          <div class="flex items-center gap-1.5 hover:text-green-700 cursor-pointer group">
+            <a href="nosotros.html" class="hover:text-green-800">Nosotros</a>
+            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200 group-hover:rotate-180"></i>
+          </div>
+          
+          <div class="dropdown-menu absolute top-full left-0 w-64 bg-white rounded-2xl shadow-xl border border-slate-100 py-2.5 mt-1 z-50">
+            <a href="nosotros.html" class="flex items-center gap-3 px-4 py-2.5 text-xs font-bold text-green-800 hover:bg-green-50 transition border-l-4 border-transparent hover:border-green-700">
+              <i class="fa-solid fa-seedling w-4 text-center text-green-700"></i>
+              <div>
+                <span class="block">Sobre Nosotros</span>
+                <span class="text-[10px] text-slate-400 font-normal">Historia, misión y visión</span>
+              </div>
+            </a>
+            
+            <a href="directiva.html" class="flex items-center gap-3 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-green-700 transition">
+              <i class="fa-solid fa-users w-4 text-center text-slate-400"></i>
+              <span>Directiva Vigente</span>
+            </a>
+            <a href="socios.html" class="flex items-center gap-3 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-green-700 transition">
+              <i class="fa-solid fa-store w-4 text-center text-slate-400"></i>
+              <span>Socios y Puestos</span>
+            </a>
+            <a href="nosotros.html#estatutos" class="flex items-center gap-3 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-green-700 transition">
+              <i class="fa-solid fa-book-bookmark w-4 text-center text-slate-400"></i>
+              <span>Estatutos y Reglamento</span>
+            </a>
+          </div>
         </div>
 
-        <!-- Background Safety Layer (Prevents white flash from iframe rendering) -->
-        <div class="absolute inset-0 z-0 bg-slate-100"></div>
+        <a href="localizanos.html" class="text-green-700 border-b-2 border-green-700 pb-1 font-bold py-2">Localízanos</a>
+        <a href="noticias.html" class="hover:text-green-700 transition-colors py-2">Noticias</a>
+        <a href="galeria.html" class="hover:text-green-700 transition-colors py-2">Galería</a>
+        <a href="#contacto" class="hover:text-green-700 transition-colors py-2">Contacto</a>
+      </nav>
+      
+      <!-- Botón de Acción Principal -->
+      <div class="flex items-center gap-3">
+        <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="bg-green-800 hover:bg-green-700 active:scale-95 text-white rounded-full px-5 py-2.5 text-sm font-bold shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer">
+          <i class="fa-solid fa-user"></i>
+          <span>Ingresar</span>
+        </a>
+      </div>
+    </div>
+  </header>
 
-        <iframe id="mapa-frame" loading="lazy" style="background-color: #f1f5f9;"
-          src="https://www.google.com/maps/d/embed?mid=1AkVO8siqXth9BmK8SZR8IYQxmvAeaVE&ehbc=2E312F&noprof=1"
-          class="absolute inset-0 w-full h-full z-10 opacity-0 transition-opacity duration-500" allow="autoplay">
-        </iframe>
+  <main class="flex-grow">
+    <!-- HERO -->
+    <section class="hero min-h-[410px] md:min-h-[460px] flex items-end">
+      <div class="max-w-7xl mx-auto w-full px-6 pb-12 md:pb-16 text-white">
+        <div class="flex items-center flex-wrap gap-2 text-sm md:text-base text-emerald-100 mb-4 font-medium">
+          <a href="index.html" class="hover:text-white hover:underline transition">Inicio</a>
+          <span class="text-emerald-300">›</span>
+          <span class="text-lime-300 font-semibold">Localízanos</span>
+        </div>
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 bg-lime-400/20 text-lime-300 border border-lime-300/30 font-extrabold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-4">
+            <i class="fa-solid fa-map-location-dot text-[11px]"></i>
+            <span>Horarios y Recorridos Oficiales</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+            Encuéntranos en Melipilla semana a semana
+          </h1>
+          <p class="mt-5 text-base md:text-lg text-emerald-50/90 leading-relaxed max-w-2xl">
+            Descubre los puntos de instalación de nuestra feria por día. Consulta los accesos, calles y sectores geolocalizados para planificar tu visita con comodidad.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Sección de Contacto -->
-    <section data-aos="fade-up" class="grid md:grid-cols-2 gap-12 items-start mt-20">
+    <!-- ACCESOS RÁPIDOS / INFO DE ATENCIÓN -->
+    <section class="max-w-7xl mx-auto px-6 -mt-8 relative z-20">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm flex items-center gap-3.5">
+          <div class="w-11 h-11 rounded-xl bg-green-100 text-green-800 grid place-items-center shrink-0">
+            <i class="fa-regular fa-clock"></i>
+          </div>
+          <div>
+            <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Horario General</p>
+            <p class="text-sm font-bold text-slate-800">08:00 a 15:30 hrs</p>
+          </div>
+        </div>
 
-      <div class="space-y-6">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-800">Contáctanos</h2>
-        <p class="text-slate-600 leading-relaxed">
-          ¿Tienes dudas o necesitas más información? Escríbenos y te responderemos a la brevedad.
-          También puedes visitarnos en nuestros horarios de atención.
-        </p>
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm flex items-center gap-3.5">
+          <div class="w-11 h-11 rounded-xl bg-green-100 text-green-800 grid place-items-center shrink-0">
+            <i class="fa-solid fa-calendar-days"></i>
+          </div>
+          <div>
+            <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Días de Feria</p>
+            <p class="text-sm font-bold text-slate-800">Mar · Mié · Vie · Sáb · Dom</p>
+          </div>
+        </div>
 
-        <div class="space-y-4 pt-4">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-primary shrink-0">
+        <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm flex items-center gap-3.5">
+          <div class="w-11 h-11 rounded-xl bg-green-100 text-green-800 grid place-items-center shrink-0">
+            <i class="fa-solid fa-apple-whole"></i>
+          </div>
+          <div>
+            <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Productos</p>
+            <p class="text-sm font-bold text-slate-800">Frutas, Verduras & Más</p>
+          </div>
+        </div>
+
+        <a href="#contacto" class="bg-white hover:bg-emerald-50/70 border border-slate-200/80 rounded-2xl p-4 shadow-sm hover:shadow-md transition flex items-center gap-3.5 group">
+          <div class="w-11 h-11 rounded-xl bg-green-800 text-lime-300 grid place-items-center shrink-0 group-hover:scale-105 transition-transform">
+            <i class="fa-regular fa-envelope"></i>
+          </div>
+          <div>
+            <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Consultas</p>
+            <p class="text-sm font-bold text-slate-800 group-hover:text-green-800 transition">Mesa de Ayuda</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 py-14">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <div class="inline-flex items-center gap-2 text-green-800 font-extrabold text-xs tracking-widest uppercase mb-2">
+            <span class="w-8 h-[3px] bg-lime-500 rounded-full"></span>
+            Cartografía Ferial
+          </div>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Mapa interactivo por día de funcionamiento
+          </h2>
+          <p class="mt-2 text-slate-600 text-sm md:text-base max-w-2xl">
+            Selecciona un día para visualizar los accesos, perímetros habilitados y calles principales donde se instalan nuestros socios.
+          </p>
+        </div>
+
+        <!-- Botón para ver en Maps externo -->
+        <a id="btnExternalMap" href="https://www.google.com/maps/d/viewer?mid=1AkVO8siqXth9BmK8SZR8IYQxmvAeaVE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-slate-200 hover:border-green-600 text-slate-700 hover:text-green-800 rounded-xl text-xs font-bold shadow-sm transition shrink-0 self-start md:self-auto">
+          <i class="fa-solid fa-arrow-up-right-from-square text-green-700"></i>
+          <span>Abrir en Google Maps</span>
+        </a>
+      </div>
+
+      <!-- Contenedor del Mapa con Pestañas -->
+      <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200/80">
+        <!-- Pestañas de Días -->
+        <div class="p-3 bg-slate-50 border-b border-slate-200/70 flex flex-wrap gap-2 items-center">
+          <button type="button" onclick="cambiarMapa(0)" id="tab-0" class="tab-btn active px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-slate-200 text-slate-700 hover:bg-slate-300">
+            <i class="fa-regular fa-calendar"></i>
+            <span>Martes</span>
+            <span class="badge text-[10px] px-1.5 py-0.5 rounded-md font-extrabold">Sector 1</span>
+          </button>
+
+          <button type="button" onclick="cambiarMapa(1)" id="tab-1" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-white text-slate-700 border border-slate-200 hover:bg-slate-100">
+            <i class="fa-regular fa-calendar"></i>
+            <span>Miércoles</span>
+            <span class="badge text-[10px] px-1.5 py-0.5 rounded-md font-extrabold bg-slate-100 text-slate-600">Sector 2</span>
+          </button>
+
+          <button type="button" onclick="cambiarMapa(2)" id="tab-2" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-white text-slate-700 border border-slate-200 hover:bg-slate-100">
+            <i class="fa-regular fa-calendar"></i>
+            <span>Viernes</span>
+            <span class="badge text-[10px] px-1.5 py-0.5 rounded-md font-extrabold bg-slate-100 text-slate-600">Sector 3</span>
+          </button>
+
+          <button type="button" onclick="cambiarMapa(3)" id="tab-3" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-white text-slate-700 border border-slate-200 hover:bg-slate-100">
+            <i class="fa-regular fa-calendar"></i>
+            <span>Sábado</span>
+            <span class="badge text-[10px] px-1.5 py-0.5 rounded-md font-extrabold bg-slate-100 text-slate-600">Sector 4</span>
+          </button>
+
+          <button type="button" onclick="cambiarMapa(4)" id="tab-4" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-white text-slate-700 border border-slate-200 hover:bg-slate-100">
+            <i class="fa-regular fa-calendar"></i>
+            <span>Domingo</span>
+            <span class="badge text-[10px] px-1.5 py-0.5 rounded-md font-extrabold bg-slate-100 text-slate-600">Principal</span>
+          </button>
+        </div>
+
+        <!-- Indicador de Día Seleccionado -->
+        <div class="px-6 py-3 bg-emerald-50/60 border-b border-emerald-100/70 flex flex-wrap items-center justify-between text-xs text-green-900 gap-2">
+          <div class="flex items-center gap-2 font-semibold">
+            <i class="fa-solid fa-location-dot text-green-700"></i>
+            <span id="currentDayTitle">Feria de Martes: Trazado habitual en Melipilla</span>
+          </div>
+          <span class="text-green-700/80 font-medium">Actualizado para el período 2026</span>
+        </div>
+
+        <!-- Ventana del Mapa con Loader de Carga -->
+        <div class="relative w-full h-[460px] md:h-[580px] bg-slate-100 overflow-hidden">
+          <div id="map-skeleton" class="absolute inset-0 w-full h-full bg-slate-100 flex flex-col items-center justify-center z-20 transition-opacity duration-300">
+            <div class="w-12 h-12 rounded-2xl bg-white shadow-sm flex items-center justify-center text-green-700 text-xl mb-3 animate-pulse">
               <i class="fa-solid fa-map-location-dot"></i>
             </div>
-            <div>
-              <h4 class="font-semibold text-slate-900">Ubicación</h4>
-              <p class="text-sm text-slate-600">Melipilla, Región Metropolitana</p>
-            </div>
+            <span class="text-slate-600 font-semibold text-xs tracking-wider uppercase">Cargando mapa interactivo...</span>
           </div>
 
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-primary shrink-0">
-              <i class="fa-solid fa-envelope"></i>
-            </div>
-            <div>
-              <h4 class="font-semibold text-slate-900">Email</h4>
-              <a href="mailto:a.g.feria.agricola.m@gmail.com"
-                class="text-sm text-slate-600 hover:text-primary transition">a.g.feria.agricola.m@gmail.com</a>
-            </div>
-          </div>
+          <iframe id="mapa-frame" loading="lazy" style="background-color: #f1f5f9;"
+            src="https://www.google.com/maps/d/embed?mid=1AkVO8siqXth9BmK8SZR8IYQxmvAeaVE&ehbc=2E312F&noprof=1"
+            class="absolute inset-0 w-full h-full z-10 border-0 opacity-0 transition-opacity duration-500"
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
-
-      <!-- Formulario (Web3Forms) -->
-      <div class="bg-white p-6 md:p-8 rounded-3xl shadow-xl border border-slate-100 relative overflow-hidden group">
-        <div
-          class="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100">
-        </div>
-        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6 relative z-10">
-
-          <!-- Configuración Web3Forms -->
-          <input type="hidden" name="access_key" value="b436229f-e1c2-405a-90a1-6862f927998b">
-          <input type="hidden" name="from_name" value="Web Feria Melipilla">
-          <input type="hidden" name="subject" value="Nuevo Mensaje de Contacto">
-          <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-          <div class="relative">
-            <input type="text" name="name" id="name" required placeholder=" "
-              class="peer w-full px-4 pt-6 pb-2 rounded-xl border-2 border-slate-200 focus:border-primary focus:ring-4 focus:ring-emerald-50 outline-none transition-all placeholder-transparent bg-slate-50 focus:bg-white text-slate-800 font-medium">
-            <label for="name"
-              class="absolute left-4 top-4 text-slate-400 text-sm transition-all transform -translate-y-3 scale-75 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-primary font-medium pointer-events-none">
-              Nombre Completo
-            </label>
-          </div>
-
-          <div class="relative">
-            <input type="email" name="email" id="email" required placeholder=" "
-              class="peer w-full px-4 pt-6 pb-2 rounded-xl border-2 border-slate-200 focus:border-primary focus:ring-4 focus:ring-emerald-50 outline-none transition-all placeholder-transparent bg-slate-50 focus:bg-white text-slate-800 font-medium">
-            <label for="email"
-              class="absolute left-4 top-4 text-slate-400 text-sm transition-all transform -translate-y-3 scale-75 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-primary font-medium pointer-events-none">
-              Correo Electrónico
-            </label>
-          </div>
-
-          <div class="relative">
-            <textarea name="message" id="message" rows="4" required placeholder=" "
-              class="peer w-full px-4 pt-6 pb-2 rounded-xl border-2 border-slate-200 focus:border-primary focus:ring-4 focus:ring-emerald-50 outline-none transition-all placeholder-transparent bg-slate-50 focus:bg-white text-slate-800 font-medium resize-none"></textarea>
-            <label for="message"
-              class="absolute left-4 top-4 text-slate-400 text-sm transition-all transform -translate-y-3 scale-75 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 peer-focus:text-primary font-medium pointer-events-none">
-              Tu Mensaje
-            </label>
-          </div>
-
-          <button type="submit"
-            class="w-full py-4 px-6 bg-primary text-white font-bold rounded-xl shadow-lg hover:shadow-emerald-200 transition-all transform hover:-translate-y-1 hover:bg-emerald-800 relative overflow-hidden group/btn">
-            <span class="relative z-10 flex items-center justify-center gap-2">Enviar Mensaje <i
-                class="fa-solid fa-paper-plane text-sm group-hover/btn:translate-x-1 transition-transform"></i></span>
-            <div
-              class="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-in-out z-0">
-            </div>
-          </button>
-        </form>
-      </div>
-
     </section>
 
+    <section id="contacto" class="max-w-7xl mx-auto px-6 py-12 md:py-16">
+      <div class="grid lg:grid-cols-12 gap-10 items-start">
+
+        <!-- Columna de Datos y Canales -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm space-y-6">
+            <div>
+              <div class="inline-flex items-center gap-2 text-green-800 font-extrabold text-xs tracking-widest uppercase mb-2">
+                <span class="w-8 h-[3px] bg-lime-500 rounded-full"></span>
+                Atención Ciudadana
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                Ponte en contacto con la directiva
+              </h2>
+              <p class="mt-3 text-slate-600 text-sm leading-relaxed">
+                ¿Tienes sugerencias, consultas sobre cómo asociarte o necesitas coordinar con la directiva? Déjanos un mensaje y te responderemos a la brevedad.
+              </p>
+            </div>
+
+            <div class="space-y-4 pt-2">
+              <div class="flex items-start gap-4 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+                <div class="w-11 h-11 rounded-xl bg-green-100 text-green-800 grid place-items-center shrink-0">
+                  <i class="fa-solid fa-map-pin"></i>
+                </div>
+                <div>
+                  <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sede & Jurisdicción</h3>
+                  <p class="text-sm font-bold text-slate-800 mt-0.5">Comuna de Melipilla, Región Metropolitana</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+                <div class="w-11 h-11 rounded-xl bg-green-100 text-green-800 grid place-items-center shrink-0">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                  <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Correo Electrónico</h3>
+                  <a href="mailto:a.g.feria.agricola.m@gmail.com" class="text-sm font-bold text-green-800 hover:underline mt-0.5 block break-all">
+                    a.g.feria.agricola.m@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+                <div class="w-11 h-11 rounded-xl bg-green-100 text-green-800 grid place-items-center shrink-0">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div>
+                  <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Personalidad Jurídica</h3>
+                  <p class="text-sm font-bold text-slate-800 mt-0.5">Constituida oficialmente el 20/11/2023</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Caja Informativa -->
+            <div class="p-4 rounded-2xl bg-[#edf6e8] border border-[#dcebd3] flex items-center gap-3.5">
+              <i class="fa-solid fa-circle-info text-green-800 text-xl shrink-0"></i>
+              <p class="text-xs text-green-950 font-medium leading-relaxed">
+                Para materias urgentes relativas a instalación o seguridad en feria, dirígete con los delegados de terreno en servicio.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Formulario Web3Forms -->
+        <div class="lg:col-span-7">
+          <div class="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/80 shadow-sm relative overflow-hidden">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-5 mb-6">
+              <div>
+                <h3 class="text-xl font-extrabold text-slate-900">Escríbenos directamente</h3>
+                <p class="text-xs text-slate-500 mt-0.5">Los campos marcados con (*) son obligatorios</p>
+              </div>
+              <span class="w-10 h-10 rounded-full bg-emerald-50 text-green-800 grid place-items-center text-base">
+                <i class="fa-regular fa-paper-plane"></i>
+              </span>
+            </div>
+
+            <!-- Formulario conectado a Web3Forms -->
+            <form action="https://api.web3forms.com/submit" method="POST" id="mainContactForm" class="space-y-5">
+              <input type="hidden" name="access_key" value="b436229f-e1c2-405a-90a1-6862f927998b">
+              <input type="hidden" name="from_name" value="Web Feria Agrícola Melipilla">
+              <input type="hidden" name="subject" value="Nuevo Mensaje de Contacto desde la Web">
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="name" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Nombre Completo *</label>
+                  <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm">
+                      <i class="fa-regular fa-user"></i>
+                    </span>
+                    <input type="text" name="name" id="name" required placeholder="Ej: Marcela Contreras"
+                           class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-700 focus:bg-white transition">
+                  </div>
+                </div>
+
+                <div>
+                  <label for="email" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Correo Electrónico *</label>
+                  <div class="relative">
+                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm">
+                      <i class="fa-regular fa-envelope"></i>
+                    </span>
+                    <input type="email" name="email" id="email" required placeholder="tu-correo@ejemplo.cl"
+                           class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-700 focus:bg-white transition">
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label for="subject_topic" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Motivo o Destinatario</label>
+                <div class="relative">
+                  <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400 text-sm">
+                    <i class="fa-solid fa-list-check"></i>
+                  </span>
+                  <select name="subject_topic" id="subject_topic" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-700 focus:bg-white transition text-slate-700">
+                    <option value="Consulta General">Consulta General / Información</option>
+                    <option value="Secretaría">Secretaría y Membresía de Socios</option>
+                    <option value="Directorio General">Directorio y Asuntos Gremiales</option>
+                    <option value="Terreno y Ubicaciones">Ubicaciones y Puestos de Feria</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="message" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Mensaje *</label>
+                <div class="relative">
+                  <textarea name="message" id="message" rows="5" required placeholder="Escribe aquí tu consulta o solicitud detallada..."
+                            class="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-700 focus:bg-white transition resize-none"></textarea>
+                </div>
+              </div>
+
+              <div class="pt-2">
+                <button type="submit" id="btnSubmitContact" class="w-full sm:w-auto px-8 py-3.5 bg-green-800 hover:bg-green-700 active:scale-[0.98] text-white font-bold rounded-xl text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer">
+                  <span>Enviar Mensaje</span>
+                  <i class="fa-solid fa-paper-plane text-xs"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
   </main>
 
-  <!-- Footer Placeholder -->
-  <div id="main-footer"></div>
+  <!-- FOOTER -->
+  <footer class="bg-[#063b24] text-white">
+    <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Col 1: Identidad -->
+      <div>
+        <img src="images/logotipo.svg" width="240" height="80" class="h-16 w-auto" alt="Logo Feria Melipilla" loading="lazy">
+        <p class="text-sm text-emerald-100/75 mt-4 leading-relaxed">
+          Asociación Gremial Feria Agrícola Melipilla.<br>
+          Fomentando la agricultura local, el comercio justo y la unión comunitaria y gremial.
+        </p>
+        <div class="mt-4 flex items-center gap-2 text-xs text-emerald-200/80">
+          <i class="fa-solid fa-location-dot text-lime-400"></i>
+          <span>Melipilla, Región Metropolitana</span>
+        </div>
+        <p class="text-[11px] text-emerald-200/60 mt-1">Personalidad Jurídica: 20 de noviembre de 2023</p>
+      </div>
 
-  <script>
-    const MAP_URLS = [
-      "https://www.google.com/maps/d/embed?mid=1AkVO8siqXth9BmK8SZR8IYQxmvAeaVE&ehbc=2E312F&noprof=1",
-      "https://www.google.com/maps/d/embed?mid=1C6TYGzuZ9W7-K8Zufh_cZh1tDiWsOz0&ehbc=2E312F&noprof=1",
-      "https://www.google.com/maps/d/u/0/embed?mid=1axqoDjc8INs1StOl0yYyzMCvP3a1Dgg&ehbc=2E312F&noprof=1",
-      "https://www.google.com/maps/d/embed?mid=14Ej2qbdxc_hEbvZbY__VIDy0Fur3Xks&ehbc=2E312F&noprof=1",
-      "https://www.google.com/maps/d/embed?mid=1-rGV0L51XRuUuIrNH0bx97_yZ5sL4XQ&ehbc=2E312F&noprof=1"
-    ];
+      <!-- Col 2: Navegación -->
+      <div>
+        <h3 class="font-bold text-lime-300 mb-4 tracking-wide text-xs uppercase">Navegación Gremial</h3>
+        <div class="grid grid-cols-1 gap-2 text-sm text-emerald-100/80">
+          <a href="index.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Inicio</a>
+          <a href="nosotros.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Sobre Nosotros</a>
+          <a href="directiva.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Directiva Vigente</a>
+          <a href="socios.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Socios y Puestos</a>
+          <a href="localizanos.html" class="hover:text-lime-300 transition flex items-center gap-2 font-bold text-lime-200"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Localízanos</a>
+          <a href="noticias.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Noticias</a>
+          <a href="galeria.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Galería Fotográfica</a>
+        </div>
+      </div>
 
-    function cambiarMapa(index) {
-      const iframe = document.getElementById('mapa-frame');
-      const skeleton = document.getElementById('map-skeleton');
+      <!-- Col 3: Legal & Gremial -->
+      <div>
+        <h3 class="font-bold text-lime-300 mb-4 tracking-wide text-xs uppercase">Legal & Estatutos</h3>
+        <div class="grid grid-cols-1 gap-2 text-sm text-emerald-100/80">
+          <a href="nosotros.html#estatutos" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Estatutos y Reglamento</a>
+          <a href="terminos.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Términos y Condiciones</a>
+          <a href="privacidad.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Política de Privacidad</a>
+          <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="hover:text-lime-300 transition flex items-center gap-2 text-lime-300 font-semibold mt-2"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>Portal Web Socios</a>
+        </div>
+      </div>
 
-      // 1. Ocultar iframe y mostrar skeleton INSTANTÁNEAMENTE (sin transición) para tapar el parpadeo
-      iframe.classList.remove('transition-opacity', 'duration-500');
-      skeleton.classList.remove('transition-opacity', 'duration-500');
+      <!-- Col 4: Contacto y Redes -->
+      <div>
+        <h3 class="font-bold text-lime-300 mb-4 tracking-wide text-xs uppercase">Contacto Oficial</h3>
+        <div class="space-y-3 text-xs text-emerald-100/80">
+          <a href="mailto:a.g.feria.agricola.m@gmail.com" class="flex items-center gap-2.5 text-emerald-100 hover:text-lime-300 transition break-all">
+            <i class="fa-solid fa-envelope text-lime-400 text-sm shrink-0"></i>
+            <span>a.g.feria.agricola.m@gmail.com</span>
+          </a>
+          <a href="#contacto" class="flex items-center gap-2.5 text-emerald-100 hover:text-lime-300 transition">
+            <i class="fa-regular fa-paper-plane text-lime-400 text-sm shrink-0"></i>
+            <span>Formulario de Contacto</span>
+          </a>
+          <p class="text-[11px] text-emerald-200/70 pt-1">
+            Horario en Feria:<br>
+            <strong class="text-white">08:00 a 15:30 hrs</strong> (Mar · Mié · Vie · Sáb · Dom)
+          </p>
+        </div>
 
-      iframe.classList.add('opacity-0');
-      skeleton.classList.remove('opacity-0', 'pointer-events-none');
+        <div class="mt-5">
+          <p class="text-[11px] font-bold uppercase tracking-wider text-lime-300 mb-2">Síguenos en Redes</p>
+          <div class="flex gap-2.5">
+            <a href="https://www.instagram.com/asoc.feria.agricola.melipilla" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-lime-400 hover:text-green-950 transition grid place-items-center" aria-label="Instagram Oficial">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="https://www.facebook.com/asoc.feria.agricola.melipilla" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-lime-400 hover:text-green-950 transition grid place-items-center" aria-label="Facebook Oficial">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="#contacto" class="w-9 h-9 rounded-full bg-white/10 hover:bg-lime-400 hover:text-green-950 transition grid place-items-center" aria-label="Escribir mensaje">
+              <i class="fa-regular fa-envelope text-sm"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      // Force reflow para aplicar cambios instantáneos
-      void iframe.offsetWidth;
+    <div class="border-t border-white/10 text-center text-xs text-emerald-100/60 py-5 px-6 flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto gap-2">
+      <div>
+        © 2026 Asociación Gremial Feria Agrícola Melipilla. Todos los derechos reservados.
+      </div>
+      <div class="flex items-center gap-4 text-[11px] text-emerald-200/70">
+        <a href="terminos.html" class="hover:text-lime-300 transition">Términos</a>
+        <span>·</span>
+        <a href="privacidad.html" class="hover:text-lime-300 transition">Privacidad</a>
+        <span>·</span>
+        <a href="#contacto" class="hover:text-lime-300 transition">Contacto</a>
+      </div>
+    </div>
+  </footer>
 
-      // 2. Restaurar transiciones para el Fade-In suave cuando cargue
-      requestAnimationFrame(() => {
-        iframe.classList.add('transition-opacity', 'duration-500');
-        skeleton.classList.add('transition-opacity', 'duration-500');
-      });
+  <!-- MOBILE BOTTOM NAV -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-[90] bg-[#166534] text-white bottom-nav flex justify-around items-center px-1 shadow-[0_-6px_25px_rgba(0,0,0,.2)]">
+    <a href="index.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i class="fa-solid fa-house text-lg"></i><span>Inicio</span>
+    </a>
+    <a href="nosotros.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i class="fa-solid fa-users text-lg"></i><span>Nosotros</span>
+    </a>
+    <a href="localizanos.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] text-lime-300 font-bold">
+      <i class="fa-solid fa-map-location-dot text-lg"></i><span>Localízanos</span>
+    </a>
+    <a href="noticias.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i class="fa-regular fa-newspaper text-lg"></i><span>Noticias</span>
+    </a>
+    <button type="button" id="moreButton" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i id="moreIcon" class="fa-solid fa-bars text-lg"></i><span>Más</span>
+    </button>
+  </nav>
 
-      // 3. Actualizar source
-      iframe.src = MAP_URLS[index];
+  <!-- BACKDROP OVERLAY -->
+  <div id="backdrop" class="backdrop fixed inset-0 bg-black/50 backdrop-blur-[2px] z-[100]"></div>
 
-      // Actualizar tabs
-      for (let i = 0; i < 5; i++) {
-        const btn = document.getElementById('tab-' + i);
-        if (i === index) {
-          btn.className = "px-6 py-4 text-sm font-semibold text-primary border-b-2 border-primary transition-colors hover:bg-white flex-1 md:flex-none";
-        } else {
-          btn.className = "px-6 py-4 text-sm font-medium text-slate-500 border-b-2 border-transparent transition-colors hover:text-primary hover:bg-white flex-1 md:flex-none";
-        }
-      }
-    }
+  <!-- MOBILE BOTTOM SHEET 'MÁS' -->
+  <section id="moreSheet" class="sheet fixed left-0 right-0 bottom-0 z-[110] bg-white rounded-t-[28px] shadow-2xl p-6 pb-[95px] max-h-[82vh] overflow-y-auto">
+    <div class="w-12 h-1.5 bg-slate-200 rounded-full mx-auto mb-4"></div>
+    <div class="flex items-center justify-between mb-5">
+      <div>
+        <p class="text-xs font-extrabold uppercase tracking-widest text-green-700">Navegación</p>
+        <h2 class="text-2xl font-extrabold text-slate-900">Más opciones</h2>
+      </div>
+      <button id="closeMore" type="button" class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center transition">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+    <div class="grid grid-cols-2 gap-3">
+      <a href="nosotros.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-seedling"></i></span>
+        <span class="font-bold text-green-950 text-sm">Historia & Misión</span>
+      </a>
+      <a href="directiva.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-users"></i></span>
+        <span class="font-bold text-green-950 text-sm">Directiva</span>
+      </a>
+      <a href="socios.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-store"></i></span>
+        <span class="font-bold text-green-950 text-sm">Socios</span>
+      </a>
+      <a href="localizanos.html" class="bg-green-800 rounded-2xl p-4 flex flex-col items-center gap-2 border border-green-800 text-center shadow-md">
+        <span class="w-11 h-11 rounded-full bg-white text-green-800 grid place-items-center"><i class="fa-solid fa-map-location-dot"></i></span>
+        <span class="font-bold text-white text-sm">Localízanos</span>
+      </a>
+      <a href="galeria.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-regular fa-images"></i></span>
+        <span class="font-bold text-green-950 text-sm">Galería</span>
+      </a>
+      <a href="#contacto" onclick="closeMorePanel()" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-regular fa-envelope"></i></span>
+        <span class="font-bold text-green-950 text-sm">Contacto</span>
+      </a>
+      <a href="terminos.html" class="bg-slate-50 hover:bg-slate-100 rounded-2xl p-3 flex items-center justify-center gap-2 border border-slate-200 text-xs font-bold text-slate-700 transition">
+        <i class="fa-solid fa-scale-balanced text-green-700"></i>
+        <span>Términos</span>
+      </a>
+      <a href="privacidad.html" class="bg-slate-50 hover:bg-slate-100 rounded-2xl p-3 flex items-center justify-center gap-2 border border-slate-200 text-xs font-bold text-slate-700 transition">
+        <i class="fa-solid fa-user-shield text-green-700"></i>
+        <span>Privacidad</span>
+      </a>
+      <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="col-span-2 bg-lime-500 hover:bg-lime-400 rounded-2xl p-3.5 flex items-center justify-center gap-2 text-center transition shadow font-bold text-green-950 text-sm">
+        <i class="fa-solid fa-right-to-bracket text-base"></i>
+        <span>Ingresar al Portal</span>
+      </a>
+    </div>
+  </section>
 
-    // Manejar carga del iframe
-    document.addEventListener("DOMContentLoaded", () => {
-      const iframe = document.getElementById('mapa-frame');
-      const skeleton = document.getElementById('map-skeleton');
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-[130] bg-slate-900 text-white text-sm px-5 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 max-w-sm">
+    <div id="toastIcon" class="w-7 h-7 rounded-full bg-lime-400 text-green-950 flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-check text-xs"></i>
+    </div>
+    <div id="toastMessage" class="text-xs font-medium leading-snug">Operación realizada con éxito</div>
+  </div>
 
-      iframe.onload = () => {
-        // Ocultar skeleton y mostrar mapa suavemente
-        skeleton.classList.add('opacity-0', 'pointer-events-none');
-        iframe.classList.remove('opacity-0');
-      };
-    });
-  </script>
-
+  <script src="js/global.js"></script>
+  <script src="js/localizanos.js"></script>
 </body>
-
 </html>

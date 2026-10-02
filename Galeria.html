@@ -1,292 +1,358 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="es" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galería de Fotos - Feria Agrícola Melipilla | Actividades</title>
-  <meta name="description"
-    content="Explora nuestra galería de imágenes. Revive los mejores momentos, eventos y actividades de la Feria Agrícola Melipilla.">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Galería Fotográfica | Feria Agrícola Melipilla</title>
+  <meta name="description" content="Explora nuestra galería de imágenes y videos. Momentos, asambleas y actividades de la Asociación Gremial Feria Agrícola Melipilla.">
   <link rel="shortcut icon" href="images/favicon.webp" type="image/x-icon">
   <meta name="theme-color" content="#166534">
 
-  <!-- LightGallery (carrusel) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/video/lg-video.min.js"></script>
-
-  <!-- Tailwind -->
+  <link rel="dns-prefetch" href="https://dpqbvcyeylhxnvkeqakp.supabase.co">
+  <link rel="preconnect" href="https://dpqbvcyeylhxnvkeqakp.supabase.co" crossorigin>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#166534',
-            secondary: '#65a30d',
-            accent: '#f97316',
-            dark: '#020617'
-          },
-          fontFamily: {
-            sans: ['Poppins', 'system-ui', 'sans-serif'],
-          }
-        }
-      }
-    };
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- AOS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- LightGallery -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/video/lg-video.min.js"></script>
 
-  <!-- Iconos -->
-  <script src="https://kit.fontawesome.com/c38e3367c6.js" crossorigin="anonymous"></script>
-
-  <!-- Layout Script -->
-  <script src="js/layout.js"></script>
+  <link rel="stylesheet" href="css/main.css">
 </head>
+<body class="relative min-h-screen flex flex-col justify-between">
 
-<body class="bg-slate-50 text-slate-800 font-sans overflow-x-hidden">
+  <!-- HEADER MÓVIL -->
+  <header class="md:hidden bg-white border-b border-slate-100 h-[88px] flex items-center justify-between px-6 sticky top-0 z-40 shadow-sm">
+    <a href="index.html" class="flex items-center" aria-label="Inicio Feria Melipilla">
+      <img src="images/logo-color.webp" alt="Feria Agrícola Melipilla" width="192" height="64" class="h-14 w-auto">
+    </a>
+    <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-green-800 text-white rounded-full px-4 py-2 text-xs font-bold shadow hover:bg-green-700 active:scale-95 transition">
+      <i class="fa-solid fa-user"></i>
+      <span>Ingresar</span>
+    </a>
+  </header>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      AOS.init({ duration: 800, once: true, offset: 80 });
-      renderLayout("Galería");
-    });
-  </script>
+  <!-- HEADER ESCRITORIO -->
+  <header class="hidden md:block bg-white/95 backdrop-blur border-b border-slate-100 sticky top-0 z-40 transition-shadow duration-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-8">
+      <a href="index.html" class="flex items-center shrink-0">
+        <img src="images/logo-color.webp" width="240" height="80" class="h-14 w-auto transition-transform hover:scale-105" alt="Feria Agrícola Melipilla">
+      </a>
+      
+      <!-- Navegación de escritorio -->
+      <nav class="flex-1 flex justify-center items-center gap-8 text-sm font-semibold text-slate-700">
+        <a href="index.html" class="hover:text-green-700 transition-colors py-2">Inicio</a>
+        
+        <!-- Dropdown 'Nosotros' -->
+        <div class="dropdown-parent relative py-2">
+          <div class="flex items-center gap-1.5 hover:text-green-700 cursor-pointer group">
+            <a href="nosotros.html" class="hover:text-green-800">Nosotros</a>
+            <i class="fa-solid fa-chevron-down text-xs transition-transform duration-200 group-hover:rotate-180"></i>
+          </div>
+          
+          <div class="dropdown-menu absolute top-full left-0 w-64 bg-white rounded-2xl shadow-xl border border-slate-100 py-2.5 mt-1 z-50">
+            <a href="nosotros.html" class="flex items-center gap-3 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-green-700 transition">
+              <i class="fa-solid fa-seedling w-4 text-center text-green-700"></i>
+              <div>
+                <span class="block">Sobre Nosotros</span>
+                <span class="text-[10px] text-slate-400 font-normal">Historia, misión y visión</span>
+              </div>
+            </a>
+            
+            <a href="directiva.html" class="flex items-center gap-3 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-green-700 transition">
+              <i class="fa-solid fa-users w-4 text-center text-slate-400"></i>
+              <span>Directiva Vigente</span>
+            </a>
+            <a href="socios.html" class="flex items-center gap-3 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-green-700 transition">
+              <i class="fa-solid fa-store w-4 text-center text-slate-400"></i>
+              <span>Socios y Puestos</span>
+            </a>
+            <a href="nosotros.html#estatutos" class="flex items-center gap-3 px-4 py-2.5 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-green-700 transition">
+              <i class="fa-solid fa-book-bookmark w-4 text-center text-slate-400"></i>
+              <span>Estatutos y Reglamento</span>
+            </a>
+          </div>
+        </div>
 
-  <!-- Header Placeholder -->
-  <div id="main-header"></div>
-
-  <!-- Hero (Extracted) -->
-  <!-- Hero Personalizado para Galería -->
-  <div
-    class="relative w-full pt-44 pb-32 md:pt-48 md:pb-40 bg-[url('images/Banner_1.webp')] bg-scroll bg-center bg-cover overflow-hidden group">
-    <!-- Background Gradient -->
-    <div class="absolute inset-0 bg-gradient-to-b from-[#166534]/50 via-[#166534]/60 to-[#166534]/95"></div>
-    <!-- Decorative Pattern -->
-    <div class="absolute inset-0 opacity-10"
-      style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M54.627 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM22.485 0l.83.828-1.415 1.415-.828-.828-.828.828-1.415-1.415.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 22.485l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 22.485l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM0 54.627l.828.83-1.415 1.415-.828-.828-.828.828L-1.415 54.627l.828-.828-.828-.828 1.415-1.415.828.828.828-.828 1.415 1.415-.828.828zM54.627 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828zM22.485 60l.83-.828-1.415-1.415-.828.828-.828-.828-1.415 1.415.828.828-.828.828 1.415 1.415.828-.828.828.828 1.415-1.415.828-.828z\' fill=\'%23ffffff\' fill-rule=\'evenodd\'/%3E%3C/svg%3E');">
+        <a href="localizanos.html" class="hover:text-green-700 transition-colors py-2">Localízanos</a>
+        <a href="noticias.html" class="hover:text-green-700 transition-colors py-2">Noticias</a>
+        <a href="galeria.html" class="text-green-800 font-bold border-b-2 border-green-700 py-2">Galería</a>
+        <a href="localizanos.html#contacto" class="hover:text-green-700 transition-colors py-2">Contacto</a>
+      </nav>
+      
+      <!-- Botón de Ingreso -->
+      <div class="flex items-center gap-3">
+        <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="bg-green-800 hover:bg-green-700 active:scale-95 text-white rounded-full px-5 py-2.5 text-sm font-bold shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer">
+          <i class="fa-solid fa-user"></i>
+          <span>Ingresar</span>
+        </a>
+      </div>
     </div>
+  </header>
 
-    <!-- Content -->
-    <div class="relative max-w-6xl mx-auto px-6 text-center z-10 space-y-4 mt-24 md:mt-0">
-      <span
-        class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-emerald-200 text-xs font-bold uppercase tracking-widest animate-fade-in-up">
-        En Imágenes
-      </span>
-      <h1 class="text-3xl md:text-6xl font-black text-white leading-tight drop-shadow-lg" data-aos="fade-up">
-        Galería Fotográfica
-      </h1>
-      <p class="text-lg text-emerald-100 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
-        Un recorrido visual por la vida, eventos y colores de nuestra feria.
-      </p>
-    </div>
-
-    <!-- Wave Divider -->
-    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
-      <svg class="relative block w-full h-[50px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path
-          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.06,155.45,116.88,230.15,97.77Z"
-          fill="#f8fafc"></path>
-      </svg>
-    </div>
-  </div>
-
-  <!-- MAIN -->
-  <main class="max-w-6xl mx-auto px-4 py-12 md:py-16 space-y-16">
-
-    <section data-aos="fade-up" class="space-y-4">
-      <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 text-center">Galería de Imágenes</h2>
-      <p class="text-sm md:text-base text-slate-700 text-center max-w-2xl mx-auto">
-        Un vistazo a nuestras actividades, reuniones y momentos.
-      </p>
-    </section>
-
-    <!-- GALERÍA DINÁMICA -->
-    <section data-aos="fade-up">
-      <div id="galeria" class="w-full columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4">
-        <!-- SKELETON LOADERS col 1 -->
-        <div class="h-64 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block"></div>
-        <div class="h-48 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block"></div>
-        <div class="h-72 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden sm:block"></div>
-        <!-- SKELETON LOADERS col 2 -->
-        <div class="h-56 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden sm:block"></div>
-        <div class="h-80 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden sm:block"></div>
-        <div class="h-48 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden sm:block"></div>
-        <!-- SKELETON LOADERS col 3 -->
-        <div class="h-64 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden md:block"></div>
-        <div class="h-72 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden md:block"></div>
-        <!-- SKELETON LOADERS col 4 -->
-        <div class="h-56 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden lg:block"></div>
-        <div class="h-48 bg-slate-200 rounded-2xl animate-pulse mb-4 w-full block hidden lg:block"></div>
+  <main class="flex-grow">
+    <!-- HERO SECTION -->
+    <section class="hero min-h-[380px] md:min-h-[440px] flex items-end relative">
+      <div class="max-w-7xl mx-auto w-full px-6 pb-12 md:pb-16 text-white">
+        <div class="flex items-center flex-wrap gap-2 text-sm md:text-base text-emerald-100 mb-4 font-medium">
+          <a href="index.html" class="hover:text-white hover:underline transition">Inicio</a>
+          <span class="text-emerald-300">›</span>
+          <span class="text-lime-300 font-semibold">Galería</span>
+        </div>
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 bg-lime-400/20 text-lime-300 border border-lime-300/30 font-extrabold text-xs px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-4">
+            <i class="fa-regular fa-images text-[11px]"></i>
+            <span>Archivo Audiovisual Gremial</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+            Galería Fotográfica y Videos
+          </h1>
+          <p class="mt-4 text-base md:text-lg text-emerald-50/90 leading-relaxed max-w-2xl">
+            Un recorrido en imágenes por las jornadas en terreno, actividades oficiales, asambleas y la vida de nuestra familia feriante en Melipilla.
+          </p>
+        </div>
       </div>
     </section>
 
+    <!-- ACCESOS / INDICADORES -->
+    <section class="max-w-7xl mx-auto px-6 -mt-8 relative z-20">
+      <div class="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-green-100 text-green-800 grid place-items-center shrink-0">
+            <i class="fa-solid fa-camera-retro"></i>
+          </div>
+          <div>
+            <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Visor Interactivo</p>
+            <p class="text-xs sm:text-sm font-semibold text-slate-800">Haz clic en cualquier fotografía o video para ampliar a pantalla completa.</p>
+          </div>
+        </div>
+
+        <a href="https://www.instagram.com/asoc.feria.agricola.melipilla" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 hover:bg-emerald-100/80 text-green-800 rounded-xl text-xs font-bold transition shrink-0">
+          <i class="fab fa-instagram text-sm"></i>
+          <span>Ver más en Instagram</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- GALERÍA MASONRY -->
+    <section class="max-w-7xl mx-auto px-6 py-12 md:py-16">
+      <div id="galeria" class="w-full columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+        <!-- Skeleton loaders iniciales -->
+        <div class="h-64 bg-slate-200/70 rounded-2xl animate-pulse mb-4 w-full block"></div>
+        <div class="h-48 bg-slate-200/70 rounded-2xl animate-pulse mb-4 w-full block"></div>
+        <div class="h-72 bg-slate-200/70 rounded-2xl animate-pulse mb-4 w-full block hidden sm:block"></div>
+        <div class="h-56 bg-slate-200/70 rounded-2xl animate-pulse mb-4 w-full block hidden sm:block"></div>
+        <div class="h-80 bg-slate-200/70 rounded-2xl animate-pulse mb-4 w-full block hidden md:block"></div>
+        <div class="h-48 bg-slate-200/70 rounded-2xl animate-pulse mb-4 w-full block hidden md:block"></div>
+        <div class="h-64 bg-slate-200/70 rounded-2xl animate-pulse mb-4 w-full block hidden lg:block"></div>
+        <div class="h-56 bg-slate-200/70 rounded-2xl animate-pulse mb-4 w-full block hidden lg:block"></div>
+      </div>
+    </section>
+
+    <!-- BANNER DE CIERRE -->
+    <section class="bg-[#edf6e8] border-y border-[#dcebd3]">
+      <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-5">
+          <div class="w-14 h-14 rounded-full bg-green-800 text-white grid place-items-center shrink-0 shadow-md">
+            <i class="fa-solid fa-camera text-xl"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl font-extrabold text-green-950">¿Tienes fotografías históricas de la feria?</h2>
+            <p class="mt-1 text-green-900/70 text-sm">Compártelas con la directiva para sumarlas a nuestro archivo de memoria gremial.</p>
+          </div>
+        </div>
+        <a href="localizanos.html#contacto" class="bg-green-800 hover:bg-green-700 text-white font-bold px-6 py-3.5 rounded-full text-sm shadow-md transition whitespace-nowrap inline-flex items-center gap-2">
+          <i class="fa-regular fa-envelope"></i>
+          <span>Contactar a la directiva</span>
+        </a>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer Placeholder -->
-  <div id="main-footer"></div>
+  <!-- FOOTER -->
+  <footer class="bg-[#063b24] text-white">
+    <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Col 1: Identidad -->
+      <div>
+        <img src="images/logotipo.svg" width="240" height="80" class="h-16 w-auto" alt="Logo Feria Melipilla" loading="lazy">
+        <p class="text-sm text-emerald-100/75 mt-4 leading-relaxed">
+          Asociación Gremial Feria Agrícola Melipilla.<br>
+          Fomentando la agricultura local, el comercio justo y la unión comunitaria y gremial.
+        </p>
+        <div class="mt-4 flex items-center gap-2 text-xs text-emerald-200/80">
+          <i class="fa-solid fa-location-dot text-lime-400"></i>
+          <span>Melipilla, Región Metropolitana</span>
+        </div>
+        <p class="text-[11px] text-emerald-200/60 mt-1">Personalidad Jurídica: 20 de noviembre de 2023</p>
+      </div>
 
-  <!-- SCRIPTS FINALES -->
-  <script type="module">
-    import { supabase } from './js/supabase-client.js';
+      <!-- Col 2: Navegación -->
+      <div>
+        <h3 class="font-bold text-lime-300 mb-4 tracking-wide text-xs uppercase">Navegación Gremial</h3>
+        <div class="grid grid-cols-1 gap-2 text-sm text-emerald-100/80">
+          <a href="index.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Inicio</a>
+          <a href="nosotros.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Sobre Nosotros</a>
+          <a href="directiva.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Directiva Vigente</a>
+          <a href="socios.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Socios y Puestos</a>
+          <a href="localizanos.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Localízanos</a>
+          <a href="noticias.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Noticias</a>
+          <a href="galeria.html" class="hover:text-lime-300 transition flex items-center gap-2 font-bold text-lime-200"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Galería Fotográfica</a>
+        </div>
+      </div>
 
-    // Función principal para cargar la galería
-    async function loadGallery() {
-      const contenedor = document.getElementById("galeria");
-      if (!contenedor) return;
+      <!-- Col 3: Legal & Gremial -->
+      <div>
+        <h3 class="font-bold text-lime-300 mb-4 tracking-wide text-xs uppercase">Legal & Estatutos</h3>
+        <div class="grid grid-cols-1 gap-2 text-sm text-emerald-100/80">
+          <a href="nosotros.html#estatutos" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Estatutos y Reglamento</a>
+          <a href="terminos.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Términos y Condiciones</a>
+          <a href="privacidad.html" class="hover:text-lime-300 transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[10px] text-emerald-400"></i>Política de Privacidad</a>
+          <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="hover:text-lime-300 transition flex items-center gap-2 text-lime-300 font-semibold mt-2"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>Portal Web Socios</a>
+        </div>
+      </div>
 
-      // Update container to be a Masonry Layout
-      contenedor.className = 'w-full columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4';
+      <!-- Col 4: Contacto y Redes -->
+      <div>
+        <h3 class="font-bold text-lime-300 mb-4 tracking-wide text-xs uppercase">Contacto Oficial</h3>
+        <div class="space-y-3 text-xs text-emerald-100/80">
+          <a href="mailto:a.g.feria.agricola.m@gmail.com" class="flex items-center gap-2.5 text-emerald-100 hover:text-lime-300 transition break-all">
+            <i class="fa-solid fa-envelope text-lime-400 text-sm shrink-0"></i>
+            <span>a.g.feria.agricola.m@gmail.com</span>
+          </a>
+          <a href="localizanos.html#contacto" class="flex items-center gap-2.5 text-emerald-100 hover:text-lime-300 transition">
+            <i class="fa-regular fa-paper-plane text-lime-400 text-sm shrink-0"></i>
+            <span>Formulario de Contacto</span>
+          </a>
+          <p class="text-[11px] text-emerald-200/70 pt-1">
+            Horario en Feria:<br>
+            <strong class="text-white">08:00 a 15:30 hrs</strong> (Mar · Mié · Vie · Sáb · Dom)
+          </p>
+        </div>
 
-      try {
-        const { data: images, error } = await supabase
-          .from('gallery_images')
-          .select('*')
-          .order('created_at', { ascending: false });
+        <div class="mt-5">
+          <p class="text-[11px] font-bold uppercase tracking-wider text-lime-300 mb-2">Síguenos en Redes</p>
+          <div class="flex gap-2.5">
+            <a href="https://www.instagram.com/asoc.feria.agricola.melipilla" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-lime-400 hover:text-green-950 transition grid place-items-center" aria-label="Instagram Oficial">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="https://www.facebook.com/asoc.feria.agricola.melipilla" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-lime-400 hover:text-green-950 transition grid place-items-center" aria-label="Facebook Oficial">
+              <i class="fab fa-facebook-f text-sm"></i>
+            </a>
+            <a href="localizanos.html#contacto" class="w-9 h-9 rounded-full bg-white/10 hover:bg-lime-400 hover:text-green-950 transition grid place-items-center" aria-label="Escribir mensaje">
+              <i class="fa-regular fa-envelope text-sm"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-        if (error) throw error;
+    <div class="border-t border-white/10 text-center text-xs text-emerald-100/60 py-5 px-6 flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto gap-2">
+      <div>
+        © 2026 Asociación Gremial Feria Agrícola Melipilla. Todos los derechos reservados.
+      </div>
+      <div class="flex items-center gap-4 text-[11px] text-emerald-200/70">
+        <a href="terminos.html" class="hover:text-lime-300 transition">Términos</a>
+        <span>·</span>
+        <a href="privacidad.html" class="hover:text-lime-300 transition">Privacidad</a>
+        <span>·</span>
+        <a href="localizanos.html#contacto" class="hover:text-lime-300 transition">Contacto</a>
+      </div>
+    </div>
+  </footer>
 
-        if (images && images.length > 0) {
+  <!-- MOBILE BOTTOM NAV -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-[90] bg-[#166534] text-white bottom-nav flex justify-around items-center px-1 shadow-[0_-6px_25px_rgba(0,0,0,.2)]">
+    <a href="index.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i class="fa-solid fa-house text-lg"></i><span>Inicio</span>
+    </a>
+    <a href="nosotros.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i class="fa-solid fa-users text-lg"></i><span>Nosotros</span>
+    </a>
+    <a href="localizanos.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i class="fa-solid fa-map-location-dot text-lg"></i><span>Localízanos</span>
+    </a>
+    <a href="noticias.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+      <i class="fa-regular fa-newspaper text-lg"></i><span>Noticias</span>
+    </a>
+    <button type="button" id="moreButton" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] text-lime-300 font-bold transition">
+      <i id="moreIcon" class="fa-solid fa-bars text-lg"></i><span>Más</span>
+    </button>
+  </nav>
 
-          // --- Helper: extract a video frame as base64 via Canvas ---
-          function extractVideoFrame(src) {
-            return new Promise((resolve) => {
-              const v = document.createElement('video');
-              v.crossOrigin = 'anonymous';
-              v.muted = true;
-              v.preload = 'metadata';
-              const done = (dataUrl) => { resolve(dataUrl); };
-              v.onloadedmetadata = () => { v.currentTime = Math.min(1.5, (v.duration || 3) * 0.1); };
-              v.onseeked = () => {
-                try {
-                  const c = document.createElement('canvas');
-                  c.width = v.videoWidth || 640; c.height = v.videoHeight || 360;
-                  c.getContext('2d').drawImage(v, 0, 0);
-                  done(c.toDataURL('image/jpeg', 0.85));
-                } catch (e) { done(null); }
-              };
-              v.onerror = () => done(null);
-              setTimeout(() => done(null), 8000);
-              v.src = src;
-            });
-          }
+  <!-- BACKDROP OVERLAY -->
+  <div id="backdrop" class="backdrop fixed inset-0 bg-black/50 backdrop-blur-[2px] z-[100]"></div>
 
-          // --- Step 1: Identify videos and extract thumbnails in parallel (before building HTML) ---
-          const videoFrames = {}; // imageUrl -> base64 dataUrl
-          const videoItems = images.filter(item => {
-            const u = item.image_url || '';
-            return /\.(mp4|webm|ogg|mov)($|\?)/i.test(u);
-          });
+  <!-- MOBILE BOTTOM SHEET 'MÁS' -->
+  <section id="moreSheet" class="sheet fixed left-0 right-0 bottom-0 z-[110] bg-white rounded-t-[28px] shadow-2xl p-6 pb-[95px] max-h-[82vh] overflow-y-auto">
+    <div class="w-12 h-1.5 bg-slate-200 rounded-full mx-auto mb-4"></div>
+    <div class="flex items-center justify-between mb-5">
+      <div>
+        <p class="text-xs font-extrabold uppercase tracking-widest text-green-700">Navegación</p>
+        <h2 class="text-2xl font-extrabold text-slate-900">Más opciones</h2>
+      </div>
+      <button id="closeMore" type="button" class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center transition">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+    <div class="grid grid-cols-2 gap-3">
+      <a href="nosotros.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-seedling"></i></span>
+        <span class="font-bold text-green-950 text-sm">Historia & Misión</span>
+      </a>
+      <a href="directiva.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-users"></i></span>
+        <span class="font-bold text-green-950 text-sm">Directiva</span>
+      </a>
+      <a href="socios.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-store"></i></span>
+        <span class="font-bold text-green-950 text-sm">Socios</span>
+      </a>
+      <a href="localizanos.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-map-location-dot"></i></span>
+        <span class="font-bold text-green-950 text-sm">Localízanos</span>
+      </a>
+      <a href="galeria.html" class="bg-green-800 rounded-2xl p-4 flex flex-col items-center gap-2 border border-green-800 text-center shadow-md">
+        <span class="w-11 h-11 rounded-full bg-white text-green-800 grid place-items-center"><i class="fa-regular fa-images"></i></span>
+        <span class="font-bold text-white text-sm">Galería</span>
+      </a>
+      <a href="localizanos.html#contacto" onclick="closeMorePanel()" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-regular fa-envelope"></i></span>
+        <span class="font-bold text-green-950 text-sm">Contacto</span>
+      </a>
+        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-regular fa-envelope"></i></span>
+        <span class="font-bold text-green-950 text-sm">Contacto</span>
+      </a>
+      <a href="terminos.html" class="bg-slate-50 hover:bg-slate-100 rounded-2xl p-3 flex items-center justify-center gap-2 border border-slate-200 text-xs font-bold text-slate-700 transition">
+        <i class="fa-solid fa-scale-balanced text-green-700"></i>
+        <span>Términos</span>
+      </a>
+      <a href="privacidad.html" class="bg-slate-50 hover:bg-slate-100 rounded-2xl p-3 flex items-center justify-center gap-2 border border-slate-200 text-xs font-bold text-slate-700 transition">
+        <i class="fa-solid fa-user-shield text-green-700"></i>
+        <span>Privacidad</span>
+      </a>
+      <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="col-span-2 bg-lime-500 hover:bg-lime-400 rounded-2xl p-3.5 flex items-center justify-center gap-2 text-center transition shadow font-bold text-green-950 text-sm">
+        <i class="fa-solid fa-right-to-bracket text-base"></i>
+        <span>Ingresar al Portal</span>
+      </a>
+    </div>
+  </section>
 
-          if (videoItems.length > 0) {
-            await Promise.all(videoItems.map(async item => {
-              const frame = await extractVideoFrame(item.image_url);
-              if (frame) videoFrames[item.image_url] = frame;
-            }));
-          }
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toastNotification" class="fixed bottom-6 right-6 z-[130] bg-slate-900 text-white text-sm px-5 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 max-w-sm">
+    <div id="toastIcon" class="w-7 h-7 rounded-full bg-lime-400 text-green-950 flex items-center justify-center shrink-0">
+      <i class="fa-solid fa-check text-xs"></i>
+    </div>
+    <div id="toastMessage" class="text-xs font-medium leading-snug">Operación realizada con éxito</div>
+  </div>
 
-          // --- Step 2: Build gallery HTML ---
-          let html = '';
-          images.forEach(item => {
-            const title = item.title || 'Sin Título';
-            const imageUrl = item.image_url || '';
-            const description = item.description || '';
-            const isVideoMatch = imageUrl.match(/\.(mp4|webm|ogg|mov)($|\?)/i);
-            const isVideo = Boolean(isVideoMatch);
-            const videoType = isVideoMatch ? `video/${isVideoMatch[1].toLowerCase()}` : 'video/mp4';
-            const isYouTube = Boolean(imageUrl.includes('youtube.com') || imageUrl.includes('youtu.be'));
-
-            let thumbnailHtml = '';
-            let playIconHtml = '';
-            let anchorAttrs = '';
-            const subHtml = `<h4 class='font-bold text-lg mb-1'>${title}</h4>${description ? `<p class='text-sm opacity-90'>${description}</p>` : ''}`;
-
-            if (isVideo) {
-              // data-video (NO data-src which conflicts) + data-poster for LG thumbnail strip
-              const videoJson = JSON.stringify({
-                source: [{ src: imageUrl, type: videoType }],
-                attributes: { preload: false, controls: true }
-              });
-              const posterFrame = videoFrames[imageUrl] || '';
-              const posterAttr = posterFrame ? ` data-poster="${posterFrame}"` : '';
-              anchorAttrs = `data-video='${videoJson}'${posterAttr} data-sub-html="${subHtml}"`;
-
-              if (posterFrame) {
-                // Show real video frame thumbnail
-                thumbnailHtml = `<img src="${posterFrame}" alt="${title}" class="w-full h-auto block object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">`;
-              } else {
-                // Fallback placeholder
-                thumbnailHtml = `<div class="w-full bg-gradient-to-br from-slate-700 to-slate-900 flex flex-col items-center justify-center gap-2 text-white/50" style="min-height:180px"><i class="fa-solid fa-film text-4xl"></i><span class="text-xs uppercase tracking-widest font-semibold">Video</span></div>`;
-              }
-              playIconHtml = `<i class="fa-solid fa-circle-play text-white text-5xl drop-shadow-2xl opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>`;
-
-            } else if (isYouTube) {
-              anchorAttrs = `data-src="${imageUrl}" data-sub-html="${subHtml}"`;
-              const ytId = imageUrl.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
-              const ytImg = ytId ? `https://img.youtube.com/vi/${ytId[1]}/hqdefault.jpg` : '';
-              thumbnailHtml = `<img src="${ytImg || imageUrl}" alt="${title}" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">`;
-              playIconHtml = `<i class="fa-brands fa-youtube text-red-600 text-5xl bg-white/30 rounded-full drop-shadow-lg opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all"></i>`;
-
-            } else {
-              anchorAttrs = `data-src="${imageUrl}" data-sub-html="${subHtml}"`;
-              thumbnailHtml = `<img src="${imageUrl}" alt="${title}" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">`;
-            }
-
-            html += `
-            <a ${anchorAttrs}
-                 class="group relative block w-full mb-4 rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-500 cursor-pointer isolate bg-slate-50">
-                ${thumbnailHtml}
-                ${playIconHtml ? `<div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">${playIconHtml}</div>` : ''}
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20 pointer-events-none rounded-2xl">
-                  <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                    <p class="text-white font-bold text-sm md:text-base leading-tight drop-shadow-md">${title}</p>
-                    ${description ? `<p class="text-white/80 text-xs mt-1.5 line-clamp-2 drop-shadow-sm font-medium">${description}</p>` : ''}
-                  </div>
-                </div>
-            </a>`;
-          });
-
-          // --- Step 3: Set HTML then init LightGallery (with lgVideo for videos) ---
-          contenedor.innerHTML = html;
-          lightGallery(contenedor, {
-            selector: 'a',
-            download: false,
-            zoom: true,
-            thumbnail: true,
-            animateThumb: true,
-            showThumbByDefault: false,
-            speed: 500,
-            plugins: [lgZoom, lgThumbnail, lgVideo]
-          });
-
-        } else {
-          contenedor.innerHTML = '<p class="text-slate-500 text-center col-span-full py-10">No hay imágenes disponibles en la galería por el momento.</p>';
-        }
-
-      } catch (err) {
-        console.error('Error cargando galería:', err);
-        contenedor.innerHTML = '<p class="text-red-500 text-center col-span-full py-10">Hubo un error al cargar las imágenes. Por favor intenta nuevamente.</p>';
-      }
-    }
-
-
-
-    // Ejecutar al cargar
-    loadGallery();
-  </script>
-
+  <script src="js/global.js"></script>
+  <script src="js/galeria.js"></script>
 </body>
-
 </html>

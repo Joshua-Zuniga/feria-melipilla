@@ -1,0 +1,209 @@
+/* ==========================================================================
+   Feria Agrícola Melipilla - Estilos Globales (main.css)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Tipografía y Base
+   -------------------------------------------------------------------------- */
+* {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f7faf8;
+  color: #12301f;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 76px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Fondos Hero
+   -------------------------------------------------------------------------- */
+.hero {
+  background: linear-gradient(90deg, rgba(3, 55, 28, 0.96), rgba(8, 91, 45, 0.8), rgba(8, 91, 45, 0.35)),
+              url('../images/Banner_1.webp') center/cover no-repeat;
+}
+
+.hero-index {
+  background: linear-gradient(90deg, rgba(3, 55, 28, 0.96), rgba(8, 91, 45, 0.82), rgba(8, 91, 45, 0.4)),
+              url('../images/Banner_1.webp') center/cover no-repeat;
+}
+
+/* --------------------------------------------------------------------------
+   3. Tarjetas e Interactividad
+   -------------------------------------------------------------------------- */
+.feature-card {
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.28s ease;
+}
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 32px rgba(5, 65, 35, 0.1);
+}
+
+.member-card {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease;
+}
+.member-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(5, 65, 35, 0.12);
+}
+
+.avatar {
+  background: linear-gradient(145deg, #dcebd5, #a9c99b);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.instagram-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+.instagram-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   4. Galería Fotográfica y Videos
+   -------------------------------------------------------------------------- */
+.gallery-item {
+  break-inside: avoid;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.28s ease;
+}
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(5, 65, 35, 0.15);
+}
+
+.gallery-img {
+  opacity: 0;
+  transition: opacity 0.35s ease-out, transform 0.5s ease-out;
+}
+.gallery-img.loaded {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   5. Navegación de Escritorio y Menú Desplegable (Dropdown)
+   -------------------------------------------------------------------------- */
+.dropdown-menu {
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s;
+  transition-delay: 0.25s;
+}
+
+/* Puente invisible para evitar que el mouse pierda el foco al bajar al menú */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: transparent;
+}
+
+.dropdown-parent:hover .dropdown-menu,
+.dropdown-parent:focus-within .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+/* --------------------------------------------------------------------------
+   6. Navegación Móvil Inferior (Bottom Bar)
+   -------------------------------------------------------------------------- */
+.bottom-nav {
+  height: 76px;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.bottom-item {
+  height: 68px;
+}
+
+/* --------------------------------------------------------------------------
+   7. Ventanas Emergentes, Bottom Sheet y Modales
+   -------------------------------------------------------------------------- */
+.sheet {
+  transform: translateY(120%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+.sheet.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.backdrop {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dialog-modal {
+  transform: scale(0.95) translateY(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+.dialog-modal.open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --------------------------------------------------------------------------
+   8. Pestañas de Días en Mapa (Localízanos)
+   -------------------------------------------------------------------------- */
+.tab-btn.active {
+  background-color: #166534;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(22, 101, 52, 0.25);
+}
+.tab-btn.active span.badge {
+  background-color: #bef264;
+  color: #14532d;
+}
+
+/* --------------------------------------------------------------------------
+   9. Adaptación de Medios en Contenidos y Modales
+   -------------------------------------------------------------------------- */
+#home-modal-cuerpo img,
+#home-modal-cuerpo iframe,
+#home-modal-cuerpo video {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  border-radius: 1rem;
+}
+
+#home-modal-cuerpo iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
+  height: auto;
+}
