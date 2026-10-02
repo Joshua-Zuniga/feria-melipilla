@@ -285,23 +285,23 @@
       </div>
     </div>
   </footer>
-
   <!-- MOBILE BOTTOM NAV -->
-  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-[90] bg-[#166534] text-white bottom-nav flex justify-around items-center px-1 shadow-[0_-6px_25px_rgba(0,0,0,.2)]">
-    <a href="index.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+  <nav
+    class="md:hidden fixed bottom-0 left-0 right-0 z-[115] bg-[#166534] text-white bottom-nav flex justify-around items-center px-1 shadow-[0_-6px_25px_rgba(0,0,0,.2)]">
+    <a href="index.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] text-slate-100 hover:text-lime-300 transition">
       <i class="fa-solid fa-house text-lg"></i><span>Inicio</span>
     </a>
-    <a href="socios.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] text-lime-300 font-bold">
-      <i class="fa-solid fa-store text-lg"></i><span>Socios</span>
+    <a href="nosotros.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] text-lime-300 font-bold">
+      <i class="fa-solid fa-users text-lg"></i><span>Nosotros</span>
     </a>
-    <a href="localizanos.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
-      <i class="fa-solid fa-map-location-dot text-lg"></i><span>Localízanos</span>
+    <a href="localizanos.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] text-slate-100 hover:text-lime-300 transition">
+      <i class="fa-solid fa-map-location-dot text-lg"></i><span>Local&iacute;zanos</span>
     </a>
-    <a href="noticias.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
+    <a href="noticias.html" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] text-slate-100 hover:text-lime-300 transition">
       <i class="fa-regular fa-newspaper text-lg"></i><span>Noticias</span>
     </a>
-    <button type="button" id="moreButton" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] hover:text-lime-300 transition">
-      <i id="moreIcon" class="fa-solid fa-bars text-lg"></i><span>Más</span>
+    <button type="button" id="moreButton" class="bottom-item flex-1 flex flex-col items-center justify-center gap-1 text-[11px] text-slate-100 hover:text-lime-300 transition">
+      <i id="moreIcon" class="fa-solid fa-bars text-lg"></i><span>M&aacute;s</span>
     </button>
   </nav>
 
@@ -309,56 +309,93 @@
   <div id="backdrop" class="backdrop fixed inset-0 bg-black/50 backdrop-blur-[2px] z-[100]"></div>
 
   <!-- MOBILE BOTTOM SHEET 'MÁS' -->
-  <section id="moreSheet" class="sheet fixed left-0 right-0 bottom-0 z-[110] bg-white rounded-t-[28px] shadow-2xl p-6 pb-[95px] max-h-[82vh] overflow-y-auto">
+    <!-- MOBILE BOTTOM SHEET 'MAS' -->
+  <section id="moreSheet"
+    class="sheet fixed left-0 right-0 bottom-0 z-[110] bg-white rounded-t-[28px] shadow-2xl p-6 pb-[95px] max-h-[85vh] overflow-y-auto">
     <div class="w-12 h-1.5 bg-slate-200 rounded-full mx-auto mb-4"></div>
     <div class="flex items-center justify-between mb-5">
       <div>
-        <p class="text-xs font-extrabold uppercase tracking-widest text-green-700">Navegación</p>
-        <h2 class="text-2xl font-extrabold text-slate-900">Más opciones</h2>
+        <p class="text-xs font-extrabold uppercase tracking-widest text-green-700">Navegaci&oacute;n</p>
+        <h2 class="text-2xl font-extrabold text-slate-900">M&aacute;s opciones</h2>
       </div>
-      <button id="closeMore" type="button" class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center transition">
+      <button id="closeMore" type="button"
+        class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center transition">
         <i class="fa-solid fa-xmark text-lg"></i>
       </button>
     </div>
+
+    <!-- Seccion Gremial (Mismo submenu Nosotros de escritorio) -->
+    <p class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 mb-2.5 px-1">Comunidad &amp; Gremio</p>
+    <div class="grid grid-cols-2 gap-3 mb-5">
+      <a href="nosotros.html"
+        class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-3.5 flex flex-col items-center gap-1.5 border border-emerald-100 text-center transition">
+        <span class="w-10 h-10 rounded-full bg-green-800 text-white grid place-items-center shadow-sm"><i
+            class="fa-solid fa-seedling"></i></span>
+        <span class="font-bold text-green-950 text-xs">Sobre Nosotros</span>
+        <span class="text-[10px] text-slate-500 leading-tight">Historia, misi&oacute;n y visi&oacute;n</span>
+      </a>
+
+      <a href="directiva.html"
+        class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-3.5 flex flex-col items-center gap-1.5 border border-emerald-100 text-center transition">
+        <span class="w-10 h-10 rounded-full bg-green-800 text-white grid place-items-center shadow-sm"><i
+            class="fa-solid fa-users"></i></span>
+        <span class="font-bold text-green-950 text-xs">Directiva Vigente</span>
+        <span class="text-[10px] text-slate-500 leading-tight">Liderazgo de la feria</span>
+      </a>
+
+      <a href="socios.html"
+        class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-3.5 flex flex-col items-center gap-1.5 border border-emerald-100 text-center transition">
+        <span class="w-10 h-10 rounded-full bg-green-800 text-white grid place-items-center shadow-sm"><i
+            class="fa-solid fa-store"></i></span>
+        <span class="font-bold text-green-950 text-xs">Socios y Puestos</span>
+        <span class="text-[10px] text-slate-500 leading-tight">Comerciantes y rubros</span>
+      </a>
+
+      <a href="nosotros.html#estatutos"
+        class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-3.5 flex flex-col items-center gap-1.5 border border-emerald-100 text-center transition">
+        <span class="w-10 h-10 rounded-full bg-green-800 text-white grid place-items-center shadow-sm"><i
+            class="fa-solid fa-book-bookmark"></i></span>
+        <span class="font-bold text-green-950 text-xs">Estatutos y Reg.</span>
+        <span class="text-[10px] text-slate-500 leading-tight">Normativa gremial</span>
+      </a>
+    </div>
+
+    <!-- Secciones Principales de Exploracion -->
+    <p class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 mb-2.5 px-1">Explorar</p>
+    <div class="grid grid-cols-2 gap-3 mb-5">
+      <a href="galeria.html"
+        class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-3.5 flex flex-col items-center gap-1.5 border border-emerald-100 text-center transition">
+        <span class="w-10 h-10 rounded-full bg-green-800 text-white grid place-items-center shadow-sm"><i
+            class="fa-regular fa-images"></i></span>
+        <span class="font-bold text-green-950 text-xs">Galer&iacute;a</span>
+        <span class="text-[10px] text-slate-500 leading-tight">Fotos y momentos</span>
+      </a>
+
+      <a href="localizanos.html#contacto"
+        class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-3.5 flex flex-col items-center gap-1.5 border border-emerald-100 text-center transition">
+        <span class="w-10 h-10 rounded-full bg-green-800 text-white grid place-items-center shadow-sm"><i
+            class="fa-regular fa-envelope"></i></span>
+        <span class="font-bold text-green-950 text-xs">Contacto</span>
+        <span class="text-[10px] text-slate-500 leading-tight">Escr&iacute;benos directamente</span>
+      </a>
+    </div>
+
+    <!-- Legal e Ingreso al Portal -->
     <div class="grid grid-cols-2 gap-3">
-      <a href="nosotros.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
-        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-seedling"></i></span>
-        <span class="font-bold text-green-950 text-sm">Historia & Misión</span>
-      </a>
-      <a href="directiva.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
-        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-users"></i></span>
-        <span class="font-bold text-green-950 text-sm">Directiva</span>
-      </a>
-      <a href="socios.html" class="bg-green-800 rounded-2xl p-4 flex flex-col items-center gap-2 border border-green-800 text-center shadow-md">
-        <span class="w-11 h-11 rounded-full bg-white text-green-800 grid place-items-center"><i class="fa-solid fa-store"></i></span>
-        <span class="font-bold text-white text-sm">Socios</span>
-      </a>
-      <a href="localizanos.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
-        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-solid fa-map-location-dot"></i></span>
-        <span class="font-bold text-green-950 text-sm">Localízanos</span>
-      </a>
-      <a href="galeria.html" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
-        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-regular fa-images"></i></span>
-        <span class="font-bold text-green-950 text-sm">Galería</span>
-      </a>
-      <a href="localizanos.html#contacto" onclick="closeMorePanel()" class="bg-emerald-50 hover:bg-emerald-100/70 rounded-2xl p-4 flex flex-col items-center gap-2 border border-emerald-100 text-center transition">
-        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-regular fa-envelope"></i></span>
-        <span class="font-bold text-green-950 text-sm">Contacto</span>
-      </a>
-        <span class="w-11 h-11 rounded-full bg-green-800 text-white grid place-items-center"><i class="fa-regular fa-envelope"></i></span>
-        <span class="font-bold text-green-950 text-sm">Contacto</span>
-      </a>
-      <a href="terminos.html" class="bg-slate-50 hover:bg-slate-100 rounded-2xl p-3 flex items-center justify-center gap-2 border border-slate-200 text-xs font-bold text-slate-700 transition">
+      <a href="terminos.html"
+        class="bg-slate-50 hover:bg-slate-100 rounded-2xl p-3 flex items-center justify-center gap-2 border border-slate-200 text-xs font-bold text-slate-700 transition">
         <i class="fa-solid fa-scale-balanced text-green-700"></i>
-        <span>Términos</span>
+        <span>T&eacute;rminos</span>
       </a>
-      <a href="privacidad.html" class="bg-slate-50 hover:bg-slate-100 rounded-2xl p-3 flex items-center justify-center gap-2 border border-slate-200 text-xs font-bold text-slate-700 transition">
+      <a href="privacidad.html"
+        class="bg-slate-50 hover:bg-slate-100 rounded-2xl p-3 flex items-center justify-center gap-2 border border-slate-200 text-xs font-bold text-slate-700 transition">
         <i class="fa-solid fa-user-shield text-green-700"></i>
         <span>Privacidad</span>
       </a>
-      <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer" class="col-span-2 bg-lime-500 hover:bg-lime-400 rounded-2xl p-3.5 flex items-center justify-center gap-2 text-center transition shadow font-bold text-green-950 text-sm">
-        <i class="fa-solid fa-right-to-bracket text-base"></i>
-        <span>Ingresar al Portal</span>
+      <a href="https://feriaagricolaag.vercel.app/" target="_blank" rel="noopener noreferrer"
+        class="col-span-2 bg-lime-500 hover:bg-lime-400 rounded-2xl p-3.5 flex items-center justify-center gap-2 text-center transition shadow font-bold text-green-950 text-sm">
+        <i class="fa-solid fa-arrow-up-right-from-square text-base"></i>
+        <span>Ingresar al Portal Socios</span>
       </a>
     </div>
   </section>
